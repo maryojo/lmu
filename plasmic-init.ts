@@ -52,6 +52,16 @@ PLASMIC.registerComponent(QuizComponent, {
       type: "eventHandler",
       argTypes: [],
     },
+    resetKey: "number", 
+    onQuizComplete: {
+      type: "eventHandler",
+      argTypes: [
+        {
+          name: "quizComplete",
+          type: "object",
+        },
+      ],
+    }, 
     timeLimit: {
       type: "number",
       defaultValue: 120, // Default to 120 seconds
