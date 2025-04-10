@@ -381,7 +381,7 @@ function PlasmicLogin__RenderFunc(props: {
                                           ) {
                                             return "/onboarding";
                                           } else {
-                                            return "/";
+                                            return "/dashboard";
                                           }
                                         })();
                                       } catch (e) {
@@ -450,7 +450,7 @@ function PlasmicLogin__RenderFunc(props: {
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__ra4MC
+                              sty.formField__eICjZ
                             )}
                             label={"Email"}
                             name={"email"}
@@ -471,7 +471,7 @@ function PlasmicLogin__RenderFunc(props: {
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField___4EmjW
+                              sty.formField__eKQzy
                             )}
                             label={"Password"}
                             name={"password"}
@@ -492,7 +492,7 @@ function PlasmicLogin__RenderFunc(props: {
                           <AntdButton
                             className={classNames(
                               "__wab_instance",
-                              sty.button__csOwD
+                              sty.button__kn8Z
                             )}
                             loading={(() => {
                               try {
@@ -514,7 +514,7 @@ function PlasmicLogin__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__tVxJs
+                                sty.text__eynz0
                               )}
                             >
                               {"Submit"}
