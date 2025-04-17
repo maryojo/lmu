@@ -7,7 +7,7 @@
 import * as React from "react";
 import { hasVariant, ensureGlobalVariants } from "@plasmicapp/react-web";
 import { AntdConfigProvider } from "@plasmicpkgs/antd5/skinny/registerConfigProvider";
-import { SupabaseUserGlobalContext } from "../../../index"; // plasmic-import: 7mrZ7EuxJSFV/codeComponent
+import { SupabaseUserGlobalContext }  from "plasmic-supabase"; // plasmic-import: 7mrZ7EuxJSFV/codeComponent
 
 export interface GlobalContextsProviderProps {
   children?: React.ReactElement;
