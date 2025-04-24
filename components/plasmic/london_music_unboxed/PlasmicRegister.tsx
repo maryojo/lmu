@@ -94,6 +94,10 @@ export type PlasmicRegister__OverridesType = {
   register?: Flex__<"div">;
   section?: Flex__<"section">;
   form?: Flex__<typeof FormWrapper>;
+  columns?: Flex__<"div">;
+  input?: Flex__<typeof AntdInput>;
+  input2?: Flex__<typeof AntdInput>;
+  input3?: Flex__<typeof AntdInput>;
   passwordInput?: Flex__<typeof AntdPassword>;
   select?: Flex__<typeof AntdSelect>;
   button?: Flex__<typeof AntdButton>;
@@ -161,6 +165,44 @@ function PlasmicRegister__RenderFunc(props: {
 
         refName: "form",
         onMutate: generateOnMutateForSpec("isSubmitting", FormWrapper_Helpers)
+      },
+      {
+        path: "input.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
+      },
+      {
+        path: "input2.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
+      },
+      {
+        path: "input3.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
+      },
+      {
+        path: "passwordInput.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("value", AntdPassword_Helpers)
+      },
+      {
+        path: "select.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -297,14 +339,21 @@ function PlasmicRegister__RenderFunc(props: {
                           FormWrapper_Helpers
                         ).apply(null, eventArgs);
                       },
-                      formItems: undefined,
+                      formItems: [
+                        { label: "Name", name: "name", inputType: "Text" },
+                        {
+                          label: "Message",
+                          name: "message",
+                          inputType: "Text Area"
+                        }
+                      ],
                       labelCol: { span: 8, horizontalOnly: true },
                       layout: "vertical",
-                      mode: undefined,
+                      mode: "advanced",
                       onFinish: async values => {
                         const $steps = {};
 
-                        $steps["invokeGlobalAction"] = true
+                        $steps["signupUser"] = true
                           ? (() => {
                               const actionArgs = {
                                 args: [
@@ -336,7 +385,7 @@ function PlasmicRegister__RenderFunc(props: {
                                       throw e;
                                     }
                                   })(),
-                                  undefined,
+                                  "/signup-successful",
                                   undefined,
                                   (() => {
                                     try {
@@ -346,7 +395,9 @@ function PlasmicRegister__RenderFunc(props: {
                                         firstName: $state.form.value.firstName,
                                         lastName: $state.form.value.lastName,
                                         attemptedQuiz: false,
-                                        onboardingQuizScore: null
+                                        lastQuizStatus: "UNDEFINED",
+                                        lastQuizStarted: "UNDEFINED",
+                                        lastQuizCompleted: "UNDEFINED"
                                       };
                                     } catch (e) {
                                       if (
@@ -367,14 +418,11 @@ function PlasmicRegister__RenderFunc(props: {
                             })()
                           : undefined;
                         if (
-                          $steps["invokeGlobalAction"] != null &&
-                          typeof $steps["invokeGlobalAction"] === "object" &&
-                          typeof $steps["invokeGlobalAction"].then ===
-                            "function"
+                          $steps["signupUser"] != null &&
+                          typeof $steps["signupUser"] === "object" &&
+                          typeof $steps["signupUser"].then === "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["signupUser"] = await $steps["signupUser"];
                         }
                       },
                       onIsSubmittingChange: async (...eventArgs: any) => {
@@ -389,6 +437,7 @@ function PlasmicRegister__RenderFunc(props: {
                         $refs["form"] = ref;
                       },
                       requiredMark: false,
+                      submitSlot: null,
                       wrapperCol: { span: 16, horizontalOnly: true }
                     };
                     initializeCodeComponentStates(
@@ -414,52 +463,142 @@ function PlasmicRegister__RenderFunc(props: {
                         data-plasmic-override={overrides.form}
                         {...child$Props}
                       >
-                        <FormItemWrapper
-                          className={classNames(
-                            "__wab_instance",
-                            sty.formField__lefAb
-                          )}
-                          label={"First Name"}
-                          name={"firstName"}
-                          rules={[
-                            {
-                              ruleType: "required",
-                              message: "First name is required"
-                            }
-                          ]}
+                        <Stack__
+                          as={"div"}
+                          data-plasmic-name={"columns"}
+                          data-plasmic-override={overrides.columns}
+                          hasGap={true}
+                          className={classNames(projectcss.all, sty.columns)}
                         >
-                          <AntdInput
+                          <div
                             className={classNames(
-                              "__wab_instance",
-                              sty.input__xWJvb
+                              projectcss.all,
+                              sty.column__q9OZb
                             )}
-                          />
-                        </FormItemWrapper>
+                          >
+                            <FormItemWrapper
+                              className={classNames(
+                                "__wab_instance",
+                                sty.formField__i5K28
+                              )}
+                              label={"First Name"}
+                              name={"firstName"}
+                              rules={[
+                                {
+                                  ruleType: "required",
+                                  message: "First name is required"
+                                }
+                              ]}
+                            >
+                              {(() => {
+                                const child$Props = {
+                                  className: classNames(
+                                    "__wab_instance",
+                                    sty.input
+                                  ),
+                                  onChange: async (...eventArgs: any) => {
+                                    generateStateOnChangePropForCodeComponents(
+                                      $state,
+                                      "value",
+                                      ["input", "value"],
+                                      AntdInput_Helpers
+                                    ).apply(null, eventArgs);
+                                  },
+                                  value: generateStateValueProp($state, [
+                                    "input",
+                                    "value"
+                                  ])
+                                };
+                                initializeCodeComponentStates(
+                                  $state,
+                                  [
+                                    {
+                                      name: "value",
+                                      plasmicStateName: "input.value"
+                                    }
+                                  ],
+                                  [],
+                                  AntdInput_Helpers ?? {},
+                                  child$Props
+                                );
+
+                                return (
+                                  <AntdInput
+                                    data-plasmic-name={"input"}
+                                    data-plasmic-override={overrides.input}
+                                    {...child$Props}
+                                  />
+                                );
+                              })()}
+                            </FormItemWrapper>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.column__qjsPs
+                            )}
+                          >
+                            <FormItemWrapper
+                              className={classNames(
+                                "__wab_instance",
+                                sty.formField__jEzdH
+                              )}
+                              label={"Last Name"}
+                              name={"lastName"}
+                              rules={[
+                                {
+                                  ruleType: "required",
+                                  message: "Last name is required"
+                                }
+                              ]}
+                            >
+                              {(() => {
+                                const child$Props = {
+                                  className: classNames(
+                                    "__wab_instance",
+                                    sty.input2
+                                  ),
+                                  onChange: async (...eventArgs: any) => {
+                                    generateStateOnChangePropForCodeComponents(
+                                      $state,
+                                      "value",
+                                      ["input2", "value"],
+                                      AntdInput_Helpers
+                                    ).apply(null, eventArgs);
+                                  },
+                                  value: generateStateValueProp($state, [
+                                    "input2",
+                                    "value"
+                                  ])
+                                };
+                                initializeCodeComponentStates(
+                                  $state,
+                                  [
+                                    {
+                                      name: "value",
+                                      plasmicStateName: "input2.value"
+                                    }
+                                  ],
+                                  [],
+                                  AntdInput_Helpers ?? {},
+                                  child$Props
+                                );
+
+                                return (
+                                  <AntdInput
+                                    data-plasmic-name={"input2"}
+                                    data-plasmic-override={overrides.input2}
+                                    {...child$Props}
+                                  />
+                                );
+                              })()}
+                            </FormItemWrapper>
+                          </div>
+                        </Stack__>
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__wk81A
-                          )}
-                          label={"Last Name"}
-                          name={"lastName"}
-                          rules={[
-                            {
-                              ruleType: "required",
-                              message: "Last name is required"
-                            }
-                          ]}
-                        >
-                          <AntdInput
-                            className={classNames(
-                              "__wab_instance",
-                              sty.input__jBmh
-                            )}
-                          />
-                        </FormItemWrapper>
-                        <FormItemWrapper
-                          className={classNames(
-                            "__wab_instance",
-                            sty.formField__ibkqr
+                            sty.formField__s7JgJ
                           )}
                           label={"Email"}
                           name={"email"}
@@ -470,17 +609,51 @@ function PlasmicRegister__RenderFunc(props: {
                             }
                           ]}
                         >
-                          <AntdInput
-                            className={classNames(
-                              "__wab_instance",
-                              sty.input__ztiLh
-                            )}
-                          />
+                          {(() => {
+                            const child$Props = {
+                              className: classNames(
+                                "__wab_instance",
+                                sty.input3
+                              ),
+                              onChange: async (...eventArgs: any) => {
+                                generateStateOnChangePropForCodeComponents(
+                                  $state,
+                                  "value",
+                                  ["input3", "value"],
+                                  AntdInput_Helpers
+                                ).apply(null, eventArgs);
+                              },
+                              value: generateStateValueProp($state, [
+                                "input3",
+                                "value"
+                              ])
+                            };
+                            initializeCodeComponentStates(
+                              $state,
+                              [
+                                {
+                                  name: "value",
+                                  plasmicStateName: "input3.value"
+                                }
+                              ],
+                              [],
+                              AntdInput_Helpers ?? {},
+                              child$Props
+                            );
+
+                            return (
+                              <AntdInput
+                                data-plasmic-name={"input3"}
+                                data-plasmic-override={overrides.input3}
+                                {...child$Props}
+                              />
+                            );
+                          })()}
                         </FormItemWrapper>
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__jCyC3
+                            sty.formField__nMnLu
                           )}
                           label={"Password"}
                           name={"password"}
@@ -491,17 +664,51 @@ function PlasmicRegister__RenderFunc(props: {
                             }
                           ]}
                         >
-                          <AntdPassword
-                            className={classNames(
-                              "__wab_instance",
-                              sty.passwordInput
-                            )}
-                          />
+                          {(() => {
+                            const child$Props = {
+                              className: classNames(
+                                "__wab_instance",
+                                sty.passwordInput
+                              ),
+                              onChange: async (...eventArgs: any) => {
+                                generateStateOnChangePropForCodeComponents(
+                                  $state,
+                                  "value",
+                                  ["passwordInput", "value"],
+                                  AntdPassword_Helpers
+                                ).apply(null, eventArgs);
+                              },
+                              value: generateStateValueProp($state, [
+                                "passwordInput",
+                                "value"
+                              ])
+                            };
+                            initializeCodeComponentStates(
+                              $state,
+                              [
+                                {
+                                  name: "value",
+                                  plasmicStateName: "passwordInput.value"
+                                }
+                              ],
+                              [],
+                              AntdPassword_Helpers ?? {},
+                              child$Props
+                            );
+
+                            return (
+                              <AntdPassword
+                                data-plasmic-name={"passwordInput"}
+                                data-plasmic-override={overrides.passwordInput}
+                                {...child$Props}
+                              />
+                            );
+                          })()}
                         </FormItemWrapper>
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__sQlzm
+                            sty.formField___5J44Y
                           )}
                           label={"What would you like to register as?"}
                           name={"userRole"}
@@ -513,6 +720,8 @@ function PlasmicRegister__RenderFunc(props: {
                           ]}
                         >
                           <AntdSelect
+                            data-plasmic-name={"select"}
+                            data-plasmic-override={overrides.select}
                             className={classNames("__wab_instance", sty.select)}
                             defaultStylesClassName={classNames(
                               projectcss.root_reset,
@@ -522,6 +731,12 @@ function PlasmicRegister__RenderFunc(props: {
                               plasmic_antd_5_hostless_css.plasmic_tokens,
                               plasmic_plasmic_rich_components_css.plasmic_tokens
                             )}
+                            onChange={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "select",
+                                "value"
+                              ]).apply(null, eventArgs);
+                            }}
                             options={(() => {
                               const __composite = [
                                 { type: "option", label: null, value: null },
@@ -538,14 +753,22 @@ function PlasmicRegister__RenderFunc(props: {
                             })()}
                             placeholder={"Select..."}
                             popupScopeClassName={sty["select__popup"]}
+                            value={generateStateValueProp($state, [
+                              "select",
+                              "value"
+                            ])}
                           />
                         </FormItemWrapper>
                         <AntdButton
+                          data-plasmic-name={"button"}
+                          data-plasmic-override={overrides.button}
                           className={classNames("__wab_instance", sty.button)}
                           submitsForm={true}
                           type={"primary"}
                         >
                           <div
+                            data-plasmic-name={"text"}
+                            data-plasmic-override={overrides.text}
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
@@ -574,6 +797,10 @@ const PlasmicDescendants = {
     "register",
     "section",
     "form",
+    "columns",
+    "input",
+    "input2",
+    "input3",
     "passwordInput",
     "select",
     "button",
@@ -583,13 +810,31 @@ const PlasmicDescendants = {
     "register",
     "section",
     "form",
+    "columns",
+    "input",
+    "input2",
+    "input3",
     "passwordInput",
     "select",
     "button",
     "text"
   ],
   section: ["section"],
-  form: ["form", "passwordInput", "select", "button", "text"],
+  form: [
+    "form",
+    "columns",
+    "input",
+    "input2",
+    "input3",
+    "passwordInput",
+    "select",
+    "button",
+    "text"
+  ],
+  columns: ["columns", "input", "input2"],
+  input: ["input"],
+  input2: ["input2"],
+  input3: ["input3"],
   passwordInput: ["passwordInput"],
   select: ["select"],
   button: ["button", "text"],
@@ -603,6 +848,10 @@ type NodeDefaultElementType = {
   register: "div";
   section: "section";
   form: typeof FormWrapper;
+  columns: "div";
+  input: typeof AntdInput;
+  input2: typeof AntdInput;
+  input3: typeof AntdInput;
   passwordInput: typeof AntdPassword;
   select: typeof AntdSelect;
   button: typeof AntdButton;
@@ -672,6 +921,10 @@ export const PlasmicRegister = Object.assign(
     register: makeNodeComponent("register"),
     section: makeNodeComponent("section"),
     form: makeNodeComponent("form"),
+    columns: makeNodeComponent("columns"),
+    input: makeNodeComponent("input"),
+    input2: makeNodeComponent("input2"),
+    input3: makeNodeComponent("input3"),
     passwordInput: makeNodeComponent("passwordInput"),
     select: makeNodeComponent("select"),
     button: makeNodeComponent("button"),

@@ -66,14 +66,16 @@ import {
   usePlasmicInvalidate
 } from "@plasmicapp/react-web/lib/data-sources";
 
+import TopBar from "../../TopBar"; // plasmic-import: GK49OJrlqKX0/component
 import { FormWrapper } from "@plasmicpkgs/antd5/skinny/Form";
 import { formHelpers as FormWrapper_Helpers } from "@plasmicpkgs/antd5/skinny/Form";
 import { FormItemWrapper } from "@plasmicpkgs/antd5/skinny/FormItem";
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdRadio } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
-import { QuizComponent } from "../../QuizComponent"; // plasmic-import: klgNzyPULfbl/codeComponent
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
+import { QuizComponent } from "../../QuizComponent"; // plasmic-import: klgNzyPULfbl/codeComponent
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -82,9 +84,8 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicOnboarding.module.css"; // plasmic-import: N1YDHbC1ATYR/css
 
-import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: dwMGBRl-2IC3/icon
-import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: -jkcn7GwAM4v/icon
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: yZz0P1JDPQwS/icon
+import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: -jkcn7GwAM4v/icon
 
 createPlasmicElementProxy;
 
@@ -99,6 +100,7 @@ export const PlasmicOnboarding__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicOnboarding__OverridesType = {
   root?: Flex__<"div">;
+  topBar?: Flex__<typeof TopBar>;
   h4?: Flex__<"h4">;
   startOnboardingQuizForm?: Flex__<typeof FormWrapper>;
   quizComponent?: Flex__<typeof QuizComponent>;
@@ -146,6 +148,9 @@ function PlasmicOnboarding__RenderFunc(props: {
 
   const $globalActions = useGlobalActions?.();
 
+  let [$queries, setDollarQueries] = React.useState<
+    Record<string, ReturnType<typeof usePlasmicDataOp>>
+  >({});
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -270,6 +275,12 @@ function PlasmicOnboarding__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "isPageLoading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       }
     ],
     [$props, $ctx, $refs]
@@ -277,11 +288,31 @@ function PlasmicOnboarding__RenderFunc(props: {
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
-    $queries: {},
+    $queries: $queries,
     $refs
   });
   const dataSourcesCtx = usePlasmicDataSourceContext();
   const plasmicInvalidate = usePlasmicInvalidate();
+
+  const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
+    getUserInformation: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "a9ac0b28-c76e-4841-a754-c839946bba5b",
+        userArgs: {
+          keys: [$ctx.SupabaseUser.user.id]
+        },
+        cacheKey: `plasmic.$.a9ac0b28-c76e-4841-a754-c839946bba5b.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    })
+  };
+  if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
+    setDollarQueries(new$Queries);
+
+    $queries = new$Queries;
+  }
 
   return (
     <React.Fragment>
@@ -311,44 +342,11 @@ function PlasmicOnboarding__RenderFunc(props: {
           )}
         >
           <section className={classNames(projectcss.all, sty.section__hbRph)}>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___14Emk)}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__alc2G
-                )}
-              >
-                <React.Fragment>
-                  {(() => {
-                    try {
-                      return $ctx.SupabaseUser.user.user_metadata.email;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return "";
-                      }
-                      throw e;
-                    }
-                  })()}
-                </React.Fragment>
-              </div>
-              <Icon2Icon
-                className={classNames(projectcss.all, sty.svg__m54E4)}
-                role={"img"}
-              />
-
-              <ChevronDownIcon
-                className={classNames(projectcss.all, sty.svg___8Suig)}
-                role={"img"}
-              />
-            </Stack__>
+            <TopBar
+              data-plasmic-name={"topBar"}
+              data-plasmic-override={overrides.topBar}
+              className={classNames("__wab_instance", sty.topBar)}
+            />
           </section>
           <section className={classNames(projectcss.all, sty.section___67Nxo)}>
             <Stack__
@@ -358,7 +356,9 @@ function PlasmicOnboarding__RenderFunc(props: {
             >
               {(() => {
                 try {
-                  return $state.formStep == 0;
+                  return (
+                    $queries.getUserInformation.isLoading && $state.formStep < 1
+                  );
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -369,503 +369,973 @@ function PlasmicOnboarding__RenderFunc(props: {
                   throw e;
                 }
               })() ? (
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__o2Sv)}
-                >
-                  <h4
-                    data-plasmic-name={"h4"}
-                    data-plasmic-override={overrides.h4}
+                <div className={classNames(projectcss.all, sty.freeBox__ufE4M)}>
+                  <div
                     className={classNames(
                       projectcss.all,
-                      projectcss.h4,
                       projectcss.__wab_text,
-                      sty.h4
+                      sty.text__orpe4
                     )}
                   >
-                    {"Welcome!"}
-                  </h4>
-                  {(() => {
-                    const child$Props = {
-                      className: classNames(
-                        "__wab_instance",
-                        sty.startOnboardingQuizForm
-                      ),
-                      extendedOnValuesChange: async (...eventArgs: any) => {
-                        generateStateOnChangePropForCodeComponents(
-                          $state,
-                          "value",
-                          ["startOnboardingQuizForm", "value"],
-                          FormWrapper_Helpers
-                        ).apply(null, eventArgs);
-                      },
-                      formItems: undefined,
-                      labelCol: { span: 8, horizontalOnly: true },
-                      layout: "vertical",
-                      mode: undefined,
-                      onFinish: async values => {
-                        const $steps = {};
-
-                        $steps["getRightQuizId"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                dataOp: {
-                                  sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-                                  opId: "c092da1e-27b1-41af-88b3-ab182a63eab0",
-                                  userArgs: {
-                                    filters: [
-                                      $state.startOnboardingQuizForm.value
-                                        .instrumentCategory,
-                                      $state.startOnboardingQuizForm.value
-                                        .trainingLevel
-                                    ]
-                                  },
-                                  cacheKey: null,
-                                  invalidatedKeys: null,
-                                  roleId: null
-                                },
-                                continueOnError: true
-                              };
-                              return (async ({ dataOp, continueOnError }) => {
-                                try {
-                                  const response = await executePlasmicDataOp(
-                                    dataOp,
-                                    {
-                                      userAuthToken:
-                                        dataSourcesCtx?.userAuthToken,
-                                      user: dataSourcesCtx?.user
-                                    }
-                                  );
-                                  await plasmicInvalidate(
-                                    dataOp.invalidatedKeys
-                                  );
-                                  return response;
-                                } catch (e) {
-                                  if (!continueOnError) {
-                                    throw e;
-                                  }
-                                  return e;
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["getRightQuizId"] != null &&
-                          typeof $steps["getRightQuizId"] === "object" &&
-                          typeof $steps["getRightQuizId"].then === "function"
-                        ) {
-                          $steps["getRightQuizId"] = await $steps[
-                            "getRightQuizId"
-                          ];
-                        }
-
-                        $steps["error"] = $steps["getRightQuizId"].error
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "error",
-                                  "Something went wrong",
-                                  undefined,
-                                  undefined,
-                                  "top"
-                                ]
-                              };
-                              return $globalActions[
-                                "plasmic-antd5-config-provider.showNotification"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["error"] != null &&
-                          typeof $steps["error"] === "object" &&
-                          typeof $steps["error"].then === "function"
-                        ) {
-                          $steps["error"] = await $steps["error"];
-                        }
-
-                        $steps["updateFetchedQuizId"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["fetchedQuizId"]
-                                },
-                                operation: 0,
-                                value: $steps["getRightQuizId"].data[0].id
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateFetchedQuizId"] != null &&
-                          typeof $steps["updateFetchedQuizId"] === "object" &&
-                          typeof $steps["updateFetchedQuizId"].then ===
-                            "function"
-                        ) {
-                          $steps["updateFetchedQuizId"] = await $steps[
-                            "updateFetchedQuizId"
-                          ];
-                        }
-
-                        $steps["getQuizInfoById"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                dataOp: {
-                                  sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-                                  opId: "718444ab-0dcb-4bcb-86f7-c906331ee065",
-                                  userArgs: {
-                                    filters: [$state.fetchedQuizId]
-                                  },
-                                  cacheKey: null,
-                                  invalidatedKeys: null,
-                                  roleId: null
-                                }
-                              };
-                              return (async ({ dataOp, continueOnError }) => {
-                                try {
-                                  const response = await executePlasmicDataOp(
-                                    dataOp,
-                                    {
-                                      userAuthToken:
-                                        dataSourcesCtx?.userAuthToken,
-                                      user: dataSourcesCtx?.user
-                                    }
-                                  );
-                                  await plasmicInvalidate(
-                                    dataOp.invalidatedKeys
-                                  );
-                                  return response;
-                                } catch (e) {
-                                  if (!continueOnError) {
-                                    throw e;
-                                  }
-                                  return e;
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["getQuizInfoById"] != null &&
-                          typeof $steps["getQuizInfoById"] === "object" &&
-                          typeof $steps["getQuizInfoById"].then === "function"
-                        ) {
-                          $steps["getQuizInfoById"] = await $steps[
-                            "getQuizInfoById"
-                          ];
-                        }
-
-                        $steps["updateFetchedQuizInfo"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["fetchedQuizInfo"]
-                                },
-                                operation: 0,
-                                value: $steps["getQuizInfoById"].data
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateFetchedQuizInfo"] != null &&
-                          typeof $steps["updateFetchedQuizInfo"] === "object" &&
-                          typeof $steps["updateFetchedQuizInfo"].then ===
-                            "function"
-                        ) {
-                          $steps["updateFetchedQuizInfo"] = await $steps[
-                            "updateFetchedQuizInfo"
-                          ];
-                        }
-
-                        $steps["updateFormStep"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["formStep"]
-                                },
-                                operation: 0,
-                                value: 1
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateFormStep"] != null &&
-                          typeof $steps["updateFormStep"] === "object" &&
-                          typeof $steps["updateFormStep"].then === "function"
-                        ) {
-                          $steps["updateFormStep"] = await $steps[
-                            "updateFormStep"
-                          ];
-                        }
-                      },
-                      onIsSubmittingChange: async (...eventArgs: any) => {
-                        generateStateOnChangePropForCodeComponents(
-                          $state,
-                          "isSubmitting",
-                          ["startOnboardingQuizForm", "isSubmitting"],
-                          FormWrapper_Helpers
-                        ).apply(null, eventArgs);
-                      },
-                      ref: ref => {
-                        $refs["startOnboardingQuizForm"] = ref;
-                      },
-                      wrapperCol: { span: 16, horizontalOnly: true }
-                    };
-                    initializeCodeComponentStates(
-                      $state,
-                      [
-                        {
-                          name: "value",
-                          plasmicStateName: "startOnboardingQuizForm.value"
-                        },
-                        {
-                          name: "isSubmitting",
-                          plasmicStateName:
-                            "startOnboardingQuizForm.isSubmitting"
-                        }
-                      ],
-                      [],
-                      FormWrapper_Helpers ?? {},
-                      child$Props
-                    );
-
-                    return (
-                      <FormWrapper
-                        data-plasmic-name={"startOnboardingQuizForm"}
-                        data-plasmic-override={
-                          overrides.startOnboardingQuizForm
-                        }
-                        {...child$Props}
-                      >
-                        <FormItemWrapper
-                          className={classNames(
-                            "__wab_instance",
-                            sty.formField__affgL
-                          )}
-                          label={"What instrument would you like to enrol for?"}
-                          name={"instrumentCategory"}
-                          rules={[
-                            { ruleType: "required", message: "Required" }
-                          ]}
-                        >
-                          <AntdRadioGroup
-                            className={classNames(
-                              "__wab_instance",
-                              sty.radioGroup__p2Jy
-                            )}
-                            options={(() => {
-                              const __composite = [
-                                { type: "option", label: null, value: null },
-                                { type: "option", label: null, value: null },
-                                { type: "option", label: null, value: null },
-                                { type: "option", label: null, value: null },
-                                { type: "option", label: null, value: null },
-                                { type: "option", label: null, value: null }
-                              ];
-                              __composite["0"]["label"] = "Strings";
-                              __composite["0"]["value"] = "STRINGS";
-                              __composite["1"]["label"] = "Woodwind";
-                              __composite["1"]["value"] = "WOODWIND";
-                              __composite["2"]["label"] = "Piano";
-                              __composite["2"]["value"] = "PIANO";
-                              __composite["3"]["label"] = "Voice";
-                              __composite["3"]["value"] = "VOICE";
-                              __composite["4"]["label"] = "Percussion";
-                              __composite["4"]["value"] = "PERCUSSION";
-                              __composite["5"]["label"] = "Guitar";
-                              __composite["5"]["value"] = "GUITAR";
-                              return __composite;
-                            })()}
-                          >
-                            <AntdRadio
-                              className={classNames(
-                                "__wab_instance",
-                                sty.radio__xeMo6
-                              )}
-                              value={"op1"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___0Biu2
-                                )}
-                              >
-                                {"Option 1"}
-                              </div>
-                            </AntdRadio>
-                            <AntdRadio
-                              className={classNames(
-                                "__wab_instance",
-                                sty.radio__zALV
-                              )}
-                              value={"op2"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__lhl4B
-                                )}
-                              >
-                                {"Option 2"}
-                              </div>
-                            </AntdRadio>
-                          </AntdRadioGroup>
-                        </FormItemWrapper>
-                        <FormItemWrapper
-                          className={classNames(
-                            "__wab_instance",
-                            sty.formField__l82RC
-                          )}
-                          label={"What level do you best fit in?"}
-                          name={"trainingLevel"}
-                          rules={[
-                            { ruleType: "required", message: "Required" }
-                          ]}
-                        >
-                          <AntdRadioGroup
-                            className={classNames(
-                              "__wab_instance",
-                              sty.radioGroup__bhHw5
-                            )}
-                            options={(() => {
-                              const __composite = [
-                                { type: "option", label: null, value: null },
-                                { type: "option", label: null, value: null },
-                                { type: "option", label: null, value: null },
-                                { type: "option", label: null, value: null },
-                                { type: "option", label: null, value: null }
-                              ];
-                              __composite["0"]["label"] = "Beginner";
-                              __composite["0"]["value"] = "BEGINNER";
-                              __composite["1"]["label"] = "Novice";
-                              __composite["1"]["value"] = "NOVICE";
-                              __composite["2"]["label"] = "Intermediate";
-                              __composite["2"]["value"] = "INTERMEDIATE";
-                              __composite["3"]["label"] = "Skilled";
-                              __composite["3"]["value"] = "SKILLED";
-                              __composite["4"]["label"] = "Advanced";
-                              __composite["4"]["value"] = "ADVANCED";
-                              return __composite;
-                            })()}
-                          >
-                            <AntdRadio
-                              className={classNames(
-                                "__wab_instance",
-                                sty.radio___1Fb9R
-                              )}
-                              value={"op1"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__lFbvB
-                                )}
-                              >
-                                {"Option 1"}
-                              </div>
-                            </AntdRadio>
-                            <AntdRadio
-                              className={classNames(
-                                "__wab_instance",
-                                sty.radio__irLfc
-                              )}
-                              value={"op2"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__d3Ip
-                                )}
-                              >
-                                {"Option 2"}
-                              </div>
-                            </AntdRadio>
-                          </AntdRadioGroup>
-                        </FormItemWrapper>
-                        <AntdButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.button__tIft3
-                          )}
-                          loading={(() => {
-                            try {
-                              return $state.startOnboardingQuizForm
-                                .isSubmitting;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()}
-                          submitsForm={true}
-                          type={"primary"}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__o5Nl
-                            )}
-                          >
-                            {"Next"}
-                          </div>
-                        </AntdButton>
-                      </FormWrapper>
-                    );
-                  })()}
-                </Stack__>
+                    {"Loading..."}
+                  </div>
+                </div>
               ) : null}
+              <div className={classNames(projectcss.all, sty.freeBox___3OpSj)}>
+                {(() => {
+                  try {
+                    return $state.formStep == 0;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__o2Sv)}
+                  >
+                    {(() => {
+                      try {
+                        return (
+                          !$queries?.getUserInformation.isLoading &&
+                          $queries?.getUserInformation?.data &&
+                          $queries?.getUserInformation?.data[0]
+                            .instrument_category == null
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__iKrcI
+                        )}
+                      >
+                        <h4
+                          data-plasmic-name={"h4"}
+                          data-plasmic-override={overrides.h4}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.h4,
+                            projectcss.__wab_text,
+                            sty.h4
+                          )}
+                        >
+                          {"Welcome!"}
+                        </h4>
+                        {(() => {
+                          const child$Props = {
+                            className: classNames(
+                              "__wab_instance",
+                              sty.startOnboardingQuizForm
+                            ),
+                            extendedOnValuesChange: async (
+                              ...eventArgs: any
+                            ) => {
+                              generateStateOnChangePropForCodeComponents(
+                                $state,
+                                "value",
+                                ["startOnboardingQuizForm", "value"],
+                                FormWrapper_Helpers
+                              ).apply(null, eventArgs);
+
+                              (async (changedValues, allValues) => {
+                                const $steps = {};
+                              }).apply(null, eventArgs);
+                            },
+                            formItems: undefined,
+                            labelCol: { span: 8, horizontalOnly: true },
+                            layout: "vertical",
+                            mode: undefined,
+                            onFinish: async values => {
+                              const $steps = {};
+
+                              $steps["getRightQuizId"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      dataOp: {
+                                        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                        opId: "c092da1e-27b1-41af-88b3-ab182a63eab0",
+                                        userArgs: {
+                                          filters: [
+                                            $state.startOnboardingQuizForm.value
+                                              .instrumentCategory,
+                                            $state.startOnboardingQuizForm.value
+                                              .trainingLevel
+                                          ]
+                                        },
+                                        cacheKey: null,
+                                        invalidatedKeys: null,
+                                        roleId: null
+                                      },
+                                      continueOnError: true
+                                    };
+                                    return (async ({
+                                      dataOp,
+                                      continueOnError
+                                    }) => {
+                                      try {
+                                        const response =
+                                          await executePlasmicDataOp(dataOp, {
+                                            userAuthToken:
+                                              dataSourcesCtx?.userAuthToken,
+                                            user: dataSourcesCtx?.user
+                                          });
+                                        await plasmicInvalidate(
+                                          dataOp.invalidatedKeys
+                                        );
+                                        return response;
+                                      } catch (e) {
+                                        if (!continueOnError) {
+                                          throw e;
+                                        }
+                                        return e;
+                                      }
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["getRightQuizId"] != null &&
+                                typeof $steps["getRightQuizId"] === "object" &&
+                                typeof $steps["getRightQuizId"].then ===
+                                  "function"
+                              ) {
+                                $steps["getRightQuizId"] = await $steps[
+                                  "getRightQuizId"
+                                ];
+                              }
+
+                              $steps["updateFetchedQuizId"] = $steps[
+                                "getRightQuizId"
+                              ]?.data
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["fetchedQuizId"]
+                                      },
+                                      operation: 0,
+                                      value:
+                                        $steps["getRightQuizId"]?.data[0]?.id
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateFetchedQuizId"] != null &&
+                                typeof $steps["updateFetchedQuizId"] ===
+                                  "object" &&
+                                typeof $steps["updateFetchedQuizId"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateFetchedQuizId"] = await $steps[
+                                  "updateFetchedQuizId"
+                                ];
+                              }
+
+                              $steps["getQuizInfoById"] =
+                                $steps["getRightQuizId"]?.data !== null
+                                  ? (() => {
+                                      const actionArgs = {
+                                        dataOp: {
+                                          sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                          opId: "718444ab-0dcb-4bcb-86f7-c906331ee065",
+                                          userArgs: {
+                                            filters: [$state.fetchedQuizId]
+                                          },
+                                          cacheKey: null,
+                                          invalidatedKeys: null,
+                                          roleId: null
+                                        },
+                                        continueOnError: true
+                                      };
+                                      return (async ({
+                                        dataOp,
+                                        continueOnError
+                                      }) => {
+                                        try {
+                                          const response =
+                                            await executePlasmicDataOp(dataOp, {
+                                              userAuthToken:
+                                                dataSourcesCtx?.userAuthToken,
+                                              user: dataSourcesCtx?.user
+                                            });
+                                          await plasmicInvalidate(
+                                            dataOp.invalidatedKeys
+                                          );
+                                          return response;
+                                        } catch (e) {
+                                          if (!continueOnError) {
+                                            throw e;
+                                          }
+                                          return e;
+                                        }
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                              if (
+                                $steps["getQuizInfoById"] != null &&
+                                typeof $steps["getQuizInfoById"] === "object" &&
+                                typeof $steps["getQuizInfoById"].then ===
+                                  "function"
+                              ) {
+                                $steps["getQuizInfoById"] = await $steps[
+                                  "getQuizInfoById"
+                                ];
+                              }
+
+                              $steps["error"] = $steps["getQuizInfoById"]?.error
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "error",
+                                        "Something went wrong",
+                                        undefined,
+                                        undefined,
+                                        "top"
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "plasmic-antd5-config-provider.showNotification"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["error"] != null &&
+                                typeof $steps["error"] === "object" &&
+                                typeof $steps["error"].then === "function"
+                              ) {
+                                $steps["error"] = await $steps["error"];
+                              }
+
+                              $steps["updateFetchedQuizInfo"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["fetchedQuizInfo"]
+                                      },
+                                      operation: 0,
+                                      value: $steps["getQuizInfoById"].data
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateFetchedQuizInfo"] != null &&
+                                typeof $steps["updateFetchedQuizInfo"] ===
+                                  "object" &&
+                                typeof $steps["updateFetchedQuizInfo"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateFetchedQuizInfo"] = await $steps[
+                                  "updateFetchedQuizInfo"
+                                ];
+                              }
+
+                              $steps["invokeGlobalAction"] =
+                                $state.fetchedQuizInfo?.length == 0
+                                  ? (() => {
+                                      const actionArgs = {
+                                        args: [
+                                          "error",
+                                          "Sorry, no available questions",
+                                          "There are no available questions for your chosen option. Please contact the admin",
+                                          7,
+                                          "top"
+                                        ]
+                                      };
+                                      return $globalActions[
+                                        "plasmic-antd5-config-provider.showNotification"
+                                      ]?.apply(null, [...actionArgs.args]);
+                                    })()
+                                  : undefined;
+                              if (
+                                $steps["invokeGlobalAction"] != null &&
+                                typeof $steps["invokeGlobalAction"] ===
+                                  "object" &&
+                                typeof $steps["invokeGlobalAction"].then ===
+                                  "function"
+                              ) {
+                                $steps["invokeGlobalAction"] = await $steps[
+                                  "invokeGlobalAction"
+                                ];
+                              }
+
+                              $steps["updateFormStep"] =
+                                $state.fetchedQuizInfo?.length > 0
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["formStep"]
+                                        },
+                                        operation: 0,
+                                        value: 1
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                              if (
+                                $steps["updateFormStep"] != null &&
+                                typeof $steps["updateFormStep"] === "object" &&
+                                typeof $steps["updateFormStep"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateFormStep"] = await $steps[
+                                  "updateFormStep"
+                                ];
+                              }
+                            },
+                            onIsSubmittingChange: async (...eventArgs: any) => {
+                              generateStateOnChangePropForCodeComponents(
+                                $state,
+                                "isSubmitting",
+                                ["startOnboardingQuizForm", "isSubmitting"],
+                                FormWrapper_Helpers
+                              ).apply(null, eventArgs);
+                            },
+                            ref: ref => {
+                              $refs["startOnboardingQuizForm"] = ref;
+                            },
+                            wrapperCol: { span: 16, horizontalOnly: true }
+                          };
+                          initializeCodeComponentStates(
+                            $state,
+                            [
+                              {
+                                name: "value",
+                                plasmicStateName:
+                                  "startOnboardingQuizForm.value"
+                              },
+                              {
+                                name: "isSubmitting",
+                                plasmicStateName:
+                                  "startOnboardingQuizForm.isSubmitting"
+                              }
+                            ],
+                            [],
+                            FormWrapper_Helpers ?? {},
+                            child$Props
+                          );
+
+                          return (
+                            <FormWrapper
+                              data-plasmic-name={"startOnboardingQuizForm"}
+                              data-plasmic-override={
+                                overrides.startOnboardingQuizForm
+                              }
+                              {...child$Props}
+                            >
+                              <FormItemWrapper
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.formField__hLgWp
+                                )}
+                                label={
+                                  "What instrument would you like to enrol for?"
+                                }
+                                name={"instrumentCategory"}
+                                rules={[
+                                  { ruleType: "required", message: "Required" }
+                                ]}
+                              >
+                                <AntdRadioGroup
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.radioGroup__f4Kb
+                                  )}
+                                  options={(() => {
+                                    const __composite = [
+                                      {
+                                        type: "option",
+                                        label: null,
+                                        value: null
+                                      },
+                                      {
+                                        type: "option",
+                                        label: null,
+                                        value: null
+                                      },
+                                      {
+                                        type: "option",
+                                        label: null,
+                                        value: null
+                                      },
+                                      {
+                                        type: "option",
+                                        label: null,
+                                        value: null
+                                      },
+                                      {
+                                        type: "option",
+                                        label: null,
+                                        value: null
+                                      },
+                                      {
+                                        type: "option",
+                                        label: null,
+                                        value: null
+                                      }
+                                    ];
+                                    __composite["0"]["label"] = "Strings";
+                                    __composite["0"]["value"] = "STRINGS";
+                                    __composite["1"]["label"] = "Woodwind";
+                                    __composite["1"]["value"] = "WOODWIND";
+                                    __composite["2"]["label"] = "Piano";
+                                    __composite["2"]["value"] = "PIANO";
+                                    __composite["3"]["label"] = "Voice";
+                                    __composite["3"]["value"] = "VOICE";
+                                    __composite["4"]["label"] = "Percussion";
+                                    __composite["4"]["value"] = "PERCUSSION";
+                                    __composite["5"]["label"] = "Guitar";
+                                    __composite["5"]["value"] = "GUITAR";
+                                    return __composite;
+                                  })()}
+                                >
+                                  <AntdRadio
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.radio__jbklh
+                                    )}
+                                    value={"op1"}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__pUfvz
+                                      )}
+                                    >
+                                      {"Option 1"}
+                                    </div>
+                                  </AntdRadio>
+                                  <AntdRadio
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.radio__hGwdd
+                                    )}
+                                    value={"op2"}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text___3LjmX
+                                      )}
+                                    >
+                                      {"Option 2"}
+                                    </div>
+                                  </AntdRadio>
+                                </AntdRadioGroup>
+                              </FormItemWrapper>
+                              <FormItemWrapper
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.formField___2RkN9
+                                )}
+                                label={"What level do you best fit in?"}
+                                name={"trainingLevel"}
+                                rules={[
+                                  { ruleType: "required", message: "Required" }
+                                ]}
+                              >
+                                <AntdRadioGroup
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.radioGroup__qgS37
+                                  )}
+                                  options={(() => {
+                                    const __composite = [
+                                      {
+                                        type: "option",
+                                        label: null,
+                                        value: null
+                                      },
+                                      {
+                                        type: "option",
+                                        label: null,
+                                        value: null
+                                      },
+                                      {
+                                        type: "option",
+                                        label: null,
+                                        value: null
+                                      },
+                                      {
+                                        type: "option",
+                                        label: null,
+                                        value: null
+                                      },
+                                      {
+                                        type: "option",
+                                        label: null,
+                                        value: null
+                                      }
+                                    ];
+                                    __composite["0"]["label"] = "Beginner";
+                                    __composite["0"]["value"] = "BEGINNER";
+                                    __composite["1"]["label"] = "Novice";
+                                    __composite["1"]["value"] = "NOVICE";
+                                    __composite["2"]["label"] = "Intermediate";
+                                    __composite["2"]["value"] = "INTERMEDIATE";
+                                    __composite["3"]["label"] = "Skilled";
+                                    __composite["3"]["value"] = "SKILLED";
+                                    __composite["4"]["label"] = "Advanced";
+                                    __composite["4"]["value"] = "ADVANCED";
+                                    return __composite;
+                                  })()}
+                                >
+                                  <AntdRadio
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.radio___2Zdco
+                                    )}
+                                    value={"op1"}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text___3Bqze
+                                      )}
+                                    >
+                                      {"Option 1"}
+                                    </div>
+                                  </AntdRadio>
+                                  <AntdRadio
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.radio__qM9Il
+                                    )}
+                                    value={"op2"}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__nKyu
+                                      )}
+                                    >
+                                      {"Option 2"}
+                                    </div>
+                                  </AntdRadio>
+                                </AntdRadioGroup>
+                              </FormItemWrapper>
+                              <AntdButton
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.button__agHxu
+                                )}
+                                loading={(() => {
+                                  try {
+                                    return $state.startOnboardingQuizForm
+                                      .isSubmitting;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                                submitsForm={true}
+                                type={"primary"}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__b1Ljv
+                                  )}
+                                >
+                                  {"Next"}
+                                </div>
+                              </AntdButton>
+                            </FormWrapper>
+                          );
+                        })()}
+                      </div>
+                    ) : null}
+                    {(() => {
+                      try {
+                        return (
+                          !$queries?.getUserInformation.isLoading &&
+                          $queries?.getUserInformation?.data[0] &&
+                          $queries?.getUserInformation?.data[0]
+                            .instrument_category !== null
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <Stack__
+                        as={"div"}
+                        hasGap={true}
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__cknSk
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ssplD
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return `Your selected instrument is ${$queries.getUserInformation.data[0].instrument_category.toLowerCase()} and you're currently on the ${$queries.getUserInformation.data[0].level.toLowerCase()} level`;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "Your selected instrument is ";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                        <Button
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__z2Qn8
+                          )}
+                          label={
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__nkLF
+                              )}
+                            >
+                              {"Next"}
+                            </div>
+                          }
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["getRightQuizId"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    dataOp: {
+                                      sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                      opId: "cad74c7d-ca92-4362-b2ff-b9f30302c909",
+                                      userArgs: {
+                                        filters: [
+                                          $queries.getUserInformation.data[0]
+                                            .instrument_category,
+                                          $queries.getUserInformation.data[0]
+                                            .level
+                                        ]
+                                      },
+                                      cacheKey: null,
+                                      invalidatedKeys: null,
+                                      roleId: null
+                                    }
+                                  };
+                                  return (async ({
+                                    dataOp,
+                                    continueOnError
+                                  }) => {
+                                    try {
+                                      const response =
+                                        await executePlasmicDataOp(dataOp, {
+                                          userAuthToken:
+                                            dataSourcesCtx?.userAuthToken,
+                                          user: dataSourcesCtx?.user
+                                        });
+                                      await plasmicInvalidate(
+                                        dataOp.invalidatedKeys
+                                      );
+                                      return response;
+                                    } catch (e) {
+                                      if (!continueOnError) {
+                                        throw e;
+                                      }
+                                      return e;
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["getRightQuizId"] != null &&
+                              typeof $steps["getRightQuizId"] === "object" &&
+                              typeof $steps["getRightQuizId"].then ===
+                                "function"
+                            ) {
+                              $steps["getRightQuizId"] = await $steps[
+                                "getRightQuizId"
+                              ];
+                            }
+
+                            $steps["updateFetchedQuizId"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["fetchedQuizId"]
+                                    },
+                                    operation: 0,
+                                    value: $steps["getRightQuizId"]?.data[0]?.id
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateFetchedQuizId"] != null &&
+                              typeof $steps["updateFetchedQuizId"] ===
+                                "object" &&
+                              typeof $steps["updateFetchedQuizId"].then ===
+                                "function"
+                            ) {
+                              $steps["updateFetchedQuizId"] = await $steps[
+                                "updateFetchedQuizId"
+                              ];
+                            }
+
+                            $steps["getQuizInfoById"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    dataOp: {
+                                      sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                      opId: "718444ab-0dcb-4bcb-86f7-c906331ee065",
+                                      userArgs: {
+                                        filters: [$state.fetchedQuizId]
+                                      },
+                                      cacheKey: null,
+                                      invalidatedKeys: null,
+                                      roleId: null
+                                    }
+                                  };
+                                  return (async ({
+                                    dataOp,
+                                    continueOnError
+                                  }) => {
+                                    try {
+                                      const response =
+                                        await executePlasmicDataOp(dataOp, {
+                                          userAuthToken:
+                                            dataSourcesCtx?.userAuthToken,
+                                          user: dataSourcesCtx?.user
+                                        });
+                                      await plasmicInvalidate(
+                                        dataOp.invalidatedKeys
+                                      );
+                                      return response;
+                                    } catch (e) {
+                                      if (!continueOnError) {
+                                        throw e;
+                                      }
+                                      return e;
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["getQuizInfoById"] != null &&
+                              typeof $steps["getQuizInfoById"] === "object" &&
+                              typeof $steps["getQuizInfoById"].then ===
+                                "function"
+                            ) {
+                              $steps["getQuizInfoById"] = await $steps[
+                                "getQuizInfoById"
+                              ];
+                            }
+
+                            $steps["updateFetchedQuizInfo"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["fetchedQuizInfo"]
+                                    },
+                                    operation: 0,
+                                    value: $steps["getQuizInfoById"]?.data
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateFetchedQuizInfo"] != null &&
+                              typeof $steps["updateFetchedQuizInfo"] ===
+                                "object" &&
+                              typeof $steps["updateFetchedQuizInfo"].then ===
+                                "function"
+                            ) {
+                              $steps["updateFetchedQuizInfo"] = await $steps[
+                                "updateFetchedQuizInfo"
+                              ];
+                            }
+
+                            $steps["invokeGlobalAction"] =
+                              $state.fetchedQuizInfo?.length == 0
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "info",
+                                        "Sorry",
+                                        "There are no available questions for your chosen option. Please contact the admin",
+                                        undefined,
+                                        "top"
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "plasmic-antd5-config-provider.showNotification"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["invokeGlobalAction"] != null &&
+                              typeof $steps["invokeGlobalAction"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction"] = await $steps[
+                                "invokeGlobalAction"
+                              ];
+                            }
+
+                            $steps["updateFormStep"] =
+                              $state.fetchedQuizInfo?.length > 0
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["formStep"]
+                                      },
+                                      operation: 0,
+                                      value: 1
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["updateFormStep"] != null &&
+                              typeof $steps["updateFormStep"] === "object" &&
+                              typeof $steps["updateFormStep"].then ===
+                                "function"
+                            ) {
+                              $steps["updateFormStep"] = await $steps[
+                                "updateFormStep"
+                              ];
+                            }
+                          }}
+                        />
+                      </Stack__>
+                    ) : null}
+                  </Stack__>
+                ) : null}
+              </div>
               {(() => {
                 try {
                   return $state.formStep >= 1;
@@ -1052,7 +1522,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                             const actionArgs = {
                               dataOp: {
                                 sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-                                opId: "c932613b-1a20-4ee5-8edc-21029dd5fbea",
+                                opId: "3bd87915-add4-4db7-8c1f-09d85acac55f",
                                 userArgs: {
                                   keys: [$ctx.SupabaseUser.user.id],
                                   variables: [
@@ -1067,10 +1537,14 @@ function PlasmicOnboarding__RenderFunc(props: {
                                         return true;
                                       }
                                     })(),
-                                    $state.startOnboardingQuizForm.value
-                                      .instrumentCategory,
-                                    $state.startOnboardingQuizForm.value
-                                      .trainingLevel
+                                    (() => {
+                                      if ($state.isQuizPassed === true) {
+                                        return "PASS";
+                                      } else {
+                                        return "FAIL";
+                                      }
+                                    })(),
+                                    $state.fetchedQuizInfo[0].quiz_id
                                   ]
                                 },
                                 cacheKey: null,
@@ -1121,10 +1595,11 @@ function PlasmicOnboarding__RenderFunc(props: {
                               },
                               operation: 0,
                               value: (() => {
-                                switch (
-                                  $state.startOnboardingQuizForm.value
-                                    .trainingLevel
-                                ) {
+                                let trainingLevel =
+                                  $state.startOnboardingQuizForm?.value
+                                    ?.trainingLevel ??
+                                  $queries?.getUserInformation?.data[0].level;
+                                switch (trainingLevel) {
                                   case "BEGINNER":
                                     return "0";
                                   case "NOVICE":
@@ -1169,9 +1644,20 @@ function PlasmicOnboarding__RenderFunc(props: {
                             const actionArgs = {
                               dataOp: {
                                 sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-                                opId: "a25f40b8-e706-4c1e-91ed-08dd8d0e9983",
+                                opId: "ff7b50aa-a0ff-4624-b5c0-78c6e230687c",
                                 userArgs: {
-                                  keys: [$ctx.SupabaseUser.user.id]
+                                  keys: [$ctx.SupabaseUser.user.id],
+                                  variables: [
+                                    $state.startOnboardingQuizForm?.value
+                                      ?.instrumentCategory ??
+                                      $queries?.getUserInformation?.data[0]
+                                        ?.instrument_category,
+                                    $state.startOnboardingQuizForm?.value
+                                      ?.trainingLevel ||
+                                      $queries?.getUserInformation?.data[0]
+                                        .level,
+                                    $state.fetchedQuizInfo[0].quiz_id
+                                  ]
                                 },
                                 cacheKey: null,
                                 invalidatedKeys: ["plasmic_refresh_all"],
@@ -1257,7 +1743,7 @@ function PlasmicOnboarding__RenderFunc(props: {
 
                   {(() => {
                     try {
-                      return $state.quizScore !== null;
+                      return $state.quizScore !== null && !$state.isQuizPassed;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -1278,7 +1764,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                       <React.Fragment>
                         {(() => {
                           try {
-                            return `To proceed, you would have to take the quiz for ${$state.chosenTrainingLevel.toLocaleLowerCase()}s`;
+                            return `To proceed, you would have to take the quiz for ${$state.lowerLevel.toLocaleLowerCase()}s`;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -1387,8 +1873,10 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   opId: "cad74c7d-ca92-4362-b2ff-b9f30302c909",
                                   userArgs: {
                                     filters: [
-                                      $state.startOnboardingQuizForm.value
-                                        .instrumentCategory,
+                                      $state.startOnboardingQuizForm?.value
+                                        ?.instrumentCategory ??
+                                        $queries?.getUserInformation?.data[0]
+                                          .instrument_category,
                                       $state.lowerLevel
                                     ]
                                   },
@@ -1595,8 +2083,13 @@ function PlasmicOnboarding__RenderFunc(props: {
                           ? (() => {
                               const actionArgs = {
                                 customFunction: async () => {
-                                  return ($state.startOnboardingQuizForm.value.trainingLevel =
-                                    $state.lowerLevel);
+                                  return (() => {
+                                    return ($state.startOnboardingQuizForm = {
+                                      value: {
+                                        trainingLevel: $state.lowerLevel
+                                      }
+                                    });
+                                  })();
                                 }
                               };
                               return (({ customFunction }) => {
@@ -1820,7 +2313,8 @@ function PlasmicOnboarding__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "h4", "startOnboardingQuizForm", "quizComponent"],
+  root: ["root", "topBar", "h4", "startOnboardingQuizForm", "quizComponent"],
+  topBar: ["topBar"],
   h4: ["h4"],
   startOnboardingQuizForm: ["startOnboardingQuizForm"],
   quizComponent: ["quizComponent"]
@@ -1830,6 +2324,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  topBar: typeof TopBar;
   h4: "h4";
   startOnboardingQuizForm: typeof FormWrapper;
   quizComponent: typeof QuizComponent;
@@ -1895,6 +2390,7 @@ export const PlasmicOnboarding = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    topBar: makeNodeComponent("topBar"),
     h4: makeNodeComponent("h4"),
     startOnboardingQuizForm: makeNodeComponent("startOnboardingQuizForm"),
     quizComponent: makeNodeComponent("quizComponent"),

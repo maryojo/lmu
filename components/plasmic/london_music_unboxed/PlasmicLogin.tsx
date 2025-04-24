@@ -69,6 +69,8 @@ import { AntdPassword } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdPassword_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 
+import { useScreenVariants as useScreenVariantsiz19XCyodOuv } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: Iz19XCyodOuv/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -92,7 +94,6 @@ export const PlasmicLogin__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicLogin__OverridesType = {
   root?: Flex__<"div">;
-  section?: Flex__<"section">;
   loginForm?: Flex__<typeof FormWrapper>;
   input?: Flex__<typeof AntdInput>;
   passwordInput?: Flex__<typeof AntdPassword>;
@@ -183,6 +184,10 @@ function PlasmicLogin__RenderFunc(props: {
     $refs
   });
 
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsiz19XCyodOuv()
+  });
+
   return (
     <React.Fragment>
       <Head></Head>
@@ -213,9 +218,7 @@ function PlasmicLogin__RenderFunc(props: {
           <div className={classNames(projectcss.all, sty.freeBox__gEj4Q)}>
             <div className={classNames(projectcss.all, sty.freeBox__oYmk)}>
               <section
-                data-plasmic-name={"section"}
-                data-plasmic-override={overrides.section}
-                className={classNames(projectcss.all, sty.section)}
+                className={classNames(projectcss.all, sty.section__rcg6Y)}
               >
                 <PlasmicImg__
                   alt={""}
@@ -373,13 +376,28 @@ function PlasmicLogin__RenderFunc(props: {
                                     (() => {
                                       try {
                                         return (() => {
-                                          if (
+                                          let isCompletedLastQuiz =
                                             $ctx.SupabaseUser.user.user_metadata
-                                              .isOnboarded === false &&
+                                              .lastQuizStarted ==
+                                            $ctx.SupabaseUser.user.user_metadata
+                                              .lastQuizCompleted;
+                                          if (
+                                            $ctx.SupabaseUser?.user
+                                              ?.user_metadata.isOnboarded ===
+                                              false &&
                                             $ctx.SupabaseUser.user.user_metadata
                                               .userRole === "student"
                                           ) {
-                                            return "/onboarding";
+                                            if (
+                                              $ctx.SupabaseUser?.user
+                                                ?.user_metadata
+                                                .attemptedQuiz === true &&
+                                              !isCompletedLastQuiz
+                                            ) {
+                                              return "/reset-onboarding";
+                                            } else {
+                                              return "/onboarding";
+                                            }
                                           } else {
                                             return "/dashboard";
                                           }
@@ -450,7 +468,7 @@ function PlasmicLogin__RenderFunc(props: {
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__kYrPx
+                              sty.formField__fKju8
                             )}
                             label={"Email"}
                             name={"email"}
@@ -471,7 +489,7 @@ function PlasmicLogin__RenderFunc(props: {
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__skuu3
+                              sty.formField__gtQ7W
                             )}
                             label={"Password"}
                             name={"password"}
@@ -492,7 +510,7 @@ function PlasmicLogin__RenderFunc(props: {
                           <AntdButton
                             className={classNames(
                               "__wab_instance",
-                              sty.button__qUohI
+                              sty.button__kz8N
                             )}
                             loading={(() => {
                               try {
@@ -514,7 +532,7 @@ function PlasmicLogin__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__w3Ace
+                                sty.text__b9L4
                               )}
                             >
                               {"Submit"}
@@ -555,15 +573,9 @@ function PlasmicLogin__RenderFunc(props: {
                     </React.Fragment>
                   </div>
                 </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__dd6U0
-                  )}
-                >
-                  {"Enter some text"}
-                </div>
+                <section
+                  className={classNames(projectcss.all, sty.section__eriIf)}
+                />
               </div>
             </div>
           </div>
@@ -574,8 +586,7 @@ function PlasmicLogin__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "loginForm", "input", "passwordInput", "link"],
-  section: ["section"],
+  root: ["root", "loginForm", "input", "passwordInput", "link"],
   loginForm: ["loginForm", "input", "passwordInput"],
   input: ["input"],
   passwordInput: ["passwordInput"],
@@ -586,7 +597,6 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  section: "section";
   loginForm: typeof FormWrapper;
   input: typeof AntdInput;
   passwordInput: typeof AntdPassword;
@@ -653,7 +663,6 @@ export const PlasmicLogin = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    section: makeNodeComponent("section"),
     loginForm: makeNodeComponent("loginForm"),
     input: makeNodeComponent("input"),
     passwordInput: makeNodeComponent("passwordInput"),

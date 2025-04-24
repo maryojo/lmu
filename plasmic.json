@@ -305,8 +305,7 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -717,34 +716,6 @@
       "cssFilePath": "plasmic/london_music_unboxed/plasmic.module.css",
       "components": [
         {
-          "id": "O-sghQX8hMHX",
-          "name": "Login",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicLogin.tsx",
-          "importSpec": {
-            "modulePath": "../pages/login.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicLogin.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/login"
-        },
-        {
-          "id": "tmqQ5piW84LA",
-          "name": "Register",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicRegister.tsx",
-          "importSpec": {
-            "modulePath": "../pages/register.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicRegister.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/register"
-        },
-        {
           "id": "jI-x_NzEFX2Q",
           "name": "Button",
           "type": "managed",
@@ -823,6 +794,48 @@
           "componentType": "component"
         },
         {
+          "id": "iHF5mzpi9EOp",
+          "name": "Dashboard",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicDashboard.tsx",
+          "importSpec": {
+            "modulePath": "../pages/dashboard.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicDashboard.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/dashboard"
+        },
+        {
+          "id": "O-sghQX8hMHX",
+          "name": "Login",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicLogin.tsx",
+          "importSpec": {
+            "modulePath": "../pages/login.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicLogin.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/login"
+        },
+        {
+          "id": "tmqQ5piW84LA",
+          "name": "Register",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicRegister.tsx",
+          "importSpec": {
+            "modulePath": "../pages/register.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicRegister.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/register"
+        },
+        {
           "id": "N1YDHbC1ATYR",
           "name": "Onboarding",
           "type": "managed",
@@ -879,18 +892,72 @@
           "path": "/reset-password"
         },
         {
-          "id": "iHF5mzpi9EOp",
-          "name": "Dashboard",
+          "id": "ibpajX8Tzc8B",
+          "name": "ResetOnboarding",
           "type": "managed",
           "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicDashboard.tsx",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicResetOnboarding.tsx",
           "importSpec": {
-            "modulePath": "../pages/dashboard.tsx"
+            "modulePath": "../pages/reset-onboarding.tsx"
           },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicDashboard.module.css",
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicResetOnboarding.module.css",
           "scheme": "blackbox",
           "componentType": "page",
-          "path": "/dashboard"
+          "path": "/reset-onboarding"
+        },
+        {
+          "id": "4U1b-kLhmXSd",
+          "name": "SignupSuccessful",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicSignupSuccessful.tsx",
+          "importSpec": {
+            "modulePath": "../pages/signup-successful.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicSignupSuccessful.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/signup-successful"
+        },
+        {
+          "id": "GK49OJrlqKX0",
+          "name": "TopBar",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicTopBar.tsx",
+          "importSpec": {
+            "modulePath": "TopBar.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicTopBar.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "VdQlfS0FVA_-",
+          "name": "Testtt",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicTesttt.tsx",
+          "importSpec": {
+            "modulePath": "../pages/testtt.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicTesttt.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/testtt"
+        },
+        {
+          "id": "ZnrbZI7AiPSe",
+          "name": "Unauthorized",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicUnauthorized.tsx",
+          "importSpec": {
+            "modulePath": "Unauthorized.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicUnauthorized.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -913,6 +980,11 @@
           "id": "dwMGBRl-2IC3",
           "name": "Icon2Icon",
           "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon2.tsx"
+        },
+        {
+          "id": "N3QPeGSqpqGp",
+          "name": "Icon3Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon3.tsx"
         }
       ],
       "images": [
@@ -925,6 +997,11 @@
           "id": "VloFU9qPmghG",
           "name": "Asset 19.png",
           "filePath": "../public/plasmic/london_music_unboxed/images/asset19Png.png"
+        },
+        {
+          "id": "ZyC3T49anLV1",
+          "name": "image",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image.png"
         }
       ],
       "indirect": false,
@@ -972,6 +1049,70 @@
           "name": "SupabaseStorageGetSignedUrl",
           "displayName": "SupabaseStorageGetSignedUrl",
           "componentImportPath": "./index"
+        },
+        {
+          "id": "L6kf3dvDvag9",
+          "name": "CompL6Kf3DvDvag9",
+          "displayName": "GlobalVarsProvider",
+          "componentImportPath": ""
+        }
+      ],
+      "customFunctions": []
+    },
+    {
+      "projectId": "caTPwKxj5ZrD9LQ7DMdK4Z",
+      "projectApiToken": "vXGGQpdi9fhcncabBdg8DcMRUbkz0iRW6HS1jzQufQR6QH0MasPwr9SX7ap4SsK3xXwwXmzZtglWGe0Rm2nw",
+      "projectName": "plasmic-basic-components",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/plasmic_basic_components/plasmic.module.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [
+        {
+          "id": "CMDBvOhaI4s",
+          "name": "Iframe",
+          "displayName": "hostless-iframe",
+          "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
+        },
+        {
+          "id": "RhitNJW5Zu-",
+          "name": "Video",
+          "displayName": "hostless-html-video",
+          "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
+        },
+        {
+          "id": "PKldDYkH42",
+          "name": "Embed",
+          "displayName": "hostless-embed",
+          "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
+        },
+        {
+          "id": "D4RbnlpRXg3",
+          "name": "DataProvider",
+          "displayName": "hostless-data-provider",
+          "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
+        },
+        {
+          "id": "zlBHsvkFlN",
+          "name": "ConditionGuard",
+          "displayName": "hostless-condition-guard",
+          "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
+        },
+        {
+          "id": "K-mWGqrHefEp",
+          "name": "SideEffect",
+          "displayName": "hostless-side-effect",
+          "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
+        },
+        {
+          "id": "SpkzmXJqg27p",
+          "name": "Timer",
+          "displayName": "hostless-timer",
+          "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
       "customFunctions": []

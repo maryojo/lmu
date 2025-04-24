@@ -59,7 +59,22 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
+import {
+  executePlasmicDataOp,
+  usePlasmicDataOp,
+  usePlasmicInvalidate
+} from "@plasmicapp/react-web/lib/data-sources";
+
 import PageLayout from "../../PageLayout"; // plasmic-import: NXXR6Sd3NRz9/component
+import { RichTable } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
+import { tableHelpers as RichTable_Helpers } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
+import { RichList } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-list";
+import { FormWrapper } from "@plasmicpkgs/antd5/skinny/SchemaForm";
+import { formHelpers as FormWrapper_Helpers } from "@plasmicpkgs/antd5/skinny/Form";
+import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
+import Unauthorized from "../../Unauthorized"; // plasmic-import: ZnrbZI7AiPSe/component
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -82,6 +97,14 @@ export const PlasmicAddOnboardingQuestions__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicAddOnboardingQuestions__OverridesType = {
   root?: Flex__<typeof PageLayout>;
+  h1?: Flex__<"h1">;
+  columns?: Flex__<"div">;
+  allQuizzesTable?: Flex__<typeof RichTable>;
+  h3?: Flex__<"h3">;
+  dataList?: Flex__<typeof RichList>;
+  newQuestionForm?: Flex__<typeof FormWrapper>;
+  form?: Flex__<typeof FormWrapper>;
+  unauthorized?: Flex__<typeof Unauthorized>;
 };
 
 export interface DefaultAddOnboardingQuestionsProps {}
@@ -124,6 +147,109 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  let [$queries, setDollarQueries] = React.useState<
+    Record<string, ReturnType<typeof usePlasmicDataOp>>
+  >({});
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "allQuizzesTable.selectedRowKey",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("selectedRowKey", RichTable_Helpers)
+      },
+      {
+        path: "allQuizzesTable.selectedRow",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("selectedRow", RichTable_Helpers)
+      },
+      {
+        path: "allQuizzesTable.selectedRows",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("selectedRows", RichTable_Helpers)
+      },
+      {
+        path: "allQuizzesTable.selectedRowKeys",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("selectedRowKeys", RichTable_Helpers)
+      },
+      {
+        path: "newQuestionForm.value",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "newQuestionForm",
+        onMutate: generateOnMutateForSpec("value", FormWrapper_Helpers)
+      },
+      {
+        path: "newQuestionForm.isSubmitting",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false,
+
+        refName: "newQuestionForm",
+        onMutate: generateOnMutateForSpec("isSubmitting", FormWrapper_Helpers)
+      },
+      {
+        path: "form.value",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "form",
+        onMutate: generateOnMutateForSpec("value", FormWrapper_Helpers)
+      },
+      {
+        path: "form.isSubmitting",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false,
+
+        refName: "form",
+        onMutate: generateOnMutateForSpec("isSubmitting", FormWrapper_Helpers)
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: $queries,
+    $refs
+  });
+  const dataSourcesCtx = usePlasmicDataSourceContext();
+  const plasmicInvalidate = usePlasmicInvalidate();
+
+  const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
+    getOnboardingQuizzes: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "4853205b-c7e6-4fad-90f8-e9c574f6b3d4",
+        userArgs: {},
+        cacheKey: `plasmic.$.4853205b-c7e6-4fad-90f8-e9c574f6b3d4.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    })
+  };
+  if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
+    setDollarQueries(new$Queries);
+
+    $queries = new$Queries;
+  }
+
   return (
     <React.Fragment>
       <Head></Head>
@@ -141,20 +267,876 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames("__wab_instance", sty.root)}
-        />
+        >
+          <DataCtxReader__>
+            {$ctx => (
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return (
+                      $ctx.SupabaseUser.user.user_metadata.userRole === "admin"
+                    );
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__hjnLy)}
+                  >
+                    <section
+                      className={classNames(projectcss.all, sty.section__wKkPy)}
+                    >
+                      <h1
+                        data-plasmic-name={"h1"}
+                        data-plasmic-override={overrides.h1}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.h1,
+                          projectcss.__wab_text,
+                          sty.h1
+                        )}
+                      >
+                        {"Untitled page"}
+                      </h1>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__zJr2T
+                        )}
+                      >
+                        {
+                          "Press the big blue + button to insert components like Tables, Text, Buttons, and Forms.\n\nJoin our Slack Community (icon in bottom left) for help!"
+                        }
+                      </div>
+                    </section>
+                    <div
+                      data-plasmic-name={"columns"}
+                      data-plasmic-override={overrides.columns}
+                      className={classNames(projectcss.all, sty.columns)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.column__aBmKf
+                        )}
+                      >
+                        {(() => {
+                          const child$Props = {
+                            canSelectRows: "click",
+                            className: classNames(
+                              "__wab_instance",
+                              sty.allQuizzesTable
+                            ),
+                            data: (() => {
+                              try {
+                                return $queries.getOnboardingQuizzes;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })(),
+                            defaultSize: "large",
+                            fields: (() => {
+                              const __composite = [
+                                { key: "id", fieldId: "id", isHidden: null },
+                                { key: "title", fieldId: "title", title: null },
+                                {
+                                  key: "instrument_type",
+                                  fieldId: "instrument_type",
+                                  title: null
+                                },
+                                { key: "level", fieldId: "level", title: null },
+                                {
+                                  key: "question_count",
+                                  fieldId: "question_count",
+                                  title: null
+                                }
+                              ];
+                              __composite["0"]["isHidden"] = true;
+                              __composite["1"]["title"] = "Quiz Title";
+                              __composite["2"]["title"] = "Instrument Type";
+                              __composite["3"]["title"] = "Quiz Level";
+                              __composite["4"]["title"] = "No. of Questions";
+                              return __composite;
+                            })(),
+
+                            hideColumnPicker: true,
+                            hideDensity: true,
+                            hideExports: true,
+                            hideSearch: true,
+                            hideSelectionBar: true,
+                            onRowSelectionChanged: async (
+                              ...eventArgs: any
+                            ) => {
+                              generateStateOnChangePropForCodeComponents(
+                                $state,
+                                "selectedRowKey",
+                                ["allQuizzesTable", "selectedRowKey"],
+                                RichTable_Helpers
+                              ).apply(null, eventArgs);
+                              generateStateOnChangePropForCodeComponents(
+                                $state,
+                                "selectedRow",
+                                ["allQuizzesTable", "selectedRow"],
+                                RichTable_Helpers
+                              ).apply(null, eventArgs);
+                              generateStateOnChangePropForCodeComponents(
+                                $state,
+                                "selectedRows",
+                                ["allQuizzesTable", "selectedRows"],
+                                RichTable_Helpers
+                              ).apply(null, eventArgs);
+                              generateStateOnChangePropForCodeComponents(
+                                $state,
+                                "selectedRowKeys",
+                                ["allQuizzesTable", "selectedRowKeys"],
+                                RichTable_Helpers
+                              ).apply(null, eventArgs);
+                            },
+                            pagination: false,
+                            rowKey: ``,
+                            scopeClassName: sty["allQuizzesTable__instance"],
+                            selectedRowKey: generateStateValueProp($state, [
+                              "allQuizzesTable",
+                              "selectedRowKey"
+                            ]),
+                            selectedRowKeys: generateStateValueProp($state, [
+                              "allQuizzesTable",
+                              "selectedRowKeys"
+                            ]),
+                            themeResetClassName: classNames(
+                              projectcss.root_reset,
+                              projectcss.root_reset_tags,
+                              projectcss.plasmic_default_styles,
+                              projectcss.plasmic_mixins,
+                              projectcss.plasmic_tokens,
+                              plasmic_antd_5_hostless_css.plasmic_tokens,
+                              plasmic_plasmic_rich_components_css.plasmic_tokens
+                            )
+                          };
+                          initializeCodeComponentStates(
+                            $state,
+                            [
+                              {
+                                name: "selectedRowKey",
+                                plasmicStateName:
+                                  "allQuizzesTable.selectedRowKey"
+                              },
+                              {
+                                name: "selectedRow",
+                                plasmicStateName: "allQuizzesTable.selectedRow"
+                              },
+                              {
+                                name: "selectedRows",
+                                plasmicStateName: "allQuizzesTable.selectedRows"
+                              },
+                              {
+                                name: "selectedRowKeys",
+                                plasmicStateName:
+                                  "allQuizzesTable.selectedRowKeys"
+                              }
+                            ],
+                            [],
+                            RichTable_Helpers ?? {},
+                            child$Props
+                          );
+
+                          return (
+                            <RichTable
+                              data-plasmic-name={"allQuizzesTable"}
+                              data-plasmic-override={overrides.allQuizzesTable}
+                              {...child$Props}
+                            />
+                          );
+                        })()}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.column__ubKaV
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__jhrBh
+                          )}
+                        >
+                          <h3
+                            data-plasmic-name={"h3"}
+                            data-plasmic-override={overrides.h3}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.h3,
+                              projectcss.__wab_text,
+                              sty.h3
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return undefined;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "You won't believe what happens next.";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </h3>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__gojgL
+                            )}
+                          >
+                            <RichList
+                              data-plasmic-name={"dataList"}
+                              data-plasmic-override={overrides.dataList}
+                              bordered={true}
+                              className={classNames(
+                                "__wab_instance",
+                                sty.dataList
+                              )}
+                              content={(() => {
+                                const __composite = [
+                                  {
+                                    key: "id",
+                                    fieldId: "id",
+                                    role: "content",
+                                    isHidden: null
+                                  },
+                                  {
+                                    role: "content",
+                                    fieldId: null,
+                                    dataType: null,
+                                    expr: null
+                                  },
+                                  {}
+                                ];
+                                __composite["0"]["isHidden"] = true;
+                                __composite["1"]["fieldId"] = "question_text";
+                                __composite["1"]["dataType"] = "string";
+                                __composite["1"]["expr"] = (
+                                  currentItem,
+                                  currentValue
+                                ) => {
+                                  return $queries.fetchQuizQuestionByQuizId
+                                    .data[0].question_text;
+                                };
+                                return __composite;
+                              })()}
+                              data={(() => {
+                                try {
+                                  return $queries.fetchQuizQuestionByQuizId;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                              title={[]}
+                            />
+                          </div>
+                          {(() => {
+                            const child$Props = {
+                              children: null,
+                              className: classNames(
+                                "__wab_instance",
+                                sty.newQuestionForm
+                              ),
+                              extendedOnValuesChange: async (
+                                ...eventArgs: any
+                              ) => {
+                                generateStateOnChangePropForCodeComponents(
+                                  $state,
+                                  "value",
+                                  ["newQuestionForm", "value"],
+                                  FormWrapper_Helpers
+                                ).apply(null, eventArgs);
+                              },
+                              formItems: (() => {
+                                const __composite = [
+                                  {
+                                    inputType: "Text",
+                                    name: null,
+                                    initialValue: null,
+                                    hidden: null,
+                                    label: "id"
+                                  },
+                                  {
+                                    inputType: "Text",
+                                    name: null,
+                                    initialValue: null,
+                                    hidden: null,
+                                    label: "quiz_id"
+                                  },
+                                  {
+                                    inputType: "Text",
+                                    name: null,
+                                    initialValue: null,
+                                    label: "Question Text"
+                                  },
+                                  {
+                                    inputType: "Text Area",
+                                    name: null,
+                                    initialValue: null,
+                                    label: null
+                                  },
+                                  {
+                                    inputType: "Text",
+                                    name: null,
+                                    initialValue: null,
+                                    label: "Correct Answer"
+                                  }
+                                ];
+                                __composite["0"]["name"] = "id";
+                                __composite["0"]["initialValue"] = undefined;
+                                __composite["0"]["hidden"] = true;
+                                __composite["1"]["name"] = "quiz_id";
+                                __composite["1"]["initialValue"] = undefined;
+                                __composite["1"]["hidden"] = true;
+                                __composite["2"]["name"] = "question_text";
+                                __composite["2"]["initialValue"] = undefined;
+                                __composite["3"]["name"] = "options";
+                                __composite["3"]["initialValue"] = undefined;
+                                __composite["3"]["label"] =
+                                  "Answer Options (4 options separated by comma)";
+                                __composite["4"]["name"] = "correct_answer";
+                                __composite["4"]["initialValue"] = undefined;
+                                return __composite;
+                              })(),
+
+                              labelCol: { span: 8, horizontalOnly: true },
+                              layout: "vertical",
+                              mode: "simplified",
+                              onFinish: async values => {
+                                const $steps = {};
+
+                                $steps["updateVariable"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["answerOptions"]
+                                        },
+                                        operation: 0,
+                                        value: undefined
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateVariable"] != null &&
+                                  typeof $steps["updateVariable"] ===
+                                    "object" &&
+                                  typeof $steps["updateVariable"].then ===
+                                    "function"
+                                ) {
+                                  $steps["updateVariable"] = await $steps[
+                                    "updateVariable"
+                                  ];
+                                }
+
+                                $steps["updateFullFormValues"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["fullFormValues"]
+                                        },
+                                        operation: 0,
+                                        value: undefined
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateFullFormValues"] != null &&
+                                  typeof $steps["updateFullFormValues"] ===
+                                    "object" &&
+                                  typeof $steps["updateFullFormValues"].then ===
+                                    "function"
+                                ) {
+                                  $steps["updateFullFormValues"] = await $steps[
+                                    "updateFullFormValues"
+                                  ];
+                                }
+
+                                $steps["defaultSubmit"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        dataOp: {
+                                          sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                          opId: "7c578875-169c-445a-9976-5f03a5e8c06d",
+                                          userArgs: {
+                                            variables: [$state.fullFormValues]
+                                          },
+                                          cacheKey: null,
+                                          invalidatedKeys: [
+                                            "plasmic_refresh_all"
+                                          ],
+                                          roleId: null
+                                        }
+                                      };
+                                      return (async ({
+                                        dataOp,
+                                        continueOnError
+                                      }) => {
+                                        try {
+                                          const response =
+                                            await executePlasmicDataOp(dataOp, {
+                                              userAuthToken:
+                                                dataSourcesCtx?.userAuthToken,
+                                              user: dataSourcesCtx?.user
+                                            });
+                                          await plasmicInvalidate(
+                                            dataOp.invalidatedKeys
+                                          );
+                                          return response;
+                                        } catch (e) {
+                                          if (!continueOnError) {
+                                            throw e;
+                                          }
+                                          return e;
+                                        }
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["defaultSubmit"] != null &&
+                                  typeof $steps["defaultSubmit"] === "object" &&
+                                  typeof $steps["defaultSubmit"].then ===
+                                    "function"
+                                ) {
+                                  $steps["defaultSubmit"] = await $steps[
+                                    "defaultSubmit"
+                                  ];
+                                }
+                              },
+                              onIsSubmittingChange: async (
+                                ...eventArgs: any
+                              ) => {
+                                generateStateOnChangePropForCodeComponents(
+                                  $state,
+                                  "isSubmitting",
+                                  ["newQuestionForm", "isSubmitting"],
+                                  FormWrapper_Helpers
+                                ).apply(null, eventArgs);
+                              },
+                              ref: ref => {
+                                $refs["newQuestionForm"] = ref;
+                              },
+                              submitSlot: (
+                                <AntdButton
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.button___6CUt
+                                  )}
+                                  submitsForm={true}
+                                  type={"primary"}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__hroSl
+                                    )}
+                                  >
+                                    {"Submit"}
+                                  </div>
+                                </AntdButton>
+                              ),
+                              wrapperCol: { span: 16, horizontalOnly: true }
+                            };
+                            initializeCodeComponentStates(
+                              $state,
+                              [
+                                {
+                                  name: "value",
+                                  plasmicStateName: "newQuestionForm.value"
+                                },
+                                {
+                                  name: "isSubmitting",
+                                  plasmicStateName:
+                                    "newQuestionForm.isSubmitting"
+                                }
+                              ],
+                              [],
+                              FormWrapper_Helpers ?? {},
+                              child$Props
+                            );
+
+                            return (
+                              <FormWrapper
+                                data-plasmic-name={"newQuestionForm"}
+                                data-plasmic-override={
+                                  overrides.newQuestionForm
+                                }
+                                {...child$Props}
+                              />
+                            );
+                          })()}
+                        </div>
+                      </div>
+                    </div>
+                    {(() => {
+                      const child$Props = {
+                        className: classNames("__wab_instance", sty.form),
+                        data: {
+                          sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                          opId: "33891d7b-e265-4db9-b18f-f2fcf84bf7f4",
+                          userArgs: {},
+                          cacheKey: `plasmic.$.${(() => {
+                            try {
+                              return "getSchema";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "";
+                              }
+                              throw e;
+                            }
+                          })()}.$.K7YwSh8wm82K.$.33891d7b-e265-4db9-b18f-f2fcf84bf7f4.$.`,
+                          invalidatedKeys: null,
+                          roleId: null
+                        },
+                        dataFormItems: (() => {
+                          const __composite = [
+                            {
+                              key: "id",
+                              inputType: "Text",
+                              fieldId: "id",
+                              label: "id",
+                              name: "id",
+                              hidden: null
+                            },
+                            {
+                              key: "title",
+                              inputType: "Text",
+                              fieldId: "title",
+                              label: null,
+                              name: "title",
+                              rules: null
+                            },
+                            {
+                              key: "instrument_type",
+                              inputType: null,
+                              fieldId: "instrument_type",
+                              label: null,
+                              name: "instrument_type",
+                              options: null,
+                              rules: null
+                            },
+                            {
+                              key: "level",
+                              inputType: null,
+                              fieldId: "level",
+                              label: null,
+                              name: "level",
+                              options: null,
+                              rules: null
+                            },
+                            {
+                              key: "question_count",
+                              inputType: "Number",
+                              fieldId: "question_count",
+                              label: "question_count",
+                              name: "question_count",
+                              hidden: null
+                            }
+                          ];
+                          __composite["0"]["hidden"] = true;
+                          __composite["1"]["label"] = "Quiz Title";
+                          __composite["1"]["rules"] = [
+                            { ruleType: "required", message: "Required" }
+                          ];
+
+                          __composite["2"]["inputType"] = "Select";
+                          __composite["2"]["label"] = "Instrument Type";
+                          __composite["2"]["options"] = (() => {
+                            const __composite = [
+                              { type: "option", label: null, value: null },
+                              { type: "option", label: null, value: null },
+                              { type: "option", label: null, value: null },
+                              { type: "option", label: null, value: null },
+                              { type: "option", label: null, value: null },
+                              { type: "option", label: null, value: null }
+                            ];
+                            __composite["0"]["label"] = "Guitar";
+                            __composite["0"]["value"] = "GUITAR";
+                            __composite["1"]["label"] = "Strings";
+                            __composite["1"]["value"] = "STRINGS";
+                            __composite["2"]["label"] = "Percussion";
+                            __composite["2"]["value"] = "PERCUSSION";
+                            __composite["3"]["label"] = "Piano";
+                            __composite["3"]["value"] = "PIANO";
+                            __composite["4"]["label"] = "Woodwind";
+                            __composite["4"]["value"] = "WOODWIND";
+                            __composite["5"]["label"] = "Voice";
+                            __composite["5"]["value"] = "VOICE";
+                            return __composite;
+                          })();
+                          __composite["2"]["rules"] = [
+                            { ruleType: "required", message: "Required" }
+                          ];
+
+                          __composite["3"]["inputType"] = "Select";
+                          __composite["3"]["label"] = "Quiz Level";
+                          __composite["3"]["options"] = (() => {
+                            const __composite = [
+                              { type: "option", label: null, value: null },
+                              { type: "option", label: null, value: null },
+                              { type: "option", label: null, value: null },
+                              { type: "option", label: null, value: null },
+                              { type: "option", label: null, value: null }
+                            ];
+                            __composite["0"]["label"] = "Beginner";
+                            __composite["0"]["value"] = "BEGINNER";
+                            __composite["1"]["label"] = "Novice";
+                            __composite["1"]["value"] = "NOVICE";
+                            __composite["2"]["label"] = "Intermediate";
+                            __composite["2"]["value"] = "INTERMEDIATE";
+                            __composite["3"]["label"] = "Skilled";
+                            __composite["3"]["value"] = "SKILLED";
+                            __composite["4"]["label"] = "Advanced";
+                            __composite["4"]["value"] = "ADVANCED";
+                            return __composite;
+                          })();
+                          __composite["3"]["rules"] = [
+                            { ruleType: "required", message: "Required" }
+                          ];
+
+                          __composite["4"]["hidden"] = true;
+                          return __composite;
+                        })(),
+
+                        extendedOnValuesChange: async (...eventArgs: any) => {
+                          generateStateOnChangePropForCodeComponents(
+                            $state,
+                            "value",
+                            ["form", "value"],
+                            FormWrapper_Helpers
+                          ).apply(null, eventArgs);
+                        },
+                        formItems: [],
+                        labelCol: { span: 8, horizontalOnly: true },
+                        layout: "vertical",
+                        mode: "simplified",
+                        onFinish: async values => {
+                          const $steps = {};
+
+                          $steps["defaultSubmit"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  dataOp: {
+                                    sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                    opId: "63a79c7c-ccc3-4405-bd40-1d4056bf34a1",
+                                    userArgs: {
+                                      variables: [undefined]
+                                    },
+                                    cacheKey: null,
+                                    invalidatedKeys: ["plasmic_refresh_all"],
+                                    roleId: null
+                                  }
+                                };
+                                return (async ({ dataOp, continueOnError }) => {
+                                  try {
+                                    const response = await executePlasmicDataOp(
+                                      dataOp,
+                                      {
+                                        userAuthToken:
+                                          dataSourcesCtx?.userAuthToken,
+                                        user: dataSourcesCtx?.user
+                                      }
+                                    );
+                                    await plasmicInvalidate(
+                                      dataOp.invalidatedKeys
+                                    );
+                                    return response;
+                                  } catch (e) {
+                                    if (!continueOnError) {
+                                      throw e;
+                                    }
+                                    return e;
+                                  }
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["defaultSubmit"] != null &&
+                            typeof $steps["defaultSubmit"] === "object" &&
+                            typeof $steps["defaultSubmit"].then === "function"
+                          ) {
+                            $steps["defaultSubmit"] = await $steps[
+                              "defaultSubmit"
+                            ];
+                          }
+                        },
+                        onIsSubmittingChange: async (...eventArgs: any) => {
+                          generateStateOnChangePropForCodeComponents(
+                            $state,
+                            "isSubmitting",
+                            ["form", "isSubmitting"],
+                            FormWrapper_Helpers
+                          ).apply(null, eventArgs);
+                        },
+                        ref: ref => {
+                          $refs["form"] = ref;
+                        },
+                        submitSlot: (
+                          <AntdButton
+                            className={classNames(
+                              "__wab_instance",
+                              sty.button__w5TFq
+                            )}
+                            submitsForm={true}
+                            type={"primary"}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___4AiOv
+                              )}
+                            >
+                              {"Submit"}
+                            </div>
+                          </AntdButton>
+                        ),
+                        wrapperCol: { span: 16, horizontalOnly: true }
+                      };
+                      initializeCodeComponentStates(
+                        $state,
+                        [
+                          {
+                            name: "value",
+                            plasmicStateName: "form.value"
+                          },
+                          {
+                            name: "isSubmitting",
+                            plasmicStateName: "form.isSubmitting"
+                          }
+                        ],
+                        [],
+                        FormWrapper_Helpers ?? {},
+                        child$Props
+                      );
+
+                      return (
+                        <FormWrapper
+                          data-plasmic-name={"form"}
+                          data-plasmic-override={overrides.form}
+                          {...child$Props}
+                        />
+                      );
+                    })()}
+                  </div>
+                ) : null}
+                <section
+                  className={classNames(projectcss.all, sty.section__qjqDc)}
+                >
+                  <Unauthorized
+                    data-plasmic-name={"unauthorized"}
+                    data-plasmic-override={overrides.unauthorized}
+                    className={classNames("__wab_instance", sty.unauthorized)}
+                  />
+                </section>
+              </React.Fragment>
+            )}
+          </DataCtxReader__>
+        </PageLayout>
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: [
+    "root",
+    "h1",
+    "columns",
+    "allQuizzesTable",
+    "h3",
+    "dataList",
+    "newQuestionForm",
+    "form",
+    "unauthorized"
+  ],
+  h1: ["h1"],
+  columns: ["columns", "allQuizzesTable", "h3", "dataList", "newQuestionForm"],
+  allQuizzesTable: ["allQuizzesTable"],
+  h3: ["h3"],
+  dataList: ["dataList"],
+  newQuestionForm: ["newQuestionForm"],
+  form: ["form"],
+  unauthorized: ["unauthorized"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: typeof PageLayout;
+  h1: "h1";
+  columns: "div";
+  allQuizzesTable: typeof RichTable;
+  h3: "h3";
+  dataList: typeof RichList;
+  newQuestionForm: typeof FormWrapper;
+  form: typeof FormWrapper;
+  unauthorized: typeof Unauthorized;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -217,6 +1199,14 @@ export const PlasmicAddOnboardingQuestions = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    h1: makeNodeComponent("h1"),
+    columns: makeNodeComponent("columns"),
+    allQuizzesTable: makeNodeComponent("allQuizzesTable"),
+    h3: makeNodeComponent("h3"),
+    dataList: makeNodeComponent("dataList"),
+    newQuestionForm: makeNodeComponent("newQuestionForm"),
+    form: makeNodeComponent("form"),
+    unauthorized: makeNodeComponent("unauthorized"),
 
     // Metadata about props expected for PlasmicAddOnboardingQuestions
     internalVariantProps: PlasmicAddOnboardingQuestions__VariantProps,
