@@ -239,7 +239,7 @@ function PlasmicSignupSuccessful__RenderFunc(props: {
                       sty.h1___3MAt
                     )}
                   >
-                    {"Your account has been successfully created!"}
+                    {"Your account has been successfully created!!"}
                   </h1>
                   <div
                     data-plasmic-name={"text"}
