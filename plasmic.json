@@ -1050,12 +1050,6 @@
           "name": "SupabaseStorageGetSignedUrl",
           "displayName": "SupabaseStorageGetSignedUrl",
           "componentImportPath": "./index"
-        },
-        {
-          "id": "L6kf3dvDvag9",
-          "name": "CompL6Kf3DvDvag9",
-          "displayName": "GlobalVarsProvider",
-          "componentImportPath": ""
         }
       ],
       "customFunctions": []
