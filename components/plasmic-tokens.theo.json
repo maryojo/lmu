@@ -1,6 +1,26 @@
 {
   "props": [
     {
+      "name": "Basic/Container-Background",
+      "type": "color",
+      "value": "#FFFFFF",
+      "category": "color",
+      "meta": {
+        "projectId": "43GLDCvnvwFaSntiZWsgtz",
+        "id": "tMilkOK1BC4I"
+      }
+    },
+    {
+      "name": "Basic/Overlay-Background",
+      "type": "color",
+      "value": "#0A0A0A80",
+      "category": "color",
+      "meta": {
+        "projectId": "43GLDCvnvwFaSntiZWsgtz",
+        "id": "4AS4gApKaiiO"
+      }
+    },
+    {
       "name": "Basic/Ring",
       "type": "color",
       "value": "#9CA3AF",
@@ -351,6 +371,16 @@
       }
     },
     {
+      "name": "Size-16",
+      "type": "spacing",
+      "value": "1rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "43GLDCvnvwFaSntiZWsgtz",
+        "id": "P3kKsMOnIzfN"
+      }
+    },
+    {
       "name": "Size-2",
       "type": "spacing",
       "value": "0.125rem",
@@ -368,6 +398,16 @@
       "meta": {
         "projectId": "43GLDCvnvwFaSntiZWsgtz",
         "id": "T5g_3YZotVIP"
+      }
+    },
+    {
+      "name": "Size-24",
+      "type": "spacing",
+      "value": "1.5rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "43GLDCvnvwFaSntiZWsgtz",
+        "id": "gMLx3gkv73zU"
       }
     },
     {

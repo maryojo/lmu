@@ -795,6 +795,32 @@
           "componentType": "component"
         },
         {
+          "id": "GK49OJrlqKX0",
+          "name": "TopBar",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicTopBar.tsx",
+          "importSpec": {
+            "modulePath": "TopBar.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicTopBar.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "ZnrbZI7AiPSe",
+          "name": "Unauthorized",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicUnauthorized.tsx",
+          "importSpec": {
+            "modulePath": "Unauthorized.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicUnauthorized.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
           "id": "iHF5mzpi9EOp",
           "name": "Dashboard",
           "type": "managed",
@@ -921,19 +947,6 @@
           "path": "/signup-successful"
         },
         {
-          "id": "GK49OJrlqKX0",
-          "name": "TopBar",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicTopBar.tsx",
-          "importSpec": {
-            "modulePath": "TopBar.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicTopBar.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "VdQlfS0FVA_-",
           "name": "Testtt",
           "type": "managed",
@@ -948,15 +961,15 @@
           "path": "/testtt"
         },
         {
-          "id": "ZnrbZI7AiPSe",
-          "name": "Unauthorized",
+          "id": "m2GTXt4vxv0i",
+          "name": "Modal",
           "type": "managed",
           "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicUnauthorized.tsx",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicModal.tsx",
           "importSpec": {
-            "modulePath": "Unauthorized.tsx"
+            "modulePath": "Modal.tsx"
           },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicUnauthorized.module.css",
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicModal.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }

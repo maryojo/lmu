@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 import { FormWrapper } from "@plasmicpkgs/antd5/skinny/Form";
 import { formHelpers as FormWrapper_Helpers } from "@plasmicpkgs/antd5/skinny/Form";
 import { FormItemWrapper } from "@plasmicpkgs/antd5/skinny/FormItem";
@@ -77,6 +78,9 @@ import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css";
 import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicRegister.module.css"; // plasmic-import: tmqQ5piW84LA/css
+
+import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: yZz0P1JDPQwS/icon
+import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: -jkcn7GwAM4v/icon
 
 createPlasmicElementProxy;
 
@@ -100,8 +104,6 @@ export type PlasmicRegister__OverridesType = {
   input3?: Flex__<typeof AntdInput>;
   passwordInput?: Flex__<typeof AntdPassword>;
   select?: Flex__<typeof AntdSelect>;
-  button?: Flex__<typeof AntdButton>;
-  text?: Flex__<"div">;
 };
 
 export interface DefaultRegisterProps {}
@@ -313,6 +315,36 @@ function PlasmicRegister__RenderFunc(props: {
                 </h1>
               </section>
               <div className={classNames(projectcss.all, sty.freeBox__ysmsD)}>
+                <Stack__
+                  as={"div"}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.freeBox___7YwgI)}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__glA4Q
+                    )}
+                  >
+                    {"Already have an account?"}
+                  </div>
+                  <Button
+                    className={classNames("__wab_instance", sty.button__nnxWv)}
+                    label={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__hPe1R
+                        )}
+                      >
+                        {"Login"}
+                      </div>
+                    }
+                    linkTo={`/login`}
+                  />
+                </Stack__>
                 <Stack__
                   as={"div"}
                   hasGap={true}
@@ -760,19 +792,18 @@ function PlasmicRegister__RenderFunc(props: {
                           />
                         </FormItemWrapper>
                         <AntdButton
-                          data-plasmic-name={"button"}
-                          data-plasmic-override={overrides.button}
-                          className={classNames("__wab_instance", sty.button)}
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button___6Ca
+                          )}
                           submitsForm={true}
                           type={"primary"}
                         >
                           <div
-                            data-plasmic-name={"text"}
-                            data-plasmic-override={overrides.text}
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text
+                              sty.text__fwt4B
                             )}
                           >
                             {"Submit"}
@@ -782,6 +813,9 @@ function PlasmicRegister__RenderFunc(props: {
                     );
                   })()}
                 </Stack__>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__c5YY0)}
+                />
               </div>
             </div>
           </div>
@@ -802,9 +836,7 @@ const PlasmicDescendants = {
     "input2",
     "input3",
     "passwordInput",
-    "select",
-    "button",
-    "text"
+    "select"
   ],
   register: [
     "register",
@@ -815,9 +847,7 @@ const PlasmicDescendants = {
     "input2",
     "input3",
     "passwordInput",
-    "select",
-    "button",
-    "text"
+    "select"
   ],
   section: ["section"],
   form: [
@@ -827,18 +857,14 @@ const PlasmicDescendants = {
     "input2",
     "input3",
     "passwordInput",
-    "select",
-    "button",
-    "text"
+    "select"
   ],
   columns: ["columns", "input", "input2"],
   input: ["input"],
   input2: ["input2"],
   input3: ["input3"],
   passwordInput: ["passwordInput"],
-  select: ["select"],
-  button: ["button", "text"],
-  text: ["text"]
+  select: ["select"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -854,8 +880,6 @@ type NodeDefaultElementType = {
   input3: typeof AntdInput;
   passwordInput: typeof AntdPassword;
   select: typeof AntdSelect;
-  button: typeof AntdButton;
-  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -927,8 +951,6 @@ export const PlasmicRegister = Object.assign(
     input3: makeNodeComponent("input3"),
     passwordInput: makeNodeComponent("passwordInput"),
     select: makeNodeComponent("select"),
-    button: makeNodeComponent("button"),
-    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicRegister
     internalVariantProps: PlasmicRegister__VariantProps,
