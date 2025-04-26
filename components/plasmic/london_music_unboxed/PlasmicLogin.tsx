@@ -428,33 +428,35 @@ function PlasmicLogin__RenderFunc(props: {
                                               ?.user_metadata.lastQuizStarted ==
                                             $ctx.SupabaseUser?.user
                                               ?.user_metadata.lastQuizCompleted;
-                                          if (
-                                            $ctx.SupabaseUser?.user
-                                              ?.user_metadata.isOnboarded ===
-                                              false &&
-                                            $ctx.SupabaseUser?.user
-                                              .user_metadata.userRole ===
-                                              "student"
-                                          ) {
+                                          if ($ctx.SupabaseUser.user !== null) {
                                             if (
                                               $ctx.SupabaseUser?.user
-                                                ?.user_metadata
-                                                .attemptedQuiz === true &&
-                                              !isCompletedLastQuiz
-                                            ) {
-                                              return "/reset-onboarding";
-                                            } else {
-                                              return "/onboarding";
-                                            }
-                                          } else {
-                                            if (
+                                                ?.user_metadata.isOnboarded ===
+                                                false &&
                                               $ctx.SupabaseUser?.user
-                                                ?.user_metadata.userRole ===
-                                              "admin"
+                                                .user_metadata.userRole ===
+                                                "student"
                                             ) {
-                                              return "/add-onboarding-questions";
+                                              if (
+                                                $ctx.SupabaseUser?.user
+                                                  ?.user_metadata
+                                                  .attemptedQuiz === true &&
+                                                !isCompletedLastQuiz
+                                              ) {
+                                                return "/reset-onboarding";
+                                              } else {
+                                                return "/onboarding";
+                                              }
                                             } else {
-                                              return "/dashboard";
+                                              if (
+                                                $ctx.SupabaseUser?.user
+                                                  ?.user_metadata.userRole ===
+                                                "admin"
+                                              ) {
+                                                return "/add-onboarding-questions";
+                                              } else {
+                                                return "/dashboard";
+                                              }
                                             }
                                           }
                                         })();
@@ -482,6 +484,50 @@ function PlasmicLogin__RenderFunc(props: {
                             typeof $steps["loginUser"].then === "function"
                           ) {
                             $steps["loginUser"] = await $steps["loginUser"];
+                          }
+
+                          $steps["invokeGlobalAction"] =
+                            $ctx.SupabaseUser.error !== null &&
+                            !$ctx.SupabaseUser?.error?.includes(
+                              "Email not confirmed"
+                            )
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "error",
+                                      "Something went wrong",
+                                      (() => {
+                                        try {
+                                          return $ctx.SupabaseUser.error;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })(),
+                                      15,
+                                      "top"
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "plasmic-antd5-config-provider.showNotification"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
+                            ];
                           }
 
                           $steps["updateIsModalOpen"] =
@@ -564,7 +610,7 @@ function PlasmicLogin__RenderFunc(props: {
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__aRim6
+                              sty.formField__n8Llf
                             )}
                             label={"Email"}
                             name={"email"}
@@ -585,14 +631,15 @@ function PlasmicLogin__RenderFunc(props: {
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__r0Qgr
+                              sty.formField__du7EZ
                             )}
                             label={"Password"}
                             name={"password"}
                             rules={[
                               {
                                 ruleType: "required",
-                                message: "Password is required"
+                                message: "Password is required",
+                                length: 6
                               }
                             ]}
                           >
@@ -606,7 +653,7 @@ function PlasmicLogin__RenderFunc(props: {
                           <AntdButton
                             className={classNames(
                               "__wab_instance",
-                              sty.button__fCrec
+                              sty.button__tElrg
                             )}
                             loading={(() => {
                               try {
@@ -628,7 +675,7 @@ function PlasmicLogin__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__aOJmD
+                                sty.text__r6I3G
                               )}
                             >
                               {"Submit"}

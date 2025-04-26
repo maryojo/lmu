@@ -693,6 +693,12 @@ function PlasmicRegister__RenderFunc(props: {
                             {
                               ruleType: "required",
                               message: "Password is required"
+                            },
+
+                            {
+                              ruleType: "min",
+                              length: 6,
+                              message: "Password must be at least 6 characters"
                             }
                           ]}
                         >
