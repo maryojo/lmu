@@ -1,0 +1,108 @@
+.root {
+  display: grid;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  align-content: flex-start;
+  justify-items: center;
+  min-width: 0;
+  min-height: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+  padding: 0px;
+}
+.root > * {
+  grid-column: 4;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .root > * {
+    grid-column: 4;
+  }
+}
+.section {
+  display: grid;
+  position: relative;
+  width: 100%;
+  height: auto;
+  grid-row-gap: 16px;
+  align-content: flex-start;
+  justify-items: center;
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+  padding: 96px 0px;
+}
+.section > * {
+  grid-column: 4;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .section > * {
+    grid-column: 4;
+  }
+}
+.h1 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 32px;
+  min-width: 0;
+}
+.text__eZnrk {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-width: 0;
+}
+.button__r1Gy8:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+}
+.svg__aYrhM {
+  position: relative;
+  height: 1em;
+}
+.text__sew1T {
+  white-space: pre;
+}
+.svg__iQhxo {
+  position: relative;
+  height: 1em;
+}
+.text__ke7Ep {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.text___68XC {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.button__ptyp7:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+}
+.svg__t7G9L {
+  position: relative;
+  height: 1em;
+}
+.text__qZy8R {
+  white-space: pre;
+}
+.svg__q5Uo8 {
+  position: relative;
+  height: 1em;
+}
