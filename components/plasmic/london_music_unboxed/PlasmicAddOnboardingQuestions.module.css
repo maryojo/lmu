@@ -168,10 +168,11 @@
   padding: 8px;
 }
 .dataList:global(.__wab_instance) {
-  width: 429px;
+  width: 100%;
   max-height: 100%;
   max-width: 100%;
   object-fit: cover;
+  min-width: 0;
   padding: 16px;
 }
 .newQuestionForm:global(.__wab_instance) {
@@ -198,7 +199,7 @@
   max-width: 100%;
   min-width: 0;
 }
-.form:global(.__wab_instance) {
+.form2:global(.__wab_instance) {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -211,11 +212,11 @@
   min-width: 0;
   padding: 8px;
 }
-.button__w5TFq:global(.__wab_instance) {
+.button__fjsvC:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.text___4AiOv {
+.text__aNMg {
   position: relative;
   width: 100%;
   height: auto;

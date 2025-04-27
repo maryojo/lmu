@@ -103,7 +103,7 @@ export type PlasmicAddOnboardingQuestions__OverridesType = {
   h3?: Flex__<"h3">;
   dataList?: Flex__<typeof RichList>;
   newQuestionForm?: Flex__<typeof FormWrapper>;
-  form?: Flex__<typeof FormWrapper>;
+  form2?: Flex__<typeof FormWrapper>;
   unauthorized?: Flex__<typeof Unauthorized>;
 };
 
@@ -203,22 +203,28 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("isSubmitting", FormWrapper_Helpers)
       },
       {
-        path: "form.value",
+        path: "form2.value",
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
-        refName: "form",
+        refName: "form2",
         onMutate: generateOnMutateForSpec("value", FormWrapper_Helpers)
       },
       {
-        path: "form.isSubmitting",
+        path: "form2.isSubmitting",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false,
 
-        refName: "form",
+        refName: "form2",
         onMutate: generateOnMutateForSpec("isSubmitting", FormWrapper_Helpers)
+      },
+      {
+        path: "fullFormValues",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -239,6 +245,18 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
         opId: "4853205b-c7e6-4fad-90f8-e9c574f6b3d4",
         userArgs: {},
         cacheKey: `plasmic.$.4853205b-c7e6-4fad-90f8-e9c574f6b3d4.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    }),
+    getQuizById: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "718444ab-0dcb-4bcb-86f7-c906331ee065",
+        userArgs: {
+          filters: [$state.allQuizzesTable.selectedRow.id]
+        },
+        cacheKey: `plasmic.$.718444ab-0dcb-4bcb-86f7-c906331ee065.$.`,
         invalidatedKeys: null,
         roleId: null
       };
@@ -274,7 +292,9 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                 {(() => {
                   try {
                     return (
-                      $ctx.SupabaseUser.user.user_metadata.userRole === "admin"
+                      $ctx?.SupabaseUser?.user !== null &&
+                      $ctx?.SupabaseUser?.user?.user_metadata.userRole ===
+                        "admin"
                     );
                   } catch (e) {
                     if (
@@ -404,6 +424,65 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                 ["allQuizzesTable", "selectedRowKeys"],
                                 RichTable_Helpers
                               ).apply(null, eventArgs);
+
+                              (async (rowKeys, rows) => {
+                                const $steps = {};
+
+                                $steps["updateAllQuizzesTableSelectedRowKey"] =
+                                  true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: [
+                                              "allQuizzesTable",
+                                              "selectedRowKey"
+                                            ]
+                                          },
+                                          operation: 0,
+                                          value:
+                                            $state.allQuizzesTable.selectedRow
+                                              .id
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                if (
+                                  $steps[
+                                    "updateAllQuizzesTableSelectedRowKey"
+                                  ] != null &&
+                                  typeof $steps[
+                                    "updateAllQuizzesTableSelectedRowKey"
+                                  ] === "object" &&
+                                  typeof $steps[
+                                    "updateAllQuizzesTableSelectedRowKey"
+                                  ].then === "function"
+                                ) {
+                                  $steps[
+                                    "updateAllQuizzesTableSelectedRowKey"
+                                  ] = await $steps[
+                                    "updateAllQuizzesTableSelectedRowKey"
+                                  ];
+                                }
+                              }).apply(null, eventArgs);
                             },
                             pagination: false,
                             rowKey: ``,
@@ -515,37 +594,13 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                 "__wab_instance",
                                 sty.dataList
                               )}
-                              content={(() => {
-                                const __composite = [
-                                  {
-                                    key: "id",
-                                    fieldId: "id",
-                                    role: "content",
-                                    isHidden: null
-                                  },
-                                  {
-                                    role: "content",
-                                    fieldId: null,
-                                    dataType: null,
-                                    expr: null
-                                  },
-                                  {}
-                                ];
-                                __composite["0"]["isHidden"] = true;
-                                __composite["1"]["fieldId"] = "question_text";
-                                __composite["1"]["dataType"] = "string";
-                                __composite["1"]["expr"] = (
-                                  currentItem,
-                                  currentValue
-                                ) => {
-                                  return $queries.fetchQuizQuestionByQuizId
-                                    .data[0].question_text;
-                                };
-                                return __composite;
-                              })()}
+                              content={[
+                                { key: "id", fieldId: "id", role: "content" },
+                                {}
+                              ]}
                               data={(() => {
                                 try {
-                                  return $queries.fetchQuizQuestionByQuizId;
+                                  return $queries.getQuizById;
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
@@ -557,7 +612,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                   throw e;
                                 }
                               })()}
-                              title={[]}
+                              type={"list"}
                             />
                           </div>
                           {(() => {
@@ -635,45 +690,6 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               onFinish: async values => {
                                 const $steps = {};
 
-                                $steps["updateVariable"] = true
-                                  ? (() => {
-                                      const actionArgs = {
-                                        variable: {
-                                          objRoot: $state,
-                                          variablePath: ["answerOptions"]
-                                        },
-                                        operation: 0,
-                                        value: undefined
-                                      };
-                                      return (({
-                                        variable,
-                                        value,
-                                        startIndex,
-                                        deleteCount
-                                      }) => {
-                                        if (!variable) {
-                                          return;
-                                        }
-                                        const { objRoot, variablePath } =
-                                          variable;
-
-                                        $stateSet(objRoot, variablePath, value);
-                                        return value;
-                                      })?.apply(null, [actionArgs]);
-                                    })()
-                                  : undefined;
-                                if (
-                                  $steps["updateVariable"] != null &&
-                                  typeof $steps["updateVariable"] ===
-                                    "object" &&
-                                  typeof $steps["updateVariable"].then ===
-                                    "function"
-                                ) {
-                                  $steps["updateVariable"] = await $steps[
-                                    "updateVariable"
-                                  ];
-                                }
-
                                 $steps["updateFullFormValues"] = true
                                   ? (() => {
                                       const actionArgs = {
@@ -682,7 +698,13 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                           variablePath: ["fullFormValues"]
                                         },
                                         operation: 0,
-                                        value: undefined
+                                        value: {
+                                          ...$state?.newQuestionForm?.value,
+                                          options:
+                                            $state?.newQuestionForm?.value?.options?.split(
+                                              ","
+                                            )
+                                        }
                                       };
                                       return (({
                                         variable,
@@ -832,7 +854,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                     </div>
                     {(() => {
                       const child$Props = {
-                        className: classNames("__wab_instance", sty.form),
+                        className: classNames("__wab_instance", sty.form2),
                         data: {
                           sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
                           opId: "33891d7b-e265-4db9-b18f-f2fcf84bf7f4",
@@ -849,7 +871,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               }
                               throw e;
                             }
-                          })()}.$.K7YwSh8wm82K.$.33891d7b-e265-4db9-b18f-f2fcf84bf7f4.$.`,
+                          })()}.$.33891d7b-e265-4db9-b18f-f2fcf84bf7f4.$.`,
                           invalidatedKeys: null,
                           roleId: null
                         },
@@ -867,9 +889,8 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               key: "title",
                               inputType: "Text",
                               fieldId: "title",
-                              label: null,
-                              name: "title",
-                              rules: null
+                              label: "title",
+                              name: "title"
                             },
                             {
                               key: "instrument_type",
@@ -877,17 +898,15 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               fieldId: "instrument_type",
                               label: null,
                               name: "instrument_type",
-                              options: null,
-                              rules: null
+                              options: null
                             },
                             {
                               key: "level",
                               inputType: null,
                               fieldId: "level",
-                              label: null,
+                              label: "level",
                               name: "level",
-                              options: null,
-                              rules: null
+                              options: null
                             },
                             {
                               key: "question_count",
@@ -899,66 +918,37 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                             }
                           ];
                           __composite["0"]["hidden"] = true;
-                          __composite["1"]["label"] = "Quiz Title";
-                          __composite["1"]["rules"] = [
-                            { ruleType: "required", message: "Required" }
-                          ];
-
                           __composite["2"]["inputType"] = "Select";
                           __composite["2"]["label"] = "Instrument Type";
                           __composite["2"]["options"] = (() => {
                             const __composite = [
                               { type: "option", label: null, value: null },
                               { type: "option", label: null, value: null },
-                              { type: "option", label: null, value: null },
-                              { type: "option", label: null, value: null },
-                              { type: "option", label: null, value: null },
                               { type: "option", label: null, value: null }
                             ];
-                            __composite["0"]["label"] = "Guitar";
-                            __composite["0"]["value"] = "GUITAR";
-                            __composite["1"]["label"] = "Strings";
-                            __composite["1"]["value"] = "STRINGS";
-                            __composite["2"]["label"] = "Percussion";
-                            __composite["2"]["value"] = "PERCUSSION";
-                            __composite["3"]["label"] = "Piano";
-                            __composite["3"]["value"] = "PIANO";
-                            __composite["4"]["label"] = "Woodwind";
-                            __composite["4"]["value"] = "WOODWIND";
-                            __composite["5"]["label"] = "Voice";
-                            __composite["5"]["value"] = "VOICE";
+                            __composite["0"]["label"] = "Voice";
+                            __composite["0"]["value"] = "VOICE";
+                            __composite["1"]["label"] = "Guitar";
+                            __composite["1"]["value"] = "GUITAR";
+                            __composite["2"]["label"] = "Strings";
+                            __composite["2"]["value"] = "STRINGS";
                             return __composite;
                           })();
-                          __composite["2"]["rules"] = [
-                            { ruleType: "required", message: "Required" }
-                          ];
-
                           __composite["3"]["inputType"] = "Select";
-                          __composite["3"]["label"] = "Quiz Level";
                           __composite["3"]["options"] = (() => {
                             const __composite = [
-                              { type: "option", label: null, value: null },
-                              { type: "option", label: null, value: null },
                               { type: "option", label: null, value: null },
                               { type: "option", label: null, value: null },
                               { type: "option", label: null, value: null }
                             ];
                             __composite["0"]["label"] = "Beginner";
                             __composite["0"]["value"] = "BEGINNER";
-                            __composite["1"]["label"] = "Novice";
-                            __composite["1"]["value"] = "NOVICE";
-                            __composite["2"]["label"] = "Intermediate";
-                            __composite["2"]["value"] = "INTERMEDIATE";
-                            __composite["3"]["label"] = "Skilled";
-                            __composite["3"]["value"] = "SKILLED";
-                            __composite["4"]["label"] = "Advanced";
-                            __composite["4"]["value"] = "ADVANCED";
+                            __composite["1"]["label"] = "Skilled";
+                            __composite["1"]["value"] = "SKILLED";
+                            __composite["2"]["label"] = "Novice";
+                            __composite["2"]["value"] = "NOVICE";
                             return __composite;
                           })();
-                          __composite["3"]["rules"] = [
-                            { ruleType: "required", message: "Required" }
-                          ];
-
                           __composite["4"]["hidden"] = true;
                           return __composite;
                         })(),
@@ -967,7 +957,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                           generateStateOnChangePropForCodeComponents(
                             $state,
                             "value",
-                            ["form", "value"],
+                            ["form2", "value"],
                             FormWrapper_Helpers
                           ).apply(null, eventArgs);
                         },
@@ -985,7 +975,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                     sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
                                     opId: "63a79c7c-ccc3-4405-bd40-1d4056bf34a1",
                                     userArgs: {
-                                      variables: [undefined]
+                                      variables: [$state.form2.value]
                                     },
                                     cacheKey: null,
                                     invalidatedKeys: ["plasmic_refresh_all"],
@@ -1029,18 +1019,18 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                           generateStateOnChangePropForCodeComponents(
                             $state,
                             "isSubmitting",
-                            ["form", "isSubmitting"],
+                            ["form2", "isSubmitting"],
                             FormWrapper_Helpers
                           ).apply(null, eventArgs);
                         },
                         ref: ref => {
-                          $refs["form"] = ref;
+                          $refs["form2"] = ref;
                         },
                         submitSlot: (
                           <AntdButton
                             className={classNames(
                               "__wab_instance",
-                              sty.button__w5TFq
+                              sty.button__fjsvC
                             )}
                             submitsForm={true}
                             type={"primary"}
@@ -1049,7 +1039,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text___4AiOv
+                                sty.text__aNMg
                               )}
                             >
                               {"Submit"}
@@ -1063,11 +1053,11 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                         [
                           {
                             name: "value",
-                            plasmicStateName: "form.value"
+                            plasmicStateName: "form2.value"
                           },
                           {
                             name: "isSubmitting",
-                            plasmicStateName: "form.isSubmitting"
+                            plasmicStateName: "form2.isSubmitting"
                           }
                         ],
                         [],
@@ -1077,8 +1067,8 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
 
                       return (
                         <FormWrapper
-                          data-plasmic-name={"form"}
-                          data-plasmic-override={overrides.form}
+                          data-plasmic-name={"form2"}
+                          data-plasmic-override={overrides.form2}
                           {...child$Props}
                         />
                       );
@@ -1112,7 +1102,7 @@ const PlasmicDescendants = {
     "h3",
     "dataList",
     "newQuestionForm",
-    "form",
+    "form2",
     "unauthorized"
   ],
   h1: ["h1"],
@@ -1121,7 +1111,7 @@ const PlasmicDescendants = {
   h3: ["h3"],
   dataList: ["dataList"],
   newQuestionForm: ["newQuestionForm"],
-  form: ["form"],
+  form2: ["form2"],
   unauthorized: ["unauthorized"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -1135,7 +1125,7 @@ type NodeDefaultElementType = {
   h3: "h3";
   dataList: typeof RichList;
   newQuestionForm: typeof FormWrapper;
-  form: typeof FormWrapper;
+  form2: typeof FormWrapper;
   unauthorized: typeof Unauthorized;
 };
 
@@ -1205,7 +1195,7 @@ export const PlasmicAddOnboardingQuestions = Object.assign(
     h3: makeNodeComponent("h3"),
     dataList: makeNodeComponent("dataList"),
     newQuestionForm: makeNodeComponent("newQuestionForm"),
-    form: makeNodeComponent("form"),
+    form2: makeNodeComponent("form2"),
     unauthorized: makeNodeComponent("unauthorized"),
 
     // Metadata about props expected for PlasmicAddOnboardingQuestions
