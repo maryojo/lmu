@@ -11,7 +11,7 @@ const publicRoutes = [
   '/register',
   '/login',
   '/plasmic-host',
-  'reset-password',
+  '/reset-password'
 ]
 
 // Middleware function
