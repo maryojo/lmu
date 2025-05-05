@@ -67,6 +67,7 @@ import {
 
 import { RichLayout } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-layout";
 import { LoadingBoundary } from "@plasmicpkgs/plasmic-basic-components";
+import DashboardNavbar from "../../DashboardNavbar"; // plasmic-import: f9TmdLYt-K-T/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -93,7 +94,8 @@ export const PlasmicPageLayout__ArgProps = new Array<ArgPropType>("children");
 export type PlasmicPageLayout__OverridesType = {
   root?: Flex__<typeof RichLayout>;
   loadingBoundary?: Flex__<typeof LoadingBoundary>;
-  section?: Flex__<"section">;
+  freeBox?: Flex__<"div">;
+  dashboardNavbar?: Flex__<typeof DashboardNavbar>;
 };
 
 export interface DefaultPageLayoutProps {
@@ -251,7 +253,11 @@ function PlasmicPageLayout__RenderFunc(props: {
         loadingState={
           <DataCtxReader__>
             {$ctx => (
-              <div className={classNames(projectcss.all, sty.freeBox__xE2KW)}>
+              <div
+                data-plasmic-name={"freeBox"}
+                data-plasmic-override={overrides.freeBox}
+                className={classNames(projectcss.all, sty.freeBox)}
+              >
                 <IconIcon
                   className={classNames(projectcss.all, sty.svg__qoFyG)}
                   role={"img"}
@@ -264,22 +270,12 @@ function PlasmicPageLayout__RenderFunc(props: {
         <DataCtxReader__>
           {$ctx => (
             <React.Fragment>
-              <section
-                data-plasmic-name={"section"}
-                data-plasmic-override={overrides.section}
-                className={classNames(projectcss.all, sty.section)}
-              >
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__xnjMa)}
-                >
-                  <Icon2Icon
-                    className={classNames(projectcss.all, sty.svg__dm6W9)}
-                    role={"img"}
-                  />
-                </Stack__>
-              </section>
+              <DashboardNavbar
+                data-plasmic-name={"dashboardNavbar"}
+                data-plasmic-override={overrides.dashboardNavbar}
+                className={classNames("__wab_instance", sty.dashboardNavbar)}
+              />
+
               {renderPlasmicSlot({
                 defaultContents: (
                   <div
@@ -323,9 +319,10 @@ function PlasmicPageLayout__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "loadingBoundary", "section"],
-  loadingBoundary: ["loadingBoundary", "section"],
-  section: ["section"]
+  root: ["root", "loadingBoundary", "freeBox", "dashboardNavbar"],
+  loadingBoundary: ["loadingBoundary", "freeBox", "dashboardNavbar"],
+  freeBox: ["freeBox"],
+  dashboardNavbar: ["dashboardNavbar"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -333,7 +330,8 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: typeof RichLayout;
   loadingBoundary: typeof LoadingBoundary;
-  section: "section";
+  freeBox: "div";
+  dashboardNavbar: typeof DashboardNavbar;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -397,7 +395,8 @@ export const PlasmicPageLayout = Object.assign(
   {
     // Helper components rendering sub-elements
     loadingBoundary: makeNodeComponent("loadingBoundary"),
-    section: makeNodeComponent("section"),
+    freeBox: makeNodeComponent("freeBox"),
+    dashboardNavbar: makeNodeComponent("dashboardNavbar"),
 
     // Metadata about props expected for PlasmicPageLayout
     internalVariantProps: PlasmicPageLayout__VariantProps,

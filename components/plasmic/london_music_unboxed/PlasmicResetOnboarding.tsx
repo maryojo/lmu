@@ -83,6 +83,7 @@ export const PlasmicResetOnboarding__ArgProps = new Array<ArgPropType>();
 export type PlasmicResetOnboarding__OverridesType = {
   root?: Flex__<"div">;
   topBar?: Flex__<typeof TopBar>;
+  img?: Flex__<typeof PlasmicImg__>;
   h4?: Flex__<"h4">;
   text?: Flex__<"div">;
 };
@@ -254,54 +255,74 @@ function PlasmicResetOnboarding__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
-        <div
-          data-plasmic-name={"root"}
-          data-plasmic-override={overrides.root}
-          data-plasmic-root={true}
-          data-plasmic-for-node={forNode}
-          className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
-            projectcss.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
-            plasmic_plasmic_rich_components_css.plasmic_tokens,
-            sty.root
-          )}
-        >
-          <section className={classNames(projectcss.all, sty.section___2NrW1)}>
-            <TopBar
-              data-plasmic-name={"topBar"}
-              data-plasmic-override={overrides.topBar}
-              className={classNames("__wab_instance", sty.topBar)}
-            />
-          </section>
-          <section className={classNames(projectcss.all, sty.section__n0Fn)}>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__cEhyX)}
-            >
-              {(() => {
-                try {
-                  return $state.formStep == 0;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return true;
-                  }
-                  throw e;
+      <div
+        data-plasmic-name={"root"}
+        data-plasmic-override={overrides.root}
+        data-plasmic-root={true}
+        data-plasmic-for-node={forNode}
+        className={classNames(
+          projectcss.all,
+          projectcss.root_reset,
+          projectcss.plasmic_default_styles,
+          projectcss.plasmic_mixins,
+          projectcss.plasmic_tokens,
+          plasmic_antd_5_hostless_css.plasmic_tokens,
+          plasmic_plasmic_rich_components_css.plasmic_tokens,
+          sty.root
+        )}
+      >
+        <section className={classNames(projectcss.all, sty.section___2NrW1)}>
+          <TopBar
+            data-plasmic-name={"topBar"}
+            data-plasmic-override={overrides.topBar}
+            className={classNames("__wab_instance", sty.topBar)}
+          />
+        </section>
+        <section className={classNames(projectcss.all, sty.section__n0Fn)}>
+          <Stack__
+            as={"div"}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.freeBox__cEhyX)}
+          >
+            {(() => {
+              try {
+                return $state.formStep == 0;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-              })() ? (
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__c1Q4U)}
-                >
+                throw e;
+              }
+            })() ? (
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__c1Q4U)}
+              >
+                <PlasmicImg__
+                  data-plasmic-name={"img"}
+                  data-plasmic-override={overrides.img}
+                  alt={""}
+                  className={classNames(sty.img)}
+                  displayHeight={"auto"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"50px"}
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/london_music_unboxed/images/image2.png",
+                    fullWidth: 512,
+                    fullHeight: 512,
+                    aspectRatio: undefined
+                  }}
+                />
+
+                <div className={classNames(projectcss.all, sty.freeBox__om0Vs)}>
                   <h4
                     data-plasmic-name={"h4"}
                     data-plasmic-override={overrides.h4}
@@ -327,19 +348,20 @@ function PlasmicResetOnboarding__RenderFunc(props: {
                       "Sorry, you have attempted to take this quiz once already. Please contact the admin to proceed"
                     }
                   </div>
-                </Stack__>
-              ) : null}
-            </Stack__>
-          </section>
-        </div>
+                </div>
+              </Stack__>
+            ) : null}
+          </Stack__>
+        </section>
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "topBar", "h4", "text"],
+  root: ["root", "topBar", "img", "h4", "text"],
   topBar: ["topBar"],
+  img: ["img"],
   h4: ["h4"],
   text: ["text"]
 } as const;
@@ -349,6 +371,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   topBar: typeof TopBar;
+  img: typeof PlasmicImg__;
   h4: "h4";
   text: "div";
 };
@@ -414,6 +437,7 @@ export const PlasmicResetOnboarding = Object.assign(
   {
     // Helper components rendering sub-elements
     topBar: makeNodeComponent("topBar"),
+    img: makeNodeComponent("img"),
     h4: makeNodeComponent("h4"),
     text: makeNodeComponent("text"),
 

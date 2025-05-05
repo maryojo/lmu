@@ -303,14 +303,21 @@ function PlasmicRegister__RenderFunc(props: {
                   )}
                 >
                   <React.Fragment>
-                    <React.Fragment>{"You won't "}</React.Fragment>
+                    <React.Fragment>{"Join Us. "}</React.Fragment>
                     <span
                       className={"plasmic_default__all plasmic_default__span"}
-                      style={{ color: "#9C9CE2" }}
+                      style={{ color: "#55DABE" }}
                     >
-                      {"believe"}
+                      {"Start"}
                     </span>
-                    <React.Fragment>{" what happens next."}</React.Fragment>
+                    <React.Fragment>{""}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ color: "#FEB241" }}
+                    >
+                      {" "}
+                    </span>
+                    <React.Fragment>{"your music journey."}</React.Fragment>
                   </React.Fragment>
                 </h1>
               </section>
@@ -358,7 +365,7 @@ function PlasmicRegister__RenderFunc(props: {
                       sty.h1___6YhQ
                     )}
                   >
-                    {"Register\n"}
+                    {"Register"}
                   </h1>
                   {(() => {
                     const child$Props = {
@@ -422,10 +429,10 @@ function PlasmicRegister__RenderFunc(props: {
                                   (() => {
                                     try {
                                       return {
-                                        userRole: $state.form.value.userRole,
+                                        userRole: "student",
                                         isOnboarded: false,
-                                        firstName: $state.form.value.firstName,
-                                        lastName: $state.form.value.lastName,
+                                        firstName: $state.form.value?.firstName,
+                                        lastName: $state.form.value?.lastName,
                                         attemptedQuiz: false,
                                         lastQuizStatus: "UNDEFINED",
                                         lastQuizStarted: "UNDEFINED",
@@ -812,7 +819,7 @@ function PlasmicRegister__RenderFunc(props: {
                               sty.text__fwt4B
                             )}
                           >
-                            {"Submit"}
+                            {"Register"}
                           </div>
                         </AntdButton>
                       </FormWrapper>

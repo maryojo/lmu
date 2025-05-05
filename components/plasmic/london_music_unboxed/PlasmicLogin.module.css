@@ -128,8 +128,8 @@
   font-size: var(--token-0eb2dBAXsrly);
   line-height: 1.4;
   color: var(--token-ewwWr5sTdrhX);
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
+  font-family: "BR Firma";
+  font-weight: 700;
   font-style: normal;
   text-transform: none;
   letter-spacing: -1px;
@@ -184,6 +184,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
+  font-weight: 500;
 }
 .button___44CyO:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
@@ -227,8 +228,8 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  margin-top: calc(0px - 50px);
-  height: calc(100% + 50px);
+  margin-top: calc(0px - 30px);
+  height: calc(100% + 30px);
 }
 .freeBox__c0DhK > :global(.__wab_flex-container) > *,
 .freeBox__c0DhK > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
@@ -238,7 +239,7 @@
   > :global(.__wab_slot)
   > picture
   > img {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .h1__vi5Oi {
   width: 100%;
@@ -246,7 +247,7 @@
   max-width: 100%;
   font-size: var(--token-wWaz9HBLiQgW);
   color: #000000;
-  font-family: "Inter", sans-serif;
+  font-family: "BR Firma";
   font-weight: 600;
   font-style: normal;
   text-align: left;
@@ -270,10 +271,11 @@
   object-fit: cover;
   margin-bottom: 12px;
   font-size: var(--token-o0Nl0Hefncwa);
+  font-family: "Source sans 3";
   min-width: 0;
   padding: 0px;
 }
-.formField__a9WdJ:global(.__wab_instance) {
+.formField__r8TDf:global(.__wab_instance) {
   width: 100%;
   margin-bottom: 24px;
   min-width: 0;
@@ -282,7 +284,7 @@
   max-width: 100%;
   object-fit: cover;
 }
-.formField__mWlt:global(.__wab_instance) {
+.formField__vPlgP:global(.__wab_instance) {
   width: 100%;
   margin-bottom: 24px;
   min-width: 0;
@@ -291,21 +293,22 @@
   max-width: 100%;
   object-fit: cover;
 }
-.button__hcqTl:global(.__wab_instance) {
+.button__eyDEf:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   background: var(--token-NANCd_f9Z6JF);
+  color: #535353;
 }
-.text___0XS {
+.text__iBnxD {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 16px;
   font-weight: 400;
   font-style: normal;
-  color: #535353;
+  color: #ffffff;
   text-align: left;
   text-transform: none;
   line-height: 1.5;
@@ -321,7 +324,11 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  font-family: "Source Sans 3", sans-serif;
   min-width: 0;
+}
+.link {
+  text-decoration-line: underline;
 }
 .section__eriIf {
   display: grid;

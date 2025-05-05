@@ -8,23 +8,30 @@ import * as React from "react";
 import { hasVariant, ensureGlobalVariants } from "@plasmicapp/react-web";
 import { AntdConfigProvider } from "@plasmicpkgs/antd5/skinny/registerConfigProvider";
 import { SupabaseUserGlobalContext } from "../../../index"; // plasmic-import: 7mrZ7EuxJSFV/codeComponent
+import { EmbedCss } from "@plasmicpkgs/plasmic-embed-css";
 
 export interface GlobalContextsProviderProps {
   children?: React.ReactElement;
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
-
   supabaseUserGlobalContextProps?: Partial<
     Omit<React.ComponentProps<typeof SupabaseUserGlobalContext>, "children">
+  >;
+  embedCssProps?: Partial<
+    Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;
 }
 
 export default function GlobalContextsProvider(
   props: GlobalContextsProviderProps
 ) {
-  const { children, antdConfigProviderProps, supabaseUserGlobalContextProps } =
-    props;
+  const {
+    children,
+    antdConfigProviderProps,
+    supabaseUserGlobalContextProps,
+    embedCssProps
+  } = props;
 
   return (
     <AntdConfigProvider
@@ -104,7 +111,7 @@ export default function GlobalContextsProvider(
           ? antdConfigProviderProps.themeStyles!
           : true
           ? {
-              fontFamily: "Inter",
+              fontFamily: "Source Sans 3",
               fontSize: "16px",
               fontWeight: "400",
               lineHeight: "1.5",
@@ -128,7 +135,16 @@ export default function GlobalContextsProvider(
             : ``
         }
       >
-        {children}
+        <EmbedCss
+          {...embedCssProps}
+          css={
+            embedCssProps && "css" in embedCssProps
+              ? embedCssProps.css!
+              : "/* CSS snippet */\r\n\r\n@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');\r\n@import url('https://fonts.cdnfonts.com/css/br-firma');\r\n\r\nbody{\r\n   font-family: \"Source Sans 3\", sans-serif;\r\n}"
+          }
+        >
+          {children}
+        </EmbedCss>
       </SupabaseUserGlobalContext>
     </AntdConfigProvider>
   );

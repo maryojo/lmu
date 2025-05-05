@@ -259,14 +259,14 @@ function PlasmicResetPassword__RenderFunc(props: {
                   )}
                 >
                   <React.Fragment>
-                    <React.Fragment>{"You won't "}</React.Fragment>
+                    <React.Fragment>{"Learn, practice, and "}</React.Fragment>
                     <span
                       className={"plasmic_default__all plasmic_default__span"}
-                      style={{ color: "#9C9CE2" }}
+                      style={{ color: "#55DABE" }}
                     >
-                      {"believe"}
+                      {"grow"}
                     </span>
-                    <React.Fragment>{" what happens next."}</React.Fragment>
+                    <React.Fragment>{" your music skills."}</React.Fragment>
                   </React.Fragment>
                 </h1>
               </section>
@@ -440,7 +440,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                           <AntdButton
                             className={classNames(
                               "__wab_instance",
-                              sty.button__ggGJ
+                              sty.button__aviCm
                             )}
                             loading={(() => {
                               try {
@@ -462,7 +462,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__tElTd
+                                sty.text__zyPg3
                               )}
                             >
                               {"Submit"}

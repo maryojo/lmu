@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter%3Aital%2Cwght%400%2C400%3B0%2C600%3B0%2C700&family=Inconsolata%3Aital%2Cwght%400%2C400%3B0%2C600%3B0%2C700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700&family=Inconsolata%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700&family=Inter%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700&display=swap");
 
 .plasmic_tokens {
   --token-NANCd_f9Z6JF: #23237a;
@@ -119,6 +119,12 @@
   --plasmic-token-basic-overlay-background: var(--token-4AS4gApKaiiO);
   --token-gMLx3gkv73zU: 1.5rem;
   --plasmic-token-size-24: var(--token-gMLx3gkv73zU);
+  --token-X5mU4Q8J-a7k: #55dabe;
+  --plasmic-token-secondary-50: var(--token-X5mU4Q8J-a7k);
+  --token-sRJjOIyCNKw0: #39917f;
+  --plasmic-token-secondary-70: var(--token-sRJjOIyCNKw0);
+  --token-9Su_DvlOlmln: #47b69e;
+  --plasmic-token-secondary-60: var(--token-9Su_DvlOlmln);
 }
 
 .plasmic_tokens {
@@ -132,7 +138,7 @@
 }
 
 .plasmic_default_styles {
-  --mixin-okr22vgvIJUg_font-family: "Inter", sans-serif;
+  --mixin-okr22vgvIJUg_font-family: "Source Sans 3", sans-serif;
   --mixin-okr22vgvIJUg_font-size: 16px;
   --mixin-okr22vgvIJUg_font-weight: 400;
   --mixin-okr22vgvIJUg_font-style: normal;
@@ -150,19 +156,23 @@
   --mixin-gcQX_oYGRUOp_font-size: 64px;
   --mixin-gcQX_oYGRUOp_line-height: 1;
   --mixin-gcQX_oYGRUOp_letter-spacing: -1px;
+  --mixin-gcQX_oYGRUOp_font-family: "BR Firma";
   --mixin-gcQX_oYGRUOp_white-space: pre-wrap;
   --mixin-d7Dbx45KA8PD_color: #000000;
   --mixin-d7Dbx45KA8PD_font-size: 48px;
   --mixin-d7Dbx45KA8PD_font-weight: 700;
   --mixin-d7Dbx45KA8PD_letter-spacing: -0.5px;
   --mixin-d7Dbx45KA8PD_line-height: 1.1;
+  --mixin-d7Dbx45KA8PD_font-family: "BR Firma";
   --mixin-d7Dbx45KA8PD_white-space: pre-wrap;
-  --mixin-mEauvSC-jSUf_color: #0070f3;
+  --mixin-mEauvSC-jSUf_color: var(--token-9Su_DvlOlmln);
+  --mixin-mEauvSC-jSUf_font-weight: 600;
   --mixin-mEauvSC-jSUf_white-space: pre-wrap;
   --mixin-yfZrcPnavxFB_color: #000000;
   --mixin-yfZrcPnavxFB_font-size: 32px;
   --mixin-yfZrcPnavxFB_font-weight: 600;
   --mixin-yfZrcPnavxFB_line-height: 1.2;
+  --mixin-yfZrcPnavxFB_font-family: "BR Firma";
   --mixin-yfZrcPnavxFB_white-space: pre-wrap;
   --mixin-W_hku1KISMzQ_color: #000000;
   --mixin-W_hku1KISMzQ_font-size: 24px;
@@ -249,10 +259,17 @@
   --mixin-T5UjuUfaMIgo_font-weight: 600;
   --mixin-T5UjuUfaMIgo_line-height: 1.5;
   --mixin-T5UjuUfaMIgo_white-space: pre-wrap;
-  --mixin-wOts5thqV0B8_color: #3291ff;
+  --mixin-wOts5thqV0B8_color: var(--token-sRJjOIyCNKw0);
   --mixin-wOts5thqV0B8_white-space: pre-wrap;
   --mixin-VpxryMwdRuuj_white-space: pre-wrap;
   --mixin-4Bno1OuYvgXK_white-space: pre-wrap;
+}
+
+.plasmic_mixins {
+  --mixin-wdkHgFGpEMPQ_white-space: pre-wrap;
+  --plasmic-mixin-unnamed-style-preset_white-space: var(
+    --mixin-wdkHgFGpEMPQ_white-space
+  );
 }
 
 :where(.all) {
@@ -585,6 +602,7 @@ h1:where(.root_reset_tags) {
   font-size: var(--mixin-gcQX_oYGRUOp_font-size);
   line-height: var(--mixin-gcQX_oYGRUOp_line-height);
   letter-spacing: var(--mixin-gcQX_oYGRUOp_letter-spacing);
+  font-family: var(--mixin-gcQX_oYGRUOp_font-family);
 }
 
 :where(.root_reset) h2:where(.h2),
@@ -597,6 +615,7 @@ h2:where(.root_reset_tags) {
   font-weight: var(--mixin-d7Dbx45KA8PD_font-weight);
   letter-spacing: var(--mixin-d7Dbx45KA8PD_letter-spacing);
   line-height: var(--mixin-d7Dbx45KA8PD_line-height);
+  font-family: var(--mixin-d7Dbx45KA8PD_font-family);
 }
 
 :where(.root_reset) a:where(.a),
@@ -605,6 +624,7 @@ a:where(.root_reset.a),
 :where(.root_reset_tags) a,
 a:where(.root_reset_tags) {
   color: var(--mixin-mEauvSC-jSUf_color);
+  font-weight: var(--mixin-mEauvSC-jSUf_font-weight);
 }
 
 :where(.root_reset) h3:where(.h3),
@@ -616,6 +636,7 @@ h3:where(.root_reset_tags) {
   font-size: var(--mixin-yfZrcPnavxFB_font-size);
   font-weight: var(--mixin-yfZrcPnavxFB_font-weight);
   line-height: var(--mixin-yfZrcPnavxFB_line-height);
+  font-family: var(--mixin-yfZrcPnavxFB_font-family);
 }
 
 :where(.root_reset) h4:where(.h4),

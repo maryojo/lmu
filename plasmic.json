@@ -972,6 +972,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/testtt"
+        },
+        {
+          "id": "f9TmdLYt-K-T",
+          "name": "DashboardNavbar",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicDashboardNavbar.tsx",
+          "importSpec": {
+            "modulePath": "DashboardNavbar.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicDashboardNavbar.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -1016,6 +1029,11 @@
           "id": "ZyC3T49anLV1",
           "name": "image",
           "filePath": "../public/plasmic/london_music_unboxed/images/image.png"
+        },
+        {
+          "id": "iMThvdwx3xfa",
+          "name": "image 2",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image2.png"
         }
       ],
       "indirect": false,
@@ -1125,6 +1143,28 @@
       ],
       "customFunctions": [],
       "jsBundleThemes": []
+    },
+    {
+      "projectId": "8PtdGodUbexNYgkuyBUcWu",
+      "projectApiToken": "34o5R5KswluuZ4sD83F88oQrcLWsNNeUpCptQ8Okf4hYqgjnHnX2idGAlhtB7WWQQelNAInf5XFazR1cGw",
+      "projectName": "plasmic-embed-css",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/plasmic_embed_css/plasmic.module.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "plasmic/plasmic_embed_css/PlasmicGlobalContextsProvider.tsx",
+      "splitsProviderFilePath": "",
+      "codeComponents": [
+        {
+          "id": "qF0uJxFztB",
+          "name": "EmbedCss",
+          "displayName": "global-embed-css",
+          "componentImportPath": "@plasmicpkgs/plasmic-embed-css"
+        }
+      ],
+      "customFunctions": []
     }
   ],
   "globalVariants": {
