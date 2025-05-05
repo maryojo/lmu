@@ -87,6 +87,7 @@ export type PlasmicDashboard__OverridesType = {
   root?: Flex__<"div">;
   topBar?: Flex__<typeof TopBar>;
   section?: Flex__<"section">;
+  freeBox?: Flex__<"div">;
   h4?: Flex__<"h4">;
   button?: Flex__<typeof Button>;
 };
@@ -171,66 +172,74 @@ function PlasmicDashboard__RenderFunc(props: {
             data-plasmic-override={overrides.section}
             className={classNames(projectcss.all, sty.section)}
           >
-            <h4
-              data-plasmic-name={"h4"}
-              data-plasmic-override={overrides.h4}
-              className={classNames(
-                projectcss.all,
-                projectcss.h4,
-                projectcss.__wab_text,
-                sty.h4
-              )}
+            <Stack__
+              as={"div"}
+              data-plasmic-name={"freeBox"}
+              data-plasmic-override={overrides.freeBox}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox)}
             >
-              {"We're getting started very soon!"}
-            </h4>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__eZnrk
-              )}
-            >
-              {
-                "Music classes are starting soon! We're excited to have you on board. Get ready to dive into lessons, practice new skills, and grow your musical talent. Keep an eye on your dashboard and email for updates and your class schedule."
-              }
-            </div>
-            <Button
-              data-plasmic-name={"button"}
-              data-plasmic-override={overrides.button}
-              className={classNames("__wab_instance", sty.button)}
-              label={
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__sew1T
-                  )}
-                >
-                  {"Logout"}
-                </div>
-              }
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["invokeGlobalAction"] = true
-                  ? (() => {
-                      const actionArgs = { args: ["/login"] };
-                      return $globalActions[
-                        "SupabaseUserGlobalContext.logout"
-                      ]?.apply(null, [...actionArgs.args]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["invokeGlobalAction"] != null &&
-                  typeof $steps["invokeGlobalAction"] === "object" &&
-                  typeof $steps["invokeGlobalAction"].then === "function"
-                ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
+              <h4
+                data-plasmic-name={"h4"}
+                data-plasmic-override={overrides.h4}
+                className={classNames(
+                  projectcss.all,
+                  projectcss.h4,
+                  projectcss.__wab_text,
+                  sty.h4
+                )}
+              >
+                {"We're getting started very soon!"}
+              </h4>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__eZnrk
+                )}
+              >
+                {
+                  "Music classes are starting soon! We're excited to have you on board. Get ready to dive into lessons, practice new skills, and grow your musical talent. Keep an eye on your dashboard and email for updates and your class schedule."
                 }
-              }}
-            />
+              </div>
+              <Button
+                data-plasmic-name={"button"}
+                data-plasmic-override={overrides.button}
+                className={classNames("__wab_instance", sty.button)}
+                label={
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__sew1T
+                    )}
+                  >
+                    {"Logout"}
+                  </div>
+                }
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["invokeGlobalAction"] = true
+                    ? (() => {
+                        const actionArgs = { args: ["/login"] };
+                        return $globalActions[
+                          "SupabaseUserGlobalContext.logout"
+                        ]?.apply(null, [...actionArgs.args]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["invokeGlobalAction"] != null &&
+                    typeof $steps["invokeGlobalAction"] === "object" &&
+                    typeof $steps["invokeGlobalAction"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction"] = await $steps[
+                      "invokeGlobalAction"
+                    ];
+                  }
+                }}
+              />
+            </Stack__>
           </section>
         </div>
       </div>
@@ -239,9 +248,10 @@ function PlasmicDashboard__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "topBar", "section", "h4", "button"],
+  root: ["root", "topBar", "section", "freeBox", "h4", "button"],
   topBar: ["topBar"],
-  section: ["section", "h4", "button"],
+  section: ["section", "freeBox", "h4", "button"],
+  freeBox: ["freeBox", "h4", "button"],
   h4: ["h4"],
   button: ["button"]
 } as const;
@@ -252,6 +262,7 @@ type NodeDefaultElementType = {
   root: "div";
   topBar: typeof TopBar;
   section: "section";
+  freeBox: "div";
   h4: "h4";
   button: typeof Button;
 };
@@ -318,6 +329,7 @@ export const PlasmicDashboard = Object.assign(
     // Helper components rendering sub-elements
     topBar: makeNodeComponent("topBar"),
     section: makeNodeComponent("section"),
+    freeBox: makeNodeComponent("freeBox"),
     h4: makeNodeComponent("h4"),
     button: makeNodeComponent("button"),
 
