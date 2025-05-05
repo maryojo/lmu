@@ -67,6 +67,8 @@ import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdInput_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 
+import { useScreenVariants as useScreenVariantsiz19XCyodOuv } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: Iz19XCyodOuv/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -178,6 +180,10 @@ function PlasmicResetPassword__RenderFunc(props: {
     $ctx,
     $queries: {},
     $refs
+  });
+
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsiz19XCyodOuv()
   });
 
   return (
@@ -440,7 +446,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                           <AntdButton
                             className={classNames(
                               "__wab_instance",
-                              sty.button__labK8
+                              sty.button__uenjm
                             )}
                             loading={(() => {
                               try {
@@ -462,7 +468,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__mNvF1
+                                sty.text__qDIsE
                               )}
                             >
                               {"Submit"}
@@ -474,14 +480,8 @@ function PlasmicResetPassword__RenderFunc(props: {
                   </Stack__>
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__zDbkM
-                  )}
-                >
-                  {"Enter some text"}
-                </div>
+                  className={classNames(projectcss.all, sty.freeBox__l8T2L)}
+                />
               </div>
             </div>
           </div>

@@ -245,624 +245,265 @@ function PlasmicLogin__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
-        <div
-          data-plasmic-name={"root"}
-          data-plasmic-override={overrides.root}
-          data-plasmic-root={true}
-          data-plasmic-for-node={forNode}
-          className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
-            projectcss.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
-            plasmic_plasmic_rich_components_css.plasmic_tokens,
-            sty.root
-          )}
-        >
-          <div className={classNames(projectcss.all, sty.freeBox__gEj4Q)}>
-            <div className={classNames(projectcss.all, sty.freeBox__oYmk)}>
-              <section
-                className={classNames(projectcss.all, sty.section__rcg6Y)}
+      <div
+        data-plasmic-name={"root"}
+        data-plasmic-override={overrides.root}
+        data-plasmic-root={true}
+        data-plasmic-for-node={forNode}
+        className={classNames(
+          projectcss.all,
+          projectcss.root_reset,
+          projectcss.plasmic_default_styles,
+          projectcss.plasmic_mixins,
+          projectcss.plasmic_tokens,
+          plasmic_antd_5_hostless_css.plasmic_tokens,
+          plasmic_plasmic_rich_components_css.plasmic_tokens,
+          sty.root
+        )}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__gEj4Q)}>
+          <div className={classNames(projectcss.all, sty.freeBox__oYmk)}>
+            <section className={classNames(projectcss.all, sty.section__rcg6Y)}>
+              <PlasmicImg__
+                alt={""}
+                className={classNames(sty.img__qT6Vp)}
+                displayHeight={"auto"}
+                displayMaxHeight={"none"}
+                displayMaxWidth={"100%"}
+                displayMinHeight={"0"}
+                displayMinWidth={"0"}
+                displayWidth={"auto"}
+                loading={"lazy"}
+                src={{
+                  src: "/plasmic/london_music_unboxed/images/logoExportLmuArtboard2Copy4Png.png",
+                  fullWidth: 3438,
+                  fullHeight: 1065,
+                  aspectRatio: undefined
+                }}
+              />
+
+              <PlasmicImg__
+                alt={""}
+                className={classNames(sty.img__dhcl)}
+                displayHeight={"auto"}
+                displayMaxHeight={"none"}
+                displayMaxWidth={"43.66%"}
+                displayMinHeight={"0"}
+                displayMinWidth={"0"}
+                displayWidth={"100%"}
+                loading={"lazy"}
+                src={{
+                  src: "/plasmic/london_music_unboxed/images/asset19Png.png",
+                  fullWidth: 3468,
+                  fullHeight: 2506,
+                  aspectRatio: undefined
+                }}
+              />
+
+              <h1
+                className={classNames(
+                  projectcss.all,
+                  projectcss.h1,
+                  projectcss.__wab_text,
+                  sty.h1__gQEyA
+                )}
               >
-                <PlasmicImg__
-                  alt={""}
-                  className={classNames(sty.img__qT6Vp)}
-                  displayHeight={"auto"}
-                  displayMaxHeight={"none"}
-                  displayMaxWidth={"100%"}
-                  displayMinHeight={"0"}
-                  displayMinWidth={"0"}
-                  displayWidth={"auto"}
-                  loading={"lazy"}
-                  src={{
-                    src: "/plasmic/london_music_unboxed/images/logoExportLmuArtboard2Copy4Png.png",
-                    fullWidth: 3438,
-                    fullHeight: 1065,
-                    aspectRatio: undefined
-                  }}
-                />
-
-                <PlasmicImg__
-                  alt={""}
-                  className={classNames(sty.img__dhcl)}
-                  displayHeight={"auto"}
-                  displayMaxHeight={"none"}
-                  displayMaxWidth={"43.66%"}
-                  displayMinHeight={"0"}
-                  displayMinWidth={"0"}
-                  displayWidth={"100%"}
-                  loading={"lazy"}
-                  src={{
-                    src: "/plasmic/london_music_unboxed/images/asset19Png.png",
-                    fullWidth: 3468,
-                    fullHeight: 2506,
-                    aspectRatio: undefined
-                  }}
-                />
-
-                <h1
+                <React.Fragment>
+                  <React.Fragment>
+                    {"Welcome back. Let's make some "}
+                  </React.Fragment>
+                  <span
+                    className={"plasmic_default__all plasmic_default__span"}
+                    style={{ color: "#55DABE" }}
+                  >
+                    {"music"}
+                  </span>
+                  <React.Fragment>{""}</React.Fragment>
+                  <span
+                    className={"plasmic_default__all plasmic_default__span"}
+                    style={{ color: "var(--token-tMilkOK1BC4I)" }}
+                  >
+                    {"!"}
+                  </span>
+                </React.Fragment>
+              </h1>
+            </section>
+            <div className={classNames(projectcss.all, sty.freeBox__zS0)}>
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__rKjRe)}
+              >
+                <div
                   className={classNames(
                     projectcss.all,
-                    projectcss.h1,
                     projectcss.__wab_text,
-                    sty.h1__gQEyA
+                    sty.text__kkAwC
                   )}
                 >
-                  <React.Fragment>
-                    <React.Fragment>
-                      {"Welcome back. Let's make some "}
-                    </React.Fragment>
-                    <span
-                      className={"plasmic_default__all plasmic_default__span"}
-                      style={{ color: "#55DABE" }}
+                  {"Don't have an account yet?"}
+                </div>
+                <Button
+                  className={classNames("__wab_instance", sty.button___44CyO)}
+                  label={
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__i72Aw
+                      )}
                     >
-                      {"music"}
-                    </span>
-                    <React.Fragment>{""}</React.Fragment>
-                    <span
-                      className={"plasmic_default__all plasmic_default__span"}
-                      style={{ color: "var(--token-tMilkOK1BC4I)" }}
-                    >
-                      {"!"}
-                    </span>
-                  </React.Fragment>
-                </h1>
-              </section>
-              <div className={classNames(projectcss.all, sty.freeBox__zS0)}>
+                      {"Register"}
+                    </div>
+                  }
+                  linkTo={`/register`}
+                />
+              </Stack__>
+              <div className={classNames(projectcss.all, sty.freeBox__jhY2P)}>
                 <Stack__
                   as={"div"}
                   hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__rKjRe)}
+                  className={classNames(projectcss.all, sty.freeBox__c0DhK)}
                 >
-                  <div
+                  <h1
                     className={classNames(
                       projectcss.all,
+                      projectcss.h1,
                       projectcss.__wab_text,
-                      sty.text__kkAwC
+                      sty.h1__vi5Oi
                     )}
                   >
-                    {"Don't have an account yet?"}
-                  </div>
-                  <Button
-                    className={classNames("__wab_instance", sty.button___44CyO)}
-                    label={
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__i72Aw
-                        )}
-                      >
-                        {"Register"}
-                      </div>
-                    }
-                    linkTo={`/register`}
-                  />
-                </Stack__>
-                <div className={classNames(projectcss.all, sty.freeBox__jhY2P)}>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
-                    className={classNames(projectcss.all, sty.freeBox__c0DhK)}
-                  >
-                    <h1
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.h1,
-                        projectcss.__wab_text,
-                        sty.h1__vi5Oi
-                      )}
-                    >
-                      {"Login"}
-                    </h1>
-                    {(() => {
-                      const child$Props = {
-                        className: classNames("__wab_instance", sty.loginForm),
-                        extendedOnValuesChange: async (...eventArgs: any) => {
-                          generateStateOnChangePropForCodeComponents(
-                            $state,
-                            "value",
-                            ["loginForm", "value"],
-                            FormWrapper_Helpers
-                          ).apply(null, eventArgs);
-                        },
-                        formItems: undefined,
-                        labelCol: { span: 8, horizontalOnly: true },
-                        layout: "vertical",
-                        mode: undefined,
-                        onFinish: async values => {
-                          const $steps = {};
+                    {"Login"}
+                  </h1>
+                  {(() => {
+                    const child$Props = {
+                      className: classNames("__wab_instance", sty.loginForm),
+                      extendedOnValuesChange: async (...eventArgs: any) => {
+                        generateStateOnChangePropForCodeComponents(
+                          $state,
+                          "value",
+                          ["loginForm", "value"],
+                          FormWrapper_Helpers
+                        ).apply(null, eventArgs);
+                      },
+                      formItems: undefined,
+                      labelCol: { span: 8, horizontalOnly: true },
+                      layout: "vertical",
+                      mode: undefined,
+                      onFinish: async values => {
+                        const $steps = {};
 
-                          $steps["loginUser"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    (() => {
-                                      try {
-                                        return $state.loginForm.value.email;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
+                        $steps["loginUser"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  (() => {
+                                    try {
+                                      return $state.loginForm.value.email;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
                                       }
-                                    })(),
-                                    (() => {
-                                      try {
-                                        return $state.loginForm.value.password;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
+                                      throw e;
+                                    }
+                                  })(),
+                                  (() => {
+                                    try {
+                                      return $state.loginForm.value.password;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
                                       }
-                                    })(),
-                                    (() => {
-                                      try {
-                                        return (() => {
-                                          let isCompletedLastQuiz =
+                                      throw e;
+                                    }
+                                  })(),
+                                  (() => {
+                                    try {
+                                      return (() => {
+                                        let isCompletedLastQuiz =
+                                          $ctx.SupabaseUser?.user?.user_metadata
+                                            .lastQuizStarted ==
+                                          $ctx.SupabaseUser?.user?.user_metadata
+                                            .lastQuizCompleted;
+                                        if ($ctx.SupabaseUser.user !== null) {
+                                          if (
                                             $ctx.SupabaseUser?.user
-                                              ?.user_metadata.lastQuizStarted ==
+                                              ?.user_metadata.isOnboarded ===
+                                              false &&
                                             $ctx.SupabaseUser?.user
-                                              ?.user_metadata.lastQuizCompleted;
-                                          if ($ctx.SupabaseUser.user !== null) {
+                                              .user_metadata.userRole ===
+                                              "student"
+                                          ) {
                                             if (
                                               $ctx.SupabaseUser?.user
-                                                ?.user_metadata.isOnboarded ===
-                                                false &&
-                                              $ctx.SupabaseUser?.user
-                                                .user_metadata.userRole ===
-                                                "student"
+                                                ?.user_metadata
+                                                .attemptedQuiz === true &&
+                                              !isCompletedLastQuiz
                                             ) {
-                                              if (
-                                                $ctx.SupabaseUser?.user
-                                                  ?.user_metadata
-                                                  .attemptedQuiz === true &&
-                                                !isCompletedLastQuiz
-                                              ) {
-                                                return "/reset-onboarding";
-                                              } else {
-                                                return "/onboarding";
-                                              }
+                                              return "/reset-onboarding";
                                             } else {
-                                              if (
-                                                $ctx.SupabaseUser?.user
-                                                  ?.user_metadata.userRole ===
-                                                "admin"
-                                              ) {
-                                                return "/add-onboarding-questions";
-                                              } else {
-                                                return "/dashboard";
-                                              }
+                                              return "/onboarding";
+                                            }
+                                          } else {
+                                            if (
+                                              $ctx.SupabaseUser?.user
+                                                ?.user_metadata.userRole ===
+                                              "admin"
+                                            ) {
+                                              return "/add-onboarding-questions";
+                                            } else {
+                                              return "/dashboard";
                                             }
                                           }
-                                        })();
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
                                         }
-                                        throw e;
+                                      })();
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
                                       }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "SupabaseUserGlobalContext.login"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["loginUser"] != null &&
-                            typeof $steps["loginUser"] === "object" &&
-                            typeof $steps["loginUser"].then === "function"
-                          ) {
-                            $steps["loginUser"] = await $steps["loginUser"];
-                          }
-
-                          $steps["errorShowErrorMessage"] =
-                            $ctx.SupabaseUser.error !== null &&
-                            !$ctx.SupabaseUser?.error?.includes(
-                              "Email not confirmed"
-                            )
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      "error",
-                                      "Something went wrong",
-                                      (() => {
-                                        try {
-                                          return $ctx.SupabaseUser.error;
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return undefined;
-                                          }
-                                          throw e;
-                                        }
-                                      })(),
-                                      15,
-                                      "top"
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "plasmic-antd5-config-provider.showNotification"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["errorShowErrorMessage"] != null &&
-                            typeof $steps["errorShowErrorMessage"] ===
-                              "object" &&
-                            typeof $steps["errorShowErrorMessage"].then ===
-                              "function"
-                          ) {
-                            $steps["errorShowErrorMessage"] = await $steps[
-                              "errorShowErrorMessage"
-                            ];
-                          }
-
-                          $steps["updateIsModalOpen"] =
-                            $ctx.SupabaseUser?.error?.includes(
-                              "Email not confirmed"
-                            )
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["isModalOpen"]
-                                    },
-                                    operation: 0,
-                                    value: true
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
+                                      throw e;
                                     }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["updateIsModalOpen"] != null &&
-                            typeof $steps["updateIsModalOpen"] === "object" &&
-                            typeof $steps["updateIsModalOpen"].then ===
-                              "function"
-                          ) {
-                            $steps["updateIsModalOpen"] = await $steps[
-                              "updateIsModalOpen"
-                            ];
-                          }
-                        },
-                        onIsSubmittingChange: async (...eventArgs: any) => {
-                          generateStateOnChangePropForCodeComponents(
-                            $state,
-                            "isSubmitting",
-                            ["loginForm", "isSubmitting"],
-                            FormWrapper_Helpers
-                          ).apply(null, eventArgs);
-                        },
-                        ref: ref => {
-                          $refs["loginForm"] = ref;
-                        },
-                        requiredMark: false,
-                        wrapperCol: { span: 16, horizontalOnly: true }
-                      };
-                      initializeCodeComponentStates(
-                        $state,
-                        [
-                          {
-                            name: "value",
-                            plasmicStateName: "loginForm.value"
-                          },
-                          {
-                            name: "isSubmitting",
-                            plasmicStateName: "loginForm.isSubmitting"
-                          }
-                        ],
-                        [],
-                        FormWrapper_Helpers ?? {},
-                        child$Props
-                      );
-
-                      return (
-                        <FormWrapper
-                          data-plasmic-name={"loginForm"}
-                          data-plasmic-override={overrides.loginForm}
-                          {...child$Props}
-                        >
-                          <FormItemWrapper
-                            className={classNames(
-                              "__wab_instance",
-                              sty.formField__qzB
-                            )}
-                            label={"Email"}
-                            name={"email"}
-                            rules={[
-                              {
-                                ruleType: "required",
-                                message: "Email is required"
-                              }
-                            ]}
-                          >
-                            <AntdInput
-                              className={classNames(
-                                "__wab_instance",
-                                sty.input
-                              )}
-                            />
-                          </FormItemWrapper>
-                          <FormItemWrapper
-                            className={classNames(
-                              "__wab_instance",
-                              sty.formField__yGcd
-                            )}
-                            label={"Password"}
-                            name={"password"}
-                            rules={[
-                              {
-                                ruleType: "required",
-                                message: "Password is required",
-                                length: 6
-                              }
-                            ]}
-                          >
-                            <AntdPassword
-                              className={classNames(
-                                "__wab_instance",
-                                sty.passwordInput
-                              )}
-                            />
-                          </FormItemWrapper>
-                          <AntdButton
-                            className={classNames(
-                              "__wab_instance",
-                              sty.button___82Y9I
-                            )}
-                            loading={(() => {
-                              try {
-                                return $state.loginForm.isSubmitting;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                            submitsForm={true}
-                            type={"primary"}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__aQvYh
-                              )}
-                            >
-                              {"Login"}
-                            </div>
-                          </AntdButton>
-                        </FormWrapper>
-                      );
-                    })()}
-                  </Stack__>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___0XBrv
-                    )}
-                  >
-                    <React.Fragment>
-                      <React.Fragment>{"Forgot Password? "}</React.Fragment>
-                      {
-                        <PlasmicLink__
-                          data-plasmic-name={"link"}
-                          data-plasmic-override={overrides.link}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.__wab_text,
-                            projectcss.plasmic_default__inline,
-                            sty.link
-                          )}
-                          component={Link}
-                          href={(() => {
-                            try {
-                              return "/reset-password";
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return `/reset-password`;
-                              }
-                              throw e;
-                            }
-                          })()}
-                          platform={"nextjs"}
-                        >
-                          {"Reset"}
-                        </PlasmicLink__>
-                      }
-                      <React.Fragment>{""}</React.Fragment>
-                    </React.Fragment>
-                  </div>
-                </div>
-                <section
-                  className={classNames(projectcss.all, sty.section__eriIf)}
-                >
-                  <AntdModal
-                    data-plasmic-name={"modal"}
-                    data-plasmic-override={overrides.modal}
-                    className={classNames("__wab_instance", sty.modal)}
-                    defaultStylesClassName={classNames(
-                      projectcss.root_reset,
-                      projectcss.plasmic_default_styles,
-                      projectcss.plasmic_mixins,
-                      projectcss.plasmic_tokens,
-                      plasmic_antd_5_hostless_css.plasmic_tokens,
-                      plasmic_plasmic_rich_components_css.plasmic_tokens
-                    )}
-                    hideFooter={true}
-                    maskClosable={true}
-                    modalScopeClassName={sty["modal__modal"]}
-                    okText={"Resend Email"}
-                    onCancel={async () => {
-                      const $steps = {};
-
-                      $steps["updateIsModalOpen"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["isModalOpen"]
-                              },
-                              operation: 0,
-                              value: false
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateIsModalOpen"] != null &&
-                        typeof $steps["updateIsModalOpen"] === "object" &&
-                        typeof $steps["updateIsModalOpen"].then === "function"
-                      ) {
-                        $steps["updateIsModalOpen"] = await $steps[
-                          "updateIsModalOpen"
-                        ];
-                      }
-                    }}
-                    onOk={async () => {
-                      const $steps = {};
-                    }}
-                    onOpenChange={async (...eventArgs: any) => {
-                      generateStateOnChangeProp($state, [
-                        "modal",
-                        "open"
-                      ]).apply(null, eventArgs);
-                    }}
-                    open={generateStateValueProp($state, ["modal", "open"])}
-                    title={
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__bt1Jv
-                        )}
-                      >
-                        {"Your email has not been verified yet"}
-                      </div>
-                    }
-                    trigger={null}
-                  >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___2Xdbz
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__aSVd
-                        )}
-                      >
-                        {
-                          "Check your email, a mail to verify your account was sent"
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "SupabaseUserGlobalContext.login"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["loginUser"] != null &&
+                          typeof $steps["loginUser"] === "object" &&
+                          typeof $steps["loginUser"].then === "function"
+                        ) {
+                          $steps["loginUser"] = await $steps["loginUser"];
                         }
-                      </div>
-                      <Button
-                        className={classNames(
-                          "__wab_instance",
-                          sty.button__at9Nk
-                        )}
-                        label={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__tgysq
-                            )}
-                          >
-                            {"Resend Verification Email"}
-                          </div>
-                        }
-                        onClick={async event => {
-                          const $steps = {};
 
-                          $steps["invokeGlobalAction"] = true
+                        $steps["errorShowErrorMessage"] =
+                          $ctx.SupabaseUser.error !== null &&
+                          !$ctx.SupabaseUser?.error?.includes(
+                            "Email not confirmed"
+                          )
                             ? (() => {
                                 const actionArgs = {
                                   args: [
+                                    "error",
+                                    "Something went wrong",
                                     (() => {
                                       try {
-                                        return $state.loginForm.value.email;
+                                        return $ctx.SupabaseUser.error;
                                       } catch (e) {
                                         if (
                                           e instanceof TypeError ||
@@ -874,85 +515,150 @@ function PlasmicLogin__RenderFunc(props: {
                                         throw e;
                                       }
                                     })(),
-                                    (() => {
-                                      try {
-                                        return $state.loginForm.value.password;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
+                                    15,
+                                    "top"
                                   ]
                                 };
                                 return $globalActions[
-                                  "SupabaseUserGlobalContext.signup"
+                                  "plasmic-antd5-config-provider.showNotification"
                                 ]?.apply(null, [...actionArgs.args]);
                               })()
                             : undefined;
-                          if (
-                            $steps["invokeGlobalAction"] != null &&
-                            typeof $steps["invokeGlobalAction"] === "object" &&
-                            typeof $steps["invokeGlobalAction"].then ===
-                              "function"
-                          ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
-                            ];
-                          }
-                        }}
-                      />
-                    </Stack__>
-                  </AntdModal>
-                </section>
-                {(() => {
-                  const child$Props = {
-                    className: classNames("__wab_instance", sty.modal2),
-                    defaultStylesClassName: classNames(
-                      projectcss.root_reset,
-                      projectcss.plasmic_default_styles,
-                      projectcss.plasmic_mixins,
-                      projectcss.plasmic_tokens,
-                      plasmic_antd_5_hostless_css.plasmic_tokens,
-                      plasmic_plasmic_rich_components_css.plasmic_tokens
-                    ),
-                    modalScopeClassName: sty["modal2__modal"],
-                    onOpenChange: async (...eventArgs: any) => {
-                      generateStateOnChangeProp($state, [
-                        "modal2",
-                        "open"
-                      ]).apply(null, eventArgs);
-                    },
-                    open: generateStateValueProp($state, ["modal2", "open"]),
-                    title: "Your email has been verified!",
-                    trigger: null
-                  };
-                  initializeCodeComponentStates(
-                    $state,
-                    [
-                      {
-                        name: "open",
-                        plasmicStateName: "modal2.open"
-                      }
-                    ],
-                    [],
-                    undefined ?? {},
-                    child$Props
-                  );
-                  initializePlasmicStates(
-                    $state,
-                    [
-                      {
-                        name: "modal2.open",
-                        initFunc: ({ $props, $state, $queries }) =>
-                          (() => {
+                        if (
+                          $steps["errorShowErrorMessage"] != null &&
+                          typeof $steps["errorShowErrorMessage"] === "object" &&
+                          typeof $steps["errorShowErrorMessage"].then ===
+                            "function"
+                        ) {
+                          $steps["errorShowErrorMessage"] = await $steps[
+                            "errorShowErrorMessage"
+                          ];
+                        }
+
+                        $steps["updateIsModalOpen"] =
+                          $ctx.SupabaseUser?.error?.includes(
+                            "Email not confirmed"
+                          )
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["isModalOpen"]
+                                  },
+                                  operation: 0,
+                                  value: true
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                        if (
+                          $steps["updateIsModalOpen"] != null &&
+                          typeof $steps["updateIsModalOpen"] === "object" &&
+                          typeof $steps["updateIsModalOpen"].then === "function"
+                        ) {
+                          $steps["updateIsModalOpen"] = await $steps[
+                            "updateIsModalOpen"
+                          ];
+                        }
+                      },
+                      onIsSubmittingChange: async (...eventArgs: any) => {
+                        generateStateOnChangePropForCodeComponents(
+                          $state,
+                          "isSubmitting",
+                          ["loginForm", "isSubmitting"],
+                          FormWrapper_Helpers
+                        ).apply(null, eventArgs);
+                      },
+                      ref: ref => {
+                        $refs["loginForm"] = ref;
+                      },
+                      requiredMark: false,
+                      wrapperCol: { span: 16, horizontalOnly: true }
+                    };
+                    initializeCodeComponentStates(
+                      $state,
+                      [
+                        {
+                          name: "value",
+                          plasmicStateName: "loginForm.value"
+                        },
+                        {
+                          name: "isSubmitting",
+                          plasmicStateName: "loginForm.isSubmitting"
+                        }
+                      ],
+                      [],
+                      FormWrapper_Helpers ?? {},
+                      child$Props
+                    );
+
+                    return (
+                      <FormWrapper
+                        data-plasmic-name={"loginForm"}
+                        data-plasmic-override={overrides.loginForm}
+                        {...child$Props}
+                      >
+                        <FormItemWrapper
+                          className={classNames(
+                            "__wab_instance",
+                            sty.formField__iAcSl
+                          )}
+                          label={"Email"}
+                          name={"email"}
+                          rules={[
+                            {
+                              ruleType: "required",
+                              message: "Email is required"
+                            }
+                          ]}
+                        >
+                          <AntdInput
+                            className={classNames("__wab_instance", sty.input)}
+                          />
+                        </FormItemWrapper>
+                        <FormItemWrapper
+                          className={classNames(
+                            "__wab_instance",
+                            sty.formField___4Utrb
+                          )}
+                          label={"Password"}
+                          name={"password"}
+                          rules={[
+                            {
+                              ruleType: "required",
+                              message: "Password is required",
+                              length: 6
+                            }
+                          ]}
+                        >
+                          <AntdPassword
+                            className={classNames(
+                              "__wab_instance",
+                              sty.passwordInput
+                            )}
+                          />
+                        </FormItemWrapper>
+                        <AntdButton
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__sf3Ws
+                          )}
+                          loading={(() => {
                             try {
-                              return $ctx?.query?.code !== undefined;
+                              return $state.loginForm.isSubmitting;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
@@ -962,37 +668,316 @@ function PlasmicLogin__RenderFunc(props: {
                               }
                               throw e;
                             }
-                          })()
-                      }
-                    ],
-                    []
-                  );
-                  return (
-                    <AntdModal
-                      data-plasmic-name={"modal2"}
-                      data-plasmic-override={overrides.modal2}
-                      {...child$Props}
-                    >
-                      <div
+                          })()}
+                          submitsForm={true}
+                          type={"primary"}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__khtRc
+                            )}
+                          >
+                            {"Login"}
+                          </div>
+                        </AntdButton>
+                      </FormWrapper>
+                    );
+                  })()}
+                </Stack__>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___0XBrv
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Forgot Password? "}</React.Fragment>
+                    {
+                      <PlasmicLink__
+                        data-plasmic-name={"link"}
+                        data-plasmic-override={overrides.link}
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__kUii
+                          projectcss.a,
+                          projectcss.__wab_text,
+                          projectcss.plasmic_default__inline,
+                          sty.link
                         )}
+                        component={Link}
+                        href={(() => {
+                          try {
+                            return "/reset-password";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return `/reset-password`;
+                            }
+                            throw e;
+                          }
+                        })()}
+                        platform={"nextjs"}
                       >
+                        {"Reset"}
+                      </PlasmicLink__>
+                    }
+                    <React.Fragment>{""}</React.Fragment>
+                  </React.Fragment>
+                </div>
+              </div>
+              <section
+                className={classNames(projectcss.all, sty.section__eriIf)}
+              >
+                <AntdModal
+                  data-plasmic-name={"modal"}
+                  data-plasmic-override={overrides.modal}
+                  className={classNames("__wab_instance", sty.modal)}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    projectcss.plasmic_tokens,
+                    plasmic_antd_5_hostless_css.plasmic_tokens,
+                    plasmic_plasmic_rich_components_css.plasmic_tokens
+                  )}
+                  hideFooter={true}
+                  maskClosable={true}
+                  modalScopeClassName={sty["modal__modal"]}
+                  okText={"Resend Email"}
+                  onCancel={async () => {
+                    const $steps = {};
+
+                    $steps["updateIsModalOpen"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["isModalOpen"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateIsModalOpen"] != null &&
+                      typeof $steps["updateIsModalOpen"] === "object" &&
+                      typeof $steps["updateIsModalOpen"].then === "function"
+                    ) {
+                      $steps["updateIsModalOpen"] = await $steps[
+                        "updateIsModalOpen"
+                      ];
+                    }
+                  }}
+                  onOk={async () => {
+                    const $steps = {};
+                  }}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, ["modal", "open"]).apply(
+                      null,
+                      eventArgs
+                    );
+                  }}
+                  open={generateStateValueProp($state, ["modal", "open"])}
+                  title={
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__bt1Jv
+                      )}
+                    >
+                      {"Your email has not been verified yet"}
+                    </div>
+                  }
+                  trigger={null}
+                >
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox___2Xdbz)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__aSVd
+                      )}
+                    >
+                      {
+                        "Check your email, a mail to verify your account was sent"
+                      }
+                    </div>
+                    <Button
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button__at9Nk
+                      )}
+                      label={
                         <div
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__xnRp
+                            sty.text__tgysq
                           )}
                         >
-                          {"Modal content"}
+                          {"Resend Verification Email"}
                         </div>
+                      }
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["invokeGlobalAction"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  (() => {
+                                    try {
+                                      return $state.loginForm.value.email;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })(),
+                                  (() => {
+                                    try {
+                                      return $state.loginForm.value.password;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "SupabaseUserGlobalContext.signup"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction"] != null &&
+                          typeof $steps["invokeGlobalAction"] === "object" &&
+                          typeof $steps["invokeGlobalAction"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction"] = await $steps[
+                            "invokeGlobalAction"
+                          ];
+                        }
+                      }}
+                    />
+                  </Stack__>
+                </AntdModal>
+              </section>
+              {(() => {
+                const child$Props = {
+                  className: classNames("__wab_instance", sty.modal2),
+                  defaultStylesClassName: classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    projectcss.plasmic_tokens,
+                    plasmic_antd_5_hostless_css.plasmic_tokens,
+                    plasmic_plasmic_rich_components_css.plasmic_tokens
+                  ),
+                  modalScopeClassName: sty["modal2__modal"],
+                  onOpenChange: async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, ["modal2", "open"]).apply(
+                      null,
+                      eventArgs
+                    );
+                  },
+                  open: generateStateValueProp($state, ["modal2", "open"]),
+                  title: "Your email has been verified!",
+                  trigger: null
+                };
+                initializeCodeComponentStates(
+                  $state,
+                  [
+                    {
+                      name: "open",
+                      plasmicStateName: "modal2.open"
+                    }
+                  ],
+                  [],
+                  undefined ?? {},
+                  child$Props
+                );
+                initializePlasmicStates(
+                  $state,
+                  [
+                    {
+                      name: "modal2.open",
+                      initFunc: ({ $props, $state, $queries }) =>
+                        (() => {
+                          try {
+                            return $ctx?.query?.code !== undefined;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                    }
+                  ],
+                  []
+                );
+                return (
+                  <AntdModal
+                    data-plasmic-name={"modal2"}
+                    data-plasmic-override={overrides.modal2}
+                    {...child$Props}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__kUii)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__xnRp
+                        )}
+                      >
+                        {"Modal content"}
                       </div>
-                    </AntdModal>
-                  );
-                })()}
-              </div>
+                    </div>
+                  </AntdModal>
+                );
+              })()}
             </div>
           </div>
         </div>
