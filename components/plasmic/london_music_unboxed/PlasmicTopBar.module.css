@@ -5,6 +5,7 @@
   height: auto;
   max-width: 100%;
   position: relative;
+  background: var(--token-tMilkOK1BC4I);
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
   padding: 8px;

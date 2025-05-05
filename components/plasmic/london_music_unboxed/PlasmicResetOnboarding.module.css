@@ -2,12 +2,12 @@
   display: grid;
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   align-content: flex-start;
   justify-items: center;
   background: var(--token-as44I7WwR-rZ);
+  overflow: auto;
   min-width: 0;
-  min-height: 0;
   grid-template-columns:
     var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
     min(
@@ -115,10 +115,10 @@
 .freeBox__c1Q4U > :global(.__wab_flex-container) {
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: center;
   min-width: 0;
-  margin-top: calc(0px - 24px);
-  height: calc(100% + 24px);
+  margin-top: calc(0px - 10px);
+  height: calc(100% + 10px);
 }
 .freeBox__c1Q4U > :global(.__wab_flex-container) > *,
 .freeBox__c1Q4U > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
@@ -128,12 +128,33 @@
   > :global(.__wab_slot)
   > picture
   > img {
-  margin-top: 24px;
+  margin-top: 10px;
+}
+.img {
+  object-fit: cover;
+  max-width: 100%;
+  width: 50px;
+}
+.img > picture > img {
+  object-fit: cover;
+}
+.freeBox__om0Vs {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
 }
 .h4 {
   width: 100%;
   height: auto;
   max-width: 100%;
+  text-align: center;
   min-width: 0;
 }
 .text {
@@ -141,5 +162,6 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  text-align: center;
   min-width: 0;
 }

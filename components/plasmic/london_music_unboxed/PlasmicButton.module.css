@@ -1,18 +1,23 @@
 .root:global(.__wab_instance) {
   position: relative;
-  background: var(--token-NMTUfWqzy3UM);
+  background: var(--token-NANCd_f9Z6JF);
   display: flex;
   cursor: pointer;
   box-sizing: border-box;
   min-width: var(--token-6prbz8P8quxd);
-  font-family: var(--token-ox45E01dgj3G);
+  font-family: "Source Sans 3", sans-serif;
   font-size: var(--token-Sks-ERlD4yf7);
   line-height: var(--token-IwJXRlL21nBQ);
   outline-style: none;
   text-decoration-line: none;
+  color: #ffffff;
+  font-weight: 500;
   border-radius: var(--token-GHU777uGwY8R);
   padding: 0rem;
   border-width: 0px;
+}
+.root[data-hovered]:global(.__wab_instance) {
+  background: var(--token-X5mU4Q8J-a7k);
 }
 .root[data-focus-visible]:global(.__wab_instance) {
   outline-style: solid;

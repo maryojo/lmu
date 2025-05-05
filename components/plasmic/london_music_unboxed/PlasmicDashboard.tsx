@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import TopBar from "../../TopBar"; // plasmic-import: GK49OJrlqKX0/component
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -84,8 +85,11 @@ export const PlasmicDashboard__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicDashboard__OverridesType = {
   root?: Flex__<"div">;
+  topBar?: Flex__<typeof TopBar>;
   section?: Flex__<"section">;
-  h1?: Flex__<"h1">;
+  freeBox?: Flex__<"div">;
+  h4?: Flex__<"h4">;
+  button?: Flex__<typeof Button>;
 };
 
 export interface DefaultDashboardProps {}
@@ -157,144 +161,86 @@ function PlasmicDashboard__RenderFunc(props: {
             sty.root
           )}
         >
+          <TopBar
+            data-plasmic-name={"topBar"}
+            data-plasmic-override={overrides.topBar}
+            className={classNames("__wab_instance", sty.topBar)}
+          />
+
           <section
             data-plasmic-name={"section"}
             data-plasmic-override={overrides.section}
             className={classNames(projectcss.all, sty.section)}
           >
-            <h1
-              data-plasmic-name={"h1"}
-              data-plasmic-override={overrides.h1}
-              className={classNames(
-                projectcss.all,
-                projectcss.h1,
-                projectcss.__wab_text,
-                sty.h1
-              )}
+            <Stack__
+              as={"div"}
+              data-plasmic-name={"freeBox"}
+              data-plasmic-override={overrides.freeBox}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox)}
             >
-              {"Welcome to your first page."}
-            </h1>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__eZnrk
-              )}
-            >
-              <React.Fragment>
-                <React.Fragment>
-                  {
-                    "If you haven't already done so, go back and learn the basics by going through the Plasmic Levels tutorial.\n\nIt's always easier to start from examples! Add a new page using a template\u2014do this from the list of pages in the top toolbar.\n\nOr press the big blue + button to start inserting items into this page.\n\nIntegrate this project into your codebase\u2014press the "
-                  }
-                </React.Fragment>
-                <span
-                  className={"plasmic_default__all plasmic_default__span"}
-                  style={{ fontWeight: 700 }}
-                >
-                  {"Code"}
-                </span>
-                <React.Fragment>
-                  {
-                    " button in the top right and follow the quickstart instructions.\n\nJoin our Slack community (icon in bottom left) for help any time."
-                  }
-                </React.Fragment>
-              </React.Fragment>
-            </div>
-            <Button
-              className={classNames("__wab_instance", sty.button__r1Gy8)}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["invokeGlobalAction"] = true
-                  ? (() => {
-                      const actionArgs = { args: ["/login"] };
-                      return $globalActions[
-                        "SupabaseUserGlobalContext.logout"
-                      ]?.apply(null, [...actionArgs.args]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["invokeGlobalAction"] != null &&
-                  typeof $steps["invokeGlobalAction"] === "object" &&
-                  typeof $steps["invokeGlobalAction"].then === "function"
-                ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
+              <h4
+                data-plasmic-name={"h4"}
+                data-plasmic-override={overrides.h4}
+                className={classNames(
+                  projectcss.all,
+                  projectcss.h4,
+                  projectcss.__wab_text,
+                  sty.h4
+                )}
+              >
+                {"We're getting started very soon!"}
+              </h4>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__eZnrk
+                )}
+              >
+                {
+                  "Music classes are starting soon! We're excited to have you on board. Get ready to dive into lessons, practice new skills, and grow your musical talent. Keep an eye on your dashboard and email for updates and your class schedule."
                 }
-              }}
-            />
+              </div>
+              <Button
+                data-plasmic-name={"button"}
+                data-plasmic-override={overrides.button}
+                className={classNames("__wab_instance", sty.button)}
+                label={
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__sew1T
+                    )}
+                  >
+                    {"Logout"}
+                  </div>
+                }
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["invokeGlobalAction"] = true
+                    ? (() => {
+                        const actionArgs = { args: ["/login"] };
+                        return $globalActions[
+                          "SupabaseUserGlobalContext.logout"
+                        ]?.apply(null, [...actionArgs.args]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["invokeGlobalAction"] != null &&
+                    typeof $steps["invokeGlobalAction"] === "object" &&
+                    typeof $steps["invokeGlobalAction"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction"] = await $steps[
+                      "invokeGlobalAction"
+                    ];
+                  }
+                }}
+              />
+            </Stack__>
           </section>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__ke7Ep
-            )}
-          >
-            <React.Fragment>
-              {(() => {
-                try {
-                  return $ctx.SupabaseUser.user.user_metadata.userRole;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return "Enter some my name";
-                  }
-                  throw e;
-                }
-              })()}
-            </React.Fragment>
-          </div>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text___68XC
-            )}
-          >
-            <React.Fragment>
-              {(() => {
-                try {
-                  return $ctx.SupabaseUser.user.email;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return "Enter some my name";
-                  }
-                  throw e;
-                }
-              })()}
-            </React.Fragment>
-          </div>
-          <Button
-            className={classNames("__wab_instance", sty.button__ptyp7)}
-            onClick={async event => {
-              const $steps = {};
-
-              $steps["invokeGlobalAction"] = true
-                ? (() => {
-                    const actionArgs = { args: ["/login"] };
-                    return $globalActions[
-                      "SupabaseUserGlobalContext.logout"
-                    ]?.apply(null, [...actionArgs.args]);
-                  })()
-                : undefined;
-              if (
-                $steps["invokeGlobalAction"] != null &&
-                typeof $steps["invokeGlobalAction"] === "object" &&
-                typeof $steps["invokeGlobalAction"].then === "function"
-              ) {
-                $steps["invokeGlobalAction"] = await $steps[
-                  "invokeGlobalAction"
-                ];
-              }
-            }}
-          />
         </div>
       </div>
     </React.Fragment>
@@ -302,17 +248,23 @@ function PlasmicDashboard__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "h1"],
-  section: ["section", "h1"],
-  h1: ["h1"]
+  root: ["root", "topBar", "section", "freeBox", "h4", "button"],
+  topBar: ["topBar"],
+  section: ["section", "freeBox", "h4", "button"],
+  freeBox: ["freeBox", "h4", "button"],
+  h4: ["h4"],
+  button: ["button"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  topBar: typeof TopBar;
   section: "section";
-  h1: "h1";
+  freeBox: "div";
+  h4: "h4";
+  button: typeof Button;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -375,8 +327,11 @@ export const PlasmicDashboard = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    topBar: makeNodeComponent("topBar"),
     section: makeNodeComponent("section"),
-    h1: makeNodeComponent("h1"),
+    freeBox: makeNodeComponent("freeBox"),
+    h4: makeNodeComponent("h4"),
+    button: makeNodeComponent("button"),
 
     // Metadata about props expected for PlasmicDashboard
     internalVariantProps: PlasmicDashboard__VariantProps,

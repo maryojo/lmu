@@ -101,7 +101,6 @@ export const PlasmicOnboarding__ArgProps = new Array<ArgPropType>();
 export type PlasmicOnboarding__OverridesType = {
   root?: Flex__<"div">;
   topBar?: Flex__<typeof TopBar>;
-  h4?: Flex__<"h4">;
   startOnboardingQuizForm?: Flex__<typeof FormWrapper>;
   quizComponent?: Flex__<typeof QuizComponent>;
 };
@@ -431,13 +430,11 @@ function PlasmicOnboarding__RenderFunc(props: {
                         )}
                       >
                         <h4
-                          data-plasmic-name={"h4"}
-                          data-plasmic-override={overrides.h4}
                           className={classNames(
                             projectcss.all,
                             projectcss.h4,
                             projectcss.__wab_text,
-                            sty.h4
+                            sty.h4__aRhAv
                           )}
                         >
                           {"Welcome!"}
@@ -791,7 +788,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <FormItemWrapper
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.formField__gTcpr
+                                  sty.formField___3Ua0
                                 )}
                                 label={
                                   "What instrument would you like to enrol for?"
@@ -804,7 +801,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                 <AntdRadioGroup
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.radioGroup__xmLo2
+                                    sty.radioGroup__js4Hu
                                   )}
                                   options={(() => {
                                     const __composite = [
@@ -857,7 +854,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__m3RCq
+                                      sty.radio__vjy5Q
                                     )}
                                     value={"op1"}
                                   >
@@ -865,7 +862,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__jzK8H
+                                        sty.text__jaiVt
                                       )}
                                     >
                                       {"Option 1"}
@@ -874,7 +871,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__nh3As
+                                      sty.radio__fHsVn
                                     )}
                                     value={"op2"}
                                   >
@@ -882,7 +879,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__ppHwt
+                                        sty.text__dYlO0
                                       )}
                                     >
                                       {"Option 2"}
@@ -893,7 +890,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <FormItemWrapper
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.formField__gxxJ6
+                                  sty.formField__sun8E
                                 )}
                                 label={"What level do you best fit in?"}
                                 name={"trainingLevel"}
@@ -904,7 +901,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                 <AntdRadioGroup
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.radioGroup__a47S
+                                    sty.radioGroup__a6M2F
                                   )}
                                   options={(() => {
                                     const __composite = [
@@ -950,7 +947,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__mlTy8
+                                      sty.radio__kS4Fn
                                     )}
                                     value={"op1"}
                                   >
@@ -958,7 +955,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__i1Atj
+                                        sty.text__umx3Q
                                       )}
                                     >
                                       {"Option 1"}
@@ -967,7 +964,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__wWsUx
+                                      sty.radio___4Sgay
                                     )}
                                     value={"op2"}
                                   >
@@ -975,7 +972,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__yp6Lz
+                                        sty.text__lwjxM
                                       )}
                                     >
                                       {"Option 2"}
@@ -986,7 +983,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <AntdButton
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.button__aavya
+                                  sty.button__pt6Sx
                                 )}
                                 loading={(() => {
                                   try {
@@ -1010,7 +1007,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text__fv6C
+                                    sty.text__ayztG
                                   )}
                                 >
                                   {"Next"}
@@ -1047,6 +1044,16 @@ function PlasmicOnboarding__RenderFunc(props: {
                           sty.freeBox__cknSk
                         )}
                       >
+                        <h4
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.h4,
+                            projectcss.__wab_text,
+                            sty.h4__fD3Q
+                          )}
+                        >
+                          {"Continue Onboarding"}
+                        </h4>
                         <div
                           className={classNames(
                             projectcss.all,
@@ -1802,7 +1809,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                         throw e;
                       }
                     })()}
-                    quizTitle={"React Quiz"}
+                    quizTitle={"Quiz 1"}
                     resetKey={(() => {
                       try {
                         return $state.formStep;
@@ -1819,543 +1826,557 @@ function PlasmicOnboarding__RenderFunc(props: {
                     timeLimit={120}
                   />
 
-                  {(() => {
-                    try {
-                      return (
-                        $state.quizScore !== null &&
-                        !$state.isQuizPassed &&
-                        $state.lowerLevel !== "0"
-                      );
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__zCjhm)}
+                  >
+                    {(() => {
+                      try {
+                        return (
+                          $state.quizScore !== null &&
+                          !$state.isQuizPassed &&
+                          $state.lowerLevel !== "0"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
                       }
-                      throw e;
-                    }
-                  })() ? (
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__v9Mz
-                      )}
-                    >
-                      <React.Fragment>
-                        {(() => {
+                    })() ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__v9Mz
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return `To proceed, you would have to take the quiz for ${$state.lowerLevel.toLocaleLowerCase()}s`;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "To proceed, you would have to take the quiz for  ";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </div>
+                    ) : null}
+                    {(() => {
+                      try {
+                        return (
+                          $state.quizScore !== null &&
+                          !$state.isQuizPassed &&
+                          $state.lowerLevel !== "0"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <Button
+                        className={classNames(
+                          "__wab_instance",
+                          sty.button__djDcX
+                        )}
+                        disabled={(() => {
                           try {
-                            return `To proceed, you would have to take the quiz for ${$state.lowerLevel.toLocaleLowerCase()}s`;
+                            return $state.disableNewQuizButton;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
                               e?.plasmicType === "PlasmicUndefinedDataError"
                             ) {
-                              return "To proceed, you would have to take the quiz for  ";
+                              return undefined;
                             }
                             throw e;
                           }
                         })()}
-                      </React.Fragment>
-                    </div>
-                  ) : null}
-                  {(() => {
-                    try {
-                      return (
-                        $state.quizScore !== null &&
-                        !$state.isQuizPassed &&
-                        $state.lowerLevel !== "0"
-                      );
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <Button
-                      className={classNames(
-                        "__wab_instance",
-                        sty.button__djDcX
-                      )}
-                      disabled={(() => {
-                        try {
-                          return $state.disableNewQuizButton;
-                        } catch (e) {
+                        label={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___9Lm8
+                            )}
+                          >
+                            {"Take New Quiz"}
+                          </div>
+                        }
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["updateDisableNewQuizButton"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["disableNewQuizButton"]
+                                  },
+                                  operation: 0,
+                                  value: true
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
                           if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
+                            $steps["updateDisableNewQuizButton"] != null &&
+                            typeof $steps["updateDisableNewQuizButton"] ===
+                              "object" &&
+                            typeof $steps["updateDisableNewQuizButton"].then ===
+                              "function"
                           ) {
-                            return undefined;
+                            $steps["updateDisableNewQuizButton"] = await $steps[
+                              "updateDisableNewQuizButton"
+                            ];
                           }
-                          throw e;
-                        }
-                      })()}
-                      label={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___9Lm8
-                          )}
-                        >
-                          {"Retake Quiz"}
-                        </div>
-                      }
-                      onClick={async event => {
-                        const $steps = {};
 
-                        $steps["updateDisableNewQuizButton"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["disableNewQuizButton"]
-                                },
-                                operation: 0,
-                                value: true
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateDisableNewQuizButton"] != null &&
-                          typeof $steps["updateDisableNewQuizButton"] ===
-                            "object" &&
-                          typeof $steps["updateDisableNewQuizButton"].then ===
-                            "function"
-                        ) {
-                          $steps["updateDisableNewQuizButton"] = await $steps[
-                            "updateDisableNewQuizButton"
-                          ];
-                        }
-
-                        $steps["postgresGetList"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                dataOp: {
-                                  sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-                                  opId: "cad74c7d-ca92-4362-b2ff-b9f30302c909",
-                                  userArgs: {
-                                    filters: [
-                                      $state.startOnboardingQuizForm?.value
-                                        ?.instrumentCategory ??
-                                        $queries?.getUserInformation?.data[0]
-                                          .instrument_category,
-                                      $state.lowerLevel
-                                    ]
-                                  },
-                                  cacheKey: null,
-                                  invalidatedKeys: null,
-                                  roleId: null
-                                }
-                              };
-                              return (async ({ dataOp, continueOnError }) => {
-                                try {
-                                  const response = await executePlasmicDataOp(
-                                    dataOp,
-                                    {
-                                      userAuthToken:
-                                        dataSourcesCtx?.userAuthToken,
-                                      user: dataSourcesCtx?.user
-                                    }
-                                  );
-                                  await plasmicInvalidate(
-                                    dataOp.invalidatedKeys
-                                  );
-                                  return response;
-                                } catch (e) {
-                                  if (!continueOnError) {
-                                    throw e;
+                          $steps["postgresGetList"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  dataOp: {
+                                    sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                    opId: "cad74c7d-ca92-4362-b2ff-b9f30302c909",
+                                    userArgs: {
+                                      filters: [
+                                        $state.startOnboardingQuizForm?.value
+                                          ?.instrumentCategory ??
+                                          $queries?.getUserInformation?.data[0]
+                                            .instrument_category,
+                                        $state.lowerLevel
+                                      ]
+                                    },
+                                    cacheKey: null,
+                                    invalidatedKeys: null,
+                                    roleId: null
                                   }
-                                  return e;
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["postgresGetList"] != null &&
-                          typeof $steps["postgresGetList"] === "object" &&
-                          typeof $steps["postgresGetList"].then === "function"
-                        ) {
-                          $steps["postgresGetList"] = await $steps[
-                            "postgresGetList"
-                          ];
-                        }
-
-                        $steps["updateFetchedQuizId"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["fetchedQuizId"]
-                                },
-                                operation: 0,
-                                value: $steps.postgresGetList.data[0].id
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateFetchedQuizId"] != null &&
-                          typeof $steps["updateFetchedQuizId"] === "object" &&
-                          typeof $steps["updateFetchedQuizId"].then ===
-                            "function"
-                        ) {
-                          $steps["updateFetchedQuizId"] = await $steps[
-                            "updateFetchedQuizId"
-                          ];
-                        }
-
-                        $steps["postgresGetList2"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                dataOp: {
-                                  sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-                                  opId: "718444ab-0dcb-4bcb-86f7-c906331ee065",
-                                  userArgs: {
-                                    filters: [$state.fetchedQuizId]
-                                  },
-                                  cacheKey: null,
-                                  invalidatedKeys: null,
-                                  roleId: null
-                                }
-                              };
-                              return (async ({ dataOp, continueOnError }) => {
-                                try {
-                                  const response = await executePlasmicDataOp(
-                                    dataOp,
-                                    {
-                                      userAuthToken:
-                                        dataSourcesCtx?.userAuthToken,
-                                      user: dataSourcesCtx?.user
+                                };
+                                return (async ({ dataOp, continueOnError }) => {
+                                  try {
+                                    const response = await executePlasmicDataOp(
+                                      dataOp,
+                                      {
+                                        userAuthToken:
+                                          dataSourcesCtx?.userAuthToken,
+                                        user: dataSourcesCtx?.user
+                                      }
+                                    );
+                                    await plasmicInvalidate(
+                                      dataOp.invalidatedKeys
+                                    );
+                                    return response;
+                                  } catch (e) {
+                                    if (!continueOnError) {
+                                      throw e;
                                     }
-                                  );
-                                  await plasmicInvalidate(
-                                    dataOp.invalidatedKeys
-                                  );
-                                  return response;
-                                } catch (e) {
-                                  if (!continueOnError) {
-                                    throw e;
+                                    return e;
                                   }
-                                  return e;
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["postgresGetList2"] != null &&
-                          typeof $steps["postgresGetList2"] === "object" &&
-                          typeof $steps["postgresGetList2"].then === "function"
-                        ) {
-                          $steps["postgresGetList2"] = await $steps[
-                            "postgresGetList2"
-                          ];
-                        }
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["postgresGetList"] != null &&
+                            typeof $steps["postgresGetList"] === "object" &&
+                            typeof $steps["postgresGetList"].then === "function"
+                          ) {
+                            $steps["postgresGetList"] = await $steps[
+                              "postgresGetList"
+                            ];
+                          }
 
-                        $steps["updateFetchedQuizInfo"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["fetchedQuizInfo"]
-                                },
-                                operation: 0,
-                                value: $steps.postgresGetList2?.data
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                          $steps["updateFetchedQuizId"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["fetchedQuizId"]
+                                  },
+                                  operation: 0,
+                                  value: $steps.postgresGetList.data[0].id
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
 
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateFetchedQuizInfo"] != null &&
-                          typeof $steps["updateFetchedQuizInfo"] === "object" &&
-                          typeof $steps["updateFetchedQuizInfo"].then ===
-                            "function"
-                        ) {
-                          $steps["updateFetchedQuizInfo"] = await $steps[
-                            "updateFetchedQuizInfo"
-                          ];
-                        }
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateFetchedQuizId"] != null &&
+                            typeof $steps["updateFetchedQuizId"] === "object" &&
+                            typeof $steps["updateFetchedQuizId"].then ===
+                              "function"
+                          ) {
+                            $steps["updateFetchedQuizId"] = await $steps[
+                              "updateFetchedQuizId"
+                            ];
+                          }
 
-                        $steps["updateFormStep"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["formStep"]
-                                },
-                                operation: 2,
-                                value: $state.formStep + 1 + 1
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                          $steps["postgresGetList2"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  dataOp: {
+                                    sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                    opId: "718444ab-0dcb-4bcb-86f7-c906331ee065",
+                                    userArgs: {
+                                      filters: [$state.fetchedQuizId]
+                                    },
+                                    cacheKey: null,
+                                    invalidatedKeys: null,
+                                    roleId: null
+                                  }
+                                };
+                                return (async ({ dataOp, continueOnError }) => {
+                                  try {
+                                    const response = await executePlasmicDataOp(
+                                      dataOp,
+                                      {
+                                        userAuthToken:
+                                          dataSourcesCtx?.userAuthToken,
+                                        user: dataSourcesCtx?.user
+                                      }
+                                    );
+                                    await plasmicInvalidate(
+                                      dataOp.invalidatedKeys
+                                    );
+                                    return response;
+                                  } catch (e) {
+                                    if (!continueOnError) {
+                                      throw e;
+                                    }
+                                    return e;
+                                  }
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["postgresGetList2"] != null &&
+                            typeof $steps["postgresGetList2"] === "object" &&
+                            typeof $steps["postgresGetList2"].then ===
+                              "function"
+                          ) {
+                            $steps["postgresGetList2"] = await $steps[
+                              "postgresGetList2"
+                            ];
+                          }
 
-                                const oldValue = $stateGet(
-                                  objRoot,
-                                  variablePath
-                                );
-                                $stateSet(objRoot, variablePath, oldValue + 1);
-                                return oldValue + 1;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateFormStep"] != null &&
-                          typeof $steps["updateFormStep"] === "object" &&
-                          typeof $steps["updateFormStep"].then === "function"
-                        ) {
-                          $steps["updateFormStep"] = await $steps[
-                            "updateFormStep"
-                          ];
-                        }
+                          $steps["updateFetchedQuizInfo"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["fetchedQuizInfo"]
+                                  },
+                                  operation: 0,
+                                  value: $steps.postgresGetList2?.data
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
 
-                        $steps["runCode"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                customFunction: async () => {
-                                  return ($state.startOnboardingQuizForm = {
-                                    value: { trainingLevel: $state.lowerLevel }
-                                  });
-                                }
-                              };
-                              return (({ customFunction }) => {
-                                return customFunction();
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["runCode"] != null &&
-                          typeof $steps["runCode"] === "object" &&
-                          typeof $steps["runCode"].then === "function"
-                        ) {
-                          $steps["runCode"] = await $steps["runCode"];
-                        }
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateFetchedQuizInfo"] != null &&
+                            typeof $steps["updateFetchedQuizInfo"] ===
+                              "object" &&
+                            typeof $steps["updateFetchedQuizInfo"].then ===
+                              "function"
+                          ) {
+                            $steps["updateFetchedQuizInfo"] = await $steps[
+                              "updateFetchedQuizInfo"
+                            ];
+                          }
 
-                        $steps["updateQuizScore"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["quizScore"]
-                                },
-                                operation: 0,
-                                value: null
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                          $steps["updateFormStep"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["formStep"]
+                                  },
+                                  operation: 2,
+                                  value: $state.formStep + 1 + 1
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
 
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateQuizScore"] != null &&
-                          typeof $steps["updateQuizScore"] === "object" &&
-                          typeof $steps["updateQuizScore"].then === "function"
-                        ) {
-                          $steps["updateQuizScore"] = await $steps[
-                            "updateQuizScore"
-                          ];
-                        }
+                                  const oldValue = $stateGet(
+                                    objRoot,
+                                    variablePath
+                                  );
+                                  $stateSet(
+                                    objRoot,
+                                    variablePath,
+                                    oldValue + 1
+                                  );
+                                  return oldValue + 1;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateFormStep"] != null &&
+                            typeof $steps["updateFormStep"] === "object" &&
+                            typeof $steps["updateFormStep"].then === "function"
+                          ) {
+                            $steps["updateFormStep"] = await $steps[
+                              "updateFormStep"
+                            ];
+                          }
 
-                        $steps["updateOnQuizComplete"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["onQuizComplete"]
-                                },
-                                operation: 0,
-                                value: {}
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return ($state.startOnboardingQuizForm = {
+                                      value: {
+                                        trainingLevel: $state.lowerLevel
+                                      }
+                                    });
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
 
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateOnQuizComplete"] != null &&
-                          typeof $steps["updateOnQuizComplete"] === "object" &&
-                          typeof $steps["updateOnQuizComplete"].then ===
-                            "function"
-                        ) {
-                          $steps["updateOnQuizComplete"] = await $steps[
-                            "updateOnQuizComplete"
-                          ];
-                        }
+                          $steps["updateQuizScore"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["quizScore"]
+                                  },
+                                  operation: 0,
+                                  value: null
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
 
-                        $steps["runCode2"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                customFunction: async () => {
-                                  return setTimeout(() => {
-                                    $state.formStep++;
-                                  }, 100);
-                                }
-                              };
-                              return (({ customFunction }) => {
-                                return customFunction();
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["runCode2"] != null &&
-                          typeof $steps["runCode2"] === "object" &&
-                          typeof $steps["runCode2"].then === "function"
-                        ) {
-                          $steps["runCode2"] = await $steps["runCode2"];
-                        }
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateQuizScore"] != null &&
+                            typeof $steps["updateQuizScore"] === "object" &&
+                            typeof $steps["updateQuizScore"].then === "function"
+                          ) {
+                            $steps["updateQuizScore"] = await $steps[
+                              "updateQuizScore"
+                            ];
+                          }
 
-                        $steps["updateDisableNewQuizButton2"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["disableNewQuizButton"]
-                                },
-                                operation: 0,
-                                value: false
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                          $steps["updateOnQuizComplete"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["onQuizComplete"]
+                                  },
+                                  operation: 0,
+                                  value: {}
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
 
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateDisableNewQuizButton2"] != null &&
-                          typeof $steps["updateDisableNewQuizButton2"] ===
-                            "object" &&
-                          typeof $steps["updateDisableNewQuizButton2"].then ===
-                            "function"
-                        ) {
-                          $steps["updateDisableNewQuizButton2"] = await $steps[
-                            "updateDisableNewQuizButton2"
-                          ];
-                        }
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateOnQuizComplete"] != null &&
+                            typeof $steps["updateOnQuizComplete"] ===
+                              "object" &&
+                            typeof $steps["updateOnQuizComplete"].then ===
+                              "function"
+                          ) {
+                            $steps["updateOnQuizComplete"] = await $steps[
+                              "updateOnQuizComplete"
+                            ];
+                          }
 
-                        $steps["updateCurrentQuizStatus"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["currentQuizStatus"]
-                                },
-                                operation: 0,
-                                value: null
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                          $steps["runCode2"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return setTimeout(() => {
+                                      $state.formStep++;
+                                    }, 100);
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode2"] != null &&
+                            typeof $steps["runCode2"] === "object" &&
+                            typeof $steps["runCode2"].then === "function"
+                          ) {
+                            $steps["runCode2"] = await $steps["runCode2"];
+                          }
 
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateCurrentQuizStatus"] != null &&
-                          typeof $steps["updateCurrentQuizStatus"] ===
-                            "object" &&
-                          typeof $steps["updateCurrentQuizStatus"].then ===
-                            "function"
-                        ) {
-                          $steps["updateCurrentQuizStatus"] = await $steps[
-                            "updateCurrentQuizStatus"
-                          ];
-                        }
-                      }}
-                    />
-                  ) : null}
+                          $steps["updateDisableNewQuizButton2"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["disableNewQuizButton"]
+                                  },
+                                  operation: 0,
+                                  value: false
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateDisableNewQuizButton2"] != null &&
+                            typeof $steps["updateDisableNewQuizButton2"] ===
+                              "object" &&
+                            typeof $steps["updateDisableNewQuizButton2"]
+                              .then === "function"
+                          ) {
+                            $steps["updateDisableNewQuizButton2"] =
+                              await $steps["updateDisableNewQuizButton2"];
+                          }
+
+                          $steps["updateCurrentQuizStatus"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["currentQuizStatus"]
+                                  },
+                                  operation: 0,
+                                  value: null
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateCurrentQuizStatus"] != null &&
+                            typeof $steps["updateCurrentQuizStatus"] ===
+                              "object" &&
+                            typeof $steps["updateCurrentQuizStatus"].then ===
+                              "function"
+                          ) {
+                            $steps["updateCurrentQuizStatus"] = await $steps[
+                              "updateCurrentQuizStatus"
+                            ];
+                          }
+                        }}
+                      />
+                    ) : null}
+                  </Stack__>
                   {(() => {
                     try {
                       return (
@@ -2380,7 +2401,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                       )}
                     >
                       {
-                        "You're starting with the Beginner class! You'll get a mail when the classes begin"
+                        "You're starting with the Beginner class! You'll get notified when the classes begin"
                       }
                     </div>
                   ) : null}
@@ -2435,9 +2456,8 @@ function PlasmicOnboarding__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "topBar", "h4", "startOnboardingQuizForm", "quizComponent"],
+  root: ["root", "topBar", "startOnboardingQuizForm", "quizComponent"],
   topBar: ["topBar"],
-  h4: ["h4"],
   startOnboardingQuizForm: ["startOnboardingQuizForm"],
   quizComponent: ["quizComponent"]
 } as const;
@@ -2447,7 +2467,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   topBar: typeof TopBar;
-  h4: "h4";
   startOnboardingQuizForm: typeof FormWrapper;
   quizComponent: typeof QuizComponent;
 };
@@ -2513,7 +2532,6 @@ export const PlasmicOnboarding = Object.assign(
   {
     // Helper components rendering sub-elements
     topBar: makeNodeComponent("topBar"),
-    h4: makeNodeComponent("h4"),
     startOnboardingQuizForm: makeNodeComponent("startOnboardingQuizForm"),
     quizComponent: makeNodeComponent("quizComponent"),
 

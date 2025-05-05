@@ -312,14 +312,22 @@ function PlasmicLogin__RenderFunc(props: {
                   )}
                 >
                   <React.Fragment>
-                    <React.Fragment>{"You won't "}</React.Fragment>
+                    <React.Fragment>
+                      {"Welcome back. Let's make some "}
+                    </React.Fragment>
                     <span
                       className={"plasmic_default__all plasmic_default__span"}
-                      style={{ color: "#9C9CE2" }}
+                      style={{ color: "#55DABE" }}
                     >
-                      {"believe"}
+                      {"music"}
                     </span>
-                    <React.Fragment>{" what happens next."}</React.Fragment>
+                    <React.Fragment>{""}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ color: "var(--token-tMilkOK1BC4I)" }}
+                    >
+                      {"!"}
+                    </span>
                   </React.Fragment>
                 </h1>
               </section>
@@ -486,7 +494,7 @@ function PlasmicLogin__RenderFunc(props: {
                             $steps["loginUser"] = await $steps["loginUser"];
                           }
 
-                          $steps["invokeGlobalAction"] =
+                          $steps["errorShowErrorMessage"] =
                             $ctx.SupabaseUser.error !== null &&
                             !$ctx.SupabaseUser?.error?.includes(
                               "Email not confirmed"
@@ -520,13 +528,14 @@ function PlasmicLogin__RenderFunc(props: {
                                 })()
                               : undefined;
                           if (
-                            $steps["invokeGlobalAction"] != null &&
-                            typeof $steps["invokeGlobalAction"] === "object" &&
-                            typeof $steps["invokeGlobalAction"].then ===
+                            $steps["errorShowErrorMessage"] != null &&
+                            typeof $steps["errorShowErrorMessage"] ===
+                              "object" &&
+                            typeof $steps["errorShowErrorMessage"].then ===
                               "function"
                           ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
+                            $steps["errorShowErrorMessage"] = await $steps[
+                              "errorShowErrorMessage"
                             ];
                           }
 
@@ -610,7 +619,7 @@ function PlasmicLogin__RenderFunc(props: {
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__a9WdJ
+                              sty.formField__qzB
                             )}
                             label={"Email"}
                             name={"email"}
@@ -631,7 +640,7 @@ function PlasmicLogin__RenderFunc(props: {
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__mWlt
+                              sty.formField__yGcd
                             )}
                             label={"Password"}
                             name={"password"}
@@ -653,7 +662,7 @@ function PlasmicLogin__RenderFunc(props: {
                           <AntdButton
                             className={classNames(
                               "__wab_instance",
-                              sty.button__hcqTl
+                              sty.button___82Y9I
                             )}
                             loading={(() => {
                               try {
@@ -675,10 +684,10 @@ function PlasmicLogin__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text___0XS
+                                sty.text__aQvYh
                               )}
                             >
-                              {"Submit"}
+                              {"Login"}
                             </div>
                           </AntdButton>
                         </FormWrapper>
@@ -706,7 +715,19 @@ function PlasmicLogin__RenderFunc(props: {
                             sty.link
                           )}
                           component={Link}
-                          href={`/reset-password`}
+                          href={(() => {
+                            try {
+                              return "/reset-password";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return `/reset-password`;
+                              }
+                              throw e;
+                            }
+                          })()}
                           platform={"nextjs"}
                         >
                           {"Reset"}

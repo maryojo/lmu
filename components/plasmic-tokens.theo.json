@@ -2619,6 +2619,36 @@
         "projectId": "43GLDCvnvwFaSntiZWsgtz",
         "id": "NANCd_f9Z6JF"
       }
+    },
+    {
+      "name": "secondary-50",
+      "type": "color",
+      "value": "#55DABE",
+      "category": "color",
+      "meta": {
+        "projectId": "43GLDCvnvwFaSntiZWsgtz",
+        "id": "X5mU4Q8J-a7k"
+      }
+    },
+    {
+      "name": "secondary-60",
+      "type": "color",
+      "value": "#47B69E",
+      "category": "color",
+      "meta": {
+        "projectId": "43GLDCvnvwFaSntiZWsgtz",
+        "id": "9Su_DvlOlmln"
+      }
+    },
+    {
+      "name": "secondary-70",
+      "type": "color",
+      "value": "#39917F",
+      "category": "color",
+      "meta": {
+        "projectId": "43GLDCvnvwFaSntiZWsgtz",
+        "id": "sRJjOIyCNKw0"
+      }
     }
   ],
   "global": {
