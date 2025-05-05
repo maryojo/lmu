@@ -834,6 +834,19 @@
           "componentType": "component"
         },
         {
+          "id": "f9TmdLYt-K-T",
+          "name": "DashboardNavbar",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicDashboardNavbar.tsx",
+          "importSpec": {
+            "modulePath": "DashboardNavbar.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicDashboardNavbar.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
           "id": "iHF5mzpi9EOp",
           "name": "Dashboard",
           "type": "managed",
@@ -972,19 +985,6 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/testtt"
-        },
-        {
-          "id": "f9TmdLYt-K-T",
-          "name": "DashboardNavbar",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicDashboardNavbar.tsx",
-          "importSpec": {
-            "modulePath": "DashboardNavbar.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicDashboardNavbar.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
         }
       ],
       "icons": [
