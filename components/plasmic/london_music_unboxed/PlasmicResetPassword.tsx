@@ -134,6 +134,7 @@ function PlasmicResetPassword__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
@@ -446,7 +447,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                           <AntdButton
                             className={classNames(
                               "__wab_instance",
-                              sty.button__uenjm
+                              sty.button___3Mlpa
                             )}
                             loading={(() => {
                               try {
@@ -468,7 +469,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__qDIsE
+                                sty.text__e7TOb
                               )}
                             >
                               {"Submit"}
