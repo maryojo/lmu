@@ -1034,6 +1034,11 @@
           "id": "iMThvdwx3xfa",
           "name": "image 2",
           "filePath": "../public/plasmic/london_music_unboxed/images/image2.png"
+        },
+        {
+          "id": "mmxUNKr_yWdM",
+          "name": "image 3",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image3.png"
         }
       ],
       "indirect": false,
@@ -1182,6 +1187,6 @@
   "nextjsConfig": {
     "pagesDir": "../pages"
   },
-  "cliVersion": "0.1.337",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.337/dist/plasmic.schema.json"
+  "cliVersion": "0.1.338",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.338/dist/plasmic.schema.json"
 }

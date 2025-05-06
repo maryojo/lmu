@@ -139,6 +139,7 @@ function PlasmicLogin__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
@@ -334,30 +335,50 @@ function PlasmicLogin__RenderFunc(props: {
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox__rKjRe)}
               >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__kkAwC
-                  )}
-                >
-                  {"Don't have an account yet?"}
-                </div>
-                <Button
-                  className={classNames("__wab_instance", sty.button___44CyO)}
-                  label={
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__i72Aw
-                      )}
-                    >
-                      {"Register"}
-                    </div>
-                  }
-                  linkTo={`/register`}
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__gwDz)}
+                  displayHeight={"33px"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"auto"}
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/london_music_unboxed/images/image3.png",
+                    fullWidth: 1063,
+                    fullHeight: 975,
+                    aspectRatio: undefined
+                  }}
                 />
+
+                <div className={classNames(projectcss.all, sty.freeBox__mCdIp)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__kkAwC
+                    )}
+                  >
+                    {"Don't have an account yet?"}
+                  </div>
+                  <Button
+                    className={classNames("__wab_instance", sty.button___44CyO)}
+                    label={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__i72Aw
+                        )}
+                      >
+                        {"Register"}
+                      </div>
+                    }
+                    linkTo={`/register`}
+                  />
+                </div>
               </Stack__>
               <div className={classNames(projectcss.all, sty.freeBox__jhY2P)}>
                 <Stack__
@@ -614,7 +635,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__iAcSl
+                            sty.formField__pjlI
                           )}
                           label={"Email"}
                           name={"email"}
@@ -632,7 +653,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField___4Utrb
+                            sty.formField__h3rd
                           )}
                           label={"Password"}
                           name={"password"}
@@ -654,7 +675,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <AntdButton
                           className={classNames(
                             "__wab_instance",
-                            sty.button__sf3Ws
+                            sty.button__wHsud
                           )}
                           loading={(() => {
                             try {
@@ -676,7 +697,7 @@ function PlasmicLogin__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__khtRc
+                              sty.text__v7AoI
                             )}
                           >
                             {"Login"}
