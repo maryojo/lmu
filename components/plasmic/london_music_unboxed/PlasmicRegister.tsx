@@ -393,7 +393,7 @@ function PlasmicRegister__RenderFunc(props: {
                       onFinish: async values => {
                         const $steps = {};
 
-                        $steps["signupUser"] = true
+                        $steps["signup"] = true
                           ? (() => {
                               const actionArgs = {
                                 args: [
@@ -425,7 +425,7 @@ function PlasmicRegister__RenderFunc(props: {
                                       throw e;
                                     }
                                   })(),
-                                  "/signup-successful",
+                                  "/login",
                                   undefined,
                                   (() => {
                                     try {
@@ -458,11 +458,11 @@ function PlasmicRegister__RenderFunc(props: {
                             })()
                           : undefined;
                         if (
-                          $steps["signupUser"] != null &&
-                          typeof $steps["signupUser"] === "object" &&
-                          typeof $steps["signupUser"].then === "function"
+                          $steps["signup"] != null &&
+                          typeof $steps["signup"] === "object" &&
+                          typeof $steps["signup"].then === "function"
                         ) {
-                          $steps["signupUser"] = await $steps["signupUser"];
+                          $steps["signup"] = await $steps["signup"];
                         }
                       },
                       onIsSubmittingChange: async (...eventArgs: any) => {
@@ -758,12 +758,6 @@ function PlasmicRegister__RenderFunc(props: {
                           )}
                           label={"What would you like to register as?"}
                           name={"userRole"}
-                          rules={[
-                            {
-                              ruleType: "required",
-                              message: "Registration type is required"
-                            }
-                          ]}
                         >
                           <AntdSelect
                             data-plasmic-name={"select"}
@@ -810,6 +804,19 @@ function PlasmicRegister__RenderFunc(props: {
                             "__wab_instance",
                             sty.button___6Ca
                           )}
+                          disabled={(() => {
+                            try {
+                              return $state.form.isSubmitting;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()}
                           submitsForm={true}
                           type={"primary"}
                         >
