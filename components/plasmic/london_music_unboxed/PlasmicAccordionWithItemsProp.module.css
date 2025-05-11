@@ -1,0 +1,43 @@
+.accordion:global(.__wab_instance) {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  position: relative;
+  min-width: 0;
+}
+.accordionItem__dEjEf:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.text__dGlIg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.text__bebEx {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.accordionItem__lHlI3:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.text__zI36Y {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.text__gvWd {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}

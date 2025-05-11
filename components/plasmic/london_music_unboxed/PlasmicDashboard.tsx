@@ -59,6 +59,13 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
+import {
+  executePlasmicDataOp,
+  usePlasmicDataOp,
+  usePlasmicInvalidate
+} from "@plasmicapp/react-web/lib/data-sources";
+
 import TopBar from "../../TopBar"; // plasmic-import: GK49OJrlqKX0/component
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 
@@ -134,6 +141,9 @@ function PlasmicDashboard__RenderFunc(props: {
   const $refs = refsRef.current;
 
   const $globalActions = useGlobalActions?.();
+
+  const dataSourcesCtx = usePlasmicDataSourceContext();
+  const plasmicInvalidate = usePlasmicInvalidate();
 
   return (
     <React.Fragment>
@@ -237,6 +247,27 @@ function PlasmicDashboard__RenderFunc(props: {
                     $steps["invokeGlobalAction"] = await $steps[
                       "invokeGlobalAction"
                     ];
+                  }
+
+                  $steps["refreshData"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          queryInvalidation: ["plasmic_refresh_all"]
+                        };
+                        return (async ({ queryInvalidation }) => {
+                          if (!queryInvalidation) {
+                            return;
+                          }
+                          await plasmicInvalidate(queryInvalidation);
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["refreshData"] != null &&
+                    typeof $steps["refreshData"] === "object" &&
+                    typeof $steps["refreshData"].then === "function"
+                  ) {
+                    $steps["refreshData"] = await $steps["refreshData"];
                   }
                 }}
               />

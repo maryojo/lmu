@@ -60,6 +60,9 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import TopBar from "../../TopBar"; // plasmic-import: GK49OJrlqKX0/component
+import { AntdAccordion } from "@plasmicpkgs/antd5/skinny/registerCollapse";
+import { accordionHelpers as AntdAccordion_Helpers } from "@plasmicpkgs/antd5/skinny/registerCollapse";
+import { AntdAccordionItem } from "@plasmicpkgs/antd5/skinny/registerCollapse";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -82,6 +85,8 @@ export const PlasmicTesttt__ArgProps = new Array<ArgPropType>();
 export type PlasmicTesttt__OverridesType = {
   root?: Flex__<"div">;
   topBar?: Flex__<typeof TopBar>;
+  accordion?: Flex__<typeof AntdAccordion>;
+  accordionItem?: Flex__<typeof AntdAccordionItem>;
 };
 
 export interface DefaultTestttProps {}
@@ -125,6 +130,29 @@ function PlasmicTesttt__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "accordion.activePanelId",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec(
+          "activePanelId",
+          AntdAccordion_Helpers
+        )
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   return (
     <React.Fragment>
       <Head></Head>
@@ -157,6 +185,111 @@ function PlasmicTesttt__RenderFunc(props: {
             data-plasmic-override={overrides.topBar}
             className={classNames("__wab_instance", sty.topBar)}
           />
+
+          {(() => {
+            const child$Props = {
+              activeKey: generateStateValueProp($state, [
+                "accordion",
+                "activePanelId"
+              ]),
+              bordered: true,
+              className: classNames("__wab_instance", sty.accordion),
+              items: (_par =>
+                !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                (() => {
+                  try {
+                    return $queries.getOnboardingQuizzes.data;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
+                    }
+                    throw e;
+                  }
+                })()
+              ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                const currentItem = __plasmic_item_0;
+                const currentIndex = __plasmic_idx_0;
+                return (
+                  <AntdAccordionItem
+                    data-plasmic-name={"accordionItem"}
+                    data-plasmic-override={overrides.accordionItem}
+                    className={classNames("__wab_instance", sty.accordionItem)}
+                    id={1}
+                    key={currentIndex}
+                    label2={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__ysMl
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return $queries.getOnboardingQuizzes.data[
+                                currentIndex
+                              ].title;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "First Item";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </div>
+                    }
+                    showArrow={true}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__ohe29
+                      )}
+                    >
+                      {"First Children"}
+                    </div>
+                  </AntdAccordionItem>
+                );
+              }),
+              onChange: async (...eventArgs: any) => {
+                generateStateOnChangePropForCodeComponents(
+                  $state,
+                  "activePanelId",
+                  ["accordion", "activePanelId"],
+                  AntdAccordion_Helpers
+                ).apply(null, eventArgs);
+              }
+            };
+            initializeCodeComponentStates(
+              $state,
+              [
+                {
+                  name: "activePanelId",
+                  plasmicStateName: "accordion.activePanelId"
+                }
+              ],
+              [],
+              AntdAccordion_Helpers ?? {},
+              child$Props
+            );
+
+            return (
+              <AntdAccordion
+                data-plasmic-name={"accordion"}
+                data-plasmic-override={overrides.accordion}
+                {...child$Props}
+              />
+            );
+          })()}
         </div>
       </div>
     </React.Fragment>
@@ -164,8 +297,10 @@ function PlasmicTesttt__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "topBar"],
-  topBar: ["topBar"]
+  root: ["root", "topBar", "accordion", "accordionItem"],
+  topBar: ["topBar"],
+  accordion: ["accordion", "accordionItem"],
+  accordionItem: ["accordionItem"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -173,6 +308,8 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   topBar: typeof TopBar;
+  accordion: typeof AntdAccordion;
+  accordionItem: typeof AntdAccordionItem;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -236,6 +373,8 @@ export const PlasmicTesttt = Object.assign(
   {
     // Helper components rendering sub-elements
     topBar: makeNodeComponent("topBar"),
+    accordion: makeNodeComponent("accordion"),
+    accordionItem: makeNodeComponent("accordionItem"),
 
     // Metadata about props expected for PlasmicTesttt
     internalVariantProps: PlasmicTesttt__VariantProps,

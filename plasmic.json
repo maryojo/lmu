@@ -918,17 +918,17 @@
         },
         {
           "id": "Rgp-m8eUJXH4",
-          "name": "AddOnboardingQuestions",
+          "name": "AddOnboardingQuestions4",
           "type": "managed",
           "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicAddOnboardingQuestions.tsx",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicAddOnboardingQuestions4.tsx",
           "importSpec": {
-            "modulePath": "../pages/add-onboarding-questions.tsx"
+            "modulePath": "../pages/add-onboarding-questions-4.tsx"
           },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicAddOnboardingQuestions.module.css",
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicAddOnboardingQuestions4.module.css",
           "scheme": "blackbox",
           "componentType": "page",
-          "path": "/add-onboarding-questions"
+          "path": "/add-onboarding-questions-4"
         },
         {
           "id": "BbsWOL7vwd6t",
@@ -985,6 +985,47 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/testtt"
+        },
+        {
+          "id": "4MkgNp9BeNBY",
+          "name": "RegisterAdmin",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicRegisterAdmin.tsx",
+          "importSpec": {
+            "modulePath": "../pages/register-admin.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicRegisterAdmin.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/register-admin"
+        },
+        {
+          "id": "U8fHScEvG5wo",
+          "name": "AccordionWithItemsProp",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicAccordionWithItemsProp.tsx",
+          "importSpec": {
+            "modulePath": "AccordionWithItemsProp.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicAccordionWithItemsProp.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "9bHtm1sDPX3Z",
+          "name": "AddOnboardingQuestions",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicAddOnboardingQuestions.tsx",
+          "importSpec": {
+            "modulePath": "../pages/add-onboarding-questions.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicAddOnboardingQuestions.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/add-onboarding-questions"
         }
       ],
       "icons": [
@@ -1086,6 +1127,12 @@
           "name": "SupabaseStorageGetSignedUrl",
           "displayName": "SupabaseStorageGetSignedUrl",
           "componentImportPath": "./index"
+        },
+        {
+          "id": "Th4N3i4J4xsp",
+          "name": "CustomAccordionItem",
+          "displayName": "CustomAccordionItem",
+          "componentImportPath": "./components/CustomAccordionItem"
         }
       ],
       "customFunctions": []
