@@ -635,7 +635,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__vhSf2
+                            sty.formField__frHiE
                           )}
                           label={"Email"}
                           name={"email"}
@@ -653,7 +653,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__sEWk
+                            sty.formField__chrY0
                           )}
                           label={"Password"}
                           name={"password"}
@@ -675,7 +675,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <AntdButton
                           className={classNames(
                             "__wab_instance",
-                            sty.button__tF8Pv
+                            sty.button__iuNzw
                           )}
                           loading={(() => {
                             try {
@@ -697,7 +697,7 @@ function PlasmicLogin__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__m7Xnj
+                              sty.text__v8BOj
                             )}
                           >
                             {"Login"}

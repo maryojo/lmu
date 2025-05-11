@@ -129,6 +129,8 @@ function PlasmicDashboardNavbar__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $globalActions = useGlobalActions?.();
+
   return (
     <section
       data-plasmic-name={"root"}
@@ -157,6 +159,25 @@ function PlasmicDashboardNavbar__RenderFunc(props: {
           data-plasmic-name={"svg"}
           data-plasmic-override={overrides.svg}
           className={classNames(projectcss.all, sty.svg)}
+          onClick={async event => {
+            const $steps = {};
+
+            $steps["invokeGlobalAction"] = true
+              ? (() => {
+                  const actionArgs = { args: ["/login"] };
+                  return $globalActions[
+                    "SupabaseUserGlobalContext.logout"
+                  ]?.apply(null, [...actionArgs.args]);
+                })()
+              : undefined;
+            if (
+              $steps["invokeGlobalAction"] != null &&
+              typeof $steps["invokeGlobalAction"] === "object" &&
+              typeof $steps["invokeGlobalAction"].then === "function"
+            ) {
+              $steps["invokeGlobalAction"] = await $steps["invokeGlobalAction"];
+            }
+          }}
           role={"img"}
         />
       </Stack__>

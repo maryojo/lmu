@@ -11,6 +11,9 @@
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
     "@ant-design/pro-components": "^2.6.4",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.1.0",
     "@plasmicapp/cli": "^0.1.338",
     "@plasmicapp/loader-nextjs": "^1.0.419",
     "@plasmicapp/react-web": "^0.2.381",

@@ -10,6 +10,7 @@ import {
   SupabaseStorageGetSignedUrlMeta,
 } from "plasmic-supabase"
 import QuizComponent from "./components/QuizComponent"
+import CustomAccordionItem from "./components/CustomAccordionItem"
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -84,6 +85,21 @@ PLASMIC.registerComponent(QuizComponent, {
     },
   },
 });
+PLASMIC.registerComponent(CustomAccordionItem, {
+  name: "CustomAccordionItem",
+  importPath: "./components/CustomAccordionItem",
+  props: {
+    title: "string",
+    children: {
+      type: "slot",
+      defaultValue: "Accordion content goes here",
+    },
+    className: {
+      type: "class",
+    },
+  },
+});
+
 PLASMIC.registerComponent(SupabaseProvider, SupabaseProviderMeta);
 PLASMIC.registerComponent(SupabaseUppyUploader, SupabaseUppyUploaderMeta);
 PLASMIC.registerComponent(SupabaseStorageGetSignedUrl, SupabaseStorageGetSignedUrlMeta);
