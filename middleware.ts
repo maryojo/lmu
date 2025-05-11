@@ -11,79 +11,97 @@ const publicRoutes = [
   '/register',
   '/login',
   '/plasmic-host',
-  '/reset-password'
+  '/reset-password',
+  '/register-admin',
+  '/signup-successful'
 ]
 
 // Middleware function
 // This will run on every request to your app that matches the pattern at the bottom of this file
 // Adapted from @supabase/ssr docs https://supabase.com/docs/guides/auth/server-side/nextjs?queryGroups=router&router=app
 export async function middleware(request: NextRequest) {
-
-  let supabaseResponse = NextResponse.next({
-    request,
-  })
-
-  //Create a new supabase client
-  //Refresh expired auth tokens and set new cookies
+  // Initialize response with the incoming request
+  const response = NextResponse.next()
+  
+  // Create supabase client using cookies from the request and response
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll() {
-          return request.cookies.getAll()
+        get(name) {
+          return request.cookies.get(name)?.value
         },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
-          supabaseResponse = NextResponse.next({
-            request,
+        set(name, value, options) {
+          // IMPORTANT: Set cookies on the response object
+          response.cookies.set({
+            name,
+            value,
+            ...options
           })
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          )
         },
-      },
+        remove(name, options) {
+          // IMPORTANT: Remove cookies from the response object
+          response.cookies.set({
+            name,
+            value: '',
+            ...options,
+            maxAge: -1
+          })
+        }
+      }
     }
   )
 
-  // IMPORTANT: Avoid writing any logic between createServerClient and
-  // supabase.auth.getUser(). A simple mistake could make it very hard to debug
-  // issues with users being randomly logged out.
-
-  // Get details of the logged in user if present
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  // Refresh the session to get the most up-to-date session
+  const { data: { session } } = await supabase.auth.getSession()
   
-  // Decide whether to redirect to the /login page or not
-  // You can adapt this logic to suit your needs
-
-  if (publicRoutes.includes(request.nextUrl.pathname) !== true && !user) {
-    // It's a login protected route but there's no logged in user. 
-    // Respond by redirecting the user to the login page
-    const url = request.nextUrl.clone()
-    url.pathname = loginPage;
-    return NextResponse.redirect(url)
-
-  } else {
-    // It's a public route, or it's a login protected route and there is a logged in user. 
-    // Proceed as normal
-    return supabaseResponse
+  // Extract URL information
+  const { pathname } = request.nextUrl
+  
+  // Special handling for the login page to avoid redirect loops
+  if (pathname === loginPage) {
+    // If we're on the login page and have an active session already, 
+    // let Plasmic handle the redirect based on your configuration
+    if (session) {
+      // Just proceed normally - your Plasmic login component will handle the redirect
+      return response
+    }
+    
+    // Otherwise, stay on login page
+    return response
   }
-
-  // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're
-  // creating a new response object with NextResponse.next() make sure to:
-  // 1. Pass the request in it, like so:
-  //    const myNewResponse = NextResponse.next({ request })
-  // 2. Copy over the cookies, like so:
-  //    myNewResponse.cookies.setAll(supabaseResponse.cookies.getAll())
-  // 3. Change the myNewResponse object to fit your needs, but avoid changing
-  //    the cookies!
-  // 4. Finally:
-  //    return myNewResponse
-  // If this is not done, you may be causing the browser and server to go out
-  // of sync and terminate the user's session prematurely!
-
+  
+  // Check if route requires authentication
+  const requiresAuth = !publicRoutes.includes(pathname)
+  
+  // If the route requires auth and user isn't authenticated, redirect to login
+  if (requiresAuth && !session) {
+    const redirectUrl = new URL(loginPage, request.nextUrl.origin)
+    
+    // Create a redirect response and ensure it includes any cookies set by Supabase
+    const redirectResponse = NextResponse.redirect(redirectUrl)
+    
+    // Copy all cookies from the response to the redirect
+    response.cookies.getAll().forEach(cookie => {
+      redirectResponse.cookies.set({
+        name: cookie.name,
+        value: cookie.value,
+        path: cookie.path || '/',
+        domain: cookie.domain,
+        maxAge: cookie.maxAge,
+        expires: cookie.expires,
+        secure: cookie.secure,
+        httpOnly: cookie.httpOnly,
+        sameSite: cookie.sameSite
+      })
+    })
+    
+    return redirectResponse
+  }
+  
+  // Otherwise, continue with the response that has the proper cookies set
+  return response
 }
 
 //Only run middleware on requests that match this pattern
