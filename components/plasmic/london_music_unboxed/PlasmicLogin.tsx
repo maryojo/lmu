@@ -81,6 +81,7 @@ import sty from "./PlasmicLogin.module.css"; // plasmic-import: O-sghQX8hMHX/css
 
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: yZz0P1JDPQwS/icon
 import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: -jkcn7GwAM4v/icon
+import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: AT3U1U2gTxsA/icon
 
 createPlasmicElementProxy;
 
@@ -101,6 +102,8 @@ export type PlasmicLogin__OverridesType = {
   link?: Flex__<"a"> & Partial<LinkProps>;
   modal?: Flex__<typeof AntdModal>;
   modal2?: Flex__<typeof AntdModal>;
+  modal3?: Flex__<typeof AntdModal>;
+  svg?: Flex__<"svg">;
 };
 
 export interface DefaultLoginProps {}
@@ -211,6 +214,25 @@ function PlasmicLogin__RenderFunc(props: {
           (() => {
             try {
               return $ctx?.query?.code !== undefined;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return false;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "modal3.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $ctx?.query?.registered != undefined;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -635,7 +657,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__frHiE
+                            sty.formField__nnwBk
                           )}
                           label={"Email"}
                           name={"email"}
@@ -653,7 +675,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__chrY0
+                            sty.formField__uxAtD
                           )}
                           label={"Password"}
                           name={"password"}
@@ -675,7 +697,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <AntdButton
                           className={classNames(
                             "__wab_instance",
-                            sty.button__iuNzw
+                            sty.button__dl5Dt
                           )}
                           loading={(() => {
                             try {
@@ -697,7 +719,7 @@ function PlasmicLogin__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__v8BOj
+                              sty.text__ixnY5
                             )}
                           >
                             {"Login"}
@@ -968,7 +990,7 @@ function PlasmicLogin__RenderFunc(props: {
                               e instanceof TypeError ||
                               e?.plasmicType === "PlasmicUndefinedDataError"
                             ) {
-                              return undefined;
+                              return false;
                             }
                             throw e;
                           }
@@ -999,6 +1021,114 @@ function PlasmicLogin__RenderFunc(props: {
                   </AntdModal>
                 );
               })()}
+              {(() => {
+                const child$Props = {
+                  className: classNames("__wab_instance", sty.modal3),
+                  closeIcon: (
+                    <Icon4Icon
+                      data-plasmic-name={"svg"}
+                      data-plasmic-override={overrides.svg}
+                      className={classNames(projectcss.all, sty.svg)}
+                      role={"img"}
+                    />
+                  ),
+
+                  defaultStylesClassName: classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    projectcss.plasmic_tokens,
+                    plasmic_antd_5_hostless_css.plasmic_tokens,
+                    plasmic_plasmic_rich_components_css.plasmic_tokens
+                  ),
+                  hideFooter: true,
+                  modalScopeClassName: sty["modal3__modal"],
+                  onOpenChange: async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, ["modal3", "open"]).apply(
+                      null,
+                      eventArgs
+                    );
+                  },
+                  open: generateStateValueProp($state, ["modal3", "open"]),
+                  title: "Your account has been registered!",
+                  trigger: (
+                    <AntdButton
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button__w61Is
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__yqo4K
+                        )}
+                      >
+                        {"Show modal"}
+                      </div>
+                    </AntdButton>
+                  )
+                };
+                initializeCodeComponentStates(
+                  $state,
+                  [
+                    {
+                      name: "open",
+                      plasmicStateName: "modal3.open"
+                    }
+                  ],
+                  [],
+                  undefined ?? {},
+                  child$Props
+                );
+                initializePlasmicStates(
+                  $state,
+                  [
+                    {
+                      name: "modal3.open",
+                      initFunc: ({ $props, $state, $queries }) =>
+                        (() => {
+                          try {
+                            return $ctx?.query?.registered != undefined;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                    }
+                  ],
+                  []
+                );
+                return (
+                  <AntdModal
+                    data-plasmic-name={"modal3"}
+                    data-plasmic-override={overrides.modal3}
+                    {...child$Props}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__sJeUh)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___99I9
+                        )}
+                      >
+                        {
+                          "Check your email for the verification link, to verify your account before logging in"
+                        }
+                      </div>
+                    </div>
+                  </AntdModal>
+                );
+              })()}
             </div>
           </div>
         </div>
@@ -1015,14 +1145,18 @@ const PlasmicDescendants = {
     "passwordInput",
     "link",
     "modal",
-    "modal2"
+    "modal2",
+    "modal3",
+    "svg"
   ],
   loginForm: ["loginForm", "input", "passwordInput"],
   input: ["input"],
   passwordInput: ["passwordInput"],
   link: ["link"],
   modal: ["modal"],
-  modal2: ["modal2"]
+  modal2: ["modal2"],
+  modal3: ["modal3", "svg"],
+  svg: ["svg"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1035,6 +1169,8 @@ type NodeDefaultElementType = {
   link: "a";
   modal: typeof AntdModal;
   modal2: typeof AntdModal;
+  modal3: typeof AntdModal;
+  svg: "svg";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1103,6 +1239,8 @@ export const PlasmicLogin = Object.assign(
     link: makeNodeComponent("link"),
     modal: makeNodeComponent("modal"),
     modal2: makeNodeComponent("modal2"),
+    modal3: makeNodeComponent("modal3"),
+    svg: makeNodeComponent("svg"),
 
     // Metadata about props expected for PlasmicLogin
     internalVariantProps: PlasmicLogin__VariantProps,
