@@ -657,7 +657,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__nnwBk
+                            sty.formField__kz1Ha
                           )}
                           label={"Email"}
                           name={"email"}
@@ -675,7 +675,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__uxAtD
+                            sty.formField__udauh
                           )}
                           label={"Password"}
                           name={"password"}
@@ -697,7 +697,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <AntdButton
                           className={classNames(
                             "__wab_instance",
-                            sty.button__dl5Dt
+                            sty.button___1XNfE
                           )}
                           loading={(() => {
                             try {
@@ -719,7 +719,7 @@ function PlasmicLogin__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__ixnY5
+                              sty.text__xlyUj
                             )}
                           >
                             {"Login"}
@@ -1051,24 +1051,7 @@ function PlasmicLogin__RenderFunc(props: {
                   },
                   open: generateStateValueProp($state, ["modal3", "open"]),
                   title: "Your account has been registered!",
-                  trigger: (
-                    <AntdButton
-                      className={classNames(
-                        "__wab_instance",
-                        sty.button__w61Is
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__yqo4K
-                        )}
-                      >
-                        {"Show modal"}
-                      </div>
-                    </AntdButton>
-                  )
+                  trigger: null
                 };
                 initializeCodeComponentStates(
                   $state,
