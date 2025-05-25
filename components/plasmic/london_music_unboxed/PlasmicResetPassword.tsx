@@ -278,6 +278,67 @@ function PlasmicResetPassword__RenderFunc(props: {
                 </h1>
               </section>
               <div className={classNames(projectcss.all, sty.freeBox__m4OkS)}>
+                {(
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? true
+                    : false
+                ) ? (
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox___1CaQd)}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__aba2)}
+                      displayHeight={"33px"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/london_music_unboxed/images/image3.png",
+                        fullWidth: 1063,
+                        fullHeight: 975,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__n2PD)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__csT4U
+                        )}
+                      >
+                        {"Don't have an account yet?"}
+                      </div>
+                      <Button
+                        className={classNames(
+                          "__wab_instance",
+                          sty.button__utWl6
+                        )}
+                        label={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__ayqcT
+                            )}
+                          >
+                            {"Register"}
+                          </div>
+                        }
+                        linkTo={`/register`}
+                      />
+                    </div>
+                  </Stack__>
+                ) : null}
                 <Stack__
                   as={"div"}
                   hasGap={true}
@@ -343,6 +404,10 @@ function PlasmicResetPassword__RenderFunc(props: {
                             ["form", "value"],
                             FormWrapper_Helpers
                           ).apply(null, eventArgs);
+
+                          (async (changedValues, allValues) => {
+                            const $steps = {};
+                          }).apply(null, eventArgs);
                         },
                         formItems: undefined,
                         labelCol: { span: 8, horizontalOnly: true },
@@ -383,6 +448,121 @@ function PlasmicResetPassword__RenderFunc(props: {
                           ) {
                             $steps["resetPassword"] = await $steps[
                               "resetPassword"
+                            ];
+                          }
+
+                          $steps["updateLoginResponse"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["loginResponse"]
+                                  },
+                                  operation: 0,
+                                  value: $steps.resetPassword
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateLoginResponse"] != null &&
+                            typeof $steps["updateLoginResponse"] === "object" &&
+                            typeof $steps["updateLoginResponse"].then ===
+                              "function"
+                          ) {
+                            $steps["updateLoginResponse"] = await $steps[
+                              "updateLoginResponse"
+                            ];
+                          }
+
+                          $steps["invokeGlobalAction"] = $steps.resetPassword
+                            ?.data
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "success",
+                                    "Email successfully sent!",
+                                    "The email to reset your password has been sent!",
+                                    10,
+                                    "top"
+                                  ]
+                                };
+                                return $globalActions[
+                                  "plasmic-antd5-config-provider.showNotification"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
+                            ];
+                          }
+
+                          $steps["invokeGlobalAction2"] = $steps.resetPassword
+                            ?.error
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "error",
+                                    "Something went wrong",
+                                    undefined,
+                                    undefined,
+                                    "top"
+                                  ]
+                                };
+                                return $globalActions[
+                                  "plasmic-antd5-config-provider.showNotification"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction2"] != null &&
+                            typeof $steps["invokeGlobalAction2"] === "object" &&
+                            typeof $steps["invokeGlobalAction2"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction2"] = await $steps[
+                              "invokeGlobalAction2"
+                            ];
+                          }
+                        },
+                        onFinishFailed: async data => {
+                          const $steps = {};
+
+                          $steps["invokeGlobalAction"] = true
+                            ? (() => {
+                                const actionArgs = { args: ["error", "w,w"] };
+                                return $globalActions[
+                                  "plasmic-antd5-config-provider.showNotification"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
                             ];
                           }
                         },
@@ -430,6 +610,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                             )}
                             label={"Email"}
                             name={"email"}
+                            noLabel={true}
                             rules={[
                               {
                                 ruleType: "required",
@@ -447,7 +628,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                           <AntdButton
                             className={classNames(
                               "__wab_instance",
-                              sty.button__faMdl
+                              sty.button__ktLj2
                             )}
                             loading={(() => {
                               try {
@@ -469,7 +650,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__r0Nho
+                                sty.text___6HvOu
                               )}
                             >
                               {"Submit"}

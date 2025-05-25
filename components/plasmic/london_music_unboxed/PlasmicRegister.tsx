@@ -318,32 +318,61 @@ function PlasmicRegister__RenderFunc(props: {
                 <Stack__
                   as={"div"}
                   hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox___7YwgI)}
+                  className={classNames(projectcss.all, sty.freeBox__kAjMh)}
                 >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__glA4Q
-                    )}
-                  >
-                    {"Already have an account?"}
-                  </div>
-                  <Button
-                    className={classNames("__wab_instance", sty.button__nnxWv)}
-                    label={
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hPe1R
-                        )}
-                      >
-                        {"Login"}
-                      </div>
-                    }
-                    linkTo={`/login`}
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__gb9Ww)}
+                    displayHeight={"33px"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"100%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/london_music_unboxed/images/image3.png",
+                      fullWidth: 1063,
+                      fullHeight: 975,
+                      aspectRatio: undefined
+                    }}
                   />
+
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__pFrpP)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__yU2LG
+                      )}
+                    >
+                      {"Already have an account?"}
+                    </div>
+                    <Button
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button__zjDfv
+                      )}
+                      label={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wsjt3
+                          )}
+                        >
+                          {"Login"}
+                        </div>
+                      }
+                      linkTo={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? `/login`
+                          : `/login`
+                      }
+                    />
+                  </div>
                 </Stack__>
                 <Stack__
                   as={"div"}

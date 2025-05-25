@@ -535,10 +535,7 @@ function PlasmicLogin__RenderFunc(props: {
                         }
 
                         $steps["errorShowErrorMessage"] =
-                          $ctx.SupabaseUser.error !== null &&
-                          !$ctx.SupabaseUser?.error?.includes(
-                            "Email not confirmed"
-                          )
+                          $ctx.SupabaseUser.error !== null
                             ? (() => {
                                 const actionArgs = {
                                   args: [
@@ -575,45 +572,6 @@ function PlasmicLogin__RenderFunc(props: {
                         ) {
                           $steps["errorShowErrorMessage"] = await $steps[
                             "errorShowErrorMessage"
-                          ];
-                        }
-
-                        $steps["updateIsModalOpen"] =
-                          $ctx.SupabaseUser?.error?.includes(
-                            "Email not confirmed"
-                          )
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["isModalOpen"]
-                                  },
-                                  operation: 0,
-                                  value: true
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["updateIsModalOpen"] != null &&
-                          typeof $steps["updateIsModalOpen"] === "object" &&
-                          typeof $steps["updateIsModalOpen"].then === "function"
-                        ) {
-                          $steps["updateIsModalOpen"] = await $steps[
-                            "updateIsModalOpen"
                           ];
                         }
                       },
@@ -657,7 +615,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__kz1Ha
+                            sty.formField__zt3Kv
                           )}
                           label={"Email"}
                           name={"email"}
@@ -675,7 +633,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__udauh
+                            sty.formField__ft4Gg
                           )}
                           label={"Password"}
                           name={"password"}
@@ -697,7 +655,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <AntdButton
                           className={classNames(
                             "__wab_instance",
-                            sty.button___1XNfE
+                            sty.button__pcqr5
                           )}
                           loading={(() => {
                             try {
@@ -719,7 +677,7 @@ function PlasmicLogin__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__xlyUj
+                              sty.text__hNlZp
                             )}
                           >
                             {"Login"}
@@ -1104,9 +1062,7 @@ function PlasmicLogin__RenderFunc(props: {
                           sty.text___99I9
                         )}
                       >
-                        {
-                          "Check your email for the verification link, to verify your account before logging in"
-                        }
+                        {"Login to your new account to complete onboarding"}
                       </div>
                     </div>
                   </AntdModal>

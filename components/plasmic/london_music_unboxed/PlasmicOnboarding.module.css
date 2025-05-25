@@ -171,6 +171,11 @@
   min-width: 0;
   padding: 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__iKrcI {
+    padding: 0px;
+  }
+}
 .h4__aRhAv {
   width: 100%;
   height: auto;
@@ -190,12 +195,23 @@
   min-width: 0;
   padding: 8px;
 }
-.formField__qdsNl:global(.__wab_instance) {
+@media (min-width: 0px) and (max-width: 768px) {
+  .startOnboardingQuizForm:global(.__wab_instance) {
+    white-space: pre-wrap;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 12px 0px 0px;
+  }
+}
+.formField__ooSmD:global(.__wab_instance) {
   width: 100%;
   margin-bottom: 24px;
   min-width: 0;
 }
-.radioGroup__fdRok:global(.__wab_instance) {
+.radioGroup__b0SNp:global(.__wab_instance) {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -208,34 +224,34 @@
   min-width: 0;
   padding: 8px;
 }
-.radio__nVFvn:global(.__wab_instance) {
+.radio__zOphj:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.text__tu4Ld {
+.text__wmFn {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   min-width: 0;
 }
-.radio__jjUkk:global(.__wab_instance) {
+.radio__cAYuL:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.text__f2Z3A {
+.text__h8Tc1 {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   min-width: 0;
 }
-.formField__ljomN:global(.__wab_instance) {
+.formField__aiOjm:global(.__wab_instance) {
   width: 100%;
   margin-bottom: 24px;
   min-width: 0;
 }
-.radioGroup__qelwU:global(.__wab_instance) {
+.radioGroup___9RrBt:global(.__wab_instance) {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -248,33 +264,33 @@
   min-width: 0;
   padding: 8px;
 }
-.radio__z22J0:global(.__wab_instance) {
+.radio__pcjj8:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.text___71FSt {
+.text__iEu5V {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   min-width: 0;
 }
-.radio__tpKox:global(.__wab_instance) {
+.radio__fo0Zu:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.text___7Br1C {
+.text__zIb0C {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   min-width: 0;
 }
-.button__g8JLr:global(.__wab_instance) {
+.button__nq4Ik:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.text__bQy5N {
+.text__eSl5F {
   position: relative;
   width: 100%;
   height: auto;
