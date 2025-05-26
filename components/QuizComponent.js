@@ -10,7 +10,7 @@ const QuizComponent = ({ quizTitle, questions, timeLimit, onStart, onQuizComplet
     // Convert Plasmic questions to react-quiz-component format
     const formattedQuizData = {
       quizTitle: quizTitle || "Custom Quiz",
-      quizSynopsis: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim",
+      quizSynopsis: "Please read each question carefully and select the best answer before moving on to the next one. This is a timed quiz with a single attempt, and it cannot be paused or stopped once started. Your performance will help us place you at the most suitable training level to support your growth.",
       questions: questions.map((q, index) => ({
         question: q.question_text,
         questionType: "text",
