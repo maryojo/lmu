@@ -1335,7 +1335,6 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                 { type: "option", label: null, value: null },
                                 { type: "option", label: null, value: null },
                                 { type: "option", label: null, value: null },
-                                { type: "option", label: null, value: null },
                                 { type: "option", label: null, value: null }
                               ];
                               __composite["0"]["label"] = "Voice";
@@ -1350,8 +1349,6 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               __composite["4"]["value"] = "PIANO";
                               __composite["5"]["label"] = "Percussion";
                               __composite["5"]["value"] = "PERCUSSION";
-                              __composite["6"]["label"] = "Piano";
-                              __composite["6"]["value"] = "PIANO";
                               return __composite;
                             })();
                             __composite["2"]["rules"] = [
