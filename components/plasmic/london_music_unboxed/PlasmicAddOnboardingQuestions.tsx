@@ -1332,6 +1332,9 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               const __composite = [
                                 { type: "option", label: null, value: null },
                                 { type: "option", label: null, value: null },
+                                { type: "option", label: null, value: null },
+                                { type: "option", label: null, value: null },
+                                { type: "option", label: null, value: null },
                                 { type: "option", label: null, value: null }
                               ];
                               __composite["0"]["label"] = "Voice";
@@ -1340,6 +1343,12 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               __composite["1"]["value"] = "GUITAR";
                               __composite["2"]["label"] = "Strings";
                               __composite["2"]["value"] = "STRINGS";
+                              __composite["3"]["label"] = "Woodwind";
+                              __composite["3"]["value"] = "WOODWIND";
+                              __composite["4"]["label"] = "Piano";
+                              __composite["4"]["value"] = "PIANO";
+                              __composite["5"]["label"] = "Percussion";
+                              __composite["5"]["value"] = "PERCUSSION";
                               return __composite;
                             })();
                             __composite["2"]["rules"] = [
@@ -1355,14 +1364,20 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               const __composite = [
                                 { type: "option", label: null, value: null },
                                 { type: "option", label: null, value: null },
+                                { type: "option", label: null, value: null },
+                                { type: "option", label: null, value: null },
                                 { type: "option", label: null, value: null }
                               ];
                               __composite["0"]["label"] = "Beginner";
                               __composite["0"]["value"] = "BEGINNER";
-                              __composite["1"]["label"] = "Skilled";
-                              __composite["1"]["value"] = "SKILLED";
-                              __composite["2"]["label"] = "Novice";
-                              __composite["2"]["value"] = "NOVICE";
+                              __composite["1"]["label"] = "Novice";
+                              __composite["1"]["value"] = "NOVICE";
+                              __composite["2"]["label"] = "Intermediate";
+                              __composite["2"]["value"] = "INTERMEDIATE";
+                              __composite["3"]["label"] = "Skilled";
+                              __composite["3"]["value"] = "SKILLED";
+                              __composite["4"]["label"] = "Advanced";
+                              __composite["4"]["value"] = "ADVANCED";
                               return __composite;
                             })();
                             __composite["3"]["rules"] = [
