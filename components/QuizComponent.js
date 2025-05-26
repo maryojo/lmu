@@ -3,14 +3,14 @@ import Quiz from 'react-quiz-component';
 
 
 const QuizComponent = ({ quizTitle, questions, timeLimit, onStart, onQuizComplete, resetKey }) => {
-    const [timeLeft, setTimeLeft] = useState(timeLimit || 120);
+    const [timeLeft, setTimeLeft] = useState(timeLimit || 300);
     const [quizFinished, setQuizFinished] = useState(false);
     const [score, setScore] = useState(null);
   
     // Convert Plasmic questions to react-quiz-component format
     const formattedQuizData = {
-      quizTitle: quizTitle || "Custom Quiz",
-      quizSynopsis: "Please read each question carefully and select the best answer before moving on to the next one. This is a timed quiz with a single attempt, and it cannot be paused or stopped once started. Your performance will help us place you at the most suitable training level to support your growth.",
+      quizTitle: quizTitle || "Quiz",
+      quizSynopsis: "Please read each question carefully and select the best answer before moving on to the next one. This is quiz is for 5 MINUTES with a SINGLE attempt, and it cannot be paused or stopped once started. Your performance will help us place you at the most suitable training level to support your growth.",
       questions: questions.map((q, index) => ({
         question: q.question_text,
         questionType: "text",
@@ -24,7 +24,7 @@ const QuizComponent = ({ quizTitle, questions, timeLimit, onStart, onQuizComplet
     useEffect(() => {
       setQuizFinished(false);
       setScore(null);
-      setTimeLeft(timeLimit || 120);
+      setTimeLeft(timeLimit || 300);
     }, [resetKey]);
 
     // useEffect(() => {
@@ -86,7 +86,7 @@ const QuizComponent = ({ quizTitle, questions, timeLimit, onStart, onQuizComplet
                 shuffle={true}
                 showInstantFeedback={false}
                 showDefaultResult={false}
-                timer={120}
+                timer={timeLimit}
                 onComplete={onComplete}
                 onStart={onStart}
             />
