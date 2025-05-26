@@ -463,7 +463,7 @@ function PlasmicRegisterAdmin__RenderFunc(props: {
                                         throw e;
                                       }
                                     })(),
-                                    "/login",
+                                    "/login?registered=true",
                                     undefined,
                                     (() => {
                                       try {

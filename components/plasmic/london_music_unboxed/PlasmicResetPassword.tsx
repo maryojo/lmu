@@ -628,7 +628,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                           <AntdButton
                             className={classNames(
                               "__wab_instance",
-                              sty.button__ktLj2
+                              sty.button__c0Eqa
                             )}
                             loading={(() => {
                               try {
@@ -650,7 +650,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text___6HvOu
+                                sty.text__it64C
                               )}
                             >
                               {"Submit"}
