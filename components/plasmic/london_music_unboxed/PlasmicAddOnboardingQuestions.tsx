@@ -78,6 +78,8 @@ import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import Unauthorized from "../../Unauthorized"; // plasmic-import: ZnrbZI7AiPSe/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
+import { useScreenVariants as useScreenVariantsiz19XCyodOuv } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: Iz19XCyodOuv/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -104,7 +106,7 @@ export type PlasmicAddOnboardingQuestions__OverridesType = {
   root?: Flex__<typeof PageLayout>;
   h5?: Flex__<"h5">;
   allQuizzesTable?: Flex__<typeof RichTable>;
-  h1?: Flex__<"h1">;
+  h4?: Flex__<"h4">;
   newQuestionForm?: Flex__<typeof FormWrapper>;
   modal?: Flex__<typeof AntdModal>;
   form2?: Flex__<typeof FormWrapper>;
@@ -152,6 +154,8 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const $globalActions = useGlobalActions?.();
 
   let [$queries, setDollarQueries] = React.useState<
     Record<string, ReturnType<typeof usePlasmicDataOp>>
@@ -275,6 +279,12 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "isNotUniqueQuiz",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -305,6 +315,10 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
 
     $queries = new$Queries;
   }
+
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsiz19XCyodOuv()
+  });
 
   return (
     <React.Fragment>
@@ -375,7 +389,9 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                             sty.text__jLp1X
                           )}
                         >
-                          {"Enter some text"}
+                          {
+                            "Add new quiz and quiz questions here for onboarding"
+                          }
                         </div>
                       </div>
                       <Button
@@ -688,6 +704,34 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                             sty.freeBox___00BIn
                           )}
                         >
+                          <h4
+                            data-plasmic-name={"h4"}
+                            data-plasmic-override={overrides.h4}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.h4,
+                              projectcss.__wab_text,
+                              sty.h4
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return $state.allQuizzesTable.selectedRow
+                                    .title;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "You won't believe what happens next.";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </h4>
                           {(_par =>
                             !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                             (() => {
@@ -721,9 +765,10 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                   )}
                                   title={(() => {
                                     try {
-                                      return $state.selectedQuizInfo[
-                                        currentIndex
-                                      ].question_text;
+                                      return `${currentIndex + 1}. ${
+                                        $state.selectedQuizInfo[currentIndex]
+                                          .question_text
+                                      }`;
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
@@ -739,30 +784,118 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                   <div
                                     className={classNames(
                                       projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__qP2Xv
+                                      sty.freeBox__wcggv
                                     )}
                                   >
-                                    {"Accordion content goes here"}
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__qP2Xv
+                                      )}
+                                    >
+                                      {"The answer options available are:"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__rz287
+                                      )}
+                                    >
+                                      {(_par =>
+                                        !_par
+                                          ? []
+                                          : Array.isArray(_par)
+                                          ? _par
+                                          : [_par])(
+                                        (() => {
+                                          try {
+                                            return $state.selectedQuizInfo[
+                                              currentIndex
+                                            ].options;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return [];
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ).map(
+                                        (__plasmic_item_1, __plasmic_idx_1) => {
+                                          const currentOptionItem =
+                                            __plasmic_item_1;
+                                          const currentOptionIndex =
+                                            __plasmic_idx_1;
+                                          return (
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__oksH8
+                                              )}
+                                              key={currentOptionIndex}
+                                            >
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return $state
+                                                      .selectedQuizInfo[
+                                                      currentIndex
+                                                    ].options[
+                                                      currentOptionIndex
+                                                    ];
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "";
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                              </React.Fragment>
+                                            </div>
+                                          );
+                                        }
+                                      )}
+                                    </div>
                                   </div>
                                   <div
                                     className={classNames(
                                       projectcss.all,
-                                      sty.freeBox__rz287
+                                      sty.freeBox__eIsio
                                     )}
                                   >
-                                    <h1
-                                      data-plasmic-name={"h1"}
-                                      data-plasmic-override={overrides.h1}
+                                    <div
                                       className={classNames(
                                         projectcss.all,
-                                        projectcss.h1,
                                         projectcss.__wab_text,
-                                        sty.h1
+                                        sty.text__fEeyR
                                       )}
                                     >
-                                      {"You won't believe what happens next."}
-                                    </h1>
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return `The correct answer is ${$state.selectedQuizInfo[currentIndex].correct_answer}`;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "The correct answer is ";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
                                   </div>
                                 </CustomAccordionItem>
                               </div>
@@ -826,15 +959,17 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                       key: "question_text",
                                       inputType: "Text",
                                       fieldId: "question_text",
-                                      label: "question_text",
-                                      name: "question_text"
+                                      label: null,
+                                      name: "question_text",
+                                      rules: null
                                     },
                                     {
                                       key: "options",
                                       inputType: "Text",
                                       fieldId: "options",
-                                      label: "options",
-                                      name: "options"
+                                      label: null,
+                                      name: "options",
+                                      rules: null
                                     },
                                     {
                                       key: "point",
@@ -849,16 +984,44 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                       key: "correct_answer",
                                       inputType: "Text",
                                       fieldId: "correct_answer",
-                                      label: "correct_answer",
-                                      name: "correct_answer"
+                                      label: null,
+                                      name: "correct_answer",
+                                      rules: null
                                     }
                                   ];
                                   __composite["0"]["hidden"] = true;
                                   __composite["1"]["initialValue"] =
                                     $state.allQuizzesTable.selectedRowKey;
                                   __composite["1"]["hidden"] = true;
+                                  __composite["2"]["label"] =
+                                    "What's the question?";
+                                  __composite["2"]["rules"] = [
+                                    {
+                                      ruleType: "required",
+                                      message: "The question is required"
+                                    }
+                                  ];
+
+                                  __composite["3"]["label"] =
+                                    "What are the options available? (options should be seperated by comma e.g true, false)";
+                                  __composite["3"]["rules"] = [
+                                    {
+                                      ruleType: "required",
+                                      message: "The options are required"
+                                    }
+                                  ];
+
                                   __composite["4"]["initialValue"] = "10";
                                   __composite["4"]["hidden"] = true;
+                                  __composite["5"]["label"] =
+                                    "What's the correct answer from the given options?";
+                                  __composite["5"]["rules"] = [
+                                    {
+                                      ruleType: "required",
+                                      message: "Correct answer is required"
+                                    }
+                                  ];
+
                                   return __composite;
                                 })(),
 
@@ -1153,7 +1316,8 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               }
                             ];
                             __composite["0"]["hidden"] = true;
-                            __composite["1"]["label"] = "Quiz Title";
+                            __composite["1"]["label"] =
+                              "Quiz Title (e.g Guitar for Advanced Level Quiz)";
                             __composite["1"]["rules"] = [
                               {
                                 ruleType: "required",
@@ -1227,7 +1391,81 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                           onFinish: async values => {
                             const $steps = {};
 
-                            $steps["defaultSubmit"] = true
+                            $steps["updateIsNotUniqueQuiz"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["isNotUniqueQuiz"]
+                                    },
+                                    operation: 0,
+                                    value:
+                                      $queries.getOnboardingQuizzes?.data.some(
+                                        item =>
+                                          item.level ==
+                                            $state.form2.value.level &&
+                                          item.instrument_type ==
+                                            $state.form2.value.instrument_type
+                                      )
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateIsNotUniqueQuiz"] != null &&
+                              typeof $steps["updateIsNotUniqueQuiz"] ===
+                                "object" &&
+                              typeof $steps["updateIsNotUniqueQuiz"].then ===
+                                "function"
+                            ) {
+                              $steps["updateIsNotUniqueQuiz"] = await $steps[
+                                "updateIsNotUniqueQuiz"
+                              ];
+                            }
+
+                            $steps["invokeGlobalAction2"] =
+                              $state.isNotUniqueQuiz
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "error",
+                                        "This quiz has been created already",
+                                        ``,
+                                        undefined,
+                                        "top"
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "plasmic-antd5-config-provider.showNotification"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["invokeGlobalAction2"] != null &&
+                              typeof $steps["invokeGlobalAction2"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction2"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction2"] = await $steps[
+                                "invokeGlobalAction2"
+                              ];
+                            }
+
+                            $steps["defaultSubmit"] = !$state.isNotUniqueQuiz
                               ? (() => {
                                   const actionArgs = {
                                     dataOp: {
@@ -1272,6 +1510,73 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                             ) {
                               $steps["defaultSubmit"] = await $steps[
                                 "defaultSubmit"
+                              ];
+                            }
+
+                            $steps["invokeGlobalAction"] =
+                              $steps.defaultSubmit &&
+                              !$steps.defaultSubmit?.error
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "success",
+                                        "Your new quiz has been added!",
+                                        "You can proceed by adding questions to the quiz",
+                                        20,
+                                        "top"
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "plasmic-antd5-config-provider.showNotification"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["invokeGlobalAction"] != null &&
+                              typeof $steps["invokeGlobalAction"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction"] = await $steps[
+                                "invokeGlobalAction"
+                              ];
+                            }
+
+                            $steps["updateModalOpen"] = !$state.isNotUniqueQuiz
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["modal", "open"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateModalOpen"] != null &&
+                              typeof $steps["updateModalOpen"] === "object" &&
+                              typeof $steps["updateModalOpen"].then ===
+                                "function"
+                            ) {
+                              $steps["updateModalOpen"] = await $steps[
+                                "updateModalOpen"
                               ];
                             }
                           },
@@ -1379,7 +1684,7 @@ const PlasmicDescendants = {
     "root",
     "h5",
     "allQuizzesTable",
-    "h1",
+    "h4",
     "newQuestionForm",
     "modal",
     "form2",
@@ -1388,7 +1693,7 @@ const PlasmicDescendants = {
   ],
   h5: ["h5"],
   allQuizzesTable: ["allQuizzesTable"],
-  h1: ["h1"],
+  h4: ["h4"],
   newQuestionForm: ["newQuestionForm"],
   modal: ["modal", "form2"],
   form2: ["form2"],
@@ -1402,7 +1707,7 @@ type NodeDefaultElementType = {
   root: typeof PageLayout;
   h5: "h5";
   allQuizzesTable: typeof RichTable;
-  h1: "h1";
+  h4: "h4";
   newQuestionForm: typeof FormWrapper;
   modal: typeof AntdModal;
   form2: typeof FormWrapper;
@@ -1472,7 +1777,7 @@ export const PlasmicAddOnboardingQuestions = Object.assign(
     // Helper components rendering sub-elements
     h5: makeNodeComponent("h5"),
     allQuizzesTable: makeNodeComponent("allQuizzesTable"),
-    h1: makeNodeComponent("h1"),
+    h4: makeNodeComponent("h4"),
     newQuestionForm: makeNodeComponent("newQuestionForm"),
     modal: makeNodeComponent("modal"),
     form2: makeNodeComponent("form2"),

@@ -77,6 +77,8 @@ import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 import { QuizComponent } from "../../QuizComponent"; // plasmic-import: klgNzyPULfbl/codeComponent
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
+import { useScreenVariants as useScreenVariantsiz19XCyodOuv } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: Iz19XCyodOuv/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -287,6 +289,12 @@ function PlasmicOnboarding__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "fetchedQuizTitle",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -319,6 +327,10 @@ function PlasmicOnboarding__RenderFunc(props: {
 
     $queries = new$Queries;
   }
+
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsiz19XCyodOuv()
+  });
 
   return (
     <React.Fragment>
@@ -462,7 +474,13 @@ function PlasmicOnboarding__RenderFunc(props: {
                             },
                             formItems: undefined,
                             labelCol: { span: 8, horizontalOnly: true },
-                            layout: "vertical",
+                            layout: hasVariant(
+                              globalVariants,
+                              "screen",
+                              "mobileOnly"
+                            )
+                              ? "vertical"
+                              : "vertical",
                             mode: undefined,
                             onFinish: async values => {
                               const $steps = {};
@@ -561,6 +579,46 @@ function PlasmicOnboarding__RenderFunc(props: {
                               ) {
                                 $steps["updateFetchedQuizId"] = await $steps[
                                   "updateFetchedQuizId"
+                                ];
+                              }
+
+                              $steps["updateFetchedQuizTitle"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["fetchedQuizTitle"]
+                                      },
+                                      operation: 0,
+                                      value:
+                                        $steps["getRightQuizId"]?.data[0]?.title
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateFetchedQuizTitle"] != null &&
+                                typeof $steps["updateFetchedQuizTitle"] ===
+                                  "object" &&
+                                typeof $steps["updateFetchedQuizTitle"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateFetchedQuizTitle"] = await $steps[
+                                  "updateFetchedQuizTitle"
                                 ];
                               }
 
@@ -757,7 +815,20 @@ function PlasmicOnboarding__RenderFunc(props: {
                             ref: ref => {
                               $refs["startOnboardingQuizForm"] = ref;
                             },
-                            wrapperCol: { span: 16, horizontalOnly: true }
+                            wrapperCol: hasVariant(
+                              globalVariants,
+                              "screen",
+                              "mobileOnly"
+                            )
+                              ? (() => {
+                                  const __composite = {
+                                    span: 16,
+                                    horizontalOnly: null
+                                  };
+                                  __composite["horizontalOnly"] = true;
+                                  return __composite;
+                                })()
+                              : { span: 16, horizontalOnly: true }
                           };
                           initializeCodeComponentStates(
                             $state,
@@ -789,7 +860,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <FormItemWrapper
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.formField__qdsNl
+                                  sty.formField__v8Ut
                                 )}
                                 label={
                                   "What instrument would you like to enrol for?"
@@ -802,7 +873,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                 <AntdRadioGroup
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.radioGroup__fdRok
+                                    sty.radioGroup__ufM48
                                   )}
                                   options={(() => {
                                     const __composite = [
@@ -855,7 +926,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__nVFvn
+                                      sty.radio___4Egjq
                                     )}
                                     value={"op1"}
                                   >
@@ -863,7 +934,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__tu4Ld
+                                        sty.text__g7TIt
                                       )}
                                     >
                                       {"Option 1"}
@@ -872,7 +943,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__jjUkk
+                                      sty.radio___55K59
                                     )}
                                     value={"op2"}
                                   >
@@ -880,7 +951,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__f2Z3A
+                                        sty.text__gubV
                                       )}
                                     >
                                       {"Option 2"}
@@ -891,7 +962,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <FormItemWrapper
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.formField__ljomN
+                                  sty.formField__mDmUi
                                 )}
                                 label={"What level do you best fit in?"}
                                 name={"trainingLevel"}
@@ -902,7 +973,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                 <AntdRadioGroup
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.radioGroup__qelwU
+                                    sty.radioGroup__idKd
                                   )}
                                   options={(() => {
                                     const __composite = [
@@ -948,7 +1019,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__z22J0
+                                      sty.radio___6Prhj
                                     )}
                                     value={"op1"}
                                   >
@@ -956,7 +1027,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text___71FSt
+                                        sty.text__coJsq
                                       )}
                                     >
                                       {"Option 1"}
@@ -965,7 +1036,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__tpKox
+                                      sty.radio__qgZp3
                                     )}
                                     value={"op2"}
                                   >
@@ -973,7 +1044,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text___7Br1C
+                                        sty.text__ry1JP
                                       )}
                                     >
                                       {"Option 2"}
@@ -984,7 +1055,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <AntdButton
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.button__g8JLr
+                                  sty.button__jqJ5W
                                 )}
                                 loading={(() => {
                                   try {
@@ -1008,7 +1079,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text__bQy5N
+                                    sty.text__hzqWj
                                   )}
                                 >
                                   {"Next"}
@@ -1023,6 +1094,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                       try {
                         return (
                           !$queries?.getUserInformation.isLoading &&
+                          $queries?.getUserInformation?.data != undefined &&
                           $queries?.getUserInformation?.data[0] &&
                           $queries?.getUserInformation?.data[0]
                             .instrument_category !== null
@@ -1810,7 +1882,19 @@ function PlasmicOnboarding__RenderFunc(props: {
                         throw e;
                       }
                     })()}
-                    quizTitle={"Quiz 1"}
+                    quizTitle={(() => {
+                      try {
+                        return $state.fetchedQuizTitle;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                     resetKey={(() => {
                       try {
                         return $state.formStep;
@@ -1824,7 +1908,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                         throw e;
                       }
                     })()}
-                    timeLimit={120}
+                    timeLimit={300}
                   />
 
                   <Stack__
@@ -2429,7 +2513,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                       <React.Fragment>
                         {(() => {
                           try {
-                            return `You passed. You're going to be enroled for the ${
+                            return `You passed!! You're going to be enroled for the ${
                               $state?.startOnboardingQuizForm?.value?.trainingLevel?.toLocaleLowerCase() ??
                               $queries?.getUserInformation?.data[0]?.level?.toLocaleLowerCase()
                             } class`;

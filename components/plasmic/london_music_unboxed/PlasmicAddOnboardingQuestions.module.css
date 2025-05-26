@@ -100,6 +100,34 @@
   > img {
   margin-left: 16px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__jfrCw {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__jfrCw > :global(.__wab_flex-container) {
+    flex-direction: column;
+    margin-left: calc(0px - 0px);
+    width: calc(100% + 0px);
+    margin-top: calc(0px - 16px);
+    height: calc(100% + 16px);
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__jfrCw > :global(.__wab_flex-container) > *,
+  .freeBox__jfrCw > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+  .freeBox__jfrCw > :global(.__wab_flex-container) > picture > img,
+  .freeBox__jfrCw
+    > :global(.__wab_flex-container)
+    > :global(.__wab_slot)
+    > picture
+    > img {
+    margin-left: 0px;
+    margin-top: 16px;
+  }
+}
 .allQuizzesTable:global(.__wab_instance) {
   width: 100%;
   max-height: 100%;
@@ -136,6 +164,12 @@
   > img {
   margin-top: 16px;
 }
+.h4 {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
 .freeBox__ammZv {
   display: flex;
   flex-direction: column;
@@ -151,6 +185,24 @@
 .customAccordionItem__qJj2W:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
+  width: 100%;
+  min-width: 0;
+}
+.freeBox__wcggv {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  min-width: 0;
+  padding: 0px;
+}
+.text__qP2Xv {
+  font-weight: 500;
 }
 .freeBox__rz287 {
   display: flex;
@@ -161,18 +213,38 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
-.h1 {
+.text__oksH8 {
+  position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
+  background: none;
+  color: #535353;
   min-width: 0;
+}
+.freeBox__eIsio {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  min-width: 0;
+  padding: 0px;
+}
+.text__fEeyR {
+  font-weight: 500;
 }
 .customAccordionItem__avf8Q:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   width: 100%;
+  background: var(--token-4Cz-MSHVeqrl);
   min-width: 0;
 }
 .newQuestionForm:global(.__wab_instance) {
