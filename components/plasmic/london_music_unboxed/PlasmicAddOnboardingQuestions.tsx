@@ -816,7 +816,6 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                           },
                                           cacheKey: null,
                                           invalidatedKeys: [
-                                            "4853205b-c7e6-4fad-90f8-e9c574f6b3d4",
                                             "4853205b-c7e6-4fad-90f8-e9c574f6b3d4"
                                           ],
                                           roleId: null
@@ -1014,9 +1013,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                                 ]
                                               },
                                               cacheKey: null,
-                                              invalidatedKeys: [
-                                                "4853205b-c7e6-4fad-90f8-e9c574f6b3d4"
-                                              ],
+                                              invalidatedKeys: [],
                                               roleId: null
                                             }
                                           };
