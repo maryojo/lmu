@@ -1,6 +1,6 @@
 .root:global(.__wab_instance) {
   position: relative;
-  background: var(--token-NANCd_f9Z6JF);
+  background: var(--token-P3q4aCH0pBgT);
   display: flex;
   cursor: pointer;
   box-sizing: border-box;
@@ -10,7 +10,7 @@
   line-height: var(--token-IwJXRlL21nBQ);
   outline-style: none;
   text-decoration-line: none;
-  color: #ffffff;
+  color: var(--token-tQWjGoYl6Mdp);
   font-weight: 500;
   border-radius: var(--token-GHU777uGwY8R);
   padding: 0rem;
@@ -379,6 +379,7 @@
 }
 .text__e7Awc {
   white-space: pre;
+  color: var(--token-tMilkOK1BC4I);
 }
 .freeBox__bogLv {
   flex-direction: column;

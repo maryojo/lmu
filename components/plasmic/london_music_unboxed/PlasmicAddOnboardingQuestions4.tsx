@@ -66,7 +66,7 @@ import {
   usePlasmicInvalidate
 } from "@plasmicapp/react-web/lib/data-sources";
 
-import PageLayout from "../../PageLayout"; // plasmic-import: NXXR6Sd3NRz9/component
+import AdminPageLayout from "../../AdminPageLayout"; // plasmic-import: NXXR6Sd3NRz9/component
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 import { RichTable } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
 import { tableHelpers as RichTable_Helpers } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
@@ -101,7 +101,7 @@ export const PlasmicAddOnboardingQuestions4__ArgProps =
   new Array<ArgPropType>();
 
 export type PlasmicAddOnboardingQuestions4__OverridesType = {
-  root?: Flex__<typeof PageLayout>;
+  root?: Flex__<typeof AdminPageLayout>;
   h5?: Flex__<"h5">;
   allQuizzesTable?: Flex__<typeof RichTable>;
   modal?: Flex__<typeof AntdModal>;
@@ -297,7 +297,7 @@ function PlasmicAddOnboardingQuestions4__RenderFunc(props: {
       `}</style>
 
       <div className={projectcss.plasmic_page_wrapper}>
-        <PageLayout
+        <AdminPageLayout
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
@@ -881,7 +881,7 @@ function PlasmicAddOnboardingQuestions4__RenderFunc(props: {
               </React.Fragment>
             )}
           </DataCtxReader__>
-        </PageLayout>
+        </AdminPageLayout>
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -908,7 +908,7 @@ type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  root: typeof PageLayout;
+  root: typeof AdminPageLayout;
   h5: "h5";
   allQuizzesTable: typeof RichTable;
   modal: typeof AntdModal;

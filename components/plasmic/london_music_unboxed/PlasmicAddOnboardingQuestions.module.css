@@ -164,11 +164,36 @@
   > img {
   margin-top: 16px;
 }
-.h4 {
+.freeBox___6CkEr {
+  display: flex;
+  flex-direction: row;
+  position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   min-width: 0;
+  padding: 0px;
+}
+.freeBox___6CkEr > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  margin-left: calc(0px - 10px);
+  width: calc(100% + 10px);
+}
+.freeBox___6CkEr > :global(.__wab_flex-container) > *,
+.freeBox___6CkEr > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox___6CkEr > :global(.__wab_flex-container) > picture > img,
+.freeBox___6CkEr
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 10px;
+}
+.quizHeading:global(.__wab_instance) {
+  position: relative;
 }
 .freeBox__ammZv {
   display: flex;
@@ -182,69 +207,11 @@
   min-width: 0;
   padding: 0px;
 }
-.customAccordionItem__qJj2W:global(.__wab_instance) {
+.customAccordionItem:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   width: 100%;
-  min-width: 0;
-}
-.freeBox__wcggv {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-bottom: 10px;
-  min-width: 0;
-  padding: 0px;
-}
-.text__qP2Xv {
-  font-weight: 500;
-}
-.freeBox__rz287 {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.text__oksH8 {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  background: none;
-  color: #535353;
-  min-width: 0;
-}
-.freeBox__eIsio {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-bottom: 10px;
-  min-width: 0;
-  padding: 0px;
-}
-.text__fEeyR {
-  font-weight: 500;
-}
-.customAccordionItem__avf8Q:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-  width: 100%;
-  background: var(--token-4Cz-MSHVeqrl);
+  background: var(--token-BTElKD6kqjHL);
   min-width: 0;
 }
 .newQuestionForm:global(.__wab_instance) {
@@ -269,6 +236,85 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
+}
+.h6 {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.freeBox__dhb9M {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 0px;
+}
+.svg__rnZfy {
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-P3q4aCH0pBgT);
+  height: 1em;
+  flex-shrink: 0;
+}
+.deleteQuestionModal:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.freeBox__jAwn {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+.text___04DFb {
+  text-align: center;
+}
+.freeBox___0CS {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px;
+}
+.freeBox___0CS > :global(.__wab_flex-container) {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  margin-top: calc(0px - 10px);
+  height: calc(100% + 10px);
+}
+.freeBox___0CS > :global(.__wab_flex-container) > *,
+.freeBox___0CS > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox___0CS > :global(.__wab_flex-container) > picture > img,
+.freeBox___0CS
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-top: 10px;
+}
+.svg___5JgZr {
+  object-fit: cover;
+  max-width: 100%;
+  width: 40px;
+  height: 40px;
+  color: var(--token-ZRdM7P4REUFv);
+  flex-shrink: 0;
 }
 .modal:global(.__wab_instance) {
   max-width: 100%;
