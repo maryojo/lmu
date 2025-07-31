@@ -1,4 +1,6 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
+// import { registerFunction } from '@plasmicapp/host';
+
 import { 
   SupabaseProvider, 
   SupabaseProviderMeta,
@@ -10,6 +12,8 @@ import {
   SupabaseStorageGetSignedUrlMeta,
 } from "plasmic-supabase"
 import QuizComponent from "./components/QuizComponent"
+import SimpleGlobalProvider from "./my-contexts/SimpleGlobalProvider"
+
 import CustomAccordionItem from "./components/CustomAccordionItem"
 
 export const PLASMIC = initPlasmicLoader({
@@ -89,7 +93,10 @@ PLASMIC.registerComponent(CustomAccordionItem, {
   name: "CustomAccordionItem",
   importPath: "./components/CustomAccordionItem",
   props: {
-    title: "string",
+    summary: {
+      type: "slot",
+      defaultValue: "Accordion Summary",
+    },
     children: {
       type: "slot",
       defaultValue: "Accordion content goes here",
@@ -97,7 +104,25 @@ PLASMIC.registerComponent(CustomAccordionItem, {
     className: {
       type: "class",
     },
+    expandIcon: { type: "slot", defaultValue: ">" },
   },
+});
+
+PLASMIC.registerComponent(SimpleGlobalProvider, {
+  name: "SimpleCustomGlobalProvider",
+  providesData: true,
+  props: {
+    userData: {
+      type: "object",
+      displayName: "User Data"
+    },
+    children: {
+      type: "slot"
+    },
+    className: {
+      type: "class"
+    }
+  }
 });
 
 PLASMIC.registerComponent(SupabaseProvider, SupabaseProviderMeta);
