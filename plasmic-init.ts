@@ -110,6 +110,7 @@ PLASMIC.registerComponent(CustomAccordionItem, {
 
 PLASMIC.registerComponent(SimpleGlobalProvider, {
   name: "SimpleCustomGlobalProvider",
+  importPath: "/my-contexts/SimpleGlobalProvider",
   providesData: true,
   props: {
     userData: {
