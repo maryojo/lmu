@@ -45,5 +45,6 @@
   object-fit: cover;
   max-width: 100%;
   color: var(--token-ZRdM7P4REUFv);
+  cursor: pointer;
   height: 1em;
 }

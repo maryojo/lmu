@@ -574,6 +574,43 @@ function PlasmicLogin__RenderFunc(props: {
                             "errorShowErrorMessage"
                           ];
                         }
+
+                        $steps["updateLoginResponse"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["loginResponse"]
+                                },
+                                operation: 0,
+                                value: {}
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateLoginResponse"] != null &&
+                          typeof $steps["updateLoginResponse"] === "object" &&
+                          typeof $steps["updateLoginResponse"].then ===
+                            "function"
+                        ) {
+                          $steps["updateLoginResponse"] = await $steps[
+                            "updateLoginResponse"
+                          ];
+                        }
                       },
                       onIsSubmittingChange: async (...eventArgs: any) => {
                         generateStateOnChangePropForCodeComponents(
@@ -615,7 +652,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__a4XXx
+                            sty.formField__bHmrd
                           )}
                           label={"Email"}
                           name={"email"}
@@ -633,7 +670,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__oUf4N
+                            sty.formField__mI2Qi
                           )}
                           label={"Password"}
                           name={"password"}
@@ -655,7 +692,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <AntdButton
                           className={classNames(
                             "__wab_instance",
-                            sty.button__ww0Bj
+                            sty.button__h4Br3
                           )}
                           loading={(() => {
                             try {
@@ -677,7 +714,7 @@ function PlasmicLogin__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__pl7Nz
+                              sty.text__q3S98
                             )}
                           >
                             {"Login"}

@@ -66,10 +66,12 @@ import {
   usePlasmicInvalidate
 } from "@plasmicapp/react-web/lib/data-sources";
 
-import PageLayout from "../../PageLayout"; // plasmic-import: NXXR6Sd3NRz9/component
+import AdminPageLayout from "../../AdminPageLayout"; // plasmic-import: NXXR6Sd3NRz9/component
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 import { RichTable } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
 import { tableHelpers as RichTable_Helpers } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
+import QuizHeading from "../../QuizHeading"; // plasmic-import: u5QUcEvtH2vy/component
+import QuizQuestion from "../../QuizQuestion"; // plasmic-import: HQ7S7EYcQqWT/component
 import { CustomAccordionItem } from "../../CustomAccordionItem"; // plasmic-import: Th4N3i4J4xsp/codeComponent
 import { FormWrapper } from "@plasmicpkgs/antd5/skinny/SchemaForm";
 import { formHelpers as FormWrapper_Helpers } from "@plasmicpkgs/antd5/skinny/Form";
@@ -89,6 +91,8 @@ import sty from "./PlasmicAddOnboardingQuestions.module.css"; // plasmic-import:
 
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: yZz0P1JDPQwS/icon
 import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: -jkcn7GwAM4v/icon
+import Icon21Icon from "./icons/PlasmicIcon__Icon21"; // plasmic-import: QolWKAS9_Lau/icon
+import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: CQpcpFiNaBOI/icon
 
 createPlasmicElementProxy;
 
@@ -103,11 +107,15 @@ type ArgPropType = keyof PlasmicAddOnboardingQuestions__ArgsType;
 export const PlasmicAddOnboardingQuestions__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicAddOnboardingQuestions__OverridesType = {
-  root?: Flex__<typeof PageLayout>;
+  root?: Flex__<typeof AdminPageLayout>;
   h5?: Flex__<"h5">;
   allQuizzesTable?: Flex__<typeof RichTable>;
-  h4?: Flex__<"h4">;
+  quizHeading?: Flex__<typeof QuizHeading>;
+  quizQuestion?: Flex__<typeof QuizQuestion>;
+  customAccordionItem?: Flex__<typeof CustomAccordionItem>;
   newQuestionForm?: Flex__<typeof FormWrapper>;
+  h6?: Flex__<"h6">;
+  deleteQuestionModal?: Flex__<typeof AntdModal>;
   modal?: Flex__<typeof AntdModal>;
   form2?: Flex__<typeof FormWrapper>;
   section?: Flex__<"section">;
@@ -285,6 +293,36 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "isUpdateTitleLoading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "updatedQuizDetails",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "deleteQuestionModal.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "questionIdToDelete",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "isQuestionEditMode",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -302,9 +340,9 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
     getOnboardingQuizzes: usePlasmicDataOp(() => {
       return {
         sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-        opId: "4853205b-c7e6-4fad-90f8-e9c574f6b3d4",
+        opId: "0bb4e4c3-b5bc-477c-a0a9-6118a2519034",
         userArgs: {},
-        cacheKey: `plasmic.$.4853205b-c7e6-4fad-90f8-e9c574f6b3d4.$.`,
+        cacheKey: `plasmic.$.0bb4e4c3-b5bc-477c-a0a9-6118a2519034.$.`,
         invalidatedKeys: null,
         roleId: null
       };
@@ -331,7 +369,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
       `}</style>
 
       <div className={projectcss.plasmic_page_wrapper}>
-        <PageLayout
+        <AdminPageLayout
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
@@ -625,6 +663,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                             ).apply(null, eventArgs);
                           },
                           pagination: false,
+                          rowActions: [],
                           rowKey: "id",
                           scopeClassName: sty["allQuizzesTable__instance"],
                           selectedRowKey: generateStateValueProp($state, [
@@ -704,34 +743,200 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                             sty.freeBox___00BIn
                           )}
                         >
-                          <h4
-                            data-plasmic-name={"h4"}
-                            data-plasmic-override={overrides.h4}
+                          <Stack__
+                            as={"div"}
+                            hasGap={true}
                             className={classNames(
                               projectcss.all,
-                              projectcss.h4,
-                              projectcss.__wab_text,
-                              sty.h4
+                              sty.freeBox___6CkEr
                             )}
                           >
-                            <React.Fragment>
-                              {(() => {
+                            <QuizHeading
+                              data-plasmic-name={"quizHeading"}
+                              data-plasmic-override={overrides.quizHeading}
+                              className={classNames(
+                                "__wab_instance",
+                                sty.quizHeading
+                              )}
+                              handleSaveClick={async newTitle => {
+                                const $steps = {};
+
+                                $steps["updateIsUpdateTitleLoading"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["isUpdateTitleLoading"]
+                                        },
+                                        operation: 0,
+                                        value: true
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateIsUpdateTitleLoading"] !=
+                                    null &&
+                                  typeof $steps[
+                                    "updateIsUpdateTitleLoading"
+                                  ] === "object" &&
+                                  typeof $steps["updateIsUpdateTitleLoading"]
+                                    .then === "function"
+                                ) {
+                                  $steps["updateIsUpdateTitleLoading"] =
+                                    await $steps["updateIsUpdateTitleLoading"];
+                                }
+
+                                $steps["postgresUpdateById"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        dataOp: {
+                                          sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                          opId: "7a10a86b-90f8-4b78-9f2e-53e0d81bdfb7",
+                                          userArgs: {
+                                            keys: [
+                                              $state.allQuizzesTable
+                                                ?.selectedRowKey
+                                            ],
+                                            variables: [newTitle]
+                                          },
+                                          cacheKey: null,
+                                          invalidatedKeys: [
+                                            "4853205b-c7e6-4fad-90f8-e9c574f6b3d4"
+                                          ],
+                                          roleId: null
+                                        }
+                                      };
+                                      return (async ({
+                                        dataOp,
+                                        continueOnError
+                                      }) => {
+                                        try {
+                                          const response =
+                                            await executePlasmicDataOp(dataOp, {
+                                              userAuthToken:
+                                                dataSourcesCtx?.userAuthToken,
+                                              user: dataSourcesCtx?.user
+                                            });
+                                          await plasmicInvalidate(
+                                            dataOp.invalidatedKeys
+                                          );
+                                          return response;
+                                        } catch (e) {
+                                          if (!continueOnError) {
+                                            throw e;
+                                          }
+                                          return e;
+                                        }
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["postgresUpdateById"] != null &&
+                                  typeof $steps["postgresUpdateById"] ===
+                                    "object" &&
+                                  typeof $steps["postgresUpdateById"].then ===
+                                    "function"
+                                ) {
+                                  $steps["postgresUpdateById"] = await $steps[
+                                    "postgresUpdateById"
+                                  ];
+                                }
+
+                                $steps["updateIsUpdateTitleLoading2"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["isUpdateTitleLoading"]
+                                        },
+                                        operation: 0,
+                                        value: false
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateIsUpdateTitleLoading2"] !=
+                                    null &&
+                                  typeof $steps[
+                                    "updateIsUpdateTitleLoading2"
+                                  ] === "object" &&
+                                  typeof $steps["updateIsUpdateTitleLoading2"]
+                                    .then === "function"
+                                ) {
+                                  $steps["updateIsUpdateTitleLoading2"] =
+                                    await $steps["updateIsUpdateTitleLoading2"];
+                                }
+                              }}
+                              heading={(() => {
                                 try {
-                                  return $state.allQuizzesTable.selectedRow
-                                    .title;
+                                  return (() => {
+                                    let index =
+                                      $queries.getOnboardingQuizzes.data.findIndex(
+                                        quiz =>
+                                          quiz.id ===
+                                          $state.allQuizzesTable.selectedRow.id
+                                      );
+                                    return $queries.getOnboardingQuizzes.data[
+                                      index
+                                    ].title;
+                                  })();
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
                                     e?.plasmicType ===
                                       "PlasmicUndefinedDataError"
                                   ) {
-                                    return "You won't believe what happens next.";
+                                    return undefined;
                                   }
                                   throw e;
                                 }
                               })()}
-                            </React.Fragment>
-                          </h4>
+                              isSaving={(() => {
+                                try {
+                                  return $state.isUpdateTitleLoading;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return false;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            />
+                          </Stack__>
                           {(_par =>
                             !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                             (() => {
@@ -758,155 +963,527 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                 )}
                                 key={currentIndex}
                               >
-                                <CustomAccordionItem
+                                <QuizQuestion
+                                  data-plasmic-name={"quizQuestion"}
+                                  data-plasmic-override={overrides.quizQuestion}
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.customAccordionItem__qJj2W
+                                    sty.quizQuestion
                                   )}
-                                  title={(() => {
+                                  currentIndex={currentIndex}
+                                  editQuestionVariant={(() => {
                                     try {
-                                      return `${currentIndex + 1}. ${
-                                        $state.selectedQuizInfo[currentIndex]
-                                          .question_text
-                                      }`;
+                                      return $state.isQuestionEditMode;
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
                                         e?.plasmicType ===
                                           "PlasmicUndefinedDataError"
                                       ) {
-                                        return undefined;
+                                        return [];
                                       }
                                       throw e;
                                     }
                                   })()}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.freeBox__wcggv
-                                    )}
-                                  >
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__qP2Xv
-                                      )}
-                                    >
-                                      {"The answer options available are:"}
-                                    </div>
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        sty.freeBox__rz287
-                                      )}
-                                    >
-                                      {(_par =>
-                                        !_par
-                                          ? []
-                                          : Array.isArray(_par)
-                                          ? _par
-                                          : [_par])(
-                                        (() => {
-                                          try {
-                                            return $state.selectedQuizInfo[
-                                              currentIndex
-                                            ].options;
-                                          } catch (e) {
-                                            if (
-                                              e instanceof TypeError ||
-                                              e?.plasmicType ===
-                                                "PlasmicUndefinedDataError"
-                                            ) {
-                                              return [];
+                                  handleSaveChangeClick={async questionInfo => {
+                                    const $steps = {};
+
+                                    $steps["postgresUpdateById"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            dataOp: {
+                                              sourceId:
+                                                "6C2N6jYLs31t3Z2ygT9rD6",
+                                              opId: "6ac58608-f0dd-4afd-94d4-c82385885afc",
+                                              userArgs: {
+                                                keys: [
+                                                  $state.selectedQuizInfo[
+                                                    currentIndex
+                                                  ].id
+                                                ],
+                                                variables: [
+                                                  $state.updatedQuizDetails
+                                                    .correctAnswer &&
+                                                    $state.updatedQuizDetails
+                                                      ?.correctAnswer,
+                                                  $state.updatedQuizDetails
+                                                    .questionText &&
+                                                    $state.updatedQuizDetails
+                                                      ?.questionText
+                                                ]
+                                              },
+                                              cacheKey: null,
+                                              invalidatedKeys: [],
+                                              roleId: null
                                             }
-                                            throw e;
-                                          }
-                                        })()
-                                      ).map(
-                                        (__plasmic_item_1, __plasmic_idx_1) => {
-                                          const currentOptionItem =
-                                            __plasmic_item_1;
-                                          const currentOptionIndex =
-                                            __plasmic_idx_1;
-                                          return (
-                                            <div
-                                              className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
-                                                sty.text__oksH8
-                                              )}
-                                              key={currentOptionIndex}
-                                            >
-                                              <React.Fragment>
-                                                {(() => {
-                                                  try {
-                                                    return $state
-                                                      .selectedQuizInfo[
-                                                      currentIndex
-                                                    ].options[
-                                                      currentOptionIndex
-                                                    ];
-                                                  } catch (e) {
-                                                    if (
-                                                      e instanceof TypeError ||
-                                                      e?.plasmicType ===
-                                                        "PlasmicUndefinedDataError"
-                                                    ) {
-                                                      return "";
-                                                    }
-                                                    throw e;
+                                          };
+                                          return (async ({
+                                            dataOp,
+                                            continueOnError
+                                          }) => {
+                                            try {
+                                              const response =
+                                                await executePlasmicDataOp(
+                                                  dataOp,
+                                                  {
+                                                    userAuthToken:
+                                                      dataSourcesCtx?.userAuthToken,
+                                                    user: dataSourcesCtx?.user
                                                   }
-                                                })()}
-                                              </React.Fragment>
-                                            </div>
-                                          );
-                                        }
-                                      )}
-                                    </div>
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.freeBox__eIsio
-                                    )}
-                                  >
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__fEeyR
-                                      )}
-                                    >
-                                      <React.Fragment>
-                                        {(() => {
-                                          try {
-                                            return `The correct answer is ${$state.selectedQuizInfo[currentIndex].correct_answer}`;
-                                          } catch (e) {
-                                            if (
-                                              e instanceof TypeError ||
-                                              e?.plasmicType ===
-                                                "PlasmicUndefinedDataError"
-                                            ) {
-                                              return "The correct answer is ";
+                                                );
+                                              await plasmicInvalidate(
+                                                dataOp.invalidatedKeys
+                                              );
+                                              return response;
+                                            } catch (e) {
+                                              if (!continueOnError) {
+                                                throw e;
+                                              }
+                                              return e;
                                             }
-                                            throw e;
-                                          }
-                                        })()}
-                                      </React.Fragment>
-                                    </div>
-                                  </div>
-                                </CustomAccordionItem>
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["postgresUpdateById"] != null &&
+                                      typeof $steps["postgresUpdateById"] ===
+                                        "object" &&
+                                      typeof $steps["postgresUpdateById"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["postgresUpdateById"] =
+                                        await $steps["postgresUpdateById"];
+                                    }
+
+                                    $steps["updateIsQuestionEditMode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "isQuestionEditMode"
+                                              ]
+                                            },
+                                            operation: 0,
+                                            value: false
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateIsQuestionEditMode"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateIsQuestionEditMode"
+                                      ] === "object" &&
+                                      typeof $steps["updateIsQuestionEditMode"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateIsQuestionEditMode"] =
+                                        await $steps[
+                                          "updateIsQuestionEditMode"
+                                        ];
+                                    }
+
+                                    $steps["invokeGlobalAction"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "success",
+                                              "Changes saved!",
+                                              undefined,
+                                              undefined,
+                                              "top"
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "plasmic-antd5-config-provider.showNotification"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["invokeGlobalAction"] != null &&
+                                      typeof $steps["invokeGlobalAction"] ===
+                                        "object" &&
+                                      typeof $steps["invokeGlobalAction"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["invokeGlobalAction"] =
+                                        await $steps["invokeGlobalAction"];
+                                    }
+
+                                    $steps["fetchQuizInfoById"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            dataOp: {
+                                              sourceId:
+                                                "6C2N6jYLs31t3Z2ygT9rD6",
+                                              opId: "718444ab-0dcb-4bcb-86f7-c906331ee065",
+                                              userArgs: {
+                                                filters: [
+                                                  $state.selectedQuizInfo[0]
+                                                    ?.quiz_id
+                                                ]
+                                              },
+                                              cacheKey: null,
+                                              invalidatedKeys: null,
+                                              roleId: null
+                                            }
+                                          };
+                                          return (async ({
+                                            dataOp,
+                                            continueOnError
+                                          }) => {
+                                            try {
+                                              const response =
+                                                await executePlasmicDataOp(
+                                                  dataOp,
+                                                  {
+                                                    userAuthToken:
+                                                      dataSourcesCtx?.userAuthToken,
+                                                    user: dataSourcesCtx?.user
+                                                  }
+                                                );
+                                              await plasmicInvalidate(
+                                                dataOp.invalidatedKeys
+                                              );
+                                              return response;
+                                            } catch (e) {
+                                              if (!continueOnError) {
+                                                throw e;
+                                              }
+                                              return e;
+                                            }
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["fetchQuizInfoById"] != null &&
+                                      typeof $steps["fetchQuizInfoById"] ===
+                                        "object" &&
+                                      typeof $steps["fetchQuizInfoById"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["fetchQuizInfoById"] =
+                                        await $steps["fetchQuizInfoById"];
+                                    }
+
+                                    $steps["updateSelectedQuizInfo"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["selectedQuizInfo"]
+                                            },
+                                            operation: 0,
+                                            value:
+                                              $steps.fetchQuizInfoById?.data
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateSelectedQuizInfo"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateSelectedQuizInfo"
+                                      ] === "object" &&
+                                      typeof $steps["updateSelectedQuizInfo"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateSelectedQuizInfo"] =
+                                        await $steps["updateSelectedQuizInfo"];
+                                    }
+                                  }}
+                                  onCorrectAnswerChange={async correctAnswerValue => {
+                                    const $steps = {};
+
+                                    $steps["runCode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return ($state.updatedQuizDetails.correctAnswer =
+                                                correctAnswerValue);
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["runCode"] = await $steps[
+                                        "runCode"
+                                      ];
+                                    }
+                                  }}
+                                  onDeleteQuestion={async () => {
+                                    const $steps = {};
+
+                                    $steps["updateDeleteQuestionModalOpen"] =
+                                      true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              variable: {
+                                                objRoot: $state,
+                                                variablePath: [
+                                                  "deleteQuestionModal",
+                                                  "open"
+                                                ]
+                                              },
+                                              operation: 0,
+                                              value: true
+                                            };
+                                            return (({
+                                              variable,
+                                              value,
+                                              startIndex,
+                                              deleteCount
+                                            }) => {
+                                              if (!variable) {
+                                                return;
+                                              }
+                                              const { objRoot, variablePath } =
+                                                variable;
+
+                                              $stateSet(
+                                                objRoot,
+                                                variablePath,
+                                                value
+                                              );
+                                              return value;
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["updateDeleteQuestionModalOpen"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateDeleteQuestionModalOpen"
+                                      ] === "object" &&
+                                      typeof $steps[
+                                        "updateDeleteQuestionModalOpen"
+                                      ].then === "function"
+                                    ) {
+                                      $steps["updateDeleteQuestionModalOpen"] =
+                                        await $steps[
+                                          "updateDeleteQuestionModalOpen"
+                                        ];
+                                    }
+
+                                    $steps["updateQuestionIdToDelete"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "questionIdToDelete"
+                                              ]
+                                            },
+                                            operation: 0,
+                                            value: currentItem?.id
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateQuestionIdToDelete"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateQuestionIdToDelete"
+                                      ] === "object" &&
+                                      typeof $steps["updateQuestionIdToDelete"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateQuestionIdToDelete"] =
+                                        await $steps[
+                                          "updateQuestionIdToDelete"
+                                        ];
+                                    }
+                                  }}
+                                  onEditClick={async () => {
+                                    const $steps = {};
+
+                                    $steps["updateIsQuestionEditMode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "isQuestionEditMode"
+                                              ]
+                                            },
+                                            operation: 0,
+                                            value: true
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateIsQuestionEditMode"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateIsQuestionEditMode"
+                                      ] === "object" &&
+                                      typeof $steps["updateIsQuestionEditMode"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateIsQuestionEditMode"] =
+                                        await $steps[
+                                          "updateIsQuestionEditMode"
+                                        ];
+                                    }
+                                  }}
+                                  onQuestionTextChange={async questionTextValue => {
+                                    const $steps = {};
+
+                                    $steps["runCode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return (() => {
+                                                return ($state.updatedQuizDetails.questionText =
+                                                  questionTextValue);
+                                              })();
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["runCode"] = await $steps[
+                                        "runCode"
+                                      ];
+                                    }
+                                  }}
+                                  selectedQuizInfo={$state.selectedQuizInfo}
+                                />
                               </div>
                             );
                           })}
                           <CustomAccordionItem
+                            data-plasmic-name={"customAccordionItem"}
+                            data-plasmic-override={
+                              overrides.customAccordionItem
+                            }
                             className={classNames(
                               "__wab_instance",
-                              sty.customAccordionItem__avf8Q
+                              sty.customAccordionItem
                             )}
-                            title={"Add New Question"}
+                            expandIcon={
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__dhb9M
+                                )}
+                              >
+                                <Icon21Icon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg__rnZfy
+                                  )}
+                                  role={"img"}
+                                />
+                              </div>
+                            }
+                            summary={
+                              <h6
+                                data-plasmic-name={"h6"}
+                                data-plasmic-override={overrides.h6}
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.h6,
+                                  projectcss.__wab_text,
+                                  sty.h6
+                                )}
+                              >
+                                {"Add New Question"}
+                              </h6>
+                            }
                           >
                             {(() => {
                               const child$Props = {
@@ -1144,6 +1721,133 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                       "defaultSubmit"
                                     ];
                                   }
+
+                                  $steps["fetchQuizInfoById"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          dataOp: {
+                                            sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                            opId: "718444ab-0dcb-4bcb-86f7-c906331ee065",
+                                            userArgs: {
+                                              filters: [
+                                                $state.allQuizzesTable
+                                                  ?.selectedRowKey
+                                              ]
+                                            },
+                                            cacheKey: null,
+                                            invalidatedKeys: null,
+                                            roleId: null
+                                          }
+                                        };
+                                        return (async ({
+                                          dataOp,
+                                          continueOnError
+                                        }) => {
+                                          try {
+                                            const response =
+                                              await executePlasmicDataOp(
+                                                dataOp,
+                                                {
+                                                  userAuthToken:
+                                                    dataSourcesCtx?.userAuthToken,
+                                                  user: dataSourcesCtx?.user
+                                                }
+                                              );
+                                            await plasmicInvalidate(
+                                              dataOp.invalidatedKeys
+                                            );
+                                            return response;
+                                          } catch (e) {
+                                            if (!continueOnError) {
+                                              throw e;
+                                            }
+                                            return e;
+                                          }
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["fetchQuizInfoById"] != null &&
+                                    typeof $steps["fetchQuizInfoById"] ===
+                                      "object" &&
+                                    typeof $steps["fetchQuizInfoById"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["fetchQuizInfoById"] = await $steps[
+                                      "fetchQuizInfoById"
+                                    ];
+                                  }
+
+                                  $steps["invokeGlobalAction"] = $steps
+                                    .fetchQuizInfoById?.data
+                                    ? (() => {
+                                        const actionArgs = {
+                                          args: [
+                                            "success",
+                                            "New Question Added",
+                                            undefined,
+                                            undefined,
+                                            "top"
+                                          ]
+                                        };
+                                        return $globalActions[
+                                          "plasmic-antd5-config-provider.showNotification"
+                                        ]?.apply(null, [...actionArgs.args]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["invokeGlobalAction"] != null &&
+                                    typeof $steps["invokeGlobalAction"] ===
+                                      "object" &&
+                                    typeof $steps["invokeGlobalAction"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["invokeGlobalAction"] = await $steps[
+                                      "invokeGlobalAction"
+                                    ];
+                                  }
+
+                                  $steps["updateSelectedQuizInfo"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["selectedQuizInfo"]
+                                          },
+                                          operation: 0,
+                                          value: $steps?.fetchQuizInfoById?.data
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateSelectedQuizInfo"] != null &&
+                                    typeof $steps["updateSelectedQuizInfo"] ===
+                                      "object" &&
+                                    typeof $steps["updateSelectedQuizInfo"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateSelectedQuizInfo"] =
+                                      await $steps["updateSelectedQuizInfo"];
+                                  }
                                 },
                                 onIsSubmittingChange: async (
                                   ...eventArgs: any
@@ -1165,6 +1869,21 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                       "__wab_instance",
                                       sty.button__cdgM6
                                     )}
+                                    disabled={(() => {
+                                      try {
+                                        return $state.newQuestionForm
+                                          .isSubmitting;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
                                     submitsForm={true}
                                     type={"primary"}
                                   >
@@ -1210,6 +1929,276 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               );
                             })()}
                           </CustomAccordionItem>
+                          <AntdModal
+                            data-plasmic-name={"deleteQuestionModal"}
+                            data-plasmic-override={
+                              overrides.deleteQuestionModal
+                            }
+                            cancelText={"No, cancel"}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.deleteQuestionModal
+                            )}
+                            defaultStylesClassName={classNames(
+                              projectcss.root_reset,
+                              projectcss.plasmic_default_styles,
+                              projectcss.plasmic_mixins,
+                              projectcss.plasmic_tokens,
+                              plasmic_antd_5_hostless_css.plasmic_tokens,
+                              plasmic_plasmic_rich_components_css.plasmic_tokens
+                            )}
+                            modalScopeClassName={
+                              sty["deleteQuestionModal__modal"]
+                            }
+                            okText={"Yes, delete"}
+                            onOk={async () => {
+                              const $steps = {};
+
+                              $steps["postgresDeleteMany"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      dataOp: {
+                                        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                        opId: "5b4fe856-77ec-4bda-945c-aa68b4598107",
+                                        userArgs: {
+                                          conditions: [
+                                            $state.questionIdToDelete
+                                          ]
+                                        },
+                                        cacheKey: null,
+                                        invalidatedKeys: [
+                                          "4853205b-c7e6-4fad-90f8-e9c574f6b3d4",
+                                          "0bb4e4c3-b5bc-477c-a0a9-6118a2519034"
+                                        ],
+                                        roleId: null
+                                      }
+                                    };
+                                    return (async ({
+                                      dataOp,
+                                      continueOnError
+                                    }) => {
+                                      try {
+                                        const response =
+                                          await executePlasmicDataOp(dataOp, {
+                                            userAuthToken:
+                                              dataSourcesCtx?.userAuthToken,
+                                            user: dataSourcesCtx?.user
+                                          });
+                                        await plasmicInvalidate(
+                                          dataOp.invalidatedKeys
+                                        );
+                                        return response;
+                                      } catch (e) {
+                                        if (!continueOnError) {
+                                          throw e;
+                                        }
+                                        return e;
+                                      }
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["postgresDeleteMany"] != null &&
+                                typeof $steps["postgresDeleteMany"] ===
+                                  "object" &&
+                                typeof $steps["postgresDeleteMany"].then ===
+                                  "function"
+                              ) {
+                                $steps["postgresDeleteMany"] = await $steps[
+                                  "postgresDeleteMany"
+                                ];
+                              }
+
+                              $steps["updateQuestionIdToDelete"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["questionIdToDelete"]
+                                      },
+                                      operation: 0
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateQuestionIdToDelete"] != null &&
+                                typeof $steps["updateQuestionIdToDelete"] ===
+                                  "object" &&
+                                typeof $steps["updateQuestionIdToDelete"]
+                                  .then === "function"
+                              ) {
+                                $steps["updateQuestionIdToDelete"] =
+                                  await $steps["updateQuestionIdToDelete"];
+                              }
+
+                              $steps["fetchQuizInfoById"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      dataOp: {
+                                        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                        opId: "718444ab-0dcb-4bcb-86f7-c906331ee065",
+                                        userArgs: {
+                                          filters: [
+                                            $state.allQuizzesTable
+                                              ?.selectedRowKey
+                                          ]
+                                        },
+                                        cacheKey: null,
+                                        invalidatedKeys: null,
+                                        roleId: null
+                                      }
+                                    };
+                                    return (async ({
+                                      dataOp,
+                                      continueOnError
+                                    }) => {
+                                      try {
+                                        const response =
+                                          await executePlasmicDataOp(dataOp, {
+                                            userAuthToken:
+                                              dataSourcesCtx?.userAuthToken,
+                                            user: dataSourcesCtx?.user
+                                          });
+                                        await plasmicInvalidate(
+                                          dataOp.invalidatedKeys
+                                        );
+                                        return response;
+                                      } catch (e) {
+                                        if (!continueOnError) {
+                                          throw e;
+                                        }
+                                        return e;
+                                      }
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["fetchQuizInfoById"] != null &&
+                                typeof $steps["fetchQuizInfoById"] ===
+                                  "object" &&
+                                typeof $steps["fetchQuizInfoById"].then ===
+                                  "function"
+                              ) {
+                                $steps["fetchQuizInfoById"] = await $steps[
+                                  "fetchQuizInfoById"
+                                ];
+                              }
+
+                              $steps["updateSelectedQuizInfo"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["selectedQuizInfo"]
+                                      },
+                                      operation: 0,
+                                      value: $steps.fetchQuizInfoById?.data
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateSelectedQuizInfo"] != null &&
+                                typeof $steps["updateSelectedQuizInfo"] ===
+                                  "object" &&
+                                typeof $steps["updateSelectedQuizInfo"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateSelectedQuizInfo"] = await $steps[
+                                  "updateSelectedQuizInfo"
+                                ];
+                              }
+                            }}
+                            onOpenChange={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "deleteQuestionModal",
+                                "open"
+                              ]).apply(null, eventArgs);
+                            }}
+                            open={generateStateValueProp($state, [
+                              "deleteQuestionModal",
+                              "open"
+                            ])}
+                            title={
+                              <Stack__
+                                as={"div"}
+                                hasGap={true}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___0CS
+                                )}
+                              >
+                                <Icon20Icon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg___5JgZr
+                                  )}
+                                  role={"img"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__t2Is3
+                                  )}
+                                >
+                                  {
+                                    "Are you sure you want to delete the question?"
+                                  }
+                                </div>
+                              </Stack__>
+                            }
+                            trigger={null}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__jAwn
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___04DFb
+                                )}
+                              >
+                                {
+                                  "If you delete this question, it will be permanently removed from this quiz"
+                                }
+                              </div>
+                            </div>
+                          </AntdModal>
                         </Stack__>
                       ) : null}
                     </Stack__>
@@ -1688,7 +2677,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
               </React.Fragment>
             )}
           </DataCtxReader__>
-        </PageLayout>
+        </AdminPageLayout>
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -1699,8 +2688,12 @@ const PlasmicDescendants = {
     "root",
     "h5",
     "allQuizzesTable",
-    "h4",
+    "quizHeading",
+    "quizQuestion",
+    "customAccordionItem",
     "newQuestionForm",
+    "h6",
+    "deleteQuestionModal",
     "modal",
     "form2",
     "section",
@@ -1708,8 +2701,12 @@ const PlasmicDescendants = {
   ],
   h5: ["h5"],
   allQuizzesTable: ["allQuizzesTable"],
-  h4: ["h4"],
+  quizHeading: ["quizHeading"],
+  quizQuestion: ["quizQuestion"],
+  customAccordionItem: ["customAccordionItem", "newQuestionForm", "h6"],
   newQuestionForm: ["newQuestionForm"],
+  h6: ["h6"],
+  deleteQuestionModal: ["deleteQuestionModal"],
   modal: ["modal", "form2"],
   form2: ["form2"],
   section: ["section", "unauthorized"],
@@ -1719,11 +2716,15 @@ type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
-  root: typeof PageLayout;
+  root: typeof AdminPageLayout;
   h5: "h5";
   allQuizzesTable: typeof RichTable;
-  h4: "h4";
+  quizHeading: typeof QuizHeading;
+  quizQuestion: typeof QuizQuestion;
+  customAccordionItem: typeof CustomAccordionItem;
   newQuestionForm: typeof FormWrapper;
+  h6: "h6";
+  deleteQuestionModal: typeof AntdModal;
   modal: typeof AntdModal;
   form2: typeof FormWrapper;
   section: "section";
@@ -1792,8 +2793,12 @@ export const PlasmicAddOnboardingQuestions = Object.assign(
     // Helper components rendering sub-elements
     h5: makeNodeComponent("h5"),
     allQuizzesTable: makeNodeComponent("allQuizzesTable"),
-    h4: makeNodeComponent("h4"),
+    quizHeading: makeNodeComponent("quizHeading"),
+    quizQuestion: makeNodeComponent("quizQuestion"),
+    customAccordionItem: makeNodeComponent("customAccordionItem"),
     newQuestionForm: makeNodeComponent("newQuestionForm"),
+    h6: makeNodeComponent("h6"),
+    deleteQuestionModal: makeNodeComponent("deleteQuestionModal"),
     modal: makeNodeComponent("modal"),
     form2: makeNodeComponent("form2"),
     section: makeNodeComponent("section"),

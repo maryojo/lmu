@@ -59,14 +59,14 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { AntdAvatar } from "@plasmicpkgs/antd5/skinny/registerAvatar";
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicDashboardNavbar.module.css"; // plasmic-import: f9TmdLYt-K-T/css
-
-import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: dwMGBRl-2IC3/icon
 
 createPlasmicElementProxy;
 
@@ -83,7 +83,7 @@ export const PlasmicDashboardNavbar__ArgProps = new Array<ArgPropType>();
 export type PlasmicDashboardNavbar__OverridesType = {
   root?: Flex__<"section">;
   freeBox?: Flex__<"div">;
-  svg?: Flex__<"svg">;
+  avatar?: Flex__<typeof AntdAvatar>;
 };
 
 export interface DefaultDashboardNavbarProps {
@@ -129,8 +129,6 @@ function PlasmicDashboardNavbar__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const $globalActions = useGlobalActions?.();
-
   return (
     <section
       data-plasmic-name={"root"}
@@ -155,30 +153,25 @@ function PlasmicDashboardNavbar__RenderFunc(props: {
         hasGap={true}
         className={classNames(projectcss.all, sty.freeBox)}
       >
-        <Icon2Icon
-          data-plasmic-name={"svg"}
-          data-plasmic-override={overrides.svg}
-          className={classNames(projectcss.all, sty.svg)}
-          onClick={async event => {
-            const $steps = {};
-
-            $steps["invokeGlobalAction"] = true
-              ? (() => {
-                  const actionArgs = { args: ["/login"] };
-                  return $globalActions[
-                    "SupabaseUserGlobalContext.logout"
-                  ]?.apply(null, [...actionArgs.args]);
-                })()
-              : undefined;
-            if (
-              $steps["invokeGlobalAction"] != null &&
-              typeof $steps["invokeGlobalAction"] === "object" &&
-              typeof $steps["invokeGlobalAction"].then === "function"
-            ) {
-              $steps["invokeGlobalAction"] = await $steps["invokeGlobalAction"];
+        <AntdAvatar
+          data-plasmic-name={"avatar"}
+          data-plasmic-override={overrides.avatar}
+          className={classNames("__wab_instance", sty.avatar)}
+          href={`/student-profile`}
+          letters={``}
+          src={(() => {
+            try {
+              return $ctx.globalUserData.avatar_url;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
             }
-          }}
-          role={"img"}
+          })()}
         />
       </Stack__>
     </section>
@@ -186,9 +179,9 @@ function PlasmicDashboardNavbar__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "freeBox", "svg"],
-  freeBox: ["freeBox", "svg"],
-  svg: ["svg"]
+  root: ["root", "freeBox", "avatar"],
+  freeBox: ["freeBox", "avatar"],
+  avatar: ["avatar"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -196,7 +189,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "section";
   freeBox: "div";
-  svg: "svg";
+  avatar: typeof AntdAvatar;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -260,7 +253,7 @@ export const PlasmicDashboardNavbar = Object.assign(
   {
     // Helper components rendering sub-elements
     freeBox: makeNodeComponent("freeBox"),
-    svg: makeNodeComponent("svg"),
+    avatar: makeNodeComponent("avatar"),
 
     // Metadata about props expected for PlasmicDashboardNavbar
     internalVariantProps: PlasmicDashboardNavbar__VariantProps,

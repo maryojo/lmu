@@ -730,19 +730,6 @@
           "componentType": "component"
         },
         {
-          "id": "NXXR6Sd3NRz9",
-          "name": "PageLayout",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicPageLayout.tsx",
-          "importSpec": {
-            "modulePath": "PageLayout.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicPageLayout.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "C7vQjd45FbsY",
           "name": "Label",
           "type": "managed",
@@ -847,19 +834,6 @@
           "componentType": "component"
         },
         {
-          "id": "U8fHScEvG5wo",
-          "name": "AccordionWithItemsProp",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicAccordionWithItemsProp.tsx",
-          "importSpec": {
-            "modulePath": "AccordionWithItemsProp.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicAccordionWithItemsProp.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "iHF5mzpi9EOp",
           "name": "Dashboard",
           "type": "managed",
@@ -902,6 +876,19 @@
           "path": "/register"
         },
         {
+          "id": "NXXR6Sd3NRz9",
+          "name": "AdminPageLayout",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicAdminPageLayout.tsx",
+          "importSpec": {
+            "modulePath": "AdminPageLayout.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicAdminPageLayout.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
           "id": "N1YDHbC1ATYR",
           "name": "Onboarding",
           "type": "managed",
@@ -928,20 +915,6 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/new-page-2"
-        },
-        {
-          "id": "Rgp-m8eUJXH4",
-          "name": "AddOnboardingQuestions4",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicAddOnboardingQuestions4.tsx",
-          "importSpec": {
-            "modulePath": "../pages/add-onboarding-questions-4.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicAddOnboardingQuestions4.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/add-onboarding-questions-4"
         },
         {
           "id": "BbsWOL7vwd6t",
@@ -1026,6 +999,220 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/add-onboarding-questions"
+        },
+        {
+          "id": "Itd9tHC_WCDz",
+          "name": "StudentPageLayout",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicStudentPageLayout.tsx",
+          "importSpec": {
+            "modulePath": "StudentPageLayout.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicStudentPageLayout.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "SDxc98dGIuBp",
+          "name": "StudentDashboard",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicStudentDashboard.tsx",
+          "importSpec": {
+            "modulePath": "../pages/student-dashboard.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicStudentDashboard.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/student-dashboard"
+        },
+        {
+          "id": "JFR469SKPh4F",
+          "name": "Profile",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicProfile.tsx",
+          "importSpec": {
+            "modulePath": "../pages/student-profile.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicProfile.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/student-profile"
+        },
+        {
+          "id": "scyO_hkhBT6w",
+          "name": "StudentCourses",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicStudentCourses.tsx",
+          "importSpec": {
+            "modulePath": "../pages/student-courses.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicStudentCourses.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/student-courses"
+        },
+        {
+          "id": "lU_2619e8-pr",
+          "name": "CourseCard",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicCourseCard.tsx",
+          "importSpec": {
+            "modulePath": "CourseCard.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicCourseCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "HQ7S7EYcQqWT",
+          "name": "QuizQuestion",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicQuizQuestion.tsx",
+          "importSpec": {
+            "modulePath": "QuizQuestion.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicQuizQuestion.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "bepcGSmi0pMM",
+          "name": "InstructorCourses",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicInstructorCourses.tsx",
+          "importSpec": {
+            "modulePath": "../pages/instructor-courses.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicInstructorCourses.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/instructor-courses"
+        },
+        {
+          "id": "KRlgGOfWJ9fO",
+          "name": "InstructorPageLayout",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicInstructorPageLayout.tsx",
+          "importSpec": {
+            "modulePath": "InstructorPageLayout.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicInstructorPageLayout.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "XKFrkAIa6kPS",
+          "name": "InstructorAddCourses",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicInstructorAddCourses.tsx",
+          "importSpec": {
+            "modulePath": "../pages/instructor-add-courses.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicInstructorAddCourses.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/instructor-add-courses"
+        },
+        {
+          "id": "i0WiHoCDrVSU",
+          "name": "SliderThumb",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicSliderThumb.tsx",
+          "importSpec": {
+            "modulePath": "SliderThumb.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicSliderThumb.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "J2TEJwh_0pP5",
+          "name": "RangeSlider",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicRangeSlider.tsx",
+          "importSpec": {
+            "modulePath": "RangeSlider.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicRangeSlider.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "p-9qS4IsMfKz",
+          "name": "InstructorViewCourses",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicInstructorViewCourses.tsx",
+          "importSpec": {
+            "modulePath": "../pages/instructor-view-courses.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicInstructorViewCourses.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/instructor-view-courses"
+        },
+        {
+          "id": "u5QUcEvtH2vy",
+          "name": "QuizHeading",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicQuizHeading.tsx",
+          "importSpec": {
+            "modulePath": "QuizHeading.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicQuizHeading.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "DoqLM-i_9RsN",
+          "name": "TextInput",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicTextInput.tsx",
+          "importSpec": {
+            "modulePath": "TextInput.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicTextInput.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "UlE2KW6T6NZS",
+          "name": "TextAreaInput",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicTextAreaInput.tsx",
+          "importSpec": {
+            "modulePath": "TextAreaInput.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicTextAreaInput.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "k-Qv5DzxGbDH",
+          "name": "TextField",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicTextField.tsx",
+          "importSpec": {
+            "modulePath": "TextField.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicTextField.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -1058,6 +1245,91 @@
           "id": "AT3U1U2gTxsA",
           "name": "Icon4Icon",
           "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon4.tsx"
+        },
+        {
+          "id": "3o0PCMbs4nW9",
+          "name": "Icon5Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon5.tsx"
+        },
+        {
+          "id": "SkbFakqezrvv",
+          "name": "Icon6Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon6.tsx"
+        },
+        {
+          "id": "_qXKnOYU_rli",
+          "name": "Icon7Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon7.tsx"
+        },
+        {
+          "id": "fQ-wmBOjvVKq",
+          "name": "Icon8Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon8.tsx"
+        },
+        {
+          "id": "vZOerV2r8lMw",
+          "name": "Icon9Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon9.tsx"
+        },
+        {
+          "id": "c9Rmwtu2bA54",
+          "name": "Icon10Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon10.tsx"
+        },
+        {
+          "id": "jkQ1pOWd7e68",
+          "name": "Icon11Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon11.tsx"
+        },
+        {
+          "id": "muD8YxMlc6wY",
+          "name": "Icon12Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon12.tsx"
+        },
+        {
+          "id": "IuQNgVybgFcd",
+          "name": "Icon13Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon13.tsx"
+        },
+        {
+          "id": "uaMlfHxKNi5f",
+          "name": "Icon14Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon14.tsx"
+        },
+        {
+          "id": "IG49PCNfzFCB",
+          "name": "Icon15Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon15.tsx"
+        },
+        {
+          "id": "0fflnDuvI7c1",
+          "name": "Icon16Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon16.tsx"
+        },
+        {
+          "id": "dYXFQotiGoff",
+          "name": "Icon17Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon17.tsx"
+        },
+        {
+          "id": "fqIOvX4azUg2",
+          "name": "Icon18Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon18.tsx"
+        },
+        {
+          "id": "NdSpYtsShF-m",
+          "name": "Icon19Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon19.tsx"
+        },
+        {
+          "id": "CQpcpFiNaBOI",
+          "name": "Icon20Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon20.tsx"
+        },
+        {
+          "id": "QolWKAS9_Lau",
+          "name": "Icon21Icon",
+          "moduleFilePath": "plasmic/london_music_unboxed/icons/PlasmicIcon__Icon21.tsx"
         }
       ],
       "images": [
@@ -1085,6 +1357,61 @@
           "id": "mmxUNKr_yWdM",
           "name": "image 3",
           "filePath": "../public/plasmic/london_music_unboxed/images/image3.png"
+        },
+        {
+          "id": "BS2riyTISJse",
+          "name": "image 4",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image4.png"
+        },
+        {
+          "id": "rEVYtpDZz6dt",
+          "name": "image 5",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image5.png"
+        },
+        {
+          "id": "i73QtovBQEmM",
+          "name": "image 6",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image6.png"
+        },
+        {
+          "id": "j7hwH9ttbfZa",
+          "name": "image 7",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image7.png"
+        },
+        {
+          "id": "7QEeKHPlj11-",
+          "name": "image 8",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image8.png"
+        },
+        {
+          "id": "atd5loIgr0jR",
+          "name": "image 9",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image9.svg"
+        },
+        {
+          "id": "JmINSU66pSSI",
+          "name": "image 10",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image10.svg"
+        },
+        {
+          "id": "f2tKwVWXlFSO",
+          "name": "image 11",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image11.png"
+        },
+        {
+          "id": "9_UoSBOI9rfs",
+          "name": "image 12",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image12.png"
+        },
+        {
+          "id": "9W34WG_PncUX",
+          "name": "image 13",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image13.svg"
+        },
+        {
+          "id": "BJ14P1AbhODr",
+          "name": "image 14",
+          "filePath": "../public/plasmic/london_music_unboxed/images/image14.svg"
         }
       ],
       "indirect": false,
@@ -1138,6 +1465,12 @@
           "name": "CustomAccordionItem",
           "displayName": "CustomAccordionItem",
           "componentImportPath": "./components/CustomAccordionItem"
+        },
+        {
+          "id": "uzE7DNMozwxD",
+          "name": "SimpleCustomGlobalProvider",
+          "displayName": "SimpleCustomGlobalProvider",
+          "componentImportPath": "/my-contexts/SimpleGlobalProvider"
         }
       ],
       "customFunctions": []
@@ -1239,6 +1572,6 @@
   "nextjsConfig": {
     "pagesDir": "../pages"
   },
-  "cliVersion": "0.1.338",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.338/dist/plasmic.schema.json"
+  "cliVersion": "0.1.340",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.340/dist/plasmic.schema.json"
 }

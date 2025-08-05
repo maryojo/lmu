@@ -2,9 +2,9 @@
 // This file is owned by you, feel free to edit as you see fit.
 import * as React from "react";
 import {
-  PlasmicAccordionWithItemsProp,
-  DefaultAccordionWithItemsPropProps
-} from "./plasmic/london_music_unboxed/PlasmicAccordionWithItemsProp";
+  PlasmicRangeSlider,
+  DefaultRangeSliderProps
+} from "./plasmic/london_music_unboxed/PlasmicRangeSlider";
 
 // Your component props start with props for variants and slots you defined
 // in Plasmic, but you can add more here, like event handlers that you can
@@ -13,32 +13,31 @@ import {
 // If you don't want to expose certain variants or slots as a prop, you can use
 // Omit to hide them:
 //
-// interface AccordionWithItemsPropProps extends Omit<DefaultAccordionWithItemsPropProps, "hideProps1"|"hideProp2"> {
+// interface RangeSliderProps extends Omit<DefaultRangeSliderProps, "hideProps1"|"hideProp2"> {
 //   // etc.
 // }
 //
-// You can also stop extending from DefaultAccordionWithItemsPropProps altogether and have
+// You can also stop extending from DefaultRangeSliderProps altogether and have
 // total control over the props for your component.
-export interface AccordionWithItemsPropProps
-  extends DefaultAccordionWithItemsPropProps {}
+export interface RangeSliderProps extends DefaultRangeSliderProps {}
 
-function AccordionWithItemsProp(props: AccordionWithItemsPropProps) {
-  // Use PlasmicAccordionWithItemsProp to render this component as it was
+function RangeSlider(props: RangeSliderProps) {
+  // Use PlasmicRangeSlider to render this component as it was
   // designed in Plasmic, by activating the appropriate variants,
   // attaching the appropriate event handlers, etc.  You
   // can also install whatever React hooks you need here to manage state or
   // fetch data.
   //
-  // Props you can pass into PlasmicAccordionWithItemsProp are:
+  // Props you can pass into PlasmicRangeSlider are:
   // 1. Variants you want to activate,
   // 2. Contents for slots you want to fill,
   // 3. Overrides for any named node in the component to attach behavior and data,
   // 4. Props to set on the root node.
   //
-  // By default, we are just piping all AccordionWithItemsPropProps here, but feel free
+  // By default, we are just piping all RangeSliderProps here, but feel free
   // to do whatever works for you.
 
-  return <PlasmicAccordionWithItemsProp {...props} />;
+  return <PlasmicRangeSlider {...props} />;
 }
 
-export default AccordionWithItemsProp;
+export default RangeSlider;
