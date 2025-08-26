@@ -858,7 +858,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <FormItemWrapper
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.formField__qQuZb
+                                  sty.formField__zZJmC
                                 )}
                                 label={
                                   "What instrument would you like to enrol for?"
@@ -871,7 +871,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                 <AntdRadioGroup
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.radioGroup__bLkeV
+                                    sty.radioGroup__juuod
                                   )}
                                   options={(() => {
                                     const __composite = [
@@ -924,7 +924,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__zXdG5
+                                      sty.radio__a5U6X
                                     )}
                                     value={"op1"}
                                   >
@@ -932,7 +932,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__uduvR
+                                        sty.text__eYdgT
                                       )}
                                     >
                                       {"Option 1"}
@@ -941,7 +941,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__pRIa
+                                      sty.radio__um5Yp
                                     )}
                                     value={"op2"}
                                   >
@@ -949,7 +949,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text___1BiU2
+                                        sty.text___4YsYp
                                       )}
                                     >
                                       {"Option 2"}
@@ -960,7 +960,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <FormItemWrapper
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.formField__jylb
+                                  sty.formField__nsj3C
                                 )}
                                 label={"What level do you best fit in?"}
                                 name={"trainingLevel"}
@@ -971,7 +971,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                 <AntdRadioGroup
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.radioGroup__abEik
+                                    sty.radioGroup__q7Yh
                                   )}
                                   options={(() => {
                                     const __composite = [
@@ -1017,7 +1017,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__mXx1
+                                      sty.radio__t5Ra3
                                     )}
                                     value={"op1"}
                                   >
@@ -1025,7 +1025,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__g6JlL
+                                        sty.text__ja6Z
                                       )}
                                     >
                                       {"Option 1"}
@@ -1034,7 +1034,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio___2XxkK
+                                      sty.radio__vUcC0
                                     )}
                                     value={"op2"}
                                   >
@@ -1042,7 +1042,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__xIAe
+                                        sty.text__n5GdV
                                       )}
                                     >
                                       {"Option 2"}
@@ -1053,7 +1053,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <AntdButton
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.button__gGrw1
+                                  sty.button__e2IVo
                                 )}
                                 loading={(() => {
                                   try {
@@ -1077,7 +1077,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text__oCikg
+                                    sty.text___4CyVv
                                   )}
                                 >
                                   {"Next"}
