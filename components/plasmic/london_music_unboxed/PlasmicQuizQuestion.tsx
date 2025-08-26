@@ -64,11 +64,13 @@ import RadioGroup from "../../RadioGroup"; // plasmic-import: 9fgJVBRabwM8/compo
 import Radio from "../../Radio"; // plasmic-import: TM1IOUI2mayj/component
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 import TextInput from "../../TextInput"; // plasmic-import: DoqLM-i_9RsN/component
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicQuizQuestion.module.css"; // plasmic-import: HQ7S7EYcQqWT/css
 
@@ -234,6 +236,12 @@ function PlasmicQuizQuestion__RenderFunc(props: {
     $refs
   });
 
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
+
   return (
     <CustomAccordionItem
       data-plasmic-name={"root"}
@@ -245,9 +253,9 @@ function PlasmicQuizQuestion__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens,
-        plasmic_plasmic_rich_components_css.plasmic_tokens,
+        styleTokensClassNames,
+        styleTokensClassNames_antd_5_hostless,
+        styleTokensClassNames_plasmic_rich_components,
         sty.root,
         {
           [sty.rooteditQuestionVariant]: hasVariant(
@@ -532,11 +540,7 @@ function PlasmicQuizQuestion__RenderFunc(props: {
             }).apply(null, eventArgs);
           }}
           options={
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___5Xw3W)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox___5Xw3W)}>
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                 (() => {
                   try {
@@ -623,14 +627,12 @@ function PlasmicQuizQuestion__RenderFunc(props: {
                 label={"Option 3"}
                 value={"option3"}
               />
-            </Stack__>
+            </div>
           }
           showLabel={false}
         />
       </div>
-      <Stack__
-        as={"div"}
-        hasGap={true}
+      <div
         className={classNames(projectcss.all, sty.freeBox__f7Sj8, {
           [sty.freeBoxeditQuestionVariant__f7Sj8BwbnT]: hasVariant(
             $state,
@@ -671,9 +673,7 @@ function PlasmicQuizQuestion__RenderFunc(props: {
             })()}
           </React.Fragment>
         </div>
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(projectcss.all, sty.freeBox__lXloR, {
             [sty.freeBoxeditQuestionVariant__lXloRbwbnT]: hasVariant(
               $state,
@@ -823,7 +823,7 @@ function PlasmicQuizQuestion__RenderFunc(props: {
             }
             type={"bordered"}
           />
-        </Stack__>
+        </div>
         {(
           hasVariant($state, "editQuestionVariant", "editQuestionVariant")
             ? true
@@ -991,7 +991,7 @@ function PlasmicQuizQuestion__RenderFunc(props: {
             }
           }}
         />
-      </Stack__>
+      </div>
     </CustomAccordionItem>
   ) as React.ReactElement | null;
 }

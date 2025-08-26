@@ -63,11 +63,13 @@ import { BaseRadioGroup } from "@plasmicpkgs/react-aria/skinny/registerRadioGrou
 import Label from "../../Label"; // plasmic-import: C7vQjd45FbsY/component
 import Radio from "../../Radio"; // plasmic-import: TM1IOUI2mayj/component
 import Description from "../../Description"; // plasmic-import: nZE9I1cVKuM7/component
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicRadioGroup.module.css"; // plasmic-import: 9fgJVBRabwM8/css
 
@@ -184,6 +186,12 @@ function PlasmicRadioGroup__RenderFunc(props: {
     $refs
   });
 
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
+
   const [$ccVariants, setDollarCcVariants] = React.useState<
     Record<string, boolean>
   >({
@@ -214,9 +222,9 @@ function PlasmicRadioGroup__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens,
-        plasmic_plasmic_rich_components_css.plasmic_tokens,
+        styleTokensClassNames,
+        styleTokensClassNames_antd_5_hostless,
+        styleTokensClassNames_plasmic_rich_components,
         sty.ariaRadioGroup
       )}
       defaultValue={args.defaultValue}
@@ -245,11 +253,7 @@ function PlasmicRadioGroup__RenderFunc(props: {
       ) : null}
       {renderPlasmicSlot({
         defaultContents: (
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__ynYr)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__ynYr)}>
             <Radio
               className={classNames("__wab_instance", sty.radio__yKs5Y)}
               label={"Option 1"}
@@ -267,7 +271,7 @@ function PlasmicRadioGroup__RenderFunc(props: {
               label={"Option 3"}
               value={"option3"}
             />
-          </Stack__>
+          </div>
         ),
         value: args.options
       })}

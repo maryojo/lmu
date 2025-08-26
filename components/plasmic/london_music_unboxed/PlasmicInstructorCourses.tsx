@@ -74,11 +74,13 @@ import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 import CourseCard from "../../CourseCard"; // plasmic-import: lU_2619e8-pr/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicInstructorCourses.module.css"; // plasmic-import: bepcGSmi0pMM/css
 
@@ -190,6 +192,12 @@ function PlasmicInstructorCourses__RenderFunc(props: {
     $queries = new$Queries;
   }
 
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
+
   return (
     <React.Fragment>
       <Head></Head>
@@ -211,11 +219,7 @@ function PlasmicInstructorCourses__RenderFunc(props: {
           <DataCtxReader__>
             {$ctx => (
               <div className={classNames(projectcss.all, sty.freeBox__jQ9MJ)}>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__jIeZs)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__jIeZs)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__jDZp)}
                   >
@@ -245,9 +249,7 @@ function PlasmicInstructorCourses__RenderFunc(props: {
                         })()}
                       </React.Fragment>
                     </h4>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__j88Zc)}
                     >
                       {(() => {
@@ -373,13 +375,11 @@ function PlasmicInstructorCourses__RenderFunc(props: {
                           </div>
                         }
                       />
-                    </Stack__>
+                    </div>
                   </div>
-                  <Stack__
-                    as={"div"}
+                  <div
                     data-plasmic-name={"columns"}
                     data-plasmic-override={overrides.columns}
-                    hasGap={true}
                     className={classNames(projectcss.all, sty.columns)}
                   >
                     {(_par =>
@@ -512,8 +512,8 @@ function PlasmicInstructorCourses__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.column__ncS4U)}
                     />
-                  </Stack__>
-                </Stack__>
+                  </div>
+                </div>
               </div>
             )}
           </DataCtxReader__>

@@ -66,13 +66,13 @@ import { FormItemWrapper } from "@plasmicpkgs/antd5/skinny/FormItem";
 import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdInput_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
-
-import { useScreenVariants as useScreenVariantsiz19XCyodOuv } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: Iz19XCyodOuv/globalVariant
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicResetPassword.module.css"; // plasmic-import: BbsWOL7vwd6t/css
 
@@ -183,9 +183,12 @@ function PlasmicResetPassword__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsiz19XCyodOuv()
-  });
+  const globalVariants = _useGlobalVariants();
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -208,9 +211,9 @@ function PlasmicResetPassword__RenderFunc(props: {
             projectcss.root_reset,
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
-            projectcss.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
-            plasmic_plasmic_rich_components_css.plasmic_tokens,
+            styleTokensClassNames,
+            styleTokensClassNames_antd_5_hostless,
+            styleTokensClassNames_plasmic_rich_components,
             sty.resetPassword
           )}
         >
@@ -283,9 +286,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                     ? true
                     : false
                 ) ? (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox___1CaQd)}
                   >
                     <PlasmicImg__
@@ -337,13 +338,9 @@ function PlasmicResetPassword__RenderFunc(props: {
                         linkTo={`/register`}
                       />
                     </div>
-                  </Stack__>
+                  </div>
                 ) : null}
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__rNbCh)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__rNbCh)}>
                   <div
                     className={classNames(
                       projectcss.all,
@@ -368,11 +365,9 @@ function PlasmicResetPassword__RenderFunc(props: {
                     }
                     linkTo={`/register`}
                   />
-                </Stack__>
+                </div>
                 <div className={classNames(projectcss.all, sty.freeBox__u7ZZc)}>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__dyNZh)}
                   >
                     <h1
@@ -628,7 +623,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                           <AntdButton
                             className={classNames(
                               "__wab_instance",
-                              sty.button___4Ia5
+                              sty.button__drqmv
                             )}
                             loading={(() => {
                               try {
@@ -650,7 +645,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__pgXq3
+                                sty.text__fyt4F
                               )}
                             >
                               {"Submit"}
@@ -659,7 +654,7 @@ function PlasmicResetPassword__RenderFunc(props: {
                         </FormWrapper>
                       );
                     })()}
-                  </Stack__>
+                  </div>
                 </div>
                 <div
                   className={classNames(projectcss.all, sty.freeBox__l8T2L)}

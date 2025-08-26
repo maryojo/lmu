@@ -69,13 +69,13 @@ import { AntdPassword } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdPassword_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
-
-import { useScreenVariants as useScreenVariantsiz19XCyodOuv } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: Iz19XCyodOuv/globalVariant
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicLogin.module.css"; // plasmic-import: O-sghQX8hMHX/css
 
@@ -254,9 +254,12 @@ function PlasmicLogin__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsiz19XCyodOuv()
-  });
+  const globalVariants = _useGlobalVariants();
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -278,9 +281,9 @@ function PlasmicLogin__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          projectcss.plasmic_tokens,
-          plasmic_antd_5_hostless_css.plasmic_tokens,
-          plasmic_plasmic_rich_components_css.plasmic_tokens,
+          styleTokensClassNames,
+          styleTokensClassNames_antd_5_hostless,
+          styleTokensClassNames_plasmic_rich_components,
           sty.root
         )}
       >
@@ -352,11 +355,7 @@ function PlasmicLogin__RenderFunc(props: {
               </h1>
             </section>
             <div className={classNames(projectcss.all, sty.freeBox__zS0)}>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__rKjRe)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__rKjRe)}>
                 <PlasmicImg__
                   alt={""}
                   className={classNames(sty.img__gwDz)}
@@ -401,13 +400,9 @@ function PlasmicLogin__RenderFunc(props: {
                     linkTo={`/register`}
                   />
                 </div>
-              </Stack__>
+              </div>
               <div className={classNames(projectcss.all, sty.freeBox__jhY2P)}>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__c0DhK)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__c0DhK)}>
                   <h1
                     className={classNames(
                       projectcss.all,
@@ -652,7 +647,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__bHmrd
+                            sty.formField___5U7F
                           )}
                           label={"Email"}
                           name={"email"}
@@ -670,7 +665,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__mI2Qi
+                            sty.formField__s9Jkn
                           )}
                           label={"Password"}
                           name={"password"}
@@ -692,7 +687,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <AntdButton
                           className={classNames(
                             "__wab_instance",
-                            sty.button__h4Br3
+                            sty.button__v3Rkx
                           )}
                           loading={(() => {
                             try {
@@ -714,7 +709,7 @@ function PlasmicLogin__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__q3S98
+                              sty.text__jJqYt
                             )}
                           >
                             {"Login"}
@@ -723,7 +718,7 @@ function PlasmicLogin__RenderFunc(props: {
                       </FormWrapper>
                     );
                   })()}
-                </Stack__>
+                </div>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -778,9 +773,9 @@ function PlasmicLogin__RenderFunc(props: {
                     projectcss.root_reset,
                     projectcss.plasmic_default_styles,
                     projectcss.plasmic_mixins,
-                    projectcss.plasmic_tokens,
-                    plasmic_antd_5_hostless_css.plasmic_tokens,
-                    plasmic_plasmic_rich_components_css.plasmic_tokens
+                    styleTokensClassNames,
+                    styleTokensClassNames_antd_5_hostless,
+                    styleTokensClassNames_plasmic_rich_components
                   )}
                   hideFooter={true}
                   maskClosable={true}
@@ -848,9 +843,7 @@ function PlasmicLogin__RenderFunc(props: {
                   }
                   trigger={null}
                 >
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox___2Xdbz)}
                   >
                     <div
@@ -934,7 +927,7 @@ function PlasmicLogin__RenderFunc(props: {
                         }
                       }}
                     />
-                  </Stack__>
+                  </div>
                 </AntdModal>
               </section>
               {(() => {
@@ -944,9 +937,9 @@ function PlasmicLogin__RenderFunc(props: {
                     projectcss.root_reset,
                     projectcss.plasmic_default_styles,
                     projectcss.plasmic_mixins,
-                    projectcss.plasmic_tokens,
-                    plasmic_antd_5_hostless_css.plasmic_tokens,
-                    plasmic_plasmic_rich_components_css.plasmic_tokens
+                    styleTokensClassNames,
+                    styleTokensClassNames_antd_5_hostless,
+                    styleTokensClassNames_plasmic_rich_components
                   ),
                   modalScopeClassName: sty["modal2__modal"],
                   onOpenChange: async (...eventArgs: any) => {
@@ -1032,9 +1025,9 @@ function PlasmicLogin__RenderFunc(props: {
                     projectcss.root_reset,
                     projectcss.plasmic_default_styles,
                     projectcss.plasmic_mixins,
-                    projectcss.plasmic_tokens,
-                    plasmic_antd_5_hostless_css.plasmic_tokens,
-                    plasmic_plasmic_rich_components_css.plasmic_tokens
+                    styleTokensClassNames,
+                    styleTokensClassNames_antd_5_hostless,
+                    styleTokensClassNames_plasmic_rich_components
                   ),
                   hideFooter: true,
                   modalScopeClassName: sty["modal3__modal"],

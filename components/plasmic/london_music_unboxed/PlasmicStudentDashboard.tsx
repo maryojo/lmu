@@ -63,13 +63,13 @@ import StudentPageLayout from "../../StudentPageLayout"; // plasmic-import: Itd9
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 import CourseCard from "../../CourseCard"; // plasmic-import: lU_2619e8-pr/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
-
-import { useScreenVariants as useScreenVariantsiz19XCyodOuv } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: Iz19XCyodOuv/globalVariant
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicStudentDashboard.module.css"; // plasmic-import: SDxc98dGIuBp/css
 
@@ -139,9 +139,11 @@ function PlasmicStudentDashboard__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsiz19XCyodOuv()
-  });
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -164,17 +166,11 @@ function PlasmicStudentDashboard__RenderFunc(props: {
           <DataCtxReader__>
             {$ctx => (
               <div className={classNames(projectcss.all, sty.freeBox__vbxqw)}>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.columns__nPpFp)}
-                >
+                <div className={classNames(projectcss.all, sty.columns__nPpFp)}>
                   <div
                     className={classNames(projectcss.all, sty.column___3IuO0)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__bEwod)}
                     >
                       <Icon15Icon
@@ -207,14 +203,12 @@ function PlasmicStudentDashboard__RenderFunc(props: {
                           {"Enrolled Courses"}
                         </div>
                       </div>
-                    </Stack__>
+                    </div>
                   </div>
                   <div
                     className={classNames(projectcss.all, sty.column__c40Ub)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__z2Nnr)}
                     >
                       <Icon11Icon
@@ -247,12 +241,10 @@ function PlasmicStudentDashboard__RenderFunc(props: {
                           {"Completed Courses"}
                         </div>
                       </div>
-                    </Stack__>
+                    </div>
                   </div>
                   <div className={classNames(projectcss.all, sty.column__oIoN)}>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__s96Ds)}
                     >
                       <Icon16Icon
@@ -285,14 +277,12 @@ function PlasmicStudentDashboard__RenderFunc(props: {
                           {"Active Courses"}
                         </div>
                       </div>
-                    </Stack__>
+                    </div>
                   </div>
                   <div
                     className={classNames(projectcss.all, sty.column__i943Y)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__o6S0B)}
                     >
                       <Icon13Icon
@@ -325,12 +315,10 @@ function PlasmicStudentDashboard__RenderFunc(props: {
                           {"Instructors"}
                         </div>
                       </div>
-                    </Stack__>
+                    </div>
                   </div>
-                </Stack__>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                </div>
+                <div
                   className={classNames(projectcss.all, sty.freeBox___5NWzE)}
                 >
                   <div
@@ -354,9 +342,7 @@ function PlasmicStudentDashboard__RenderFunc(props: {
                       className={classNames("__wab_instance", sty.button)}
                     />
                   </div>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.columns__hZebx)}
                   >
                     <div
@@ -399,8 +385,8 @@ function PlasmicStudentDashboard__RenderFunc(props: {
                         )}
                       />
                     </div>
-                  </Stack__>
-                </Stack__>
+                  </div>
+                </div>
               </div>
             )}
           </DataCtxReader__>

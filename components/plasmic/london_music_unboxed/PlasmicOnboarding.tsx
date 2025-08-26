@@ -76,13 +76,13 @@ import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 import { QuizComponent } from "../../QuizComponent"; // plasmic-import: klgNzyPULfbl/codeComponent
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
-
-import { useScreenVariants as useScreenVariantsiz19XCyodOuv } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: Iz19XCyodOuv/globalVariant
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicOnboarding.module.css"; // plasmic-import: N1YDHbC1ATYR/css
 
@@ -328,9 +328,12 @@ function PlasmicOnboarding__RenderFunc(props: {
     $queries = new$Queries;
   }
 
-  const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsiz19XCyodOuv()
-  });
+  const globalVariants = _useGlobalVariants();
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -353,9 +356,9 @@ function PlasmicOnboarding__RenderFunc(props: {
             projectcss.root_reset,
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
-            projectcss.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
-            plasmic_plasmic_rich_components_css.plasmic_tokens,
+            styleTokensClassNames,
+            styleTokensClassNames_antd_5_hostless,
+            styleTokensClassNames_plasmic_rich_components,
             sty.root
           )}
         >
@@ -367,11 +370,7 @@ function PlasmicOnboarding__RenderFunc(props: {
             />
           </section>
           <section className={classNames(projectcss.all, sty.section___67Nxo)}>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__kor9M)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__kor9M)}>
               {(() => {
                 try {
                   return (
@@ -413,9 +412,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                     throw e;
                   }
                 })() ? (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__o2Sv)}
                   >
                     {(() => {
@@ -495,6 +492,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                           filters: [
                                             $state.startOnboardingQuizForm.value
                                               .instrumentCategory,
+
                                             $state.startOnboardingQuizForm.value
                                               .trainingLevel
                                           ]
@@ -860,7 +858,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <FormItemWrapper
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.formField__z6Ff
+                                  sty.formField__beErH
                                 )}
                                 label={
                                   "What instrument would you like to enrol for?"
@@ -873,7 +871,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                 <AntdRadioGroup
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.radioGroup__v1AB1
+                                    sty.radioGroup__qVbXz
                                   )}
                                   options={(() => {
                                     const __composite = [
@@ -926,7 +924,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__mgGxs
+                                      sty.radio__nT4OJ
                                     )}
                                     value={"op1"}
                                   >
@@ -934,7 +932,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__fQyjd
+                                        sty.text__ya9V
                                       )}
                                     >
                                       {"Option 1"}
@@ -943,7 +941,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__xs6Mj
+                                      sty.radio__zGeNf
                                     )}
                                     value={"op2"}
                                   >
@@ -951,7 +949,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__v7Ig
+                                        sty.text___8Ebk9
                                       )}
                                     >
                                       {"Option 2"}
@@ -962,7 +960,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <FormItemWrapper
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.formField__u2QA4
+                                  sty.formField__qiJdg
                                 )}
                                 label={"What level do you best fit in?"}
                                 name={"trainingLevel"}
@@ -973,7 +971,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                 <AntdRadioGroup
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.radioGroup__fHaZq
+                                    sty.radioGroup__lTfX
                                   )}
                                   options={(() => {
                                     const __composite = [
@@ -1019,7 +1017,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__iFnB
+                                      sty.radio__kFu7Q
                                     )}
                                     value={"op1"}
                                   >
@@ -1027,7 +1025,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__tkMaE
+                                        sty.text__vhwKj
                                       )}
                                     >
                                       {"Option 1"}
@@ -1036,7 +1034,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   <AntdRadio
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.radio__tLXhq
+                                      sty.radio__ya7DV
                                     )}
                                     value={"op2"}
                                   >
@@ -1044,7 +1042,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text___1CeEa
+                                        sty.text__kjkzc
                                       )}
                                     >
                                       {"Option 2"}
@@ -1055,7 +1053,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                               <AntdButton
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.button__vdqH
+                                  sty.button__t8OH
                                 )}
                                 loading={(() => {
                                   try {
@@ -1079,7 +1077,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text__rKr9R
+                                    sty.text__yDpmN
                                   )}
                                 >
                                   {"Next"}
@@ -1109,9 +1107,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                         throw e;
                       }
                     })() ? (
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__cknSk
@@ -1179,6 +1175,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                         filters: [
                                           $queries.getUserInformation.data[0]
                                             .instrument_category,
+
                                           $queries.getUserInformation.data[0]
                                             .level
                                         ]
@@ -1417,9 +1414,9 @@ function PlasmicOnboarding__RenderFunc(props: {
                             }
                           }}
                         />
-                      </Stack__>
+                      </div>
                     ) : null}
-                  </Stack__>
+                  </div>
                 ) : null}
               </div>
               {(() => {
@@ -1602,8 +1599,10 @@ function PlasmicOnboarding__RenderFunc(props: {
                                 opId: "1622262c-ed0d-4f28-9894-5a729455abaa",
                                 userArgs: {
                                   keys: [$ctx.SupabaseUser.user.id],
+
                                   variables: [
                                     $state.quizScore,
+
                                     (() => {
                                       if ($state.isQuizPassed === true) {
                                         return true;
@@ -1614,6 +1613,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                         return true;
                                       }
                                     })(),
+
                                     (() => {
                                       if ($state.isQuizPassed === true) {
                                         return "PASS";
@@ -1621,7 +1621,9 @@ function PlasmicOnboarding__RenderFunc(props: {
                                         return "FAIL";
                                       }
                                     })(),
+
                                     $state.fetchedQuizInfo[0].quiz_id,
+
                                     (() => {
                                       if ($state.lowerLevel === "0") {
                                         return "BEGINNER";
@@ -1805,15 +1807,18 @@ function PlasmicOnboarding__RenderFunc(props: {
                                 opId: "ff7b50aa-a0ff-4624-b5c0-78c6e230687c",
                                 userArgs: {
                                   keys: [$ctx.SupabaseUser.user.id],
+
                                   variables: [
                                     $state.startOnboardingQuizForm?.value
                                       ?.instrumentCategory ??
                                       $queries?.getUserInformation?.data[0]
                                         ?.instrument_category,
+
                                     $state.startOnboardingQuizForm?.value
                                       ?.trainingLevel ||
                                       $queries?.getUserInformation?.data[0]
                                         .level,
+
                                     $state.fetchedQuizInfo[0].quiz_id
                                   ]
                                 },
@@ -1911,9 +1916,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                     timeLimit={300}
                   />
 
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__zCjhm)}
                   >
                     {(() => {
@@ -2056,6 +2059,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                                           ?.instrumentCategory ??
                                           $queries?.getUserInformation?.data[0]
                                             .instrument_category,
+
                                         $state.lowerLevel
                                       ]
                                     },
@@ -2461,7 +2465,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                         }}
                       />
                     ) : null}
-                  </Stack__>
+                  </div>
                   {(() => {
                     try {
                       return (
@@ -2532,7 +2536,7 @@ function PlasmicOnboarding__RenderFunc(props: {
                   ) : null}
                 </div>
               ) : null}
-            </Stack__>
+            </div>
           </section>
         </div>
       </div>
