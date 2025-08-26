@@ -73,13 +73,13 @@ import { formHelpers as FormWrapper_Helpers } from "@plasmicpkgs/antd5/skinny/Fo
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
-
-import { useScreenVariants as useScreenVariantsiz19XCyodOuv } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: Iz19XCyodOuv/globalVariant
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicProfile.module.css"; // plasmic-import: JFR469SKPh4F/css
 
@@ -226,9 +226,11 @@ function PlasmicProfile__RenderFunc(props: {
     $queries = new$Queries;
   }
 
-  const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsiz19XCyodOuv()
-  });
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -276,14 +278,10 @@ function PlasmicProfile__RenderFunc(props: {
                   >
                     {"Basic Information"}
                   </h6>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__kIdW7)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__yyNf7)}
                     >
                       <AntdAvatar
@@ -403,7 +401,7 @@ function PlasmicProfile__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
-                    </Stack__>
+                    </div>
                     <div
                       className={classNames(projectcss.all, sty.freeBox__ecrNi)}
                     >
@@ -602,6 +600,7 @@ function PlasmicProfile__RenderFunc(props: {
                                       opId: "8edac4c5-a239-44fd-99dc-756458acebcf",
                                       userArgs: {
                                         conditions: [$ctx.SupabaseUser.user.id],
+
                                         variables: [$state.form.value]
                                       },
                                       cacheKey: null,
@@ -703,7 +702,7 @@ function PlasmicProfile__RenderFunc(props: {
                         );
                       })()}
                     </div>
-                  </Stack__>
+                  </div>
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__tr4G5)}>
                   <h6
@@ -716,9 +715,7 @@ function PlasmicProfile__RenderFunc(props: {
                   >
                     {"Security Information"}
                   </h6>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__rtjUm)}
                   >
                     <div
@@ -830,7 +827,7 @@ function PlasmicProfile__RenderFunc(props: {
                         );
                       })()}
                     </div>
-                  </Stack__>
+                  </div>
                 </div>
                 <AntdModal
                   data-plasmic-name={"modal"}
@@ -840,9 +837,9 @@ function PlasmicProfile__RenderFunc(props: {
                     projectcss.root_reset,
                     projectcss.plasmic_default_styles,
                     projectcss.plasmic_mixins,
-                    projectcss.plasmic_tokens,
-                    plasmic_antd_5_hostless_css.plasmic_tokens,
-                    plasmic_plasmic_rich_components_css.plasmic_tokens
+                    styleTokensClassNames,
+                    styleTokensClassNames_antd_5_hostless,
+                    styleTokensClassNames_plasmic_rich_components
                   )}
                   modalScopeClassName={sty["modal__modal"]}
                   onOpenChange={async (...eventArgs: any) => {

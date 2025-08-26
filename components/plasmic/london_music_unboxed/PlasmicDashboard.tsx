@@ -68,11 +68,13 @@ import {
 
 import TopBar from "../../TopBar"; // plasmic-import: GK49OJrlqKX0/component
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicDashboard.module.css"; // plasmic-import: iHF5mzpi9EOp/css
 
@@ -145,6 +147,12 @@ function PlasmicDashboard__RenderFunc(props: {
   const dataSourcesCtx = usePlasmicDataSourceContext();
   const plasmicInvalidate = usePlasmicInvalidate();
 
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
+
   return (
     <React.Fragment>
       <Head></Head>
@@ -166,9 +174,9 @@ function PlasmicDashboard__RenderFunc(props: {
             projectcss.root_reset,
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
-            projectcss.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
-            plasmic_plasmic_rich_components_css.plasmic_tokens,
+            styleTokensClassNames,
+            styleTokensClassNames_antd_5_hostless,
+            styleTokensClassNames_plasmic_rich_components,
             sty.root
           )}
         >
@@ -183,11 +191,9 @@ function PlasmicDashboard__RenderFunc(props: {
             data-plasmic-override={overrides.section}
             className={classNames(projectcss.all, sty.section)}
           >
-            <Stack__
-              as={"div"}
+            <div
               data-plasmic-name={"freeBox"}
               data-plasmic-override={overrides.freeBox}
-              hasGap={true}
               className={classNames(projectcss.all, sty.freeBox)}
             >
               <h4
@@ -200,7 +206,7 @@ function PlasmicDashboard__RenderFunc(props: {
                   sty.h4
                 )}
               >
-                {"We're getting started very soon!"}
+                {"We're getting started very soon! \ud83d\ude80"}
               </h4>
               <div
                 className={classNames(
@@ -271,7 +277,7 @@ function PlasmicDashboard__RenderFunc(props: {
                   }
                 }}
               />
-            </Stack__>
+            </div>
           </section>
         </div>
       </div>

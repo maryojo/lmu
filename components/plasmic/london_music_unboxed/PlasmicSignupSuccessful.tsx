@@ -59,12 +59,13 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { useScreenVariants as useScreenVariantsiz19XCyodOuv } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: Iz19XCyodOuv/globalVariant
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicSignupSuccessful.module.css"; // plasmic-import: 4U1b-kLhmXSd/css
 
@@ -128,9 +129,12 @@ function PlasmicSignupSuccessful__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsiz19XCyodOuv()
-  });
+  const globalVariants = _useGlobalVariants();
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -153,9 +157,9 @@ function PlasmicSignupSuccessful__RenderFunc(props: {
             projectcss.root_reset,
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
-            projectcss.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
-            plasmic_plasmic_rich_components_css.plasmic_tokens,
+            styleTokensClassNames,
+            styleTokensClassNames_antd_5_hostless,
+            styleTokensClassNames_plasmic_rich_components,
             sty.root
           )}
         >
@@ -227,11 +231,7 @@ function PlasmicSignupSuccessful__RenderFunc(props: {
                 </h1>
               </section>
               <div className={classNames(projectcss.all, sty.freeBox__lxpOw)}>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__xC4A)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__xC4A)}>
                   <h1
                     className={classNames(
                       projectcss.all,
@@ -255,7 +255,7 @@ function PlasmicSignupSuccessful__RenderFunc(props: {
                       "Check your emaiil to verify your email and then proceed to setup your account"
                     }
                   </div>
-                </Stack__>
+                </div>
               </div>
             </div>
           </div>

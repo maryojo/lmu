@@ -65,11 +65,13 @@ import { BaseSliderOutput } from "@plasmicpkgs/react-aria/skinny/registerSliderO
 import { BaseSliderTrack } from "@plasmicpkgs/react-aria/skinny/registerSliderTrack";
 import SliderThumb from "../../SliderThumb"; // plasmic-import: i0WiHoCDrVSU/component
 import Description from "../../Description"; // plasmic-import: nZE9I1cVKuM7/component
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicRangeSlider.module.css"; // plasmic-import: J2TEJwh_0pP5/css
 
@@ -207,6 +209,12 @@ function PlasmicRangeSlider__RenderFunc(props: {
     $refs
   });
 
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
+
   const [$ccVariants, setDollarCcVariants] = React.useState<
     Record<string, boolean>
   >({
@@ -236,9 +244,9 @@ function PlasmicRangeSlider__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens,
-        plasmic_plasmic_rich_components_css.plasmic_tokens,
+        styleTokensClassNames,
+        styleTokensClassNames_antd_5_hostless,
+        styleTokensClassNames_plasmic_rich_components,
         sty.ariaRangeSlider
       )}
       defaultValue={[20, 50]}
@@ -256,11 +264,7 @@ function PlasmicRangeSlider__RenderFunc(props: {
       step={args.step}
       value={generateStateValueProp($state, ["ariaRangeSlider", "value"])}
     >
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__pb6C)}
-      >
+      <div className={classNames(projectcss.all, sty.freeBox__pb6C)}>
         {$props.showLabel ? (
           <Label
             data-plasmic-name={"label"}
@@ -319,7 +323,7 @@ function PlasmicRangeSlider__RenderFunc(props: {
             </div>
           </BaseSliderOutput>
         ) : null}
-      </Stack__>
+      </div>
       <div className={classNames(projectcss.all, sty.freeBox__gvSfj)}>
         <div
           data-plasmic-name={"background"}

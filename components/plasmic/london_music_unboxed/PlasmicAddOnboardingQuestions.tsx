@@ -79,13 +79,13 @@ import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import Unauthorized from "../../Unauthorized"; // plasmic-import: ZnrbZI7AiPSe/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
-
-import { useScreenVariants as useScreenVariantsiz19XCyodOuv } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: Iz19XCyodOuv/globalVariant
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicAddOnboardingQuestions.module.css"; // plasmic-import: 9bHtm1sDPX3Z/css
 
@@ -354,9 +354,11 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
     $queries = new$Queries;
   }
 
-  const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsiz19XCyodOuv()
-  });
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -489,9 +491,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                         }}
                       />
                     </div>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__jfrCw)}
                     >
                       {(() => {
@@ -679,9 +679,9 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                             projectcss.root_reset_tags,
                             projectcss.plasmic_default_styles,
                             projectcss.plasmic_mixins,
-                            projectcss.plasmic_tokens,
-                            plasmic_antd_5_hostless_css.plasmic_tokens,
-                            plasmic_plasmic_rich_components_css.plasmic_tokens
+                            styleTokensClassNames,
+                            styleTokensClassNames_antd_5_hostless,
+                            styleTokensClassNames_plasmic_rich_components
                           )
                         };
                         initializeCodeComponentStates(
@@ -735,17 +735,13 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                           throw e;
                         }
                       })() ? (
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox___00BIn
                           )}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox___6CkEr
@@ -812,6 +808,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                               $state.allQuizzesTable
                                                 ?.selectedRowKey
                                             ],
+
                                             variables: [newTitle]
                                           },
                                           cacheKey: null,
@@ -936,7 +933,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                 }
                               })()}
                             />
-                          </Stack__>
+                          </div>
                           {(_par =>
                             !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                             (() => {
@@ -1001,11 +998,13 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                                     currentIndex
                                                   ].id
                                                 ],
+
                                                 variables: [
                                                   $state.updatedQuizDetails
                                                     .correctAnswer &&
                                                     $state.updatedQuizDetails
                                                       ?.correctAnswer,
+
                                                   $state.updatedQuizDetails
                                                     .questionText &&
                                                     $state.updatedQuizDetails
@@ -1943,9 +1942,9 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               projectcss.root_reset,
                               projectcss.plasmic_default_styles,
                               projectcss.plasmic_mixins,
-                              projectcss.plasmic_tokens,
-                              plasmic_antd_5_hostless_css.plasmic_tokens,
-                              plasmic_plasmic_rich_components_css.plasmic_tokens
+                              styleTokensClassNames,
+                              styleTokensClassNames_antd_5_hostless,
+                              styleTokensClassNames_plasmic_rich_components
                             )}
                             modalScopeClassName={
                               sty["deleteQuestionModal__modal"]
@@ -2149,9 +2148,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               "open"
                             ])}
                             title={
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox___0CS
@@ -2176,7 +2173,7 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                     "Are you sure you want to delete the question?"
                                   }
                                 </div>
-                              </Stack__>
+                              </div>
                             }
                             trigger={null}
                           >
@@ -2199,9 +2196,9 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               </div>
                             </div>
                           </AntdModal>
-                        </Stack__>
+                        </div>
                       ) : null}
-                    </Stack__>
+                    </div>
                     <AntdModal
                       data-plasmic-name={"modal"}
                       data-plasmic-override={overrides.modal}
@@ -2210,9 +2207,9 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                         projectcss.root_reset,
                         projectcss.plasmic_default_styles,
                         projectcss.plasmic_mixins,
-                        projectcss.plasmic_tokens,
-                        plasmic_antd_5_hostless_css.plasmic_tokens,
-                        plasmic_plasmic_rich_components_css.plasmic_tokens
+                        styleTokensClassNames,
+                        styleTokensClassNames_antd_5_hostless,
+                        styleTokensClassNames_plasmic_rich_components
                       )}
                       hideFooter={true}
                       modalScopeClassName={sty["modal__modal"]}
