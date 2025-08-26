@@ -1,0 +1,15 @@
+name: Deploy to Prod (Imported Project)
+
+on:
+  push:
+    branches:
+      - main   # Only trigger on pushes to main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Vercel Prod Deploy Hook
+        run: |
+          curl -X POST ${{ secrets.VERCEL_PROD_DEPLOY_HOOK }}
