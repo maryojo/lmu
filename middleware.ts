@@ -7,8 +7,8 @@ const loginPage = '/login'
 // Add any public (non-login protected) routes here
 // All other routes will be login protected
 // Important: plasmic-host and your login page must always be public
-const publicRoutes = [
-  '/register',
+const publicRoutes = [ 
+  '/register', 
   '/login',
   '/plasmic-host',
   '/reset-password',
@@ -20,6 +20,15 @@ const publicRoutes = [
 // This will run on every request to your app that matches the pattern at the bottom of this file
 // Adapted from @supabase/ssr docs https://supabase.com/docs/guides/auth/server-side/nextjs?queryGroups=router&router=app
 export async function middleware(request: NextRequest) {
+  // Block Plasmic analytics requests early
+  const url = request.nextUrl
+  if (
+    url.hostname === 'analytics.plasmic.app' ||
+    url.href.includes('analytics.plasmic.app/capture')
+  ) {
+    return new NextResponse(null, { status: 204 }) // empty response
+  }
+
   let supabaseResponse = NextResponse.next({
     request,
   });
