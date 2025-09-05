@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 import {
   executePlasmicDataOp,
   usePlasmicDataOp,
@@ -171,6 +172,8 @@ function PlasmicInstructorCourses__RenderFunc(props: {
     $queries: $queries,
     $refs
   });
+  const dataSourcesCtx = usePlasmicDataSourceContext();
+  const plasmicInvalidate = usePlasmicInvalidate();
 
   const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
     getInstructorCoursesById: usePlasmicDataOp(() => {
@@ -374,6 +377,45 @@ function PlasmicInstructorCourses__RenderFunc(props: {
                             {"Add Course"}
                           </div>
                         }
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["useIntegration"] = true
+                            ? (() => {
+                                const actionArgs = {};
+                                return (async ({ dataOp, continueOnError }) => {
+                                  try {
+                                    const response = await executePlasmicDataOp(
+                                      dataOp,
+                                      {
+                                        userAuthToken:
+                                          dataSourcesCtx?.userAuthToken,
+                                        user: dataSourcesCtx?.user
+                                      }
+                                    );
+                                    await plasmicInvalidate(
+                                      dataOp.invalidatedKeys
+                                    );
+                                    return response;
+                                  } catch (e) {
+                                    if (!continueOnError) {
+                                      throw e;
+                                    }
+                                    return e;
+                                  }
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["useIntegration"] != null &&
+                            typeof $steps["useIntegration"] === "object" &&
+                            typeof $steps["useIntegration"].then === "function"
+                          ) {
+                            $steps["useIntegration"] = await $steps[
+                              "useIntegration"
+                            ];
+                          }
+                        }}
                       />
                     </div>
                   </div>
