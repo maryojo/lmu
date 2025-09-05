@@ -1203,6 +1203,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/instructor-view-courses"
+        },
+        {
+          "id": "mAAWjD89piFS",
+          "name": "Landing",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicLanding.tsx",
+          "importSpec": {
+            "modulePath": "../pages/landing.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicLanding.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/landing"
         }
       ],
       "icons": [
