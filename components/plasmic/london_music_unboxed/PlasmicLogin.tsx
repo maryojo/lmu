@@ -147,6 +147,8 @@ function PlasmicLogin__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const globalVariants = _useGlobalVariants();
+
   const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
@@ -254,7 +256,6 @@ function PlasmicLogin__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = _useGlobalVariants();
   const styleTokensClassNames = _useStyleTokens();
   const styleTokensClassNames_antd_5_hostless =
     useStyleTokens_antd_5_hostless();
@@ -463,57 +464,7 @@ function PlasmicLogin__RenderFunc(props: {
                                       throw e;
                                     }
                                   })(),
-                                  (() => {
-                                    try {
-                                      return (() => {
-                                        let isCompletedLastQuiz =
-                                          $ctx.SupabaseUser?.user?.user_metadata
-                                            .lastQuizStarted ==
-                                          $ctx.SupabaseUser?.user?.user_metadata
-                                            .lastQuizCompleted;
-                                        if ($ctx.SupabaseUser.user !== null) {
-                                          if (
-                                            $ctx.SupabaseUser?.user
-                                              ?.user_metadata.isOnboarded ===
-                                              false &&
-                                            $ctx.SupabaseUser?.user
-                                              .user_metadata.userRole ===
-                                              "student"
-                                          ) {
-                                            if (
-                                              $ctx.SupabaseUser?.user
-                                                ?.user_metadata
-                                                .attemptedQuiz === true &&
-                                              !isCompletedLastQuiz
-                                            ) {
-                                              return "/reset-onboarding";
-                                            } else {
-                                              return "/onboarding";
-                                            }
-                                          } else {
-                                            if (
-                                              $ctx.SupabaseUser?.user
-                                                ?.user_metadata.userRole ===
-                                              "admin"
-                                            ) {
-                                              return "/add-onboarding-questions";
-                                            } else {
-                                              return "/dashboard";
-                                            }
-                                          }
-                                        }
-                                      })();
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()
+                                  ``
                                 ]
                               };
                               return $globalActions[
@@ -569,43 +520,6 @@ function PlasmicLogin__RenderFunc(props: {
                             "errorShowErrorMessage"
                           ];
                         }
-
-                        $steps["updateLoginResponse"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["loginResponse"]
-                                },
-                                operation: 0,
-                                value: {}
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateLoginResponse"] != null &&
-                          typeof $steps["updateLoginResponse"] === "object" &&
-                          typeof $steps["updateLoginResponse"].then ===
-                            "function"
-                        ) {
-                          $steps["updateLoginResponse"] = await $steps[
-                            "updateLoginResponse"
-                          ];
-                        }
                       },
                       onIsSubmittingChange: async (...eventArgs: any) => {
                         generateStateOnChangePropForCodeComponents(
@@ -647,7 +561,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__oQOeB
+                            sty.formField__qYiFg
                           )}
                           label={"Email"}
                           name={"email"}
@@ -665,7 +579,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__uoEh7
+                            sty.formField__rmzCj
                           )}
                           label={"Password"}
                           name={"password"}
@@ -687,7 +601,7 @@ function PlasmicLogin__RenderFunc(props: {
                         <AntdButton
                           className={classNames(
                             "__wab_instance",
-                            sty.button__q6KIi
+                            sty.button__wAnb0
                           )}
                           loading={(() => {
                             try {
@@ -709,7 +623,7 @@ function PlasmicLogin__RenderFunc(props: {
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__u3FUc
+                              sty.text__vRk
                             )}
                           >
                             {"Login"}
