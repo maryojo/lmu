@@ -383,7 +383,7 @@ function PlasmicRegister__RenderFunc(props: {
                       sty.h1___6YhQ
                     )}
                   >
-                    {"Register"}
+                    {"Register a new account"}
                   </h1>
                   {(() => {
                     const child$Props = {
