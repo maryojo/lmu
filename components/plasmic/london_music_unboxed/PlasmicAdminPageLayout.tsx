@@ -66,6 +66,8 @@ import {
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import { RichLayout } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-layout";
+import { SimpleCustomGlobalProvider } from "/my-contexts/SimpleGlobalProvider"; // plasmic-import: uzE7DNMozwxD/codeComponent
+import { AdminRoleSpecificProvider } from "/my-contexts/AdminRoleSpecificProvider"; // plasmic-import: 2Q_d2uURtJKJ/codeComponent
 import { LoadingBoundary } from "@plasmicpkgs/plasmic-basic-components";
 import DashboardNavbar from "../../DashboardNavbar"; // plasmic-import: f9TmdLYt-K-T/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -99,6 +101,8 @@ export const PlasmicAdminPageLayout__ArgProps = new Array<ArgPropType>(
 
 export type PlasmicAdminPageLayout__OverridesType = {
   root?: Flex__<typeof RichLayout>;
+  simpleCustomGlobalProvider?: Flex__<typeof SimpleCustomGlobalProvider>;
+  adminRoleSpecificProvider?: Flex__<typeof AdminRoleSpecificProvider>;
   loadingBoundary?: Flex__<typeof LoadingBoundary>;
   dashboardNavbar?: Flex__<typeof DashboardNavbar>;
   text?: Flex__<"div">;
@@ -211,6 +215,48 @@ function PlasmicAdminPageLayout__RenderFunc(props: {
         invalidatedKeys: null,
         roleId: null
       };
+    }),
+    getUserData: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "a9ac0b28-c76e-4841-a754-c839946bba5b",
+        userArgs: {
+          keys: [$ctx.SupabaseUser.user.id]
+        },
+        cacheKey: `plasmic.$.a9ac0b28-c76e-4841-a754-c839946bba5b.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    }),
+    getAllCourses: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "e7405e96-25f2-465a-85a2-7804407c0f24",
+        userArgs: {},
+        cacheKey: `plasmic.$.e7405e96-25f2-465a-85a2-7804407c0f24.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    }),
+    getAllStudentsData: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "cd6036d1-d7d7-4960-918d-83f763aeb4aa",
+        userArgs: {},
+        cacheKey: `plasmic.$.cd6036d1-d7d7-4960-918d-83f763aeb4aa.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    }),
+    getAllInstructorsData: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "8d462b74-9518-4982-969c-cac150f38507",
+        userArgs: {},
+        cacheKey: `plasmic.$.8d462b74-9518-4982-969c-cac150f38507.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
     })
   };
   if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
@@ -232,43 +278,45 @@ function PlasmicAdminPageLayout__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       actionsChildren={
-        <div
-          className={classNames(projectcss.all, sty.freeBox__ghV8G)}
-          onClick={async event => {
-            const $steps = {};
-
-            $steps["logout"] = true
-              ? (() => {
-                  const actionArgs = { args: ["/login"] };
-                  return $globalActions[
-                    "SupabaseUserGlobalContext.logout"
-                  ]?.apply(null, [...actionArgs.args]);
-                })()
-              : undefined;
-            if (
-              $steps["logout"] != null &&
-              typeof $steps["logout"] === "object" &&
-              typeof $steps["logout"].then === "function"
-            ) {
-              $steps["logout"] = await $steps["logout"];
-            }
-          }}
-        >
-          <Icon3Icon
-            className={classNames(projectcss.all, sty.svg__kc25M)}
-            role={"img"}
-          />
-
+        <div className={classNames(projectcss.all, sty.freeBox__oagyb)}>
           <div
-            data-plasmic-name={"text"}
-            data-plasmic-override={overrides.text}
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text
-            )}
+            className={classNames(projectcss.all, sty.freeBox__ghV8G)}
+            onClick={async event => {
+              const $steps = {};
+
+              $steps["logout"] = true
+                ? (() => {
+                    const actionArgs = { args: ["/login"] };
+                    return $globalActions[
+                      "SupabaseUserGlobalContext.logout"
+                    ]?.apply(null, [...actionArgs.args]);
+                  })()
+                : undefined;
+              if (
+                $steps["logout"] != null &&
+                typeof $steps["logout"] === "object" &&
+                typeof $steps["logout"].then === "function"
+              ) {
+                $steps["logout"] = await $steps["logout"];
+              }
+            }}
           >
-            {"Logout"}
+            <Icon3Icon
+              className={classNames(projectcss.all, sty.svg__kc25M)}
+              role={"img"}
+            />
+
+            <div
+              data-plasmic-name={"text"}
+              data-plasmic-override={overrides.text}
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text
+              )}
+            >
+              {"Logout"}
+            </div>
           </div>
         </div>
       }
@@ -296,9 +344,39 @@ function PlasmicAdminPageLayout__RenderFunc(props: {
         return __composite;
       })()}
       navMenuItems={(() => {
-        const __composite = [{ path: null, name: null }, {}];
-        __composite["0"]["path"] = `/add-onboarding-questions`;
-        __composite["0"]["name"] = "Onboarding Quiz";
+        const __composite = [
+          { name: null },
+          { name: null, path: null },
+          { name: null, routes: null },
+          { name: null, routes: null },
+          { path: null, name: null },
+          { name: null }
+        ];
+        __composite["0"]["name"] = "Dashboard";
+        __composite["1"]["name"] = "All Courses";
+        __composite["1"]["path"] = `/all-courses`;
+        __composite["2"]["name"] = "All Users";
+        __composite["2"]["routes"] = (() => {
+          const __composite = [
+            { name: null, path: null },
+            { name: null, path: null }
+          ];
+          __composite["0"]["name"] = "Students";
+          __composite["0"]["path"] = `/all-students`;
+          __composite["1"]["name"] = "Instructors";
+          __composite["1"]["path"] = `/all-instructors`;
+          return __composite;
+        })();
+        __composite["3"]["name"] = "General Assessments";
+        __composite["3"]["routes"] = (() => {
+          const __composite = [{ path: null, name: null }];
+          __composite["0"]["path"] = `/add-onboarding-questions`;
+          __composite["0"]["name"] = "Onboarding Quiz";
+          return __composite;
+        })();
+        __composite["4"]["path"] = `/add-onboarding-questions`;
+        __composite["4"]["name"] = "Onboarding Quiz";
+        __composite["5"]["name"] = "Settings";
         return __composite;
       })()}
       simpleNavTheme={(() => {
@@ -308,75 +386,186 @@ function PlasmicAdminPageLayout__RenderFunc(props: {
       })()}
       title={"London Music Unboxed"}
     >
-      <LoadingBoundary
-        data-plasmic-name={"loadingBoundary"}
-        data-plasmic-override={overrides.loadingBoundary}
-        loadingState={
-          <DataCtxReader__>
-            {$ctx => (
-              <div className={classNames(projectcss.all, sty.freeBox__xE2KW)}>
-                <IconIcon
-                  className={classNames(projectcss.all, sty.svg__qoFyG)}
-                  role={"img"}
-                />
-              </div>
-            )}
-          </DataCtxReader__>
-        }
+      <SimpleCustomGlobalProvider
+        data-plasmic-name={"simpleCustomGlobalProvider"}
+        data-plasmic-override={overrides.simpleCustomGlobalProvider}
+        className={classNames("__wab_instance", sty.simpleCustomGlobalProvider)}
+        userData={(() => {
+          try {
+            return $queries.getUserData?.data[0];
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return undefined;
+            }
+            throw e;
+          }
+        })()}
       >
         <DataCtxReader__>
           {$ctx => (
-            <React.Fragment>
-              <DashboardNavbar
-                data-plasmic-name={"dashboardNavbar"}
-                data-plasmic-override={overrides.dashboardNavbar}
-                className={classNames("__wab_instance", sty.dashboardNavbar)}
-              />
-
-              {renderPlasmicSlot({
-                defaultContents: (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__rpkHt)}
+            <AdminRoleSpecificProvider
+              data-plasmic-name={"adminRoleSpecificProvider"}
+              data-plasmic-override={overrides.adminRoleSpecificProvider}
+              allCoursesData={(() => {
+                try {
+                  return $queries.getAllCourses;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              allInstructorsData={(() => {
+                try {
+                  return $queries.getAllInstructorsData;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              allStudentsData={(() => {
+                try {
+                  return $queries.getAllStudentsData;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              className={classNames(
+                "__wab_instance",
+                sty.adminRoleSpecificProvider
+              )}
+            >
+              <DataCtxReader__>
+                {$ctx => (
+                  <LoadingBoundary
+                    data-plasmic-name={"loadingBoundary"}
+                    data-plasmic-override={overrides.loadingBoundary}
+                    loadingState={
+                      <DataCtxReader__>
+                        {$ctx => (
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__xE2KW
+                            )}
+                          >
+                            <IconIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__qoFyG
+                              )}
+                              role={"img"}
+                            />
+                          </div>
+                        )}
+                      </DataCtxReader__>
+                    }
                   >
-                    <section
-                      className={classNames(projectcss.all, sty.section__ie6NX)}
-                    >
-                      <h1
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.h1,
-                          projectcss.__wab_text,
-                          sty.h1___2HHzJ
-                        )}
-                      >
-                        {"Untitled page"}
-                      </h1>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__urrJq
-                        )}
-                      >
-                        {
-                          "Press the big blue + button to insert components like Tables, Text, Buttons, and Forms.\n\nJoin our Slack Community (icon in bottom left) for help!"
-                        }
-                      </div>
-                    </section>
-                  </div>
-                ),
-                value: args.children
-              })}
-            </React.Fragment>
+                    <DataCtxReader__>
+                      {$ctx => (
+                        <React.Fragment>
+                          <DashboardNavbar
+                            data-plasmic-name={"dashboardNavbar"}
+                            data-plasmic-override={overrides.dashboardNavbar}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.dashboardNavbar
+                            )}
+                            profileLink={`/admin-profile`}
+                          />
+
+                          {renderPlasmicSlot({
+                            defaultContents: (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__rpkHt
+                                )}
+                              >
+                                <section
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.section__ie6NX
+                                  )}
+                                >
+                                  <h1
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.h1,
+                                      projectcss.__wab_text,
+                                      sty.h1___2HHzJ
+                                    )}
+                                  >
+                                    {"Untitled page"}
+                                  </h1>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__urrJq
+                                    )}
+                                  >
+                                    {
+                                      "Press the big blue + button to insert components like Tables, Text, Buttons, and Forms.\n\nJoin our Slack Community (icon in bottom left) for help!"
+                                    }
+                                  </div>
+                                </section>
+                              </div>
+                            ),
+                            value: args.children
+                          })}
+                        </React.Fragment>
+                      )}
+                    </DataCtxReader__>
+                  </LoadingBoundary>
+                )}
+              </DataCtxReader__>
+            </AdminRoleSpecificProvider>
           )}
         </DataCtxReader__>
-      </LoadingBoundary>
+      </SimpleCustomGlobalProvider>
     </RichLayout>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "loadingBoundary", "dashboardNavbar", "text"],
+  root: [
+    "root",
+    "simpleCustomGlobalProvider",
+    "adminRoleSpecificProvider",
+    "loadingBoundary",
+    "dashboardNavbar",
+    "text"
+  ],
+  simpleCustomGlobalProvider: [
+    "simpleCustomGlobalProvider",
+    "adminRoleSpecificProvider",
+    "loadingBoundary",
+    "dashboardNavbar"
+  ],
+  adminRoleSpecificProvider: [
+    "adminRoleSpecificProvider",
+    "loadingBoundary",
+    "dashboardNavbar"
+  ],
   loadingBoundary: ["loadingBoundary", "dashboardNavbar"],
   dashboardNavbar: ["dashboardNavbar"],
   text: ["text"]
@@ -386,6 +575,8 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: typeof RichLayout;
+  simpleCustomGlobalProvider: typeof SimpleCustomGlobalProvider;
+  adminRoleSpecificProvider: typeof AdminRoleSpecificProvider;
   loadingBoundary: typeof LoadingBoundary;
   dashboardNavbar: typeof DashboardNavbar;
   text: "div";
@@ -451,6 +642,8 @@ export const PlasmicAdminPageLayout = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    simpleCustomGlobalProvider: makeNodeComponent("simpleCustomGlobalProvider"),
+    adminRoleSpecificProvider: makeNodeComponent("adminRoleSpecificProvider"),
     loadingBoundary: makeNodeComponent("loadingBoundary"),
     dashboardNavbar: makeNodeComponent("dashboardNavbar"),
     text: makeNodeComponent("text"),

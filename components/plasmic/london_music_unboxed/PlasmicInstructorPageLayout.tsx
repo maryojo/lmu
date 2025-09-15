@@ -67,6 +67,7 @@ import {
 
 import { RichLayout } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-layout";
 import { SimpleCustomGlobalProvider } from "/my-contexts/SimpleGlobalProvider"; // plasmic-import: uzE7DNMozwxD/codeComponent
+import { InstructorRoleSpecificProvider } from "/my-contexts/InstructorRoleSpecificProvider"; // plasmic-import: r4abSe50AQ4V/codeComponent
 import { LoadingBoundary } from "@plasmicpkgs/plasmic-basic-components";
 import DashboardNavbar from "../../DashboardNavbar"; // plasmic-import: f9TmdLYt-K-T/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -103,6 +104,9 @@ export const PlasmicInstructorPageLayout__ArgProps = new Array<ArgPropType>(
 export type PlasmicInstructorPageLayout__OverridesType = {
   root?: Flex__<typeof RichLayout>;
   simpleCustomGlobalProvider?: Flex__<typeof SimpleCustomGlobalProvider>;
+  instructorRoleSpecificProvider?: Flex__<
+    typeof InstructorRoleSpecificProvider
+  >;
   loadingBoundary?: Flex__<typeof LoadingBoundary>;
   dashboardNavbar?: Flex__<typeof DashboardNavbar>;
   text?: Flex__<"div">;
@@ -157,65 +161,8 @@ function PlasmicInstructorPageLayout__RenderFunc(props: {
   let [$queries, setDollarQueries] = React.useState<
     Record<string, ReturnType<typeof usePlasmicDataOp>>
   >({});
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "answerOptions",
-        type: "private",
-        variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
-      },
-      {
-        path: "fullFormValues",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: $queries,
-    $refs
-  });
 
   const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
-    fetchAllOnboardingQuizzes: usePlasmicDataOp(() => {
-      return {
-        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-        opId: "4853205b-c7e6-4fad-90f8-e9c574f6b3d4",
-        userArgs: {},
-        cacheKey: `plasmic.$.4853205b-c7e6-4fad-90f8-e9c574f6b3d4.$.`,
-        invalidatedKeys: null,
-        roleId: null
-      };
-    }),
-    query: usePlasmicDataOp(() => {
-      return {
-        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-        opId: "173887ef-f580-4be0-91cd-a1cacc9b2b07",
-        userArgs: {
-          filters: [$state.allQuizzesTable.selectedRow.id]
-        },
-        cacheKey: `plasmic.$.173887ef-f580-4be0-91cd-a1cacc9b2b07.$.`,
-        invalidatedKeys: null,
-        roleId: null
-      };
-    }),
-    fetchQuizQuestionByQuizId: usePlasmicDataOp(() => {
-      return {
-        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-        opId: "173887ef-f580-4be0-91cd-a1cacc9b2b07",
-        userArgs: {
-          filters: [$state.allQuizzesTable.selectedRow.id]
-        },
-        cacheKey: `plasmic.$.173887ef-f580-4be0-91cd-a1cacc9b2b07.$.`,
-        invalidatedKeys: null,
-        roleId: null
-      };
-    }),
     fetchUserData: usePlasmicDataOp(() => {
       return {
         sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
@@ -224,6 +171,18 @@ function PlasmicInstructorPageLayout__RenderFunc(props: {
           filters: [$ctx.SupabaseUser.user.id]
         },
         cacheKey: `plasmic.$.1b0caaf1-903e-4b59-a91a-219c7a831364.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    }),
+    getAllCoursesByIntructorId: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "c51071a7-7917-42ca-9d8d-ae9620bcb719",
+        userArgs: {
+          filters: [$ctx.SupabaseUser?.user?.id]
+        },
+        cacheKey: `plasmic.$.c51071a7-7917-42ca-9d8d-ae9620bcb719.$.`,
         invalidatedKeys: null,
         roleId: null
       };
@@ -315,26 +274,23 @@ function PlasmicInstructorPageLayout__RenderFunc(props: {
         const __composite = [
           { path: null, name: null },
           { name: null, routes: null },
+          { name: null, path: null },
           { path: null, name: null }
         ];
-        __composite["0"]["path"] = `/student-dashboard`;
+        __composite["0"]["path"] = `/instructor-dashboard`;
         __composite["0"]["name"] = "Dashboard";
         __composite["1"]["name"] = "Courses";
         __composite["1"]["routes"] = (() => {
-          const __composite = [
-            { path: null, name: null },
-            { path: null, name: null },
-            { name: null }
-          ];
-          __composite["0"]["path"] = `/student-courses`;
+          const __composite = [{ path: null, name: null }, { name: null }];
+          __composite["0"]["path"] = `/instructor-courses`;
           __composite["0"]["name"] = "My Courses";
-          __composite["1"]["path"] = `/instructor-add-courses`;
-          __composite["1"]["name"] = "Add New Course";
-          __composite["2"]["name"] = "Assessments";
+          __composite["1"]["name"] = "Assessments";
           return __composite;
         })();
-        __composite["2"]["path"] = `/student-profile`;
-        __composite["2"]["name"] = "My Profile";
+        __composite["2"]["name"] = "Enrolled Students";
+        __composite["2"]["path"] = `/instructor-students`;
+        __composite["3"]["path"] = `/instructor-profile`;
+        __composite["3"]["name"] = "My Profile";
         return __composite;
       })()}
       simpleNavTheme={(() => {
@@ -364,80 +320,113 @@ function PlasmicInstructorPageLayout__RenderFunc(props: {
       >
         <DataCtxReader__>
           {$ctx => (
-            <LoadingBoundary
-              data-plasmic-name={"loadingBoundary"}
-              data-plasmic-override={overrides.loadingBoundary}
-              loadingState={
-                <DataCtxReader__>
-                  {$ctx => (
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__n7R2T)}
-                    >
-                      <IconIcon
-                        className={classNames(projectcss.all, sty.svg__pz0A)}
-                        role={"img"}
-                      />
-                    </div>
-                  )}
-                </DataCtxReader__>
-              }
+            <InstructorRoleSpecificProvider
+              data-plasmic-name={"instructorRoleSpecificProvider"}
+              data-plasmic-override={overrides.instructorRoleSpecificProvider}
+              allCoursesData={(() => {
+                try {
+                  return $queries.getAllCoursesByIntructorId;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              className={classNames(
+                "__wab_instance",
+                sty.instructorRoleSpecificProvider
+              )}
             >
               <DataCtxReader__>
                 {$ctx => (
-                  <React.Fragment>
-                    <DashboardNavbar
-                      data-plasmic-name={"dashboardNavbar"}
-                      data-plasmic-override={overrides.dashboardNavbar}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.dashboardNavbar
-                      )}
-                    />
-
-                    {renderPlasmicSlot({
-                      defaultContents: (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__ovIw
-                          )}
-                        >
-                          <section
+                  <LoadingBoundary
+                    data-plasmic-name={"loadingBoundary"}
+                    data-plasmic-override={overrides.loadingBoundary}
+                    loadingState={
+                      <DataCtxReader__>
+                        {$ctx => (
+                          <div
                             className={classNames(
                               projectcss.all,
-                              sty.section__kjJf
+                              sty.freeBox__n7R2T
                             )}
                           >
-                            <h1
+                            <IconIcon
                               className={classNames(
                                 projectcss.all,
-                                projectcss.h1,
-                                projectcss.__wab_text,
-                                sty.h1__dmTks
+                                sty.svg__pz0A
                               )}
-                            >
-                              {"Untitled page"}
-                            </h1>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___6JPgB
-                              )}
-                            >
-                              {
-                                "Press the big blue + button to insert components like Tables, Text, Buttons, and Forms.\n\nJoin our Slack Community (icon in bottom left) for help!"
-                              }
-                            </div>
-                          </section>
-                        </div>
-                      ),
-                      value: args.children
-                    })}
-                  </React.Fragment>
+                              role={"img"}
+                            />
+                          </div>
+                        )}
+                      </DataCtxReader__>
+                    }
+                  >
+                    <DataCtxReader__>
+                      {$ctx => (
+                        <React.Fragment>
+                          <DashboardNavbar
+                            data-plasmic-name={"dashboardNavbar"}
+                            data-plasmic-override={overrides.dashboardNavbar}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.dashboardNavbar
+                            )}
+                            profileLink={`/instructor-profile`}
+                          />
+
+                          {renderPlasmicSlot({
+                            defaultContents: (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__ovIw
+                                )}
+                              >
+                                <section
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.section__kjJf
+                                  )}
+                                >
+                                  <h1
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.h1,
+                                      projectcss.__wab_text,
+                                      sty.h1__dmTks
+                                    )}
+                                  >
+                                    {"Untitled page"}
+                                  </h1>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text___6JPgB
+                                    )}
+                                  >
+                                    {
+                                      "Press the big blue + button to insert components like Tables, Text, Buttons, and Forms.\n\nJoin our Slack Community (icon in bottom left) for help!"
+                                    }
+                                  </div>
+                                </section>
+                              </div>
+                            ),
+                            value: args.children
+                          })}
+                        </React.Fragment>
+                      )}
+                    </DataCtxReader__>
+                  </LoadingBoundary>
                 )}
               </DataCtxReader__>
-            </LoadingBoundary>
+            </InstructorRoleSpecificProvider>
           )}
         </DataCtxReader__>
       </SimpleCustomGlobalProvider>
@@ -449,12 +438,19 @@ const PlasmicDescendants = {
   root: [
     "root",
     "simpleCustomGlobalProvider",
+    "instructorRoleSpecificProvider",
     "loadingBoundary",
     "dashboardNavbar",
     "text"
   ],
   simpleCustomGlobalProvider: [
     "simpleCustomGlobalProvider",
+    "instructorRoleSpecificProvider",
+    "loadingBoundary",
+    "dashboardNavbar"
+  ],
+  instructorRoleSpecificProvider: [
+    "instructorRoleSpecificProvider",
     "loadingBoundary",
     "dashboardNavbar"
   ],
@@ -468,6 +464,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: typeof RichLayout;
   simpleCustomGlobalProvider: typeof SimpleCustomGlobalProvider;
+  instructorRoleSpecificProvider: typeof InstructorRoleSpecificProvider;
   loadingBoundary: typeof LoadingBoundary;
   dashboardNavbar: typeof DashboardNavbar;
   text: "div";
@@ -534,6 +531,9 @@ export const PlasmicInstructorPageLayout = Object.assign(
   {
     // Helper components rendering sub-elements
     simpleCustomGlobalProvider: makeNodeComponent("simpleCustomGlobalProvider"),
+    instructorRoleSpecificProvider: makeNodeComponent(
+      "instructorRoleSpecificProvider"
+    ),
     loadingBoundary: makeNodeComponent("loadingBoundary"),
     dashboardNavbar: makeNodeComponent("dashboardNavbar"),
     text: makeNodeComponent("text"),

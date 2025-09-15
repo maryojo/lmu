@@ -16,11 +16,9 @@ export interface GlobalContextsProviderProps {
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
-
   supabaseUserGlobalContextProps?: Partial<
     Omit<React.ComponentProps<typeof SupabaseUserGlobalContext>, "children">
   >;
-
   embedCssProps?: Partial<
     Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;
@@ -62,7 +60,7 @@ export default function GlobalContextsProvider(
       colorPrimary={
         antdConfigProviderProps && "colorPrimary" in antdConfigProviderProps
           ? antdConfigProviderProps.colorPrimary!
-          : "#327CE4"
+          : "#1E3A8A"
       }
       colorSuccess={
         antdConfigProviderProps && "colorSuccess" in antdConfigProviderProps

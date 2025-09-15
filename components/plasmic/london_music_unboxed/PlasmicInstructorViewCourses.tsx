@@ -59,8 +59,15 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import {
+  executePlasmicDataOp,
+  usePlasmicDataOp,
+  usePlasmicInvalidate
+} from "@plasmicapp/react-web/lib/data-sources";
+
 import InstructorPageLayout from "../../InstructorPageLayout"; // plasmic-import: KRlgGOfWJ9fO/component
-import { CustomAccordionItem } from "../../CustomAccordionItem"; // plasmic-import: Th4N3i4J4xsp/codeComponent
+import CourseDetails from "../../CourseDetails"; // plasmic-import: cQ5WwEPS_AXG/component
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
 import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
@@ -86,9 +93,7 @@ export const PlasmicInstructorViewCourses__ArgProps = new Array<ArgPropType>();
 export type PlasmicInstructorViewCourses__OverridesType = {
   root?: Flex__<typeof InstructorPageLayout>;
   h4?: Flex__<"h4">;
-  img?: Flex__<typeof PlasmicImg__>;
-  h5?: Flex__<"h5">;
-  customAccordionItem?: Flex__<typeof CustomAccordionItem>;
+  courseDetails?: Flex__<typeof CourseDetails>;
 };
 
 export interface DefaultInstructorViewCoursesProps {}
@@ -132,23 +137,29 @@ function PlasmicInstructorViewCourses__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
-    () => [
-      {
-        path: "formStep",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
-      }
-    ],
-    [$props, $ctx, $refs]
-  );
-  const $state = useDollarState(stateSpecs, {
-    $props,
-    $ctx,
-    $queries: {},
-    $refs
-  });
+  let [$queries, setDollarQueries] = React.useState<
+    Record<string, ReturnType<typeof usePlasmicDataOp>>
+  >({});
+
+  const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
+    getCourseInfoById: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "b1ee7e65-768d-4a74-8dec-1f910378dd5b",
+        userArgs: {
+          keys: [$ctx.query?.id]
+        },
+        cacheKey: `plasmic.$.b1ee7e65-768d-4a74-8dec-1f910378dd5b.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    })
+  };
+  if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
+    setDollarQueries(new$Queries);
+
+    $queries = new$Queries;
+  }
 
   const styleTokensClassNames = _useStyleTokens();
   const styleTokensClassNames_antd_5_hostless =
@@ -177,93 +188,47 @@ function PlasmicInstructorViewCourses__RenderFunc(props: {
           <DataCtxReader__>
             {$ctx => (
               <div className={classNames(projectcss.all, sty.freeBox__oS8Hg)}>
-                <div className={classNames(projectcss.all, sty.freeBox__unWsM)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___68IJ5)}
+                >
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__hz0J)}
+                    className={classNames(projectcss.all, sty.freeBox__dg8Zc)}
                   >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__erRxr)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__wtwFc
-                        )}
-                      >
-                        <h4
-                          data-plasmic-name={"h4"}
-                          data-plasmic-override={overrides.h4}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.h4,
-                            projectcss.__wab_text,
-                            sty.h4
-                          )}
-                        >
-                          {"Course Name"}
-                        </h4>
-                      </div>
-                    </div>
-                    <PlasmicImg__
-                      data-plasmic-name={"img"}
-                      data-plasmic-override={overrides.img}
-                      alt={""}
-                      className={classNames(sty.img)}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      loading={"lazy"}
-                    />
-
-                    <div
+                    <h4
+                      data-plasmic-name={"h4"}
+                      data-plasmic-override={overrides.h4}
                       className={classNames(
                         projectcss.all,
+                        projectcss.h4,
                         projectcss.__wab_text,
-                        sty.text___6XW2
+                        sty.h4
                       )}
                     >
-                      {"Enter some description"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__yWfP5
-                      )}
-                    >
-                      {"Enter some text"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___1LWct)}
-                  >
-                    <h5
-                      data-plasmic-name={"h5"}
-                      data-plasmic-override={overrides.h5}
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.h5,
-                        projectcss.__wab_text,
-                        sty.h5
-                      )}
-                    >
-                      {"Modules"}
-                    </h5>
-                    <CustomAccordionItem
-                      data-plasmic-name={"customAccordionItem"}
-                      data-plasmic-override={overrides.customAccordionItem}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.customAccordionItem
-                      )}
-                    >
-                      {"Accordion content goes here"}
-                    </CustomAccordionItem>
+                      {"Add New Course"}
+                    </h4>
                   </div>
                 </div>
+                <CourseDetails
+                  data-plasmic-name={"courseDetails"}
+                  data-plasmic-override={overrides.courseDetails}
+                  activeCourseid={(() => {
+                    try {
+                      return $ctx.query.id
+                        ? $ctx.query.id
+                        : "08443529-1dee-4b49-8812-a11d5c7b6315";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                  className={classNames("__wab_instance", sty.courseDetails)}
+                  isEditable={true}
+                />
               </div>
             )}
           </DataCtxReader__>
@@ -274,11 +239,9 @@ function PlasmicInstructorViewCourses__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "h4", "img", "h5", "customAccordionItem"],
+  root: ["root", "h4", "courseDetails"],
   h4: ["h4"],
-  img: ["img"],
-  h5: ["h5"],
-  customAccordionItem: ["customAccordionItem"]
+  courseDetails: ["courseDetails"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -286,9 +249,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: typeof InstructorPageLayout;
   h4: "h4";
-  img: typeof PlasmicImg__;
-  h5: "h5";
-  customAccordionItem: typeof CustomAccordionItem;
+  courseDetails: typeof CourseDetails;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -352,9 +313,7 @@ export const PlasmicInstructorViewCourses = Object.assign(
   {
     // Helper components rendering sub-elements
     h4: makeNodeComponent("h4"),
-    img: makeNodeComponent("img"),
-    h5: makeNodeComponent("h5"),
-    customAccordionItem: makeNodeComponent("customAccordionItem"),
+    courseDetails: makeNodeComponent("courseDetails"),
 
     // Metadata about props expected for PlasmicInstructorViewCourses
     internalVariantProps: PlasmicInstructorViewCourses__VariantProps,

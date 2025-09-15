@@ -60,11 +60,9 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import StudentPageLayout from "../../StudentPageLayout"; // plasmic-import: Itd9tHC_WCDz/component
-import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
-import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
-import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
-import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 import CourseCard from "../../CourseCard"; // plasmic-import: lU_2619e8-pr/component
+import TextInput from "../../TextInput"; // plasmic-import: DoqLM-i_9RsN/component
+import CourseGrid from "../../CourseGrid"; // plasmic-import: xmK9OAIpqo06/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
 import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
@@ -74,9 +72,6 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicStudentCourses.module.css"; // plasmic-import: scyO_hkhBT6w/css
-
-import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: yZz0P1JDPQwS/icon
-import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: -jkcn7GwAM4v/icon
 
 createPlasmicElementProxy;
 
@@ -91,6 +86,9 @@ export const PlasmicStudentCourses__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicStudentCourses__OverridesType = {
   root?: Flex__<typeof StudentPageLayout>;
+  columns?: Flex__<"div">;
+  textInput?: Flex__<typeof TextInput>;
+  courseGrid?: Flex__<typeof CourseGrid>;
 };
 
 export interface DefaultStudentCoursesProps {}
@@ -134,6 +132,24 @@ function PlasmicStudentCourses__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "textInput.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   const styleTokensClassNames = _useStyleTokens();
   const styleTokensClassNames_antd_5_hostless =
     useStyleTokens_antd_5_hostless();
@@ -173,85 +189,13 @@ function PlasmicStudentCourses__RenderFunc(props: {
                         sty.h4__mvDd0
                       )}
                     >
-                      {"My Courses (30)"}
+                      {"Enrolled Courses (30)"}
                     </h4>
-                    <AntdDropdown
-                      className={classNames(
-                        "__wab_instance",
-                        sty.dropdown__p02L1
-                      )}
-                      dropdownMenuScopeClassName={
-                        sty["dropdown__p02L1__dropdownMenu"]
-                      }
-                      menuItems={() => (
-                        <React.Fragment>
-                          <AntdMenuItem
-                            className={classNames(
-                              "__wab_instance",
-                              sty.menuItem__j5Gv2
-                            )}
-                            key={"menu-item-1"}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__cjpLq
-                              )}
-                            >
-                              {"Menu item"}
-                            </div>
-                          </AntdMenuItem>
-                          <AntdMenuItem
-                            className={classNames(
-                              "__wab_instance",
-                              sty.menuItem__q4W0O
-                            )}
-                            key={"menu-item-2"}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__jx1Lt
-                              )}
-                            >
-                              {"Menu item"}
-                            </div>
-                          </AntdMenuItem>
-                        </React.Fragment>
-                      )}
-                      menuItemsJson={[
-                        { type: "item", value: "action1", label: "Action 1" },
-                        { type: "item", value: "action2", label: "Action 2" }
-                      ]}
-                    >
-                      <AntdButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.button__udcwn
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__lAiv4
-                          )}
-                        >
-                          {"Dropdown"}
-                        </div>
-                      </AntdButton>
-                    </AntdDropdown>
-                    <Button
-                      className={classNames(
-                        "__wab_instance",
-                        sty.button__aSnNz
-                      )}
-                    />
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.columns__uv5To)}
+                    data-plasmic-name={"columns"}
+                    data-plasmic-override={overrides.columns}
+                    className={classNames(projectcss.all, sty.columns)}
                   >
                     <div
                       className={classNames(projectcss.all, sty.column__dyr4U)}
@@ -261,6 +205,19 @@ function PlasmicStudentCourses__RenderFunc(props: {
                           "__wab_instance",
                           sty.courseCard___6BUkT
                         )}
+                        id={(() => {
+                          try {
+                            return undefined;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
                       />
                     </div>
                     <div
@@ -307,127 +264,68 @@ function PlasmicStudentCourses__RenderFunc(props: {
                         sty.h4__z84Zp
                       )}
                     >
-                      {"More Courses (30)"}
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return `Available Courses (${$ctx.allAvailableCourses.data.length})`;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "Available Courses (30)";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
                     </h4>
-                    <AntdDropdown
-                      className={classNames(
-                        "__wab_instance",
-                        sty.dropdown___3Wzt
-                      )}
-                      dropdownMenuScopeClassName={
-                        sty["dropdown___3Wzt__dropdownMenu"]
-                      }
-                      menuItems={() => (
-                        <React.Fragment>
-                          <AntdMenuItem
-                            className={classNames(
-                              "__wab_instance",
-                              sty.menuItem__efAil
-                            )}
-                            key={"menu-item-1"}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__mJy6U
-                              )}
-                            >
-                              {"Menu item"}
-                            </div>
-                          </AntdMenuItem>
-                          <AntdMenuItem
-                            className={classNames(
-                              "__wab_instance",
-                              sty.menuItem__pMvfh
-                            )}
-                            key={"menu-item-2"}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__koah6
-                              )}
-                            >
-                              {"Menu item"}
-                            </div>
-                          </AntdMenuItem>
-                        </React.Fragment>
-                      )}
-                      menuItemsJson={[
-                        { type: "item", value: "action1", label: "Action 1" },
-                        { type: "item", value: "action2", label: "Action 2" }
-                      ]}
-                    >
-                      <AntdButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.button__pfZtj
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___9Xbm
-                          )}
-                        >
-                          {"Dropdown"}
-                        </div>
-                      </AntdButton>
-                    </AntdDropdown>
-                    <Button
-                      className={classNames(
-                        "__wab_instance",
-                        sty.button__tsN2X
-                      )}
+                    <TextInput
+                      data-plasmic-name={"textInput"}
+                      data-plasmic-override={overrides.textInput}
+                      className={classNames("__wab_instance", sty.textInput)}
+                      inputMode={"search"}
+                      inputType={"search"}
+                      onChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "textInput",
+                          "value"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                      placeholder={"Search"}
+                      value={generateStateValueProp($state, [
+                        "textInput",
+                        "value"
+                      ])}
                     />
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.columns__d1EJs)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.column__eWNhj)}
-                    >
-                      <CourseCard
-                        className={classNames(
-                          "__wab_instance",
-                          sty.courseCard__swOX
-                        )}
-                      />
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.column__nuJxM)}
-                    >
-                      <CourseCard
-                        className={classNames(
-                          "__wab_instance",
-                          sty.courseCard__r3Yr5
-                        )}
-                      />
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.column___0VWw2)}
-                    >
-                      <CourseCard
-                        className={classNames(
-                          "__wab_instance",
-                          sty.courseCard__uRdbt
-                        )}
-                      />
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.column__g5TJd)}
-                    >
-                      <CourseCard
-                        className={classNames(
-                          "__wab_instance",
-                          sty.courseCard__inaC
-                        )}
-                      />
-                    </div>
-                  </div>
+                  <CourseGrid
+                    data-plasmic-name={"courseGrid"}
+                    data-plasmic-override={overrides.courseGrid}
+                    className={classNames("__wab_instance", sty.courseGrid)}
+                    courseList={(() => {
+                      try {
+                        return $ctx.allAvailableCourses;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
+                    onViewClickLink={`/student-view-course`}
+                  />
                 </div>
               </div>
             )}
@@ -439,13 +337,19 @@ function PlasmicStudentCourses__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root", "columns", "textInput", "courseGrid"],
+  columns: ["columns"],
+  textInput: ["textInput"],
+  courseGrid: ["courseGrid"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: typeof StudentPageLayout;
+  columns: "div";
+  textInput: typeof TextInput;
+  courseGrid: typeof CourseGrid;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -508,6 +412,9 @@ export const PlasmicStudentCourses = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    columns: makeNodeComponent("columns"),
+    textInput: makeNodeComponent("textInput"),
+    courseGrid: makeNodeComponent("courseGrid"),
 
     // Metadata about props expected for PlasmicStudentCourses
     internalVariantProps: PlasmicStudentCourses__VariantProps,

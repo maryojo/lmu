@@ -59,13 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
 import InstructorPageLayout from "../../InstructorPageLayout"; // plasmic-import: KRlgGOfWJ9fO/component
 import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdInput_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
@@ -73,8 +66,7 @@ import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
-import CourseCard from "../../CourseCard"; // plasmic-import: lU_2619e8-pr/component
-import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
+import CourseGrid from "../../CourseGrid"; // plasmic-import: xmK9OAIpqo06/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
 import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
@@ -105,8 +97,7 @@ export type PlasmicInstructorCourses__OverridesType = {
   h4?: Flex__<"h4">;
   input?: Flex__<typeof AntdInput>;
   dropdown?: Flex__<typeof AntdDropdown>;
-  columns?: Flex__<"div">;
-  courseCard?: Flex__<typeof CourseCard>;
+  courseGrid?: Flex__<typeof CourseGrid>;
 };
 
 export interface DefaultInstructorCoursesProps {}
@@ -150,9 +141,6 @@ function PlasmicInstructorCourses__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  let [$queries, setDollarQueries] = React.useState<
-    Record<string, ReturnType<typeof usePlasmicDataOp>>
-  >({});
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -169,31 +157,9 @@ function PlasmicInstructorCourses__RenderFunc(props: {
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
-    $queries: $queries,
+    $queries: {},
     $refs
   });
-  const dataSourcesCtx = usePlasmicDataSourceContext();
-  const plasmicInvalidate = usePlasmicInvalidate();
-
-  const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
-    getInstructorCoursesById: usePlasmicDataOp(() => {
-      return {
-        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-        opId: "c51071a7-7917-42ca-9d8d-ae9620bcb719",
-        userArgs: {
-          filters: [$ctx.SupabaseUser?.user?.id]
-        },
-        cacheKey: `plasmic.$.c51071a7-7917-42ca-9d8d-ae9620bcb719.$.`,
-        invalidatedKeys: null,
-        roleId: null
-      };
-    })
-  };
-  if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
-    setDollarQueries(new$Queries);
-
-    $queries = new$Queries;
-  }
 
   const styleTokensClassNames = _useStyleTokens();
   const styleTokensClassNames_antd_5_hostless =
@@ -239,7 +205,7 @@ function PlasmicInstructorCourses__RenderFunc(props: {
                       <React.Fragment>
                         {(() => {
                           try {
-                            return `My Courses (${$queries.getInstructorCoursesById.data.length})`;
+                            return `My Courses (${$ctx.allCourses.data.length})`;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -357,7 +323,7 @@ function PlasmicInstructorCourses__RenderFunc(props: {
                               sty.text__apxxC
                             )}
                           >
-                            {"Dropdown"}
+                            {"Filter"}
                           </div>
                         </AntdButton>
                       </AntdDropdown>
@@ -377,184 +343,51 @@ function PlasmicInstructorCourses__RenderFunc(props: {
                             {"Add Course"}
                           </div>
                         }
+                        linkTo={`/instructor-add-courses`}
                         onClick={async event => {
                           const $steps = {};
 
-                          $steps["useIntegration"] = true
+                          $steps["goToInstructorAddCourses"] = true
                             ? (() => {
-                                const actionArgs = {};
-                                return (async ({ dataOp, continueOnError }) => {
-                                  try {
-                                    const response = await executePlasmicDataOp(
-                                      dataOp,
-                                      {
-                                        userAuthToken:
-                                          dataSourcesCtx?.userAuthToken,
-                                        user: dataSourcesCtx?.user
-                                      }
-                                    );
-                                    await plasmicInvalidate(
-                                      dataOp.invalidatedKeys
-                                    );
-                                    return response;
-                                  } catch (e) {
-                                    if (!continueOnError) {
-                                      throw e;
-                                    }
-                                    return e;
+                                const actionArgs = {
+                                  destination: `/instructor-add-courses`
+                                };
+                                return (({ destination }) => {
+                                  if (
+                                    typeof destination === "string" &&
+                                    destination.startsWith("#")
+                                  ) {
+                                    document
+                                      .getElementById(destination.substr(1))
+                                      .scrollIntoView({ behavior: "smooth" });
+                                  } else {
+                                    __nextRouter?.push(destination);
                                   }
                                 })?.apply(null, [actionArgs]);
                               })()
                             : undefined;
                           if (
-                            $steps["useIntegration"] != null &&
-                            typeof $steps["useIntegration"] === "object" &&
-                            typeof $steps["useIntegration"].then === "function"
+                            $steps["goToInstructorAddCourses"] != null &&
+                            typeof $steps["goToInstructorAddCourses"] ===
+                              "object" &&
+                            typeof $steps["goToInstructorAddCourses"].then ===
+                              "function"
                           ) {
-                            $steps["useIntegration"] = await $steps[
-                              "useIntegration"
+                            $steps["goToInstructorAddCourses"] = await $steps[
+                              "goToInstructorAddCourses"
                             ];
                           }
                         }}
                       />
                     </div>
                   </div>
-                  <div
-                    data-plasmic-name={"columns"}
-                    data-plasmic-override={overrides.columns}
-                    className={classNames(projectcss.all, sty.columns)}
-                  >
-                    {(_par =>
-                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                      (() => {
-                        try {
-                          return $queries?.getInstructorCoursesById?.data;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                      const currentItem = __plasmic_item_0;
-                      const currentIndex = __plasmic_idx_0;
-                      return (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.column___7EouV
-                          )}
-                          key={currentIndex}
-                        >
-                          <CourseCard
-                            data-plasmic-name={"courseCard"}
-                            data-plasmic-override={overrides.courseCard}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.courseCard
-                            )}
-                            coverImageUrl={(() => {
-                              try {
-                                return $queries?.getInstructorCoursesById?.data[
-                                  currentIndex
-                                ]?.cover_image === ""
-                                  ? null
-                                  : $queries?.getInstructorCoursesById?.data[
-                                      currentIndex
-                                    ]?.cover_image;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                            description={(() => {
-                              try {
-                                return $queries?.getInstructorCoursesById?.data[
-                                  currentIndex
-                                ]?.description;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                            instrumentTypeTag={(() => {
-                              try {
-                                return $queries.getInstructorCoursesById?.data[
-                                  currentIndex
-                                ]?.instrument_category;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                            showCta={false}
-                            showProgress={false}
-                            showTags={true}
-                            title={(() => {
-                              try {
-                                return $queries?.getInstructorCoursesById?.data[
-                                  currentIndex
-                                ].title;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                            trainingLevelTag={(() => {
-                              try {
-                                return $queries.getInstructorCoursesById.data[
-                                  currentIndex
-                                ].training_level;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}
-                          />
-                        </div>
-                      );
-                    })}
-                    <div
-                      className={classNames(projectcss.all, sty.column___9EFy)}
-                    />
-
-                    <div
-                      className={classNames(projectcss.all, sty.column__u0ALi)}
-                    />
-
-                    <div
-                      className={classNames(projectcss.all, sty.column__ncS4U)}
-                    />
-                  </div>
+                  <CourseGrid
+                    data-plasmic-name={"courseGrid"}
+                    data-plasmic-override={overrides.courseGrid}
+                    className={classNames("__wab_instance", sty.courseGrid)}
+                    courseList={$ctx.allCourses}
+                    onViewClickLink={`/instructor-view-courses`}
+                  />
                 </div>
               </div>
             )}
@@ -566,12 +399,11 @@ function PlasmicInstructorCourses__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "h4", "input", "dropdown", "columns", "courseCard"],
+  root: ["root", "h4", "input", "dropdown", "courseGrid"],
   h4: ["h4"],
   input: ["input"],
   dropdown: ["dropdown"],
-  columns: ["columns", "courseCard"],
-  courseCard: ["courseCard"]
+  courseGrid: ["courseGrid"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -581,8 +413,7 @@ type NodeDefaultElementType = {
   h4: "h4";
   input: typeof AntdInput;
   dropdown: typeof AntdDropdown;
-  columns: "div";
-  courseCard: typeof CourseCard;
+  courseGrid: typeof CourseGrid;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -648,8 +479,7 @@ export const PlasmicInstructorCourses = Object.assign(
     h4: makeNodeComponent("h4"),
     input: makeNodeComponent("input"),
     dropdown: makeNodeComponent("dropdown"),
-    columns: makeNodeComponent("columns"),
-    courseCard: makeNodeComponent("courseCard"),
+    courseGrid: makeNodeComponent("courseGrid"),
 
     // Metadata about props expected for PlasmicInstructorCourses
     internalVariantProps: PlasmicInstructorCourses__VariantProps,

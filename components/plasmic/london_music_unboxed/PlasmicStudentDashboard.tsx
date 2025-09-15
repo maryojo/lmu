@@ -61,8 +61,8 @@ import {
 
 import StudentPageLayout from "../../StudentPageLayout"; // plasmic-import: Itd9tHC_WCDz/component
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
-import CourseCard from "../../CourseCard"; // plasmic-import: lU_2619e8-pr/component
-import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
+import CourseGrid from "../../CourseGrid"; // plasmic-import: xmK9OAIpqo06/component
+import GeneralResourceCard from "../../GeneralResourceCard"; // plasmic-import: aJ1uzNYjouuX/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
 import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
@@ -78,7 +78,7 @@ import Icon11Icon from "./icons/PlasmicIcon__Icon11"; // plasmic-import: jkQ1pOW
 import Icon16Icon from "./icons/PlasmicIcon__Icon16"; // plasmic-import: 0fflnDuvI7c1/icon
 import Icon13Icon from "./icons/PlasmicIcon__Icon13"; // plasmic-import: IuQNgVybgFcd/icon
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: yZz0P1JDPQwS/icon
-import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: -jkcn7GwAM4v/icon
+import IconIcon from "../plasmic_tabs/icons/PlasmicIcon__Icon"; // plasmic-import: 8K40faRNhuCj/icon
 
 createPlasmicElementProxy;
 
@@ -94,8 +94,7 @@ export const PlasmicStudentDashboard__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicStudentDashboard__OverridesType = {
   root?: Flex__<typeof StudentPageLayout>;
-  h4?: Flex__<"h4">;
-  button?: Flex__<typeof Button>;
+  courseGrid?: Flex__<typeof CourseGrid>;
 };
 
 export interface DefaultStudentDashboardProps {}
@@ -325,64 +324,150 @@ function PlasmicStudentDashboard__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.freeBox___5OCsR)}
                   >
                     <h4
-                      data-plasmic-name={"h4"}
-                      data-plasmic-override={overrides.h4}
                       className={classNames(
                         projectcss.all,
                         projectcss.h4,
                         projectcss.__wab_text,
-                        sty.h4
+                        sty.h4__hGnzh
                       )}
                     >
                       {"Let's start learning"}
                     </h4>
                     <Button
-                      data-plasmic-name={"button"}
-                      data-plasmic-override={overrides.button}
-                      className={classNames("__wab_instance", sty.button)}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button___2D32L
+                      )}
+                      end={
+                        <IconIcon
+                          className={classNames(projectcss.all, sty.svg__f2Maf)}
+                          role={"img"}
+                        />
+                      }
+                      iconEnd={true}
+                      label={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__pJg3O
+                          )}
+                        >
+                          {"See more"}
+                        </div>
+                      }
+                      linkTo={`/student-courses`}
+                      type={"bordered"}
+                    />
+                  </div>
+                  <CourseGrid
+                    data-plasmic-name={"courseGrid"}
+                    data-plasmic-override={overrides.courseGrid}
+                    className={classNames("__wab_instance", sty.courseGrid)}
+                    courseList={(() => {
+                      try {
+                        return $ctx.allAvailableCourses;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
+                    maximumItemCount={4}
+                  />
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___929Bj)}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__jEkaY)}
+                  >
+                    <h4
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.h4,
+                        projectcss.__wab_text,
+                        sty.h4__r9K3M
+                      )}
+                    >
+                      {"Explore more resources"}
+                    </h4>
+                    <Button
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button__hP4FX
+                      )}
+                      end={
+                        <IconIcon
+                          className={classNames(projectcss.all, sty.svg__svux5)}
+                          role={"img"}
+                        />
+                      }
+                      iconEnd={true}
+                      label={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__mZ0S
+                          )}
+                        >
+                          {"See more"}
+                        </div>
+                      }
+                      linkTo={`/student-hub`}
+                      type={"bordered"}
                     />
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.columns__hZebx)}
+                    className={classNames(projectcss.all, sty.columns__elwHm)}
                   >
                     <div
-                      className={classNames(projectcss.all, sty.column___0AxnG)}
+                      className={classNames(projectcss.all, sty.column__dTZq)}
                     >
-                      <CourseCard
+                      <GeneralResourceCard
                         className={classNames(
                           "__wab_instance",
-                          sty.courseCard__xmC0H
+                          sty.generalResourceCard__fUtp
                         )}
+                        showTags={true}
                       />
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.column__cxL4Z)}
+                      className={classNames(projectcss.all, sty.column__nwG7D)}
                     >
-                      <CourseCard
+                      <GeneralResourceCard
                         className={classNames(
                           "__wab_instance",
-                          sty.courseCard__sgjna
+                          sty.generalResourceCard___6Hzz5
                         )}
+                        showTags={true}
                       />
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.column__aKmcx)}
+                      className={classNames(projectcss.all, sty.column__s75D4)}
                     >
-                      <CourseCard
+                      <GeneralResourceCard
                         className={classNames(
                           "__wab_instance",
-                          sty.courseCard__n7Dfc
+                          sty.generalResourceCard__jqeun
                         )}
+                        showTags={true}
                       />
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.column__nDvg9)}
+                      className={classNames(projectcss.all, sty.column__nr92E)}
                     >
-                      <CourseCard
+                      <GeneralResourceCard
                         className={classNames(
                           "__wab_instance",
-                          sty.courseCard__woMzx
+                          sty.generalResourceCard__nVFkM
                         )}
+                        showTags={true}
                       />
                     </div>
                   </div>
@@ -397,17 +482,15 @@ function PlasmicStudentDashboard__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "h4", "button"],
-  h4: ["h4"],
-  button: ["button"]
+  root: ["root", "courseGrid"],
+  courseGrid: ["courseGrid"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: typeof StudentPageLayout;
-  h4: "h4";
-  button: typeof Button;
+  courseGrid: typeof CourseGrid;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -470,8 +553,7 @@ export const PlasmicStudentDashboard = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    h4: makeNodeComponent("h4"),
-    button: makeNodeComponent("button"),
+    courseGrid: makeNodeComponent("courseGrid"),
 
     // Metadata about props expected for PlasmicStudentDashboard
     internalVariantProps: PlasmicStudentDashboard__VariantProps,

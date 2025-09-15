@@ -22,6 +22,7 @@
     "@plasmicpkgs/plasmic-basic-components": "^0.0.238",
     "@plasmicpkgs/plasmic-embed-css": "^0.1.209",
     "@plasmicpkgs/plasmic-rich-components": "^1.0.220",
+    "@plasmicpkgs/plasmic-tabs": "^0.0.66",
     "@plasmicpkgs/react-aria": "^0.0.129",
     "@supabase/auth-helpers-nextjs": "^0.10.0",
     "@supabase/auth-helpers-react": "^0.5.0",
