@@ -13,7 +13,7 @@
   color: var(--token-tQWjGoYl6Mdp);
   font-weight: 500;
   border-radius: var(--token-GHU777uGwY8R);
-  padding: 0rem;
+  padding: 0rem 0.2rem;
   border-width: 0px;
 }
 .root[data-hovered]:global(.__wab_instance) {
@@ -48,6 +48,9 @@
 }
 .roottype_bordered:global(.__wab_instance) {
   background: none;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid var(--token-NMTUfWqzy3UM);
 }
 .rootsize_extraSmall:global(.__wab_instance) {
   line-height: var(--token-PpF7H_BH3PHA);
@@ -364,7 +367,6 @@
 }
 .text__e7Awc {
   white-space: pre;
-  color: var(--token-tMilkOK1BC4I);
 }
 .freeBox__bogLv {
   flex-direction: column;

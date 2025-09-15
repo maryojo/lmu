@@ -78,9 +78,11 @@ type VariantPropType = keyof PlasmicDashboardNavbar__VariantsArgs;
 export const PlasmicDashboardNavbar__VariantProps =
   new Array<VariantPropType>();
 
-export type PlasmicDashboardNavbar__ArgsType = {};
+export type PlasmicDashboardNavbar__ArgsType = { profileLink?: string };
 type ArgPropType = keyof PlasmicDashboardNavbar__ArgsType;
-export const PlasmicDashboardNavbar__ArgProps = new Array<ArgPropType>();
+export const PlasmicDashboardNavbar__ArgProps = new Array<ArgPropType>(
+  "profileLink"
+);
 
 export type PlasmicDashboardNavbar__OverridesType = {
   root?: Flex__<"section">;
@@ -89,6 +91,7 @@ export type PlasmicDashboardNavbar__OverridesType = {
 };
 
 export interface DefaultDashboardNavbarProps {
+  profileLink?: string;
   className?: string;
 }
 
@@ -163,7 +166,19 @@ function PlasmicDashboardNavbar__RenderFunc(props: {
           data-plasmic-name={"avatar"}
           data-plasmic-override={overrides.avatar}
           className={classNames("__wab_instance", sty.avatar)}
-          href={`/student-profile`}
+          href={(() => {
+            try {
+              return $props.profileLink;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()}
           letters={``}
           src={(() => {
             try {

@@ -82,13 +82,15 @@ export type PlasmicCourseCard__ArgsType = {
   description?: string;
   coverImage?: React.ComponentProps<typeof PlasmicImg__>["src"];
   actionButtonText?: string;
-  onclickActionButton?: () => void;
   showCta?: boolean;
   showTags?: boolean;
   showProgress?: boolean;
   trainingLevelTag?: string;
   instrumentTypeTag?: string;
   coverImageUrl?: string;
+  onclickViewButton?: () => void;
+  onclickActionButton?: (id: string) => void;
+  id?: string;
 };
 type ArgPropType = keyof PlasmicCourseCard__ArgsType;
 export const PlasmicCourseCard__ArgProps = new Array<ArgPropType>(
@@ -96,13 +98,15 @@ export const PlasmicCourseCard__ArgProps = new Array<ArgPropType>(
   "description",
   "coverImage",
   "actionButtonText",
-  "onclickActionButton",
   "showCta",
   "showTags",
   "showProgress",
   "trainingLevelTag",
   "instrumentTypeTag",
-  "coverImageUrl"
+  "coverImageUrl",
+  "onclickViewButton",
+  "onclickActionButton",
+  "id"
 );
 
 export type PlasmicCourseCard__OverridesType = {
@@ -110,7 +114,6 @@ export type PlasmicCourseCard__OverridesType = {
   img?: Flex__<typeof PlasmicImg__>;
   h6?: Flex__<"h6">;
   columns?: Flex__<"div">;
-  button?: Flex__<typeof AntdButton>;
 };
 
 export interface DefaultCourseCardProps {
@@ -118,13 +121,15 @@ export interface DefaultCourseCardProps {
   description?: string;
   coverImage?: React.ComponentProps<typeof PlasmicImg__>["src"];
   actionButtonText?: string;
-  onclickActionButton?: () => void;
   showCta?: boolean;
   showTags?: boolean;
   showProgress?: boolean;
   trainingLevelTag?: string;
   instrumentTypeTag?: string;
   coverImageUrl?: string;
+  onclickViewButton?: () => void;
+  onclickActionButton?: (id: string) => void;
+  id?: string;
   className?: string;
 }
 
@@ -364,6 +369,43 @@ function PlasmicCourseCard__RenderFunc(props: {
             {"Enter some text"}
           </div>
         ) : null}
+      </div>
+      <div className={classNames(projectcss.all, sty.freeBox___5Hv5L)}>
+        <AntdButton
+          className={classNames("__wab_instance", sty.button__wUkMe)}
+          onClick={async () => {
+            const $steps = {};
+
+            $steps["runOnclickViewButton"] = true
+              ? (() => {
+                  const actionArgs = { eventRef: $props["onclickViewButton"] };
+                  return (({ eventRef, args }) => {
+                    return eventRef?.(...(args ?? []));
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["runOnclickViewButton"] != null &&
+              typeof $steps["runOnclickViewButton"] === "object" &&
+              typeof $steps["runOnclickViewButton"].then === "function"
+            ) {
+              $steps["runOnclickViewButton"] = await $steps[
+                "runOnclickViewButton"
+              ];
+            }
+          }}
+          size={"small"}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text___8Taiv
+            )}
+          >
+            {"View"}
+          </div>
+        </AntdButton>
         {(() => {
           try {
             return $props.showCta;
@@ -378,16 +420,29 @@ function PlasmicCourseCard__RenderFunc(props: {
           }
         })() ? (
           <AntdButton
-            data-plasmic-name={"button"}
-            data-plasmic-override={overrides.button}
-            className={classNames("__wab_instance", sty.button)}
+            className={classNames("__wab_instance", sty.button___5VNs)}
             onClick={async () => {
               const $steps = {};
 
               $steps["runOnclickActionButton"] = true
                 ? (() => {
                     const actionArgs = {
-                      eventRef: $props["onclickActionButton"]
+                      eventRef: $props["onclickActionButton"],
+                      args: [
+                        (() => {
+                          try {
+                            return $props?.id;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
                     };
                     return (({ eventRef, args }) => {
                       return eventRef?.(...(args ?? []));
@@ -404,12 +459,14 @@ function PlasmicCourseCard__RenderFunc(props: {
                 ];
               }
             }}
+            size={"small"}
+            type={"primary"}
           >
             <div
               className={classNames(
                 projectcss.all,
                 projectcss.__wab_text,
-                sty.text___8Taiv
+                sty.text__fEdE
               )}
             >
               <React.Fragment>
@@ -436,11 +493,10 @@ function PlasmicCourseCard__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "img", "h6", "columns", "button"],
+  root: ["root", "img", "h6", "columns"],
   img: ["img"],
   h6: ["h6"],
-  columns: ["columns"],
-  button: ["button"]
+  columns: ["columns"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -450,7 +506,6 @@ type NodeDefaultElementType = {
   img: typeof PlasmicImg__;
   h6: "h6";
   columns: "div";
-  button: typeof AntdButton;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -516,7 +571,6 @@ export const PlasmicCourseCard = Object.assign(
     img: makeNodeComponent("img"),
     h6: makeNodeComponent("h6"),
     columns: makeNodeComponent("columns"),
-    button: makeNodeComponent("button"),
 
     // Metadata about props expected for PlasmicCourseCard
     internalVariantProps: PlasmicCourseCard__VariantProps,
