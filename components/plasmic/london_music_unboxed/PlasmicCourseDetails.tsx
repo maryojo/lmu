@@ -74,9 +74,8 @@ import { FormWrapper } from "@plasmicpkgs/antd5/skinny/SchemaForm";
 import { formHelpers as FormWrapper_Helpers } from "@plasmicpkgs/antd5/skinny/Form";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import EditCourseModuleItem from "../../EditCourseModuleItem"; // plasmic-import: OZ09O_elizqY/component
-import { AntdAccordion } from "@plasmicpkgs/antd5/skinny/registerCollapse";
-import { accordionHelpers as AntdAccordion_Helpers } from "@plasmicpkgs/antd5/skinny/registerCollapse";
-import { AntdAccordionItem } from "@plasmicpkgs/antd5/skinny/registerCollapse";
+import { CustomAccordionItem } from "../../CustomAccordionItem"; // plasmic-import: Th4N3i4J4xsp/codeComponent
+import { RichList } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-list";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
@@ -128,7 +127,8 @@ export type PlasmicCourseDetails__OverridesType = {
   editCourseModuleItem?: Flex__<typeof EditCourseModuleItem>;
   modal4?: Flex__<typeof AntdModal>;
   form3?: Flex__<typeof FormWrapper>;
-  accordion?: Flex__<typeof AntdAccordion>;
+  customAccordionItem?: Flex__<typeof CustomAccordionItem>;
+  dataList?: Flex__<typeof RichList>;
   sideEffect?: Flex__<typeof SideEffect>;
 };
 
@@ -196,17 +196,6 @@ function PlasmicCourseDetails__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "1"
-      },
-      {
-        path: "accordion.activePanelId",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
-
-        onMutate: generateOnMutateForSpec(
-          "activePanelId",
-          AntdAccordion_Helpers
-        )
       },
       {
         path: "courseFormState",
@@ -553,328 +542,356 @@ function PlasmicCourseDetails__RenderFunc(props: {
                         />
                       ) : null}
                     </div>
-                    <AntdModal
-                      data-plasmic-name={"modal"}
-                      data-plasmic-override={overrides.modal}
-                      className={classNames("__wab_instance", sty.modal)}
-                      defaultStylesClassName={classNames(
-                        projectcss.root_reset,
-                        projectcss.plasmic_default_styles,
-                        projectcss.plasmic_mixins,
-                        styleTokensClassNames
-                      )}
-                      hideFooter={true}
-                      modalScopeClassName={sty["modal__modal"]}
-                      onOpenChange={async (...eventArgs: any) => {
-                        generateStateOnChangeProp($state, [
-                          "modal",
-                          "open"
-                        ]).apply(null, eventArgs);
-                      }}
-                      open={generateStateValueProp($state, ["modal", "open"])}
-                      title={"Modal title"}
-                      trigger={
-                        <AntdButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.button__xx2Tp
+                    {(() => {
+                      try {
+                        return $props.isEditable === true;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___4FRPv
+                        )}
+                      >
+                        <AntdModal
+                          data-plasmic-name={"modal"}
+                          data-plasmic-override={overrides.modal}
+                          className={classNames("__wab_instance", sty.modal)}
+                          defaultStylesClassName={classNames(
+                            projectcss.root_reset,
+                            projectcss.plasmic_default_styles,
+                            projectcss.plasmic_mixins,
+                            styleTokensClassNames
                           )}
+                          hideFooter={true}
+                          modalScopeClassName={sty["modal__modal"]}
+                          onOpenChange={async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "modal",
+                              "open"
+                            ]).apply(null, eventArgs);
+                          }}
+                          open={generateStateValueProp($state, [
+                            "modal",
+                            "open"
+                          ])}
+                          title={"Modal title"}
+                          trigger={
+                            <AntdButton
+                              className={classNames(
+                                "__wab_instance",
+                                sty.button__xx2Tp
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__dv3Xp
+                                )}
+                              >
+                                {"Show modal"}
+                              </div>
+                            </AntdButton>
+                          }
                         >
                           <div
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__dv3Xp
+                              sty.freeBox__l60Pv
                             )}
                           >
-                            {"Show modal"}
-                          </div>
-                        </AntdButton>
-                      }
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__l60Pv
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__pYfVd
-                          )}
-                        >
-                          {"Modal content"}
-                        </div>
-                        {(() => {
-                          try {
-                            return $props.courseData !== undefined;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })()
-                          ? (() => {
-                              const child$Props = {
-                                className: classNames(
-                                  "__wab_instance",
-                                  sty.form
-                                ),
-                                data: {
-                                  sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-                                  opId: "cdc293da-6a6c-4e4c-91c7-b9f3a836a5c2",
-                                  userArgs: {
-                                    filters: [$props.courseData?.id]
-                                  },
-                                  cacheKey: `plasmic.$.${(() => {
-                                    try {
-                                      return "getOne";
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "";
-                                      }
-                                      throw e;
-                                    }
-                                  })()}.$.cdc293da-6a6c-4e4c-91c7-b9f3a836a5c2.$.`,
-                                  invalidatedKeys: null,
-                                  roleId: null
-                                },
-                                dataFormItems: (() => {
-                                  const __composite = [
-                                    {
-                                      key: "id",
-                                      inputType: "Text",
-                                      fieldId: "id",
-                                      label: "id",
-                                      name: "id",
-                                      hidden: null
-                                    },
-                                    {
-                                      key: "created_at",
-                                      inputType: "Text",
-                                      fieldId: "created_at",
-                                      label: "created_at",
-                                      name: "created_at",
-                                      hidden: null
-                                    },
-                                    {
-                                      key: "created_by",
-                                      inputType: "Text",
-                                      fieldId: "created_by",
-                                      label: "created_by",
-                                      name: "created_by",
-                                      initialValue: null,
-                                      hidden: null
-                                    },
-                                    {
-                                      key: "training_level",
-                                      inputType: "Text",
-                                      fieldId: "training_level",
-                                      label: "training_level",
-                                      name: "training_level"
-                                    },
-                                    {
-                                      key: "instrument_category",
-                                      inputType: "Text",
-                                      fieldId: "instrument_category",
-                                      label: "instrument_category",
-                                      name: "instrument_category"
-                                    },
-                                    {
-                                      key: "cover_image",
-                                      inputType: "Text",
-                                      fieldId: "cover_image",
-                                      label: "cover_image",
-                                      name: "cover_image"
-                                    },
-                                    {
-                                      key: "instructor_name",
-                                      inputType: "Text",
-                                      fieldId: "instructor_name",
-                                      label: "instructor_name",
-                                      name: "instructor_name",
-                                      hidden: null
-                                    },
-                                    {
-                                      key: "title",
-                                      inputType: "Text",
-                                      fieldId: "title",
-                                      label: "title",
-                                      name: "title"
-                                    },
-                                    {
-                                      key: "description",
-                                      inputType: "Text",
-                                      fieldId: "description",
-                                      label: "description",
-                                      name: "description"
-                                    },
-                                    {
-                                      key: "status",
-                                      inputType: "Text",
-                                      fieldId: "status",
-                                      label: "status",
-                                      name: "status"
-                                    }
-                                  ];
-                                  __composite["0"]["hidden"] = true;
-                                  __composite["1"]["hidden"] = true;
-                                  __composite["2"]["initialValue"] =
-                                    $ctx.SupabaseUser?.user?.id;
-                                  __composite["2"]["hidden"] = true;
-                                  __composite["6"]["hidden"] = true;
-                                  return __composite;
-                                })(),
-
-                                extendedOnValuesChange: async (
-                                  ...eventArgs: any
-                                ) => {
-                                  generateStateOnChangePropForCodeComponents(
-                                    $state,
-                                    "value",
-                                    ["form", "value"],
-                                    FormWrapper_Helpers
-                                  ).apply(null, eventArgs);
-                                },
-                                formItems: [],
-                                labelCol: { span: 8, horizontalOnly: true },
-                                layout: "vertical",
-                                mode: "simplified",
-                                onFinish: async values => {
-                                  const $steps = {};
-
-                                  $steps["defaultSubmit"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          dataOp: {
-                                            sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-                                            opId: "1854bf8b-a6bf-4430-9763-1fadfe1e5d5f",
-                                            userArgs: {
-                                              conditions: [
-                                                $props.courseData?.id
-                                              ],
-
-                                              variables: [$state.form.value]
-                                            },
-                                            cacheKey: null,
-                                            invalidatedKeys: [
-                                              "plasmic_refresh_all"
-                                            ],
-                                            roleId: null
-                                          }
-                                        };
-                                        return (async ({
-                                          dataOp,
-                                          continueOnError
-                                        }) => {
-                                          try {
-                                            const response =
-                                              await executePlasmicDataOp(
-                                                dataOp,
-                                                {
-                                                  userAuthToken:
-                                                    dataSourcesCtx?.userAuthToken,
-                                                  user: dataSourcesCtx?.user
-                                                }
-                                              );
-                                            await plasmicInvalidate(
-                                              dataOp.invalidatedKeys
-                                            );
-                                            return response;
-                                          } catch (e) {
-                                            if (!continueOnError) {
-                                              throw e;
-                                            }
-                                            return e;
-                                          }
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["defaultSubmit"] != null &&
-                                    typeof $steps["defaultSubmit"] ===
-                                      "object" &&
-                                    typeof $steps["defaultSubmit"].then ===
-                                      "function"
-                                  ) {
-                                    $steps["defaultSubmit"] = await $steps[
-                                      "defaultSubmit"
-                                    ];
-                                  }
-                                },
-                                onIsSubmittingChange: async (
-                                  ...eventArgs: any
-                                ) => {
-                                  generateStateOnChangePropForCodeComponents(
-                                    $state,
-                                    "isSubmitting",
-                                    ["form", "isSubmitting"],
-                                    FormWrapper_Helpers
-                                  ).apply(null, eventArgs);
-                                },
-                                ref: ref => {
-                                  $refs["form"] = ref;
-                                },
-                                submitSlot: (
-                                  <AntdButton
-                                    className={classNames(
-                                      "__wab_instance",
-                                      sty.button__tHoL
-                                    )}
-                                    submitsForm={true}
-                                    type={"primary"}
-                                  >
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__keR0
-                                      )}
-                                    >
-                                      {"Submit"}
-                                    </div>
-                                  </AntdButton>
-                                ),
-                                wrapperCol: { span: 16, horizontalOnly: true }
-                              };
-                              initializeCodeComponentStates(
-                                $state,
-                                [
-                                  {
-                                    name: "value",
-                                    plasmicStateName: "form.value"
-                                  },
-                                  {
-                                    name: "isSubmitting",
-                                    plasmicStateName: "form.isSubmitting"
-                                  }
-                                ],
-                                [],
-                                FormWrapper_Helpers ?? {},
-                                child$Props
-                              );
-
-                              return (
-                                <FormWrapper
-                                  data-plasmic-name={"form"}
-                                  data-plasmic-override={overrides.form}
-                                  {...child$Props}
-                                />
-                              );
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__pYfVd
+                              )}
+                            >
+                              {"Modal content"}
+                            </div>
+                            {(() => {
+                              try {
+                                return $props.courseData !== undefined;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
                             })()
-                          : null}
+                              ? (() => {
+                                  const child$Props = {
+                                    className: classNames(
+                                      "__wab_instance",
+                                      sty.form
+                                    ),
+                                    data: {
+                                      sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                      opId: "cdc293da-6a6c-4e4c-91c7-b9f3a836a5c2",
+                                      userArgs: {
+                                        filters: [$props.courseData?.id]
+                                      },
+                                      cacheKey: `plasmic.$.${(() => {
+                                        try {
+                                          return "getOne";
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}.$.cdc293da-6a6c-4e4c-91c7-b9f3a836a5c2.$.`,
+                                      invalidatedKeys: null,
+                                      roleId: null
+                                    },
+                                    dataFormItems: (() => {
+                                      const __composite = [
+                                        {
+                                          key: "id",
+                                          inputType: "Text",
+                                          fieldId: "id",
+                                          label: "id",
+                                          name: "id",
+                                          hidden: null
+                                        },
+                                        {
+                                          key: "created_at",
+                                          inputType: "Text",
+                                          fieldId: "created_at",
+                                          label: "created_at",
+                                          name: "created_at",
+                                          hidden: null
+                                        },
+                                        {
+                                          key: "created_by",
+                                          inputType: "Text",
+                                          fieldId: "created_by",
+                                          label: "created_by",
+                                          name: "created_by",
+                                          initialValue: null,
+                                          hidden: null
+                                        },
+                                        {
+                                          key: "training_level",
+                                          inputType: "Text",
+                                          fieldId: "training_level",
+                                          label: "training_level",
+                                          name: "training_level"
+                                        },
+                                        {
+                                          key: "instrument_category",
+                                          inputType: "Text",
+                                          fieldId: "instrument_category",
+                                          label: "instrument_category",
+                                          name: "instrument_category"
+                                        },
+                                        {
+                                          key: "cover_image",
+                                          inputType: "Text",
+                                          fieldId: "cover_image",
+                                          label: "cover_image",
+                                          name: "cover_image"
+                                        },
+                                        {
+                                          key: "instructor_name",
+                                          inputType: "Text",
+                                          fieldId: "instructor_name",
+                                          label: "instructor_name",
+                                          name: "instructor_name",
+                                          hidden: null
+                                        },
+                                        {
+                                          key: "title",
+                                          inputType: "Text",
+                                          fieldId: "title",
+                                          label: "title",
+                                          name: "title"
+                                        },
+                                        {
+                                          key: "description",
+                                          inputType: "Text",
+                                          fieldId: "description",
+                                          label: "description",
+                                          name: "description"
+                                        },
+                                        {
+                                          key: "status",
+                                          inputType: "Text",
+                                          fieldId: "status",
+                                          label: "status",
+                                          name: "status"
+                                        }
+                                      ];
+                                      __composite["0"]["hidden"] = true;
+                                      __composite["1"]["hidden"] = true;
+                                      __composite["2"]["initialValue"] =
+                                        $ctx.SupabaseUser?.user?.id;
+                                      __composite["2"]["hidden"] = true;
+                                      __composite["6"]["hidden"] = true;
+                                      return __composite;
+                                    })(),
+
+                                    extendedOnValuesChange: async (
+                                      ...eventArgs: any
+                                    ) => {
+                                      generateStateOnChangePropForCodeComponents(
+                                        $state,
+                                        "value",
+                                        ["form", "value"],
+                                        FormWrapper_Helpers
+                                      ).apply(null, eventArgs);
+                                    },
+                                    formItems: [],
+                                    labelCol: { span: 8, horizontalOnly: true },
+                                    layout: "vertical",
+                                    mode: "simplified",
+                                    onFinish: async values => {
+                                      const $steps = {};
+
+                                      $steps["defaultSubmit"] = true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              dataOp: {
+                                                sourceId:
+                                                  "6C2N6jYLs31t3Z2ygT9rD6",
+                                                opId: "1854bf8b-a6bf-4430-9763-1fadfe1e5d5f",
+                                                userArgs: {
+                                                  conditions: [
+                                                    $props.courseData?.id
+                                                  ],
+
+                                                  variables: [$state.form.value]
+                                                },
+                                                cacheKey: null,
+                                                invalidatedKeys: [
+                                                  "plasmic_refresh_all"
+                                                ],
+                                                roleId: null
+                                              }
+                                            };
+                                            return (async ({
+                                              dataOp,
+                                              continueOnError
+                                            }) => {
+                                              try {
+                                                const response =
+                                                  await executePlasmicDataOp(
+                                                    dataOp,
+                                                    {
+                                                      userAuthToken:
+                                                        dataSourcesCtx?.userAuthToken,
+                                                      user: dataSourcesCtx?.user
+                                                    }
+                                                  );
+                                                await plasmicInvalidate(
+                                                  dataOp.invalidatedKeys
+                                                );
+                                                return response;
+                                              } catch (e) {
+                                                if (!continueOnError) {
+                                                  throw e;
+                                                }
+                                                return e;
+                                              }
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                      if (
+                                        $steps["defaultSubmit"] != null &&
+                                        typeof $steps["defaultSubmit"] ===
+                                          "object" &&
+                                        typeof $steps["defaultSubmit"].then ===
+                                          "function"
+                                      ) {
+                                        $steps["defaultSubmit"] = await $steps[
+                                          "defaultSubmit"
+                                        ];
+                                      }
+                                    },
+                                    onIsSubmittingChange: async (
+                                      ...eventArgs: any
+                                    ) => {
+                                      generateStateOnChangePropForCodeComponents(
+                                        $state,
+                                        "isSubmitting",
+                                        ["form", "isSubmitting"],
+                                        FormWrapper_Helpers
+                                      ).apply(null, eventArgs);
+                                    },
+                                    ref: ref => {
+                                      $refs["form"] = ref;
+                                    },
+                                    submitSlot: (
+                                      <AntdButton
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.button__tHoL
+                                        )}
+                                        submitsForm={true}
+                                        type={"primary"}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__keR0
+                                          )}
+                                        >
+                                          {"Submit"}
+                                        </div>
+                                      </AntdButton>
+                                    ),
+                                    wrapperCol: {
+                                      span: 16,
+                                      horizontalOnly: true
+                                    }
+                                  };
+                                  initializeCodeComponentStates(
+                                    $state,
+                                    [
+                                      {
+                                        name: "value",
+                                        plasmicStateName: "form.value"
+                                      },
+                                      {
+                                        name: "isSubmitting",
+                                        plasmicStateName: "form.isSubmitting"
+                                      }
+                                    ],
+                                    [],
+                                    FormWrapper_Helpers ?? {},
+                                    child$Props
+                                  );
+
+                                  return (
+                                    <FormWrapper
+                                      data-plasmic-name={"form"}
+                                      data-plasmic-override={overrides.form}
+                                      {...child$Props}
+                                    />
+                                  );
+                                })()
+                              : null}
+                          </div>
+                        </AntdModal>
                       </div>
-                    </AntdModal>
+                    ) : null}
                   </div>
                 </div>
               ) : null}
@@ -1578,108 +1595,114 @@ function PlasmicCourseDetails__RenderFunc(props: {
                     }
                     throw e;
                   }
-                })()
-                  ? (() => {
-                      const child$Props = {
-                        activeKey: generateStateValueProp($state, [
-                          "accordion",
-                          "activePanelId"
-                        ]),
-                        bordered: true,
-                        className: classNames("__wab_instance", sty.accordion),
-                        items: (
-                          <React.Fragment>
-                            <AntdAccordionItem
-                              className={classNames(
-                                "__wab_instance",
-                                sty.accordionItem__vAhyq
-                              )}
-                              id={1}
-                              label2={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text___3L6Ff
-                                  )}
-                                >
-                                  {"First Item"}
-                                </div>
-                              }
-                              showArrow={true}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__bSaOj
-                                )}
-                              >
-                                {"First Children"}
-                              </div>
-                            </AntdAccordionItem>
-                            <AntdAccordionItem
-                              className={classNames(
-                                "__wab_instance",
-                                sty.accordionItem__ntGNw
-                              )}
-                              id={2}
-                              label2={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__blS9N
-                                  )}
-                                >
-                                  {"Second Item"}
-                                </div>
-                              }
-                              showArrow={true}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__mAmDf
-                                )}
-                              >
-                                {"Second Children"}
-                              </div>
-                            </AntdAccordionItem>
-                          </React.Fragment>
-                        ),
-                        onChange: async (...eventArgs: any) => {
-                          generateStateOnChangePropForCodeComponents(
-                            $state,
-                            "activePanelId",
-                            ["accordion", "activePanelId"],
-                            AntdAccordion_Helpers
-                          ).apply(null, eventArgs);
-                        }
-                      };
-                      initializeCodeComponentStates(
-                        $state,
-                        [
-                          {
-                            name: "activePanelId",
-                            plasmicStateName: "accordion.activePanelId"
+                })() ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__zTuVi)}
+                  >
+                    {(_par =>
+                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                      (() => {
+                        try {
+                          return $state.courseModules;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
                           }
-                        ],
-                        [],
-                        AntdAccordion_Helpers ?? {},
-                        child$Props
-                      );
-
+                          throw e;
+                        }
+                      })()
+                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                      const currentItem = __plasmic_item_0;
+                      const currentIndex = __plasmic_idx_0;
                       return (
-                        <AntdAccordion
-                          data-plasmic-name={"accordion"}
-                          data-plasmic-override={overrides.accordion}
-                          {...child$Props}
-                        />
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__qBnol
+                          )}
+                          key={currentIndex}
+                        >
+                          <CustomAccordionItem
+                            data-plasmic-name={"customAccordionItem"}
+                            data-plasmic-override={
+                              overrides.customAccordionItem
+                            }
+                            className={classNames(
+                              "__wab_instance",
+                              sty.customAccordionItem
+                            )}
+                            expandIcon={">"}
+                            summary={
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem?.title;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Accordion Summary";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            }
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__eUfGk
+                              )}
+                            >
+                              {"Accordion content goes here"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__unFxf
+                              )}
+                            >
+                              <RichList
+                                data-plasmic-name={"dataList"}
+                                data-plasmic-override={overrides.dataList}
+                                bordered={true}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.dataList
+                                )}
+                                data={(() => {
+                                  try {
+                                    return $state.courseLessons.filter(
+                                      lesson =>
+                                        lesson.module_id === currentItem?.id
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                                hideSearch={true}
+                              />
+                            </div>
+                          </CustomAccordionItem>
+                        </div>
                       );
-                    })()
-                  : null}
+                    })}
+                  </div>
+                ) : null}
               </div>
             </AntdTabItem>
             <AntdTabItem
@@ -1718,139 +1741,153 @@ function PlasmicCourseDetails__RenderFunc(props: {
         sticky={false}
         tabBarBackground={"#FFF"}
         tabBarExtraContentRight={
-          <div className={classNames(projectcss.all, sty.freeBox__eXi9Y)}>
-            {(() => {
-              try {
-                return (
-                  $props.courseData?.status.toLocaleLowerCase() === "active"
-                );
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return true;
-                }
-                throw e;
+          (() => {
+            try {
+              return $props.isEditable === true;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
               }
-            })() ? (
-              <Button
-                className={classNames("__wab_instance", sty.button__tvvGj)}
-                disabled={false}
-                label={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__gP9Ji
-                    )}
-                  >
-                    {"Publish Course"}
-                  </div>
-                }
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["useIntegration"] = true
-                    ? (() => {
-                        const actionArgs = {};
-                        return (async ({ dataOp, continueOnError }) => {
-                          try {
-                            const response = await executePlasmicDataOp(
-                              dataOp,
-                              {
-                                userAuthToken: dataSourcesCtx?.userAuthToken,
-                                user: dataSourcesCtx?.user
-                              }
-                            );
-                            await plasmicInvalidate(dataOp.invalidatedKeys);
-                            return response;
-                          } catch (e) {
-                            if (!continueOnError) {
-                              throw e;
-                            }
-                            return e;
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
+              throw e;
+            }
+          })() ? (
+            <div className={classNames(projectcss.all, sty.freeBox__eXi9Y)}>
+              {(() => {
+                try {
+                  return (
+                    $props.courseData?.status.toLocaleLowerCase() === "active"
+                  );
+                } catch (e) {
                   if (
-                    $steps["useIntegration"] != null &&
-                    typeof $steps["useIntegration"] === "object" &&
-                    typeof $steps["useIntegration"].then === "function"
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
                   ) {
-                    $steps["useIntegration"] = await $steps["useIntegration"];
+                    return true;
                   }
-                }}
-              />
-            ) : null}
-            {(() => {
-              try {
-                return (
-                  $props.courseData?.data[0].status.toLocaleLowerCase() ===
-                  "inactive"
-                );
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return true;
+                  throw e;
                 }
-                throw e;
-              }
-            })() ? (
-              <Button
-                className={classNames("__wab_instance", sty.button__t0S4I)}
-                disabled={false}
-                label={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ydDbR
-                    )}
-                  >
-                    {"Update Course"}
-                  </div>
-                }
-                onClick={async event => {
-                  const $steps = {};
+              })() ? (
+                <Button
+                  className={classNames("__wab_instance", sty.button__tvvGj)}
+                  disabled={false}
+                  label={
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__gP9Ji
+                      )}
+                    >
+                      {"Publish Course"}
+                    </div>
+                  }
+                  onClick={async event => {
+                    const $steps = {};
 
-                  $steps["useIntegration"] = true
-                    ? (() => {
-                        const actionArgs = {};
-                        return (async ({ dataOp, continueOnError }) => {
-                          try {
-                            const response = await executePlasmicDataOp(
-                              dataOp,
-                              {
-                                userAuthToken: dataSourcesCtx?.userAuthToken,
-                                user: dataSourcesCtx?.user
+                    $steps["useIntegration"] = true
+                      ? (() => {
+                          const actionArgs = {};
+                          return (async ({ dataOp, continueOnError }) => {
+                            try {
+                              const response = await executePlasmicDataOp(
+                                dataOp,
+                                {
+                                  userAuthToken: dataSourcesCtx?.userAuthToken,
+                                  user: dataSourcesCtx?.user
+                                }
+                              );
+                              await plasmicInvalidate(dataOp.invalidatedKeys);
+                              return response;
+                            } catch (e) {
+                              if (!continueOnError) {
+                                throw e;
                               }
-                            );
-                            await plasmicInvalidate(dataOp.invalidatedKeys);
-                            return response;
-                          } catch (e) {
-                            if (!continueOnError) {
-                              throw e;
+                              return e;
                             }
-                            return e;
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["useIntegration"] != null &&
+                      typeof $steps["useIntegration"] === "object" &&
+                      typeof $steps["useIntegration"].then === "function"
+                    ) {
+                      $steps["useIntegration"] = await $steps["useIntegration"];
+                    }
+                  }}
+                />
+              ) : null}
+              {(() => {
+                try {
+                  return (
+                    $props.courseData?.data[0].status.toLocaleLowerCase() ===
+                    "inactive"
+                  );
+                } catch (e) {
                   if (
-                    $steps["useIntegration"] != null &&
-                    typeof $steps["useIntegration"] === "object" &&
-                    typeof $steps["useIntegration"].then === "function"
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
                   ) {
-                    $steps["useIntegration"] = await $steps["useIntegration"];
+                    return true;
                   }
-                }}
-              />
-            ) : null}
-          </div>
+                  throw e;
+                }
+              })() ? (
+                <Button
+                  className={classNames("__wab_instance", sty.button__t0S4I)}
+                  disabled={false}
+                  label={
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__ydDbR
+                      )}
+                    >
+                      {"Update Course"}
+                    </div>
+                  }
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["useIntegration"] = true
+                      ? (() => {
+                          const actionArgs = {};
+                          return (async ({ dataOp, continueOnError }) => {
+                            try {
+                              const response = await executePlasmicDataOp(
+                                dataOp,
+                                {
+                                  userAuthToken: dataSourcesCtx?.userAuthToken,
+                                  user: dataSourcesCtx?.user
+                                }
+                              );
+                              await plasmicInvalidate(dataOp.invalidatedKeys);
+                              return response;
+                            } catch (e) {
+                              if (!continueOnError) {
+                                throw e;
+                              }
+                              return e;
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["useIntegration"] != null &&
+                      typeof $steps["useIntegration"] === "object" &&
+                      typeof $steps["useIntegration"].then === "function"
+                    ) {
+                      $steps["useIntegration"] = await $steps["useIntegration"];
+                    }
+                  }}
+                />
+              ) : null}
+            </div>
+          ) : null
         }
         tabsDropdownScopeClassName={sty["tabs__tabsDropdown"]}
         tabsScopeClassName={sty["tabs__tabs"]}
@@ -1916,7 +1953,12 @@ function PlasmicCourseDetails__RenderFunc(props: {
                       sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
                       opId: "b01269c8-4332-4ad4-8281-c737d55ea9d7",
                       userArgs: {
-                        filters: [$state.currentCourseId]
+                        filters: [
+                          $state.currentCourseId !== undefined &&
+                          $state.currentCourseId !== ""
+                            ? $state.currentCourseId
+                            : undefined
+                        ]
                       },
                       cacheKey: null,
                       invalidatedKeys: null,
@@ -2067,7 +2109,8 @@ const PlasmicDescendants = {
     "editCourseModuleItem",
     "modal4",
     "form3",
-    "accordion",
+    "customAccordionItem",
+    "dataList",
     "sideEffect"
   ],
   tabs: [
@@ -2079,7 +2122,8 @@ const PlasmicDescendants = {
     "editCourseModuleItem",
     "modal4",
     "form3",
-    "accordion"
+    "customAccordionItem",
+    "dataList"
   ],
   svg: ["svg"],
   img: ["img"],
@@ -2088,7 +2132,8 @@ const PlasmicDescendants = {
   editCourseModuleItem: ["editCourseModuleItem"],
   modal4: ["modal4", "form3"],
   form3: ["form3"],
-  accordion: ["accordion"],
+  customAccordionItem: ["customAccordionItem", "dataList"],
+  dataList: ["dataList"],
   sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -2104,7 +2149,8 @@ type NodeDefaultElementType = {
   editCourseModuleItem: typeof EditCourseModuleItem;
   modal4: typeof AntdModal;
   form3: typeof FormWrapper;
-  accordion: typeof AntdAccordion;
+  customAccordionItem: typeof CustomAccordionItem;
+  dataList: typeof RichList;
   sideEffect: typeof SideEffect;
 };
 
@@ -2176,7 +2222,8 @@ export const PlasmicCourseDetails = Object.assign(
     editCourseModuleItem: makeNodeComponent("editCourseModuleItem"),
     modal4: makeNodeComponent("modal4"),
     form3: makeNodeComponent("form3"),
-    accordion: makeNodeComponent("accordion"),
+    customAccordionItem: makeNodeComponent("customAccordionItem"),
+    dataList: makeNodeComponent("dataList"),
     sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicCourseDetails

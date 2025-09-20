@@ -203,6 +203,19 @@ function PlasmicStudentViewCourses__RenderFunc(props: {
                 <CourseDetails
                   data-plasmic-name={"courseDetails"}
                   data-plasmic-override={overrides.courseDetails}
+                  activeCourseid={(() => {
+                    try {
+                      return $ctx.query.id;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
                   className={classNames("__wab_instance", sty.courseDetails)}
                   courseData={(() => {
                     try {

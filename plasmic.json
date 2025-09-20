@@ -1310,20 +1310,6 @@
           "path": "/student-view-course"
         },
         {
-          "id": "Ba5vbqvaPzy1",
-          "name": "CurrentViewCourse",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicCurrentViewCourse.tsx",
-          "importSpec": {
-            "modulePath": "../pages/current-view-course.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicCurrentViewCourse.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/current-view-course"
-        },
-        {
           "id": "T607Lxk4cNHL",
           "name": "InstructorProfile",
           "type": "managed",
@@ -1459,6 +1445,46 @@
             "modulePath": "EditCourseModuleItem.tsx"
           },
           "cssFilePath": "plasmic/london_music_unboxed/PlasmicEditCourseModuleItem.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "Ba5vbqvaPzy1",
+          "name": "CurrentCourse",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicCurrentCourse.tsx",
+          "importSpec": {
+            "modulePath": "../pages/current-view-course.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicCurrentCourse.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/current-view-course"
+        },
+        {
+          "id": "0NodNEc0dMYL",
+          "name": "CourseGridDirectArray",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicCourseGridDirectArray.tsx",
+          "importSpec": {
+            "modulePath": "CourseGridDirectArray.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicCourseGridDirectArray.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "9B6tkusLLrZw",
+          "name": "ViewCourseModuleItem",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicViewCourseModuleItem.tsx",
+          "importSpec": {
+            "modulePath": "ViewCourseModuleItem.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicViewCourseModuleItem.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }

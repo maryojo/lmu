@@ -60,7 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import StudentPageLayout from "../../StudentPageLayout"; // plasmic-import: Itd9tHC_WCDz/component
-import CourseCard from "../../CourseCard"; // plasmic-import: lU_2619e8-pr/component
+import CourseGridDirectArray from "../../CourseGridDirectArray"; // plasmic-import: 0NodNEc0dMYL/component
 import TextInput from "../../TextInput"; // plasmic-import: DoqLM-i_9RsN/component
 import CourseGrid from "../../CourseGrid"; // plasmic-import: xmK9OAIpqo06/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
@@ -84,7 +84,7 @@ export const PlasmicStudentCourses__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicStudentCourses__OverridesType = {
   root?: Flex__<typeof StudentPageLayout>;
-  columns?: Flex__<"div">;
+  courseGridDirectArray?: Flex__<typeof CourseGridDirectArray>;
   textInput?: Flex__<typeof TextInput>;
   courseGrid?: Flex__<typeof CourseGrid>;
 };
@@ -186,65 +186,28 @@ function PlasmicStudentCourses__RenderFunc(props: {
                       {"Enrolled Courses (30)"}
                     </h4>
                   </div>
-                  <div
-                    data-plasmic-name={"columns"}
-                    data-plasmic-override={overrides.columns}
-                    className={classNames(projectcss.all, sty.columns)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.column__dyr4U)}
-                    >
-                      <CourseCard
-                        className={classNames(
-                          "__wab_instance",
-                          sty.courseCard___6BUkT
-                        )}
-                        id={(() => {
-                          try {
-                            return undefined;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()}
-                      />
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.column__iEcyc)}
-                    >
-                      <CourseCard
-                        className={classNames(
-                          "__wab_instance",
-                          sty.courseCard___4Mbtk
-                        )}
-                      />
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.column___0F7C)}
-                    >
-                      <CourseCard
-                        className={classNames(
-                          "__wab_instance",
-                          sty.courseCard___2IaFo
-                        )}
-                      />
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.column__kcBuJ)}
-                    >
-                      <CourseCard
-                        className={classNames(
-                          "__wab_instance",
-                          sty.courseCard__xt9Js
-                        )}
-                      />
-                    </div>
-                  </div>
+                  <CourseGridDirectArray
+                    data-plasmic-name={"courseGridDirectArray"}
+                    data-plasmic-override={overrides.courseGridDirectArray}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.courseGridDirectArray
+                    )}
+                    courseList={(() => {
+                      try {
+                        return $ctx?.globalUserData?.courses_taken;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
+                    maximumItemCount={4}
+                  />
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__w2W1D)}>
                   <div
@@ -331,8 +294,8 @@ function PlasmicStudentCourses__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "columns", "textInput", "courseGrid"],
-  columns: ["columns"],
+  root: ["root", "courseGridDirectArray", "textInput", "courseGrid"],
+  courseGridDirectArray: ["courseGridDirectArray"],
   textInput: ["textInput"],
   courseGrid: ["courseGrid"]
 } as const;
@@ -341,7 +304,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: typeof StudentPageLayout;
-  columns: "div";
+  courseGridDirectArray: typeof CourseGridDirectArray;
   textInput: typeof TextInput;
   courseGrid: typeof CourseGrid;
 };
@@ -406,7 +369,7 @@ export const PlasmicStudentCourses = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    columns: makeNodeComponent("columns"),
+    courseGridDirectArray: makeNodeComponent("courseGridDirectArray"),
     textInput: makeNodeComponent("textInput"),
     courseGrid: makeNodeComponent("courseGrid"),
 
