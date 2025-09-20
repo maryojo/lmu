@@ -16,9 +16,11 @@ export interface GlobalContextsProviderProps {
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
+
   supabaseUserGlobalContextProps?: Partial<
     Omit<React.ComponentProps<typeof SupabaseUserGlobalContext>, "children">
   >;
+
   embedCssProps?: Partial<
     Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;

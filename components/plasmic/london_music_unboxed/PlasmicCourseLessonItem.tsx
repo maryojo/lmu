@@ -72,8 +72,6 @@ import { formHelpers as FormWrapper_Helpers } from "@plasmicpkgs/antd5/skinny/Fo
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -90,24 +88,27 @@ export const PlasmicCourseLessonItem__VariantProps =
 
 export type PlasmicCourseLessonItem__ArgsType = {
   form6Value?: any;
-  currentItem?: any;
+  currentIndex?: any;
+  courseLessonsList?: any;
 };
 type ArgPropType = keyof PlasmicCourseLessonItem__ArgsType;
 export const PlasmicCourseLessonItem__ArgProps = new Array<ArgPropType>(
   "form6Value",
-  "currentItem"
+  "currentIndex",
+  "courseLessonsList"
 );
 
 export type PlasmicCourseLessonItem__OverridesType = {
   root?: Flex__<"div">;
   modal?: Flex__<typeof AntdModal>;
   freeBox?: Flex__<"div">;
-  form6?: Flex__<typeof FormWrapper>;
+  form?: Flex__<typeof FormWrapper>;
 };
 
 export interface DefaultCourseLessonItemProps {
   form6Value?: any;
-  currentItem?: any;
+  currentIndex?: any;
+  courseLessonsList?: any;
   className?: string;
 }
 
@@ -159,21 +160,21 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "form6.value",
+        path: "form.value",
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
-        refName: "form6",
+        refName: "form",
         onMutate: generateOnMutateForSpec("value", FormWrapper_Helpers)
       },
       {
-        path: "form6.isSubmitting",
+        path: "form.isSubmitting",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false,
 
-        refName: "form6",
+        refName: "form",
         onMutate: generateOnMutateForSpec("isSubmitting", FormWrapper_Helpers)
       }
     ],
@@ -189,10 +190,6 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
   const plasmicInvalidate = usePlasmicInvalidate();
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <div
@@ -206,8 +203,6 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_antd_5_hostless,
-        styleTokensClassNames_plasmic_rich_components,
         sty.root
       )}
     >
@@ -228,9 +223,7 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components
+          styleTokensClassNames
         )}
         hideFooter={true}
         modalScopeClassName={sty["modal__modal"]}
@@ -257,6 +250,7 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
             </div>
           </AntdButton>
         }
+        width={"700px"}
       >
         <div
           data-plasmic-name={"freeBox"}
@@ -274,15 +268,12 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
           </div>
           {(() => {
             const child$Props = {
-              className: classNames("__wab_instance", sty.form6),
+              className: classNames("__wab_instance", sty.form),
               data: {
                 sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-                opId: "da1365d0-b694-44f2-9284-823d89d66d99",
+                opId: "979a45e1-b781-4c68-8a52-6f716227539a",
                 userArgs: {
-                  filters: [
-                    $props.currentItem?.id ??
-                      "04a60bdc-6da2-43a2-82c8-779148d7792d"
-                  ]
+                  filters: [$props.courseLessonsList[$props?.currentIndex]?.id]
                 },
                 cacheKey: `plasmic.$.${(() => {
                   try {
@@ -296,27 +287,19 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
                     }
                     throw e;
                   }
-                })()}.$.JvERwBipoAm4.$.da1365d0-b694-44f2-9284-823d89d66d99.$.`,
+                })()}.$.979a45e1-b781-4c68-8a52-6f716227539a.$.`,
                 invalidatedKeys: null,
                 roleId: null
               },
               dataFormItems: (() => {
                 const __composite = [
                   {
-                    key: "module_id",
+                    key: "course_id",
                     inputType: "Text",
-                    fieldId: "module_id",
-                    label: "module_id",
-                    name: "module_id",
-                    initialValue: "31a74c11-2e01-4a10-9fe6-9d8e0cb410aa"
-                  },
-                  {
-                    key: "resources",
-                    inputType: "Text",
-                    fieldId: "resources",
-                    label: "resources",
-                    name: "resources",
-                    initialValue: {}
+                    fieldId: "course_id",
+                    label: "course_id",
+                    name: "course_id",
+                    hidden: null
                   },
                   {
                     key: "id",
@@ -324,7 +307,6 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
                     fieldId: "id",
                     label: "id",
                     name: "id",
-                    initialValue: "04a60bdc-6da2-43a2-82c8-779148d7792d",
                     hidden: null
                   },
                   {
@@ -333,42 +315,56 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
                     fieldId: "created_at",
                     label: "created_at",
                     name: "created_at",
-                    initialValue: "2025-09-15T10:53:54.401Z"
+                    hidden: null
                   },
                   {
-                    key: "title",
+                    key: "module_id",
                     inputType: "Text",
-                    fieldId: "title",
-                    label: "title",
-                    name: "title",
-                    initialValue: "Test Lesson DB"
+                    fieldId: "module_id",
+                    label: "module_id",
+                    name: "module_id",
+                    hidden: null
                   },
                   {
-                    key: "description",
+                    key: "resources",
                     inputType: "Text",
-                    fieldId: "description",
-                    label: "description",
-                    name: "description",
-                    initialValue: {}
-                  },
-                  {
-                    key: "content",
-                    inputType: "Text",
-                    fieldId: "content",
-                    label: "content",
-                    name: "content",
-                    initialValue: {}
+                    fieldId: "resources",
+                    label: "resources",
+                    name: "resources"
                   },
                   {
                     key: "status",
                     inputType: "Text",
                     fieldId: "status",
                     label: "status",
-                    name: "status",
-                    initialValue: "active"
+                    name: "status"
+                  },
+                  {
+                    key: "description",
+                    inputType: "Text",
+                    fieldId: "description",
+                    label: "description",
+                    name: "description"
+                  },
+                  {
+                    key: "content",
+                    inputType: "Text",
+                    fieldId: "content",
+                    label: "content",
+                    name: "content"
+                  },
+                  {
+                    key: "title",
+                    inputType: "Text",
+                    fieldId: "title",
+                    label: "title",
+                    name: "title"
                   }
                 ];
+                __composite["0"]["hidden"] = true;
+                __composite["1"]["hidden"] = true;
                 __composite["2"]["hidden"] = true;
+                __composite["3"]["hidden"] = true;
                 return __composite;
               })(),
 
@@ -376,7 +372,7 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
                 generateStateOnChangePropForCodeComponents(
                   $state,
                   "value",
-                  ["form6", "value"],
+                  ["form", "value"],
                   FormWrapper_Helpers
                 ).apply(null, eventArgs);
               },
@@ -392,14 +388,13 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
                       const actionArgs = {
                         dataOp: {
                           sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-                          opId: "e438f432-58cd-4200-86d7-d26edf6dd648",
+                          opId: "12568e04-8074-4026-8e04-dabf35fbccd3",
                           userArgs: {
                             conditions: [
-                              $props.currentItem?.id ??
-                                "04a60bdc-6da2-43a2-82c8-779148d7792d"
+                              $props.courseLessonsList[$props?.currentIndex]?.id
                             ],
 
-                            variables: [$state.form6.value]
+                            variables: [$state.form.value]
                           },
                           cacheKey: null,
                           invalidatedKeys: ["plasmic_refresh_all"],
@@ -435,16 +430,16 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
                 generateStateOnChangePropForCodeComponents(
                   $state,
                   "isSubmitting",
-                  ["form6", "isSubmitting"],
+                  ["form", "isSubmitting"],
                   FormWrapper_Helpers
                 ).apply(null, eventArgs);
               },
               ref: ref => {
-                $refs["form6"] = ref;
+                $refs["form"] = ref;
               },
               submitSlot: (
                 <AntdButton
-                  className={classNames("__wab_instance", sty.button__ckvEk)}
+                  className={classNames("__wab_instance", sty.button__uwG6Y)}
                   submitsForm={true}
                   type={"primary"}
                 >
@@ -452,7 +447,7 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__uMzZ0
+                      sty.text__qjbqX
                     )}
                   >
                     {"Submit"}
@@ -466,11 +461,11 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
               [
                 {
                   name: "value",
-                  plasmicStateName: "form6.value"
+                  plasmicStateName: "form.value"
                 },
                 {
                   name: "isSubmitting",
-                  plasmicStateName: "form6.isSubmitting"
+                  plasmicStateName: "form.isSubmitting"
                 }
               ],
               [],
@@ -480,8 +475,8 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
 
             return (
               <FormWrapper
-                data-plasmic-name={"form6"}
-                data-plasmic-override={overrides.form6}
+                data-plasmic-name={"form"}
+                data-plasmic-override={overrides.form}
                 {...child$Props}
               />
             );
@@ -493,10 +488,10 @@ function PlasmicCourseLessonItem__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "modal", "freeBox", "form6"],
-  modal: ["modal", "freeBox", "form6"],
-  freeBox: ["freeBox", "form6"],
-  form6: ["form6"]
+  root: ["root", "modal", "freeBox", "form"],
+  modal: ["modal", "freeBox", "form"],
+  freeBox: ["freeBox", "form"],
+  form: ["form"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -505,7 +500,7 @@ type NodeDefaultElementType = {
   root: "div";
   modal: typeof AntdModal;
   freeBox: "div";
-  form6: typeof FormWrapper;
+  form: typeof FormWrapper;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -570,7 +565,7 @@ export const PlasmicCourseLessonItem = Object.assign(
     // Helper components rendering sub-elements
     modal: makeNodeComponent("modal"),
     freeBox: makeNodeComponent("freeBox"),
-    form6: makeNodeComponent("form6"),
+    form: makeNodeComponent("form"),
 
     // Metadata about props expected for PlasmicCourseLessonItem
     internalVariantProps: PlasmicCourseLessonItem__VariantProps,

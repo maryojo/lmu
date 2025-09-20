@@ -41,7 +41,7 @@
   max-width: 100%;
   min-width: 0;
 }
-.svg__hfwEo {
+.svg {
   object-fit: cover;
   max-width: 100%;
   height: 1em;
@@ -163,31 +163,11 @@
   position: relative;
   height: 1em;
 }
-.form:global(.__wab_instance) {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: flex-end;
-  object-fit: cover;
-  min-width: 0;
-  padding: 0px;
-}
-.button__wBlAr:global(.__wab_instance) {
+.modal:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.text__g4NSx {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-}
-.freeBox__dcxT {
+.freeBox__l60Pv {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -197,9 +177,9 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 0px;
+  padding: 8px;
 }
-.form4:global(.__wab_instance) {
+.form:global(.__wab_instance) {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -212,11 +192,22 @@
   min-width: 0;
   padding: 8px;
 }
-.button__a71Gi:global(.__wab_instance) {
+.button__tHoL:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.text__ezGtk {
+.text__keR0 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.button__xx2Tp:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.text__dv3Xp {
   position: relative;
   width: 100%;
   height: auto;
@@ -269,14 +260,7 @@
   min-width: 0;
   padding: 0px;
 }
-.customAccordionItem__joFla:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-  width: 100%;
-  align-self: flex-start;
-  min-width: 0;
-}
-.freeBox___5PryI {
+.freeBox__npjW {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -285,266 +269,15 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.freeBox__otDj2 {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.h5___8LMe {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
   align-self: flex-start;
-  min-width: 0;
-}
-.existingModulesForm:global(.__wab_instance) {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
-  object-fit: cover;
   min-width: 0;
   padding: 8px;
 }
-.button__gySN:global(.__wab_instance) {
+.modal4:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.text__if5DO {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-}
-.freeBox___5VqyL {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  border-bottom-width: 1.3px;
-  border-bottom-style: solid;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  min-width: 0;
-  padding: 0px;
-}
-.freeBox__mUfy4 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.h4__yncEo {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  align-self: flex-start;
-  min-width: 0;
-}
-.freeBox__rtpgV {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.freeBox__bvHiv {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.courseLessonItem__wHzZx:global(.__wab_instance) {
-  max-width: 100%;
-}
-.freeBox__xl8ZP {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.modal3:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
-.freeBox__ccAgH {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.form6:global(.__wab_instance) {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
-  object-fit: cover;
-  min-width: 0;
-  padding: 8px;
-}
-.button___1CNcg:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
-.text__kxvke {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-}
-.button__ujtP3:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
-.text__mW0Ep {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-}
-.freeBox__riY2Z {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 0px;
-}
-.h5__ax0Xo {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-}
-.svg__bPsld {
-  object-fit: cover;
-  max-width: 100%;
-  height: 1em;
-}
-.customAccordionItem__iKg8H:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-  width: 100%;
-  min-width: 0;
-}
-.freeBox__phAna {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.freeBox__bqDp9 {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.freeBox__wezdO {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  align-self: flex-start;
-  min-width: 0;
-  padding: 0px;
-}
-.h5__c1I5 {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-}
-.form2:global(.__wab_instance) {
-  display: flex;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  object-fit: cover;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  min-width: 0;
-  padding: 0px;
-}
-.button__yYb6:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
-.text__pxzjz {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-}
-.freeBox__fvkyZ {
+.freeBox__txBWt {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -559,113 +292,6 @@
 .form3:global(.__wab_instance) {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
-  object-fit: cover;
-  min-width: 0;
-  padding: 0px;
-}
-.button__u3LCy:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
-.text__uXrs {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-}
-.freeBox__duh1Y {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  border-bottom-width: 1.3px;
-  border-bottom-style: solid;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  min-width: 0;
-  padding: 0px;
-}
-.freeBox__sUPeH {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.h4__oppca {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  align-self: flex-start;
-  min-width: 0;
-}
-.freeBox__eUaEf {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.freeBox__hzyPw {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-  min-width: 0;
-  padding: 0px;
-}
-.freeBox__wng72 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
-  min-width: 0;
-  padding: 0px;
-}
-.modal2:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
-.freeBox__grJ8D {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.form5:global(.__wab_instance) {
-  display: flex;
-  flex-direction: column;
   position: relative;
   width: 100%;
   height: auto;
@@ -674,34 +300,49 @@
   align-items: flex-start;
   object-fit: cover;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
-.button__lsBnH:global(.__wab_instance) {
+.button__v4EQ8:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
-.text__xjsVb {
+.text__iJzOr {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   min-width: 0;
 }
-.button__lU6Ue:global(.__wab_instance) {
+.freeBox__dff9D {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
   max-width: 100%;
-  object-fit: cover;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
 }
-.text__kSeBi {
+.h4__gXsWu {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.text___8Xy3A {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   min-width: 0;
 }
-.freeBox__rmBrd {
+.freeBox__gRfu1 {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  position: relative;
+  align-items: stretch;
   justify-content: flex-start;
   width: 100%;
   height: auto;
@@ -709,34 +350,29 @@
   min-width: 0;
   padding: 0px;
 }
-.h5___16CEl {
-  width: auto;
-  height: auto;
+.button___4JBi4:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
 }
-.svg__lnDPv {
-  object-fit: cover;
-  max-width: 100%;
+.svg___2LAtA {
+  position: relative;
   height: 1em;
 }
-.freeBox__efv7J {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 8px;
+.text__kZeNv {
+  white-space: pre;
 }
-.text__zs7A {
+.svg__rZvth {
+  position: relative;
+  height: 1em;
+}
+.button__wCfQ:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.text__sVcwx {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
-  text-align: center;
   min-width: 0;
 }
 .freeBox__xWraY {
@@ -867,14 +503,6 @@
 .svg__wYlPe {
   position: relative;
   height: 1em;
-}
-.text__xzOa {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  align-self: auto;
-  min-width: 0;
 }
 .sideEffect:global(.__wab_instance) {
   max-width: 100%;

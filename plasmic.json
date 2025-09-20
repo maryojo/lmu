@@ -981,6 +981,97 @@
           "componentType": "component"
         },
         {
+          "id": "UaDllrLd_geC",
+          "name": "ViewCourseComponent",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicViewCourseComponent.tsx",
+          "importSpec": {
+            "modulePath": "ViewCourseComponent.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicViewCourseComponent.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "cQ5WwEPS_AXG",
+          "name": "CourseDetails",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicCourseDetails.tsx",
+          "importSpec": {
+            "modulePath": "CourseDetails.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicCourseDetails.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "xmK9OAIpqo06",
+          "name": "CourseGrid",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicCourseGrid.tsx",
+          "importSpec": {
+            "modulePath": "CourseGrid.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicCourseGrid.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "aJ1uzNYjouuX",
+          "name": "GeneralResourceCard",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicGeneralResourceCard.tsx",
+          "importSpec": {
+            "modulePath": "GeneralResourceCard.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicGeneralResourceCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "5z1XhkczA9YR",
+          "name": "ProfileDetails",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicProfileDetails.tsx",
+          "importSpec": {
+            "modulePath": "ProfileDetails.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicProfileDetails.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "ongOogzLEdrq",
+          "name": "ResourceGrid",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicResourceGrid.tsx",
+          "importSpec": {
+            "modulePath": "ResourceGrid.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicResourceGrid.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "xJvF3d0NbFPY",
+          "name": "CourseLessonItem",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicCourseLessonItem.tsx",
+          "importSpec": {
+            "modulePath": "CourseLessonItem.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicCourseLessonItem.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
           "id": "iHF5mzpi9EOp",
           "name": "Dashboard",
           "type": "managed",
@@ -1177,20 +1268,6 @@
           "path": "/instructor-courses"
         },
         {
-          "id": "XKFrkAIa6kPS",
-          "name": "InstructorAddCourses",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicInstructorAddCourses.tsx",
-          "importSpec": {
-            "modulePath": "../pages/instructor-add-courses.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicInstructorAddCourses.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/instructor-add-courses"
-        },
-        {
           "id": "p-9qS4IsMfKz",
           "name": "InstructorViewCourses",
           "type": "managed",
@@ -1219,19 +1296,6 @@
           "path": "/landing"
         },
         {
-          "id": "UaDllrLd_geC",
-          "name": "ViewCourseComponent",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicViewCourseComponent.tsx",
-          "importSpec": {
-            "modulePath": "ViewCourseComponent.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicViewCourseComponent.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "VsNotozGA0t4",
           "name": "StudentViewCourses",
           "type": "managed",
@@ -1246,19 +1310,6 @@
           "path": "/student-view-course"
         },
         {
-          "id": "cQ5WwEPS_AXG",
-          "name": "CourseDetails",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicCourseDetails.tsx",
-          "importSpec": {
-            "modulePath": "CourseDetails.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicCourseDetails.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "Ba5vbqvaPzy1",
           "name": "CurrentViewCourse",
           "type": "managed",
@@ -1271,19 +1322,6 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/current-view-course"
-        },
-        {
-          "id": "xmK9OAIpqo06",
-          "name": "CourseGrid",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicCourseGrid.tsx",
-          "importSpec": {
-            "modulePath": "CourseGrid.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicCourseGrid.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
         },
         {
           "id": "T607Lxk4cNHL",
@@ -1356,19 +1394,6 @@
           "path": "/all-students"
         },
         {
-          "id": "aJ1uzNYjouuX",
-          "name": "GeneralResourceCard",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicGeneralResourceCard.tsx",
-          "importSpec": {
-            "modulePath": "GeneralResourceCard.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicGeneralResourceCard.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "JFQ2eHgR_ZW6",
           "name": "InstructorStudents",
           "type": "managed",
@@ -1395,19 +1420,6 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/all-courses"
-        },
-        {
-          "id": "5z1XhkczA9YR",
-          "name": "ProfileDetails",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicProfileDetails.tsx",
-          "importSpec": {
-            "modulePath": "ProfileDetails.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicProfileDetails.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
         },
         {
           "id": "5Ua3uk6EO_gk",
@@ -1438,28 +1450,15 @@
           "path": "/student-hub"
         },
         {
-          "id": "ongOogzLEdrq",
-          "name": "ResourceGrid",
+          "id": "OZ09O_elizqY",
+          "name": "EditCourseModuleItem",
           "type": "managed",
           "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicResourceGrid.tsx",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicEditCourseModuleItem.tsx",
           "importSpec": {
-            "modulePath": "ResourceGrid.tsx"
+            "modulePath": "EditCourseModuleItem.tsx"
           },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicResourceGrid.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "xJvF3d0NbFPY",
-          "name": "CourseLessonItem",
-          "type": "managed",
-          "projectId": "43GLDCvnvwFaSntiZWsgtz",
-          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicCourseLessonItem.tsx",
-          "importSpec": {
-            "modulePath": "CourseLessonItem.tsx"
-          },
-          "cssFilePath": "plasmic/london_music_unboxed/PlasmicCourseLessonItem.module.css",
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicEditCourseModuleItem.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }
@@ -1926,6 +1925,6 @@
   "nextjsConfig": {
     "pagesDir": "../pages"
   },
-  "cliVersion": "0.1.342",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.342/dist/plasmic.schema.json"
+  "cliVersion": "0.1.343",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.343/dist/plasmic.schema.json"
 }
