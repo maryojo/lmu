@@ -67,7 +67,6 @@ import {
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import { CustomAccordionItem } from "../../CustomAccordionItem"; // plasmic-import: Th4N3i4J4xsp/codeComponent
-import CourseLessonItem from "../../CourseLessonItem"; // plasmic-import: xJvF3d0NbFPY/component
 import { RichTable } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
 import { tableHelpers as RichTable_Helpers } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
@@ -114,7 +113,6 @@ export const PlasmicEditCourseModuleItem__ArgProps = new Array<ArgPropType>(
 export type PlasmicEditCourseModuleItem__OverridesType = {
   root?: Flex__<typeof CustomAccordionItem>;
   h4?: Flex__<"h4">;
-  courseLessonItem?: Flex__<typeof CourseLessonItem>;
   table?: Flex__<typeof RichTable>;
   modal5?: Flex__<typeof AntdModal>;
   form8?: Flex__<typeof FormWrapper>;
@@ -391,39 +389,6 @@ function PlasmicEditCourseModuleItem__RenderFunc(props: {
           >
             {"You won't believe what happens next."}
           </h4>
-          <div className={classNames(projectcss.all, sty.freeBox__rr9K)}>
-            <div className={classNames(projectcss.all, sty.freeBox__xv2R)}>
-              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                (() => {
-                  try {
-                    return $props.courseLessons;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return [];
-                    }
-                    throw e;
-                  }
-                })()
-              ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                const currentItem = __plasmic_item_0;
-                const currentIndex = __plasmic_idx_0;
-                return (
-                  <CourseLessonItem
-                    data-plasmic-name={"courseLessonItem"}
-                    data-plasmic-override={overrides.courseLessonItem}
-                    className={classNames(
-                      "__wab_instance",
-                      sty.courseLessonItem
-                    )}
-                    key={currentIndex}
-                  />
-                );
-              })}
-            </div>
-          </div>
           <div className={classNames(projectcss.all, sty.freeBox__fm9PC)}>
             {(() => {
               const child$Props = {
@@ -1388,19 +1353,8 @@ function PlasmicEditCourseModuleItem__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: [
-    "root",
-    "h4",
-    "courseLessonItem",
-    "table",
-    "modal5",
-    "form8",
-    "modal",
-    "form",
-    "svg"
-  ],
+  root: ["root", "h4", "table", "modal5", "form8", "modal", "form", "svg"],
   h4: ["h4"],
-  courseLessonItem: ["courseLessonItem"],
   table: ["table"],
   modal5: ["modal5", "form8"],
   form8: ["form8"],
@@ -1414,7 +1368,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: typeof CustomAccordionItem;
   h4: "h4";
-  courseLessonItem: typeof CourseLessonItem;
   table: typeof RichTable;
   modal5: typeof AntdModal;
   form8: typeof FormWrapper;
@@ -1484,7 +1437,6 @@ export const PlasmicEditCourseModuleItem = Object.assign(
   {
     // Helper components rendering sub-elements
     h4: makeNodeComponent("h4"),
-    courseLessonItem: makeNodeComponent("courseLessonItem"),
     table: makeNodeComponent("table"),
     modal5: makeNodeComponent("modal5"),
     form8: makeNodeComponent("form8"),
