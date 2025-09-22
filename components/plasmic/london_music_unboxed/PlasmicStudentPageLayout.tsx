@@ -241,6 +241,30 @@ function PlasmicStudentPageLayout__RenderFunc(props: {
         invalidatedKeys: null,
         roleId: null
       };
+    }),
+    getUserCourseProgress: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "a3287a19-f902-443b-b715-be4e50a63918",
+        userArgs: {
+          filters: [$ctx.SupabaseUser?.user?.id]
+        },
+        cacheKey: `plasmic.$.a3287a19-f902-443b-b715-be4e50a63918.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    }),
+    getAllUserEnrolledCourses: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "4019f1ab-b0c1-4a37-abe8-406e72cba3ac",
+        userArgs: {
+          query: [$ctx.SupabaseUser?.user?.id]
+        },
+        cacheKey: `plasmic.$.4019f1ab-b0c1-4a37-abe8-406e72cba3ac.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
     })
   };
   if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
@@ -355,7 +379,7 @@ function PlasmicStudentPageLayout__RenderFunc(props: {
         className={classNames("__wab_instance", sty.simpleCustomGlobalProvider)}
         userData={(() => {
           try {
-            return $queries?.fetchUserData?.data[0];
+            return $queries.fetchUserData?.data?.[0];
           } catch (e) {
             if (
               e instanceof TypeError ||
@@ -375,6 +399,32 @@ function PlasmicStudentPageLayout__RenderFunc(props: {
               allAvailableCoursesData={(() => {
                 try {
                   return $queries.getCoursesByInstrumentAndLevel;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              allCoursesProgressData={(() => {
+                try {
+                  return $queries.getUserCourseProgress;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              allUserEnrolledCoursesData={(() => {
+                try {
+                  return $queries.getAllUserEnrolledCourses;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||

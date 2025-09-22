@@ -67,6 +67,7 @@ import {
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import CourseCard from "../../CourseCard"; // plasmic-import: lU_2619e8-pr/component
+import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
 
@@ -96,7 +97,11 @@ export const PlasmicCourseGrid__ArgProps = new Array<ArgPropType>(
 
 export type PlasmicCourseGrid__OverridesType = {
   root?: Flex__<"div">;
+  columns?: Flex__<"div">;
   courseCard?: Flex__<typeof CourseCard>;
+  modal?: Flex__<typeof AntdModal>;
+  freeBox?: Flex__<"div">;
+  text?: Flex__<"div">;
 };
 
 export interface DefaultCourseGridProps {
@@ -145,6 +150,23 @@ function PlasmicCourseGrid__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "modal.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
   const dataSourcesCtx = usePlasmicDataSourceContext();
   const plasmicInvalidate = usePlasmicInvalidate();
 
@@ -165,292 +187,484 @@ function PlasmicCourseGrid__RenderFunc(props: {
         sty.root
       )}
     >
-      {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-        (() => {
-          try {
-            return (() => {
-              if ($props.maximumItemCount) {
-                return $props?.courseList?.data?.slice(
-                  0,
-                  $props.maximumItemCount
-                );
-              } else {
-                return $props?.courseList?.data;
+      <div
+        data-plasmic-name={"columns"}
+        data-plasmic-override={overrides.columns}
+        className={classNames(projectcss.all, sty.columns)}
+      >
+        {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+          (() => {
+            try {
+              return (() => {
+                if ($props.maximumItemCount) {
+                  return $props?.courseList?.data?.slice(
+                    0,
+                    $props.maximumItemCount
+                  );
+                } else {
+                  return $props?.courseList?.data;
+                }
+              })();
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [];
               }
-            })();
-          } catch (e) {
-            if (
-              e instanceof TypeError ||
-              e?.plasmicType === "PlasmicUndefinedDataError"
-            ) {
-              return [];
+              throw e;
             }
-            throw e;
-          }
-        })()
-      ).map((__plasmic_item_0, __plasmic_idx_0) => {
-        const currentItem = __plasmic_item_0;
-        const currentIndex = __plasmic_idx_0;
-        return (
-          <div
-            className={classNames(projectcss.all, sty.column__dUa9Y)}
-            key={currentIndex}
-          >
-            <CourseCard
-              data-plasmic-name={"courseCard"}
-              data-plasmic-override={overrides.courseCard}
-              className={classNames("__wab_instance", sty.courseCard)}
-              coverImageUrl={(() => {
-                try {
-                  return $props?.courseList?.data[currentIndex]?.cover_image ===
-                    ""
-                    ? null
-                    : $props?.courseList?.data[currentIndex]?.cover_image;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
+          })()
+        ).map((__plasmic_item_0, __plasmic_idx_0) => {
+          const currentItem = __plasmic_item_0;
+          const currentIndex = __plasmic_idx_0;
+          return (
+            <div
+              className={classNames(projectcss.all, sty.column__dUa9Y)}
+              key={currentIndex}
+            >
+              <CourseCard
+                data-plasmic-name={"courseCard"}
+                data-plasmic-override={overrides.courseCard}
+                actionButtonText={(() => {
+                  try {
+                    return (() => {
+                      if (
+                        $ctx.allUserEnrolledCourses !== undefined &&
+                        $ctx.allUserEnrolledCourses?.length !== 0
+                      ) {
+                        return $ctx.globalUserData?.courses_enrolled?.includes(
+                          currentItem?.id
+                        )
+                          ? "Continue"
+                          : "Enrol";
+                      } else {
+                        return "Enrol";
+                      }
+                    })();
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
                   }
-                  throw e;
-                }
-              })()}
-              description={(() => {
-                try {
-                  return $props?.courseList?.data[currentIndex]?.description;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
+                })()}
+                className={classNames("__wab_instance", sty.courseCard)}
+                coverImageUrl={(() => {
+                  try {
+                    return $props?.courseList?.data[currentIndex]
+                      ?.cover_image === ""
+                      ? null
+                      : $props?.courseList?.data[currentIndex]?.cover_image;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
                   }
-                  throw e;
-                }
-              })()}
-              id={(() => {
-                try {
-                  return $props?.courseList?.data[currentIndex].id;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
+                })()}
+                description={(() => {
+                  try {
+                    return $props?.courseList?.data[currentIndex]?.description;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
                   }
-                  throw e;
-                }
-              })()}
-              instrumentTypeTag={(() => {
-                try {
-                  return $props.courseList?.data[currentIndex]
-                    ?.instrument_category;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
+                })()}
+                id={(() => {
+                  try {
+                    return $props?.courseList?.data[currentIndex].id;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
                   }
-                  throw e;
-                }
-              })()}
-              onclickActionButton={async id => {
-                const $steps = {};
+                })()}
+                instrumentTypeTag={(() => {
+                  try {
+                    return $props.courseList?.data[currentIndex]
+                      ?.instrument_category;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
+                  }
+                })()}
+                onclickActionButton={async id => {
+                  const $steps = {};
 
-                $steps["postgresUpdateById"] =
-                  $ctx.globalUserData?.user_role === "student"
+                  $steps["addCourseProgress"] =
+                    !$ctx.allUserEnrolledCourses?.data.some(
+                      course => course.id === currentItem.id
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            dataOp: {
+                              sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                              opId: "1405d21c-8cd8-4fb2-a4f1-9a30a83fa75e",
+                              userArgs: {
+                                variables: [
+                                  currentItem?.id,
+
+                                  "enrolled",
+
+                                  $ctx.SupabaseUser?.user?.id
+                                ]
+                              },
+                              cacheKey: null,
+                              invalidatedKeys: ["plasmic_refresh_all"],
+                              roleId: null
+                            }
+                          };
+                          return (async ({ dataOp, continueOnError }) => {
+                            try {
+                              const response = await executePlasmicDataOp(
+                                dataOp,
+                                {
+                                  userAuthToken: dataSourcesCtx?.userAuthToken,
+                                  user: dataSourcesCtx?.user
+                                }
+                              );
+                              await plasmicInvalidate(dataOp.invalidatedKeys);
+                              return response;
+                            } catch (e) {
+                              if (!continueOnError) {
+                                throw e;
+                              }
+                              return e;
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                  if (
+                    $steps["addCourseProgress"] != null &&
+                    typeof $steps["addCourseProgress"] === "object" &&
+                    typeof $steps["addCourseProgress"].then === "function"
+                  ) {
+                    $steps["addCourseProgress"] = await $steps[
+                      "addCourseProgress"
+                    ];
+                  }
+
+                  $steps["updateModalOpen"] =
+                    !$ctx.allUserEnrolledCourses?.data.some(
+                      course => course.id === currentItem.id
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["modal", "open"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                  if (
+                    $steps["updateModalOpen"] != null &&
+                    typeof $steps["updateModalOpen"] === "object" &&
+                    typeof $steps["updateModalOpen"].then === "function"
+                  ) {
+                    $steps["updateModalOpen"] = await $steps["updateModalOpen"];
+                  }
+
+                  $steps["refreshData"] =
+                    !$ctx.allUserEnrolledCourses?.data.some(
+                      course => course.id === currentItem.id
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            queryInvalidation: ["plasmic_refresh_all"]
+                          };
+                          return (async ({ queryInvalidation }) => {
+                            if (!queryInvalidation) {
+                              return;
+                            }
+                            await plasmicInvalidate(queryInvalidation);
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                  if (
+                    $steps["refreshData"] != null &&
+                    typeof $steps["refreshData"] === "object" &&
+                    typeof $steps["refreshData"].then === "function"
+                  ) {
+                    $steps["refreshData"] = await $steps["refreshData"];
+                  }
+
+                  $steps["goToPage"] = $ctx.allUserEnrolledCourses?.data.some(
+                    course => course.id === currentItem.id
+                  )
                     ? (() => {
                         const actionArgs = {
-                          dataOp: {
-                            sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-                            opId: "d3385982-a182-44c3-9393-f0beae246181",
-                            userArgs: {
-                              keys: [$props?.courseList?.data[currentIndex].id]
-                            },
-                            cacheKey: null,
-                            invalidatedKeys: ["plasmic_refresh_all"],
-                            roleId: null
-                          }
-                        };
-                        return (async ({ dataOp, continueOnError }) => {
-                          try {
-                            const response = await executePlasmicDataOp(
-                              dataOp,
-                              {
-                                userAuthToken: dataSourcesCtx?.userAuthToken,
-                                user: dataSourcesCtx?.user
+                          destination: (() => {
+                            try {
+                              return `/current-view-course?id=${currentItem?.id}`;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
                               }
-                            );
-                            await plasmicInvalidate(dataOp.invalidatedKeys);
-                            return response;
-                          } catch (e) {
-                            if (!continueOnError) {
                               throw e;
                             }
-                            return e;
+                          })()
+                        };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
                           }
                         })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
-                if (
-                  $steps["postgresUpdateById"] != null &&
-                  typeof $steps["postgresUpdateById"] === "object" &&
-                  typeof $steps["postgresUpdateById"].then === "function"
-                ) {
-                  $steps["postgresUpdateById"] = await $steps[
-                    "postgresUpdateById"
-                  ];
-                }
+                  if (
+                    $steps["goToPage"] != null &&
+                    typeof $steps["goToPage"] === "object" &&
+                    typeof $steps["goToPage"].then === "function"
+                  ) {
+                    $steps["goToPage"] = await $steps["goToPage"];
+                  }
+                }}
+                onclickViewButton={async () => {
+                  const $steps = {};
 
-                $steps["goToCurrentViewCourse"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        destination: `/current-view-course?id=${(() => {
-                          try {
-                            return $props?.courseList?.data[currentIndex].id;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
+                  $steps["goToPage"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          destination: (() => {
+                            try {
+                              return `${$props.onViewClickLink}?id=${$props.courseList.data[currentIndex].id}`;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
                             }
-                            throw e;
+                          })()
+                        };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
                           }
-                        })()}`
-                      };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["goToCurrentViewCourse"] != null &&
-                  typeof $steps["goToCurrentViewCourse"] === "object" &&
-                  typeof $steps["goToCurrentViewCourse"].then === "function"
-                ) {
-                  $steps["goToCurrentViewCourse"] = await $steps[
-                    "goToCurrentViewCourse"
-                  ];
-                }
-              }}
-              onclickViewButton={async () => {
-                const $steps = {};
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToPage"] != null &&
+                    typeof $steps["goToPage"] === "object" &&
+                    typeof $steps["goToPage"].then === "function"
+                  ) {
+                    $steps["goToPage"] = await $steps["goToPage"];
+                  }
+                }}
+                showCta={(() => {
+                  try {
+                    return $ctx.globalUserData?.user_role === "student";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return false;
+                    }
+                    throw e;
+                  }
+                })()}
+                showProgress={false}
+                showTags={true}
+                title={(() => {
+                  try {
+                    return $props?.courseList?.data[currentIndex].title;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
+                  }
+                })()}
+                trainingLevelTag={(() => {
+                  try {
+                    return $props.courseList?.data[currentIndex]
+                      ?.training_level;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
+                  }
+                })()}
+              />
+            </div>
+          );
+        })}
+        <div className={classNames(projectcss.all, sty.column__jt4Wp)} />
 
-                $steps["goToPage"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        destination: (() => {
-                          try {
-                            return `${$props.onViewClickLink}?id=${$props.courseList.data[currentIndex].id}`;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["goToPage"] != null &&
-                  typeof $steps["goToPage"] === "object" &&
-                  typeof $steps["goToPage"].then === "function"
-                ) {
-                  $steps["goToPage"] = await $steps["goToPage"];
-                }
-              }}
-              showCta={(() => {
-                try {
-                  return $ctx.globalUserData?.user_role === "student";
-                } catch (e) {
+        <div className={classNames(projectcss.all, sty.column__hD4Dx)} />
+
+        <div className={classNames(projectcss.all, sty.column__ot9No)} />
+      </div>
+      <AntdModal
+        data-plasmic-name={"modal"}
+        data-plasmic-override={overrides.modal}
+        className={classNames("__wab_instance", sty.modal)}
+        defaultStylesClassName={classNames(
+          projectcss.root_reset,
+          projectcss.plasmic_default_styles,
+          projectcss.plasmic_mixins,
+          styleTokensClassNames
+        )}
+        modalScopeClassName={sty["modal__modal"]}
+        okText={"Start Course"}
+        onOk={async () => {
+          const $steps = {};
+
+          $steps["goToPage"] = true
+            ? (() => {
+                const actionArgs = {
+                  destination: (() => {
+                    try {
+                      return undefined;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                };
+                return (({ destination }) => {
                   if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
+                    typeof destination === "string" &&
+                    destination.startsWith("#")
                   ) {
-                    return false;
+                    document
+                      .getElementById(destination.substr(1))
+                      .scrollIntoView({ behavior: "smooth" });
+                  } else {
+                    __nextRouter?.push(destination);
                   }
-                  throw e;
-                }
-              })()}
-              showProgress={false}
-              showTags={true}
-              title={(() => {
-                try {
-                  return $props?.courseList?.data[currentIndex].title;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
-                  }
-                  throw e;
-                }
-              })()}
-              trainingLevelTag={(() => {
-                try {
-                  return $props.courseList?.data[currentIndex]?.training_level;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
-                  }
-                  throw e;
-                }
-              })()}
-            />
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["goToPage"] != null &&
+            typeof $steps["goToPage"] === "object" &&
+            typeof $steps["goToPage"].then === "function"
+          ) {
+            $steps["goToPage"] = await $steps["goToPage"];
+          }
+        }}
+        onOpenChange={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["modal", "open"]).apply(
+            null,
+            eventArgs
+          );
+        }}
+        open={generateStateValueProp($state, ["modal", "open"])}
+        title={"You've been successfully enrolled for this course!"}
+        trigger={null}
+      >
+        <div
+          data-plasmic-name={"freeBox"}
+          data-plasmic-override={overrides.freeBox}
+          className={classNames(projectcss.all, sty.freeBox)}
+        >
+          <div
+            data-plasmic-name={"text"}
+            data-plasmic-override={overrides.text}
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text
+            )}
+          >
+            {"Modal content"}
           </div>
-        );
-      })}
-      <div className={classNames(projectcss.all, sty.column__jt4Wp)} />
-
-      <div className={classNames(projectcss.all, sty.column__hD4Dx)} />
-
-      <div className={classNames(projectcss.all, sty.column__ot9No)} />
+        </div>
+      </AntdModal>
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "courseCard"],
-  courseCard: ["courseCard"]
+  root: ["root", "columns", "courseCard", "modal", "freeBox", "text"],
+  columns: ["columns", "courseCard"],
+  courseCard: ["courseCard"],
+  modal: ["modal", "freeBox", "text"],
+  freeBox: ["freeBox", "text"],
+  text: ["text"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  columns: "div";
   courseCard: typeof CourseCard;
+  modal: typeof AntdModal;
+  freeBox: "div";
+  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -513,7 +727,11 @@ export const PlasmicCourseGrid = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    columns: makeNodeComponent("columns"),
     courseCard: makeNodeComponent("courseCard"),
+    modal: makeNodeComponent("modal"),
+    freeBox: makeNodeComponent("freeBox"),
+    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicCourseGrid
     internalVariantProps: PlasmicCourseGrid__VariantProps,

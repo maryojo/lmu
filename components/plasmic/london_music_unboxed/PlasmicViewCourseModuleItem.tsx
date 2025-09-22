@@ -59,6 +59,13 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
+import {
+  executePlasmicDataOp,
+  usePlasmicDataOp,
+  usePlasmicInvalidate
+} from "@plasmicapp/react-web/lib/data-sources";
+
 import { CustomAccordionItem } from "../../CustomAccordionItem"; // plasmic-import: Th4N3i4J4xsp/codeComponent
 import { RichList } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-list";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
@@ -84,6 +91,7 @@ export type PlasmicViewCourseModuleItem__ArgsType = {
   currentItem?: any;
   currentViewCourse?: any;
   setCurrentDisplayLesson?: (lesson: any) => void;
+  lessonsProgress?: any;
 };
 type ArgPropType = keyof PlasmicViewCourseModuleItem__ArgsType;
 export const PlasmicViewCourseModuleItem__ArgProps = new Array<ArgPropType>(
@@ -92,7 +100,8 @@ export const PlasmicViewCourseModuleItem__ArgProps = new Array<ArgPropType>(
   "courseLessons",
   "currentItem",
   "currentViewCourse",
-  "setCurrentDisplayLesson"
+  "setCurrentDisplayLesson",
+  "lessonsProgress"
 );
 
 export type PlasmicViewCourseModuleItem__OverridesType = {
@@ -108,6 +117,7 @@ export interface DefaultViewCourseModuleItemProps {
   currentItem?: any;
   currentViewCourse?: any;
   setCurrentDisplayLesson?: (lesson: any) => void;
+  lessonsProgress?: any;
   className?: string;
 }
 
@@ -149,6 +159,9 @@ function PlasmicViewCourseModuleItem__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const dataSourcesCtx = usePlasmicDataSourceContext();
+  const plasmicInvalidate = usePlasmicInvalidate();
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -257,10 +270,57 @@ function PlasmicViewCourseModuleItem__RenderFunc(props: {
                   "runSetCurrentDisplayLesson"
                 ];
               }
+
+              $steps["postgresCreate"] = !$props.lessonsProgress?.data?.some(
+                lesson => lesson?.lesson_id === row?.id
+              )
+                ? (() => {
+                    const actionArgs = {
+                      dataOp: {
+                        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                        opId: "8f8385a9-3e08-4efd-8ea0-51eb1acda8c8",
+                        userArgs: {
+                          variables: [
+                            row?.id,
+
+                            $ctx.SupabaseUser?.user?.id,
+
+                            "in_progress"
+                          ]
+                        },
+                        cacheKey: null,
+                        invalidatedKeys: ["plasmic_refresh_all"],
+                        roleId: null
+                      }
+                    };
+                    return (async ({ dataOp, continueOnError }) => {
+                      try {
+                        const response = await executePlasmicDataOp(dataOp, {
+                          userAuthToken: dataSourcesCtx?.userAuthToken,
+                          user: dataSourcesCtx?.user
+                        });
+                        await plasmicInvalidate(dataOp.invalidatedKeys);
+                        return response;
+                      } catch (e) {
+                        if (!continueOnError) {
+                          throw e;
+                        }
+                        return e;
+                      }
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["postgresCreate"] != null &&
+                typeof $steps["postgresCreate"] === "object" &&
+                typeof $steps["postgresCreate"].then === "function"
+              ) {
+                $steps["postgresCreate"] = await $steps["postgresCreate"];
+              }
             };
             return __composite;
           })()}
-          subtitle={[{}]}
+          subtitle={[]}
         />
       </div>
     </CustomAccordionItem>

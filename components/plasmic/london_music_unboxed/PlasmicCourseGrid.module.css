@@ -1,5 +1,17 @@
 .root {
   display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.columns {
+  display: flex;
   width: 100%;
   height: auto;
   align-items: stretch;
@@ -9,25 +21,24 @@
   flex-wrap: wrap;
   column-gap: 10px;
   row-gap: 10px;
-  position: relative;
   min-width: 0;
   --plsmc-rc-col-gap: 10px;
   padding: 0px;
 }
-.root > :nth-child(4n + 1) {
+.columns > :nth-child(4n + 1) {
   width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
 }
-.root > :nth-child(4n + 2) {
+.columns > :nth-child(4n + 2) {
   width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
 }
-.root > :nth-child(4n + 3) {
+.columns > :nth-child(4n + 3) {
   width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
 }
-.root > :nth-child(4n + 4) {
+.columns > :nth-child(4n + 4) {
   width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .root {
+  .columns {
     width: 100%;
     height: auto;
     flex-direction: row;
@@ -37,7 +48,7 @@
   }
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .root > :nth-child(1n + 1) {
+  .columns > :nth-child(1n + 1) {
     width: calc((100% - 0 * var(--plsmc-rc-col-gap, 0px)) * 12 / 12);
   }
 }
@@ -81,6 +92,22 @@
   padding: 8px;
 }
 .column__ot9No {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+.modal:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.freeBox {
   display: flex;
   flex-direction: column;
   position: relative;

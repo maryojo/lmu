@@ -60,9 +60,10 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import StudentPageLayout from "../../StudentPageLayout"; // plasmic-import: Itd9tHC_WCDz/component
-import CourseGridDirectArray from "../../CourseGridDirectArray"; // plasmic-import: 0NodNEc0dMYL/component
-import TextInput from "../../TextInput"; // plasmic-import: DoqLM-i_9RsN/component
+import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 import CourseGrid from "../../CourseGrid"; // plasmic-import: xmK9OAIpqo06/component
+import TextInput from "../../TextInput"; // plasmic-import: DoqLM-i_9RsN/component
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
 
@@ -70,6 +71,9 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicStudentCourses.module.css"; // plasmic-import: scyO_hkhBT6w/css
+
+import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: yZz0P1JDPQwS/icon
+import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: -jkcn7GwAM4v/icon
 
 createPlasmicElementProxy;
 
@@ -84,7 +88,7 @@ export const PlasmicStudentCourses__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicStudentCourses__OverridesType = {
   root?: Flex__<typeof StudentPageLayout>;
-  courseGridDirectArray?: Flex__<typeof CourseGridDirectArray>;
+  button?: Flex__<typeof Button>;
   textInput?: Flex__<typeof TextInput>;
   courseGrid?: Flex__<typeof CourseGrid>;
 };
@@ -183,19 +187,62 @@ function PlasmicStudentCourses__RenderFunc(props: {
                         sty.h4__mvDd0
                       )}
                     >
-                      {"Enrolled Courses (30)"}
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return `Enrolled Courses (${$ctx.allUserEnrolledCourses?.data?.length})`;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "Enrolled Courses (30)";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
                     </h4>
+                    <Button
+                      data-plasmic-name={"button"}
+                      data-plasmic-override={overrides.button}
+                      className={classNames("__wab_instance", sty.button)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return $ctx.setGlobalUserData({
+                                    name: "Mary",
+                                    email: "mary@example.com"
+                                  });
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+                      }}
+                    />
                   </div>
-                  <CourseGridDirectArray
-                    data-plasmic-name={"courseGridDirectArray"}
-                    data-plasmic-override={overrides.courseGridDirectArray}
+                  <CourseGrid
                     className={classNames(
                       "__wab_instance",
-                      sty.courseGridDirectArray
+                      sty.courseGrid__nhtv3
                     )}
                     courseList={(() => {
                       try {
-                        return $ctx?.globalUserData?.courses_taken;
+                        return $ctx.allUserEnrolledCourses;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -294,8 +341,8 @@ function PlasmicStudentCourses__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "courseGridDirectArray", "textInput", "courseGrid"],
-  courseGridDirectArray: ["courseGridDirectArray"],
+  root: ["root", "button", "textInput", "courseGrid"],
+  button: ["button"],
   textInput: ["textInput"],
   courseGrid: ["courseGrid"]
 } as const;
@@ -304,7 +351,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: typeof StudentPageLayout;
-  courseGridDirectArray: typeof CourseGridDirectArray;
+  button: typeof Button;
   textInput: typeof TextInput;
   courseGrid: typeof CourseGrid;
 };
@@ -369,7 +416,7 @@ export const PlasmicStudentCourses = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    courseGridDirectArray: makeNodeComponent("courseGridDirectArray"),
+    button: makeNodeComponent("button"),
     textInput: makeNodeComponent("textInput"),
     courseGrid: makeNodeComponent("courseGrid"),
 

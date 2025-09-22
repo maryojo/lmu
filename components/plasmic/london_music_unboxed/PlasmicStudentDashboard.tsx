@@ -184,7 +184,23 @@ function PlasmicStudentDashboard__RenderFunc(props: {
                             sty.text__hgCiB
                           )}
                         >
-                          {"21"}
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $ctx.allUserEnrolledCourses.data === null
+                                  ? 0
+                                  : $ctx.allUserEnrolledCourses?.data?.length;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "0";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
                         </div>
                         <div
                           className={classNames(
@@ -222,7 +238,23 @@ function PlasmicStudentDashboard__RenderFunc(props: {
                             sty.text__s2Gu
                           )}
                         >
-                          {"Enter some text"}
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $ctx.allCoursesProgress?.data?.filter(
+                                  course => course?.status === "completed"
+                                )?.length;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
                         </div>
                         <div
                           className={classNames(
@@ -258,7 +290,23 @@ function PlasmicStudentDashboard__RenderFunc(props: {
                             sty.text__evQpE
                           )}
                         >
-                          {"Enter some text"}
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $ctx.allCoursesProgress?.data?.filter(
+                                  course => course?.status === "in_progress"
+                                )?.length;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
                         </div>
                         <div
                           className={classNames(

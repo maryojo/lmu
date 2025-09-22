@@ -298,7 +298,7 @@ function PlasmicInstructorPageLayout__RenderFunc(props: {
         className={classNames("__wab_instance", sty.simpleCustomGlobalProvider)}
         userData={(() => {
           try {
-            return $queries?.fetchUserData?.data[0];
+            return $queries.fetchUserData?.data?.[0];
           } catch (e) {
             if (
               e instanceof TypeError ||

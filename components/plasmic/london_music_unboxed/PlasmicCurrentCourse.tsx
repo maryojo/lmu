@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 import {
   executePlasmicDataOp,
   usePlasmicDataOp,
@@ -68,6 +69,7 @@ import {
 import StudentPageLayout from "../../StudentPageLayout"; // plasmic-import: Itd9tHC_WCDz/component
 import { Iframe } from "@plasmicpkgs/plasmic-basic-components";
 import ViewCourseModuleItem from "../../ViewCourseModuleItem"; // plasmic-import: 9B6tkusLLrZw/component
+import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/styleTokensProvider
@@ -76,6 +78,9 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectcss
 import sty from "./PlasmicCurrentCourse.module.css"; // plasmic-import: Ba5vbqvaPzy1/css
+
+import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: yZz0P1JDPQwS/icon
+import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: -jkcn7GwAM4v/icon
 
 createPlasmicElementProxy;
 
@@ -92,6 +97,7 @@ export type PlasmicCurrentCourse__OverridesType = {
   root?: Flex__<typeof StudentPageLayout>;
   iframe?: Flex__<typeof Iframe>;
   viewCourseModuleItem?: Flex__<typeof ViewCourseModuleItem>;
+  button?: Flex__<typeof Button>;
 };
 
 export interface DefaultCurrentCourseProps {}
@@ -170,6 +176,8 @@ function PlasmicCurrentCourse__RenderFunc(props: {
     $queries: $queries,
     $refs
   });
+  const dataSourcesCtx = usePlasmicDataSourceContext();
+  const plasmicInvalidate = usePlasmicInvalidate();
 
   const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
     getCourseById: usePlasmicDataOp(() => {
@@ -212,6 +220,22 @@ function PlasmicCurrentCourse__RenderFunc(props: {
           ]
         },
         cacheKey: `plasmic.$.24701641-9809-4225-b3ba-bd73df812180.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    }),
+    getLessonProgressByCourseId: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "32c80ad9-63c6-4ec7-9980-a4351968f8df",
+        userArgs: {
+          filters: [
+            $ctx.SupabaseUser?.user?.id,
+
+            $queries.getCourseById?.data?.[0]?.id
+          ]
+        },
+        cacheKey: `plasmic.$.32c80ad9-63c6-4ec7-9980-a4351968f8df.$.`,
         invalidatedKeys: null,
         roleId: null
       };
@@ -556,6 +580,20 @@ function PlasmicCurrentCourse__RenderFunc(props: {
                                   throw e;
                                 }
                               })()}
+                              lessonsProgress={(() => {
+                                try {
+                                  return $queries.getLessonProgressByCourseId;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
                               setCurrentDisplayLesson={async lesson => {
                                 const $steps = {};
 
@@ -604,6 +642,81 @@ function PlasmicCurrentCourse__RenderFunc(props: {
                         );
                       })}
                     </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__m5Du1)}
+                    >
+                      <Button
+                        data-plasmic-name={"button"}
+                        data-plasmic-override={overrides.button}
+                        className={classNames("__wab_instance", sty.button)}
+                        label={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___8VzWn
+                            )}
+                          >
+                            {"Mark Course as Completed"}
+                          </div>
+                        }
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["postgresUpdateMany"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  dataOp: {
+                                    sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+                                    opId: "5cb11160-9203-45c1-a1e3-dc292c397bc8",
+                                    userArgs: {
+                                      conditions: [
+                                        $queries.getCourseById?.data?.[0]?.id
+                                      ],
+
+                                      variables: ["completed"]
+                                    },
+                                    cacheKey: null,
+                                    invalidatedKeys: ["plasmic_refresh_all"],
+                                    roleId: null
+                                  }
+                                };
+                                return (async ({ dataOp, continueOnError }) => {
+                                  try {
+                                    const response = await executePlasmicDataOp(
+                                      dataOp,
+                                      {
+                                        userAuthToken:
+                                          dataSourcesCtx?.userAuthToken,
+                                        user: dataSourcesCtx?.user
+                                      }
+                                    );
+                                    await plasmicInvalidate(
+                                      dataOp.invalidatedKeys
+                                    );
+                                    return response;
+                                  } catch (e) {
+                                    if (!continueOnError) {
+                                      throw e;
+                                    }
+                                    return e;
+                                  }
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["postgresUpdateMany"] != null &&
+                            typeof $steps["postgresUpdateMany"] === "object" &&
+                            typeof $steps["postgresUpdateMany"].then ===
+                              "function"
+                          ) {
+                            $steps["postgresUpdateMany"] = await $steps[
+                              "postgresUpdateMany"
+                            ];
+                          }
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -616,9 +729,10 @@ function PlasmicCurrentCourse__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "iframe", "viewCourseModuleItem"],
+  root: ["root", "iframe", "viewCourseModuleItem", "button"],
   iframe: ["iframe"],
-  viewCourseModuleItem: ["viewCourseModuleItem"]
+  viewCourseModuleItem: ["viewCourseModuleItem"],
+  button: ["button"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -627,6 +741,7 @@ type NodeDefaultElementType = {
   root: typeof StudentPageLayout;
   iframe: typeof Iframe;
   viewCourseModuleItem: typeof ViewCourseModuleItem;
+  button: typeof Button;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -691,6 +806,7 @@ export const PlasmicCurrentCourse = Object.assign(
     // Helper components rendering sub-elements
     iframe: makeNodeComponent("iframe"),
     viewCourseModuleItem: makeNodeComponent("viewCourseModuleItem"),
+    button: makeNodeComponent("button"),
 
     // Metadata about props expected for PlasmicCurrentCourse
     internalVariantProps: PlasmicCurrentCourse__VariantProps,

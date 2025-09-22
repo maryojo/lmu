@@ -63,7 +63,21 @@
   padding-left: 0px;
   min-width: 0;
 }
-.courseGridDirectArray:global(.__wab_instance) {
+.button:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+}
+.svg__rrjQd {
+  position: relative;
+  height: 1em;
+}
+.text__ijbg {
+  white-space: pre;
+}
+.svg__n6KJ9 {
+  position: relative;
+  height: 1em;
+}
+.courseGrid__nhtv3:global(.__wab_instance) {
   max-width: 100%;
 }
 .freeBox__w2W1D {
