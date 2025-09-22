@@ -168,6 +168,10 @@ PLASMIC.registerComponent(StudentRoleSpecificProvider, {
       type: "object",
       displayName: "All user enrolled courses data",
     },
+    allCoursesProgressData: {
+      type: "object",
+      displayName: "All user courses progress data",
+    },
     children: {
       type: "slot"
     },

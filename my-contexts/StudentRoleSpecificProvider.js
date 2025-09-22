@@ -5,12 +5,15 @@ function StudentRoleSpecificProvider({
   className,
   allAvailableCoursesData,
   allUserEnrolledCoursesData,
+  allCoursesProgressData
 }) {
   return (
     <div className={className}>
       <DataProvider name="allAvailableCourses" data={allAvailableCoursesData}>
         <DataProvider name="allUserEnrolledCourses" data={allUserEnrolledCoursesData}>
-          {children}
+          <DataProvider name="allCoursesProgress" data={allCoursesProgressData}>
+            {children}
+          </DataProvider>
         </DataProvider>
       </DataProvider>
     </div>
