@@ -1487,6 +1487,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/student-hub"
+        },
+        {
+          "id": "e31ZolFhpepQ",
+          "name": "RegisterInstructor",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicRegisterInstructor.tsx",
+          "importSpec": {
+            "modulePath": "../pages/register-instructor.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicRegisterInstructor.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/register-instructor"
         }
       ],
       "icons": [
