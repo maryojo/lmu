@@ -545,6 +545,14 @@ function PlasmicProfileDetails__RenderFunc(props: {
                               name: "is_onboarded",
                               initialValue: false,
                               hidden: null
+                            },
+                            {
+                              key: "courses_enrolled",
+                              inputType: "Text",
+                              fieldId: "courses_enrolled",
+                              label: "courses_enrolled",
+                              name: "courses_enrolled",
+                              hidden: null
                             }
                           ];
                           __composite["0"]["label"] = "First Name";
@@ -569,6 +577,7 @@ function PlasmicProfileDetails__RenderFunc(props: {
                           __composite["10"]["hidden"] = true;
                           __composite["11"]["hidden"] = true;
                           __composite["12"]["hidden"] = true;
+                          __composite["13"]["hidden"] = true;
                           return __composite;
                         })(),
 
