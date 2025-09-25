@@ -13,6 +13,9 @@ import {
 } from "plasmic-supabase"
 import QuizComponent from "./components/QuizComponent"
 import SimpleGlobalProvider from "./my-contexts/SimpleGlobalProvider"
+import AdminRoleSpecificProvider from "./my-contexts/AdminRoleSpecificProvider"
+import StudentRoleSpecificProvider from "./my-contexts/StudentRoleSpecificProvider"
+import InstructorRoleSpecificProvider from "./my-contexts/InstructorRoleSpecificProvider"
 
 import CustomAccordionItem from "./components/CustomAccordionItem"
 
@@ -116,6 +119,84 @@ PLASMIC.registerComponent(SimpleGlobalProvider, {
     userData: {
       type: "object",
       displayName: "User Data"
+    },
+    children: {
+      type: "slot"
+    },
+    className: {
+      type: "class"
+    }
+  }
+});
+
+PLASMIC.registerComponent(AdminRoleSpecificProvider, {
+  name: "AdminRoleSpecificProvider",
+  importPath: "/my-contexts/AdminRoleSpecificProvider",
+  providesData: true,
+  props: {
+    allCoursesData: {
+      type: "object",
+      displayName: "All courses data",
+    },
+    allStudentsData: {
+      type: "object",
+      displayName: "All students data",
+    },
+    allInstructorsData: {
+      type: "object",
+      displayName: "All instructors data",
+    },
+    adminCoursesData: {
+      type: "object",
+      displayName: "Admin specific courses data",
+    },
+    children: {
+      type: "slot"
+    },
+    className: {
+      type: "class"
+    }
+  }
+});
+
+PLASMIC.registerComponent(StudentRoleSpecificProvider, {
+  name: "StudentRoleSpecificProvider",
+  importPath: "/my-contexts/StudentRoleSpecificProvider",
+  providesData: true,
+  props: {
+    allAvailableCoursesData: {
+      type: "object",
+      displayName: "All available courses data",
+    },
+    allUserEnrolledCoursesData: {
+      type: "object",
+      displayName: "All user enrolled courses data",
+    },
+    allCoursesProgressData: {
+      type: "object",
+      displayName: "All user courses progress data",
+    },
+    children: {
+      type: "slot"
+    },
+    className: {
+      type: "class"
+    }
+  }
+});
+
+PLASMIC.registerComponent(InstructorRoleSpecificProvider, {
+  name: "InstructorRoleSpecificProvider",
+  importPath: "/my-contexts/InstructorRoleSpecificProvider",
+  providesData: true,
+  props: {
+    allEnrolledStudentsData: {
+      type: "object",
+      displayName: "All enrolled students data",
+    },
+    allCoursesData: {
+      type: "object",
+      displayName: "All courses data",
     },
     children: {
       type: "slot"

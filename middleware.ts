@@ -20,14 +20,6 @@ const publicRoutes = [
 // This will run on every request to your app that matches the pattern at the bottom of this file
 // Adapted from @supabase/ssr docs https://supabase.com/docs/guides/auth/server-side/nextjs?queryGroups=router&router=app
 export async function middleware(request: NextRequest) {
-  // Block Plasmic analytics requests early
-  const url = request.nextUrl
-  if (
-    url.hostname === 'analytics.plasmic.app' ||
-    url.href.includes('analytics.plasmic.app/capture')
-  ) {
-    return new NextResponse(null, { status: 204 }) // empty response
-  }
 
   let supabaseResponse = NextResponse.next({
     request,
@@ -82,8 +74,12 @@ export async function middleware(request: NextRequest) {
         url.pathname = "/onboarding"
       }
     } else {
-      if (user?.user_metadata.userRole === "admin") {
-        url.pathname = "/add-onboarding-questions"
+      if (user?.user_metadata?.userRole === "admin") {
+        url.pathname = "/admin-dashboard"
+      } else if(user?.user_metadata?.userRole === "instructor") {
+        url.pathname = "/instructor-dashboard"
+      } else if (user?.user_metadata?.userRole === "student") {
+        url.pathname = "/student-dashboard"
       } else {
         url.pathname = "/dashboard"
       }
