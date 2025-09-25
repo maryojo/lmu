@@ -229,9 +229,11 @@ function PlasmicAdminPageLayout__RenderFunc(props: {
     getAllCourses: usePlasmicDataOp(() => {
       return {
         sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
-        opId: "e7405e96-25f2-465a-85a2-7804407c0f24",
-        userArgs: {},
-        cacheKey: `plasmic.$.e7405e96-25f2-465a-85a2-7804407c0f24.$.`,
+        opId: "1af86215-57d5-4985-a01b-e106e49d0b02",
+        userArgs: {
+          filters: ["ACTIVE", "active"]
+        },
+        cacheKey: `plasmic.$.1af86215-57d5-4985-a01b-e106e49d0b02.$.`,
         invalidatedKeys: null,
         roleId: null
       };
@@ -252,6 +254,18 @@ function PlasmicAdminPageLayout__RenderFunc(props: {
         opId: "8d462b74-9518-4982-969c-cac150f38507",
         userArgs: {},
         cacheKey: `plasmic.$.8d462b74-9518-4982-969c-cac150f38507.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    }),
+    getAdminCourses: usePlasmicDataOp(() => {
+      return {
+        sourceId: "6C2N6jYLs31t3Z2ygT9rD6",
+        opId: "596aa28d-0e54-405e-9fb7-df0cc5589e80",
+        userArgs: {
+          filters: [$ctx.SupabaseUser?.user?.id]
+        },
+        cacheKey: `plasmic.$.596aa28d-0e54-405e-9fb7-df0cc5589e80.$.`,
         invalidatedKeys: null,
         roleId: null
       };
@@ -337,16 +351,26 @@ function PlasmicAdminPageLayout__RenderFunc(props: {
       })()}
       navMenuItems={(() => {
         const __composite = [
-          { name: null },
           { name: null, path: null },
           { name: null, routes: null },
           { name: null, routes: null },
-          { path: null, name: null },
-          { name: null }
+          { name: null, routes: null },
+          { name: null, path: null }
         ];
         __composite["0"]["name"] = "Dashboard";
-        __composite["1"]["name"] = "All Courses";
-        __composite["1"]["path"] = `/all-courses`;
+        __composite["0"]["path"] = `/admin-dashboard`;
+        __composite["1"]["name"] = "Courses";
+        __composite["1"]["routes"] = (() => {
+          const __composite = [
+            { path: null, name: null },
+            { path: null, name: null }
+          ];
+          __composite["0"]["path"] = `/admin-courses`;
+          __composite["0"]["name"] = "My Courses";
+          __composite["1"]["path"] = `/all-courses`;
+          __composite["1"]["name"] = "All Active Courses";
+          return __composite;
+        })();
         __composite["2"]["name"] = "All Users";
         __composite["2"]["routes"] = (() => {
           const __composite = [
@@ -366,9 +390,8 @@ function PlasmicAdminPageLayout__RenderFunc(props: {
           __composite["0"]["name"] = "Onboarding Quiz";
           return __composite;
         })();
-        __composite["4"]["path"] = `/add-onboarding-questions`;
-        __composite["4"]["name"] = "Onboarding Quiz";
-        __composite["5"]["name"] = "Settings";
+        __composite["4"]["name"] = "My Profile";
+        __composite["4"]["path"] = `/admin-profile`;
         return __composite;
       })()}
       simpleNavTheme={(() => {
@@ -401,6 +424,19 @@ function PlasmicAdminPageLayout__RenderFunc(props: {
             <AdminRoleSpecificProvider
               data-plasmic-name={"adminRoleSpecificProvider"}
               data-plasmic-override={overrides.adminRoleSpecificProvider}
+              adminCoursesData={(() => {
+                try {
+                  return $queries.getAdminCourses;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
               allCoursesData={(() => {
                 try {
                   return $queries.getAllCourses;

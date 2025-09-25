@@ -84,7 +84,7 @@ export const PlasmicAllStudents__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicAllStudents__OverridesType = {
   root?: Flex__<typeof AdminPageLayout>;
-  h1?: Flex__<"h1">;
+  h5?: Flex__<"h5">;
   table?: Flex__<typeof RichTable>;
   section?: Flex__<"section">;
   unauthorized?: Flex__<typeof Unauthorized>;
@@ -204,18 +204,32 @@ function PlasmicAllStudents__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__oHylZ)}
                   >
-                    <h1
-                      data-plasmic-name={"h1"}
-                      data-plasmic-override={overrides.h1}
+                    <h5
+                      data-plasmic-name={"h5"}
+                      data-plasmic-override={overrides.h5}
                       className={classNames(
                         projectcss.all,
-                        projectcss.h1,
+                        projectcss.h5,
                         projectcss.__wab_text,
-                        sty.h1
+                        sty.h5
                       )}
                     >
-                      {"You won't believe what happens next."}
-                    </h1>
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return `All Students (${$ctx.globalStudentsData?.data?.length})`;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "My Courses";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </h5>
                     {(() => {
                       const child$Props = {
                         className: classNames("__wab_instance", sty.table),
@@ -235,38 +249,46 @@ function PlasmicAllStudents__RenderFunc(props: {
                         fields: (() => {
                           const __composite = [
                             { key: "id", fieldId: "id", isHidden: null },
-                            { key: "first_name", fieldId: "first_name" },
-                            { key: "last_name", fieldId: "last_name" },
                             {
-                              key: "avatar_url",
-                              fieldId: "avatar_url",
-                              isHidden: null
+                              key: "first_name",
+                              fieldId: "first_name",
+                              disableSorting: null,
+                              title: null
                             },
                             {
-                              key: "last_quiz_completed",
-                              fieldId: "last_quiz_completed",
-                              isHidden: null
+                              key: "last_name",
+                              fieldId: "last_name",
+                              title: null
+                            },
+                            {
+                              key: "instrument_category",
+                              fieldId: "instrument_category",
+                              title: null
+                            },
+                            {
+                              key: "level",
+                              fieldId: "level",
+                              isHidden: null,
+                              title: null
                             },
                             {
                               key: "attempted_quiz",
                               fieldId: "attempted_quiz",
-                              isHidden: null
+                              isHidden: null,
+                              disableSorting: null,
+                              title: null
                             },
                             {
                               key: "is_onboarded",
                               fieldId: "is_onboarded",
-                              isHidden: null
+                              isHidden: null,
+                              title: null
                             },
                             {
                               key: "user_role",
                               fieldId: "user_role",
                               isHidden: null
                             },
-                            {
-                              key: "instrument_category",
-                              fieldId: "instrument_category"
-                            },
-                            { key: "level", fieldId: "level", isHidden: null },
                             {
                               key: "onboarding_quiz_score",
                               fieldId: "onboarding_quiz_score",
@@ -281,21 +303,56 @@ function PlasmicAllStudents__RenderFunc(props: {
                               key: "last_quiz_started",
                               fieldId: "last_quiz_started",
                               isHidden: null
+                            },
+                            {
+                              key: "courses_enrolled",
+                              fieldId: "courses_enrolled",
+                              title: null,
+                              expr: null
+                            },
+                            {
+                              key: "last_quiz_completed",
+                              fieldId: "last_quiz_completed",
+                              isHidden: null
+                            },
+                            {
+                              key: "avatar_url",
+                              fieldId: "avatar_url",
+                              isHidden: null
                             }
                           ];
                           __composite["0"]["isHidden"] = true;
-                          __composite["3"]["isHidden"] = true;
-                          __composite["4"]["isHidden"] = true;
+                          __composite["1"]["disableSorting"] = false;
+                          __composite["1"]["title"] = "First Name";
+                          __composite["2"]["title"] = "Last Name";
+                          __composite["3"]["title"] = "Instrument";
+                          __composite["4"]["isHidden"] = false;
+                          __composite["4"]["title"] = "Level";
                           __composite["5"]["isHidden"] = false;
+                          __composite["5"]["disableSorting"] = true;
+                          __composite["5"]["title"] =
+                            "Attempted Onboarding Quiz";
                           __composite["6"]["isHidden"] = false;
+                          __composite["6"]["title"] = "Onboarding Status";
                           __composite["7"]["isHidden"] = true;
-                          __composite["9"]["isHidden"] = false;
-                          __composite["10"]["isHidden"] = false;
-                          __composite["11"]["isHidden"] = true;
+                          __composite["8"]["isHidden"] = true;
+                          __composite["9"]["isHidden"] = true;
+                          __composite["10"]["isHidden"] = true;
+                          __composite["11"]["title"] = "Courses Enrolled";
+                          __composite["11"]["expr"] = (
+                            currentItem,
+                            currentValue
+                          ) => {
+                            return currentValue?.length ?? 0;
+                          };
                           __composite["12"]["isHidden"] = true;
+                          __composite["13"]["isHidden"] = true;
                           return __composite;
                         })(),
 
+                        hideColumnPicker: true,
+                        hideExports: true,
+                        hideSearch: true,
                         onRowSelectionChanged: async (...eventArgs: any) => {
                           generateStateOnChangePropForCodeComponents(
                             $state,
@@ -412,8 +469,8 @@ function PlasmicAllStudents__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "h1", "table", "section", "unauthorized"],
-  h1: ["h1"],
+  root: ["root", "h5", "table", "section", "unauthorized"],
+  h5: ["h5"],
   table: ["table"],
   section: ["section", "unauthorized"],
   unauthorized: ["unauthorized"]
@@ -423,7 +480,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: typeof AdminPageLayout;
-  h1: "h1";
+  h5: "h5";
   table: typeof RichTable;
   section: "section";
   unauthorized: typeof Unauthorized;
@@ -489,7 +546,7 @@ export const PlasmicAllStudents = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    h1: makeNodeComponent("h1"),
+    h5: makeNodeComponent("h5"),
     table: makeNodeComponent("table"),
     section: makeNodeComponent("section"),
     unauthorized: makeNodeComponent("unauthorized"),

@@ -25,7 +25,7 @@
 .freeBox__eiIdw > * {
   grid-column: 4;
 }
-.columns___6PZgf {
+.columns {
   display: flex;
   position: relative;
   width: 100%;
@@ -41,20 +41,20 @@
   --plsmc-rc-col-gap: 10px;
   padding: 0px;
 }
-.columns___6PZgf > :nth-child(4n + 1) {
+.columns > :nth-child(4n + 1) {
   width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
 }
-.columns___6PZgf > :nth-child(4n + 2) {
+.columns > :nth-child(4n + 2) {
   width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
 }
-.columns___6PZgf > :nth-child(4n + 3) {
+.columns > :nth-child(4n + 3) {
   width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
 }
-.columns___6PZgf > :nth-child(4n + 4) {
+.columns > :nth-child(4n + 4) {
   width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .columns___6PZgf {
+  .columns {
     width: 100%;
     height: auto;
     flex-direction: row;
@@ -65,7 +65,7 @@
   }
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .columns___6PZgf > :nth-child(1n + 1) {
+  .columns > :nth-child(1n + 1) {
     width: calc((100% - 0 * var(--plsmc-rc-col-gap, 0px)) * 12 / 12);
   }
 }
@@ -361,19 +361,18 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  align-items: stretch;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: auto;
   max-width: 100%;
   min-width: 0;
   padding: 0px;
 }
-.h4 {
-  width: 100%;
+.h5 {
+  width: auto;
   height: auto;
   max-width: 100%;
-  min-width: 0;
 }
 .button:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
@@ -384,112 +383,14 @@
 }
 .text__kcA01 {
   white-space: pre;
+  padding-left: 0px;
 }
 .svg__alM8Q {
   position: relative;
   height: 1em;
 }
-.columns__lml12 {
-  display: flex;
-  position: relative;
-  width: 100%;
-  height: auto;
-  align-items: stretch;
-  flex-shrink: 1;
+.courseGrid:global(.__wab_instance) {
   max-width: 100%;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  column-gap: 10px;
-  min-width: 0;
-  --plsmc-rc-col-gap: 10px;
-  padding: 0px;
-}
-.columns__lml12 > :nth-child(4n + 1) {
-  width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
-}
-.columns__lml12 > :nth-child(4n + 2) {
-  width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
-}
-.columns__lml12 > :nth-child(4n + 3) {
-  width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
-}
-.columns__lml12 > :nth-child(4n + 4) {
-  width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .columns__lml12 {
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    min-width: 0;
-    --plsmc-rc-col-gap: 10px;
-  }
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .columns__lml12 > :nth-child(1n + 1) {
-    width: calc((100% - 0 * var(--plsmc-rc-col-gap, 0px)) * 12 / 12);
-  }
-}
-.column__lYwee {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.courseCard___2HeSr:global(.__wab_instance) {
-  position: relative;
-}
-.column__f5Lhu {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.courseCard__p58A:global(.__wab_instance) {
-  position: relative;
-}
-.column___6EZwT {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.courseCard__eOqf9:global(.__wab_instance) {
-  position: relative;
-}
-.column__mgl1B {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.courseCard__a7Bro:global(.__wab_instance) {
-  position: relative;
 }
 .section {
   display: grid;

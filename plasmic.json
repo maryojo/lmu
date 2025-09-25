@@ -1501,6 +1501,34 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/register-instructor"
+        },
+        {
+          "id": "uRs3S1_fy6ET",
+          "name": "AdminCourses",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicAdminCourses.tsx",
+          "importSpec": {
+            "modulePath": "../pages/admin-courses.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicAdminCourses.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/admin-courses"
+        },
+        {
+          "id": "J4nAGVEDbTQx",
+          "name": "AdminViewCourse",
+          "type": "managed",
+          "projectId": "43GLDCvnvwFaSntiZWsgtz",
+          "renderModuleFilePath": "plasmic/london_music_unboxed/PlasmicAdminViewCourse.tsx",
+          "importSpec": {
+            "modulePath": "../pages/admin-view-course.tsx"
+          },
+          "cssFilePath": "plasmic/london_music_unboxed/PlasmicAdminViewCourse.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/admin-view-course"
         }
       ],
       "icons": [

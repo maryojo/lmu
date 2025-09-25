@@ -84,7 +84,7 @@ export const PlasmicAllInstructors__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicAllInstructors__OverridesType = {
   root?: Flex__<typeof AdminPageLayout>;
-  h1?: Flex__<"h1">;
+  h5?: Flex__<"h5">;
   table?: Flex__<typeof RichTable>;
   section?: Flex__<"section">;
   unauthorized?: Flex__<typeof Unauthorized>;
@@ -202,18 +202,32 @@ function PlasmicAllInstructors__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__kup4)}
                   >
-                    <h1
-                      data-plasmic-name={"h1"}
-                      data-plasmic-override={overrides.h1}
+                    <h5
+                      data-plasmic-name={"h5"}
+                      data-plasmic-override={overrides.h5}
                       className={classNames(
                         projectcss.all,
-                        projectcss.h1,
+                        projectcss.h5,
                         projectcss.__wab_text,
-                        sty.h1
+                        sty.h5
                       )}
                     >
-                      {"You won't believe what happens next."}
-                    </h1>
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return `All Instructors (${$ctx.globalInstructorsData?.data?.length})`;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "My Courses";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </h5>
                     {(() => {
                       const child$Props = {
                         className: classNames("__wab_instance", sty.table),
@@ -290,6 +304,9 @@ function PlasmicAllInstructors__RenderFunc(props: {
                           return __composite;
                         })(),
 
+                        hideColumnPicker: true,
+                        hideExports: true,
+                        hideSearch: true,
                         onRowSelectionChanged: async (...eventArgs: any) => {
                           generateStateOnChangePropForCodeComponents(
                             $state,
@@ -406,8 +423,8 @@ function PlasmicAllInstructors__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "h1", "table", "section", "unauthorized"],
-  h1: ["h1"],
+  root: ["root", "h5", "table", "section", "unauthorized"],
+  h5: ["h5"],
   table: ["table"],
   section: ["section", "unauthorized"],
   unauthorized: ["unauthorized"]
@@ -417,7 +434,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: typeof AdminPageLayout;
-  h1: "h1";
+  h5: "h5";
   table: typeof RichTable;
   section: "section";
   unauthorized: typeof Unauthorized;
@@ -483,7 +500,7 @@ export const PlasmicAllInstructors = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    h1: makeNodeComponent("h1"),
+    h5: makeNodeComponent("h5"),
     table: makeNodeComponent("table"),
     section: makeNodeComponent("section"),
     unauthorized: makeNodeComponent("unauthorized"),

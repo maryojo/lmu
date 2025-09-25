@@ -512,7 +512,12 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                           fields: (() => {
                             const __composite = [
                               { key: "id", fieldId: "id", isHidden: null },
-                              { key: "title", fieldId: "title", title: null },
+                              {
+                                key: "title",
+                                fieldId: "title",
+                                title: null,
+                                disableSorting: null
+                              },
                               {
                                 key: "instrument_type",
                                 fieldId: "instrument_type",
@@ -522,7 +527,8 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               {
                                 key: "question_count",
                                 fieldId: "question_count",
-                                title: null
+                                title: null,
+                                disableSorting: null
                               },
                               {
                                 key: "quiz_type",
@@ -538,9 +544,11 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                             ];
                             __composite["0"]["isHidden"] = true;
                             __composite["1"]["title"] = "Quiz Title";
+                            __composite["1"]["disableSorting"] = true;
                             __composite["2"]["title"] = "Instrument Type";
                             __composite["3"]["title"] = "Quiz Level";
                             __composite["4"]["title"] = "No. of Questions";
+                            __composite["4"]["disableSorting"] = true;
                             __composite["5"]["disableSorting"] = false;
                             __composite["5"]["isHidden"] = true;
                             __composite["6"]["isHidden"] = true;
@@ -670,7 +678,8 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                               RichTable_Helpers
                             ).apply(null, eventArgs);
                           },
-                          pagination: false,
+                          pageSize: 12,
+                          pagination: true,
                           rowActions: [],
                           rowKey: "id",
                           scopeClassName: sty["allQuizzesTable__instance"],
@@ -2301,6 +2310,23 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                                 label: "question_count",
                                 name: "question_count",
                                 hidden: null
+                              },
+                              {
+                                key: "quiz_type",
+                                inputType: "Text",
+                                fieldId: "quiz_type",
+                                label: "quiz_type",
+                                name: "quiz_type",
+                                initialValue: null,
+                                hidden: null
+                              },
+                              {
+                                key: "course_id",
+                                inputType: "Text",
+                                fieldId: "course_id",
+                                label: "course_id",
+                                name: "course_id",
+                                hidden: null
                               }
                             ];
                             __composite["0"]["hidden"] = true;
@@ -2376,6 +2402,9 @@ function PlasmicAddOnboardingQuestions__RenderFunc(props: {
                             ];
 
                             __composite["4"]["hidden"] = true;
+                            __composite["5"]["initialValue"] = "ONBOARDING";
+                            __composite["5"]["hidden"] = true;
+                            __composite["6"]["hidden"] = true;
                             return __composite;
                           })(),
 

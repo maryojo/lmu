@@ -67,7 +67,7 @@ import {
 
 import AdminPageLayout from "../../AdminPageLayout"; // plasmic-import: NXXR6Sd3NRz9/component
 import Button from "../../Button"; // plasmic-import: jI-x_NzEFX2Q/component
-import CourseCard from "../../CourseCard"; // plasmic-import: lU_2619e8-pr/component
+import CourseGrid from "../../CourseGrid"; // plasmic-import: xmK9OAIpqo06/component
 import Unauthorized from "../../Unauthorized"; // plasmic-import: ZnrbZI7AiPSe/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 43GLDCvnvwFaSntiZWsgtz/projectModule
@@ -83,7 +83,7 @@ import Icon11Icon from "./icons/PlasmicIcon__Icon11"; // plasmic-import: jkQ1pOW
 import Icon16Icon from "./icons/PlasmicIcon__Icon16"; // plasmic-import: 0fflnDuvI7c1/icon
 import Icon13Icon from "./icons/PlasmicIcon__Icon13"; // plasmic-import: IuQNgVybgFcd/icon
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: yZz0P1JDPQwS/icon
-import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: -jkcn7GwAM4v/icon
+import IconIcon from "../plasmic_tabs/icons/PlasmicIcon__Icon"; // plasmic-import: 8K40faRNhuCj/icon
 
 createPlasmicElementProxy;
 
@@ -98,8 +98,10 @@ export const PlasmicAdminDashboard__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicAdminDashboard__OverridesType = {
   root?: Flex__<typeof AdminPageLayout>;
-  h4?: Flex__<"h4">;
+  columns?: Flex__<"div">;
+  h5?: Flex__<"h5">;
   button?: Flex__<typeof Button>;
+  courseGrid?: Flex__<typeof CourseGrid>;
   section?: Flex__<"section">;
   unauthorized?: Flex__<typeof Unauthorized>;
 };
@@ -277,7 +279,9 @@ function PlasmicAdminDashboard__RenderFunc(props: {
               <React.Fragment>
                 <div className={classNames(projectcss.all, sty.freeBox__eiIdw)}>
                   <div
-                    className={classNames(projectcss.all, sty.columns___6PZgf)}
+                    data-plasmic-name={"columns"}
+                    data-plasmic-override={overrides.columns}
+                    className={classNames(projectcss.all, sty.columns)}
                   >
                     <div
                       className={classNames(projectcss.all, sty.column__pinMp)}
@@ -315,7 +319,7 @@ function PlasmicAdminDashboard__RenderFunc(props: {
                               sty.text__dHbx9
                             )}
                           >
-                            {"Enrolled Courses"}
+                            {"All Enrolled Courses"}
                           </div>
                         </div>
                       </div>
@@ -372,7 +376,7 @@ function PlasmicAdminDashboard__RenderFunc(props: {
                               sty.text__nrh9I
                             )}
                           >
-                            {"Intructors"}
+                            {"All Intructors"}
                           </div>
                         </div>
                       </div>
@@ -428,7 +432,7 @@ function PlasmicAdminDashboard__RenderFunc(props: {
                               sty.text__vkJrA
                             )}
                           >
-                            {"Active Courses"}
+                            {"All Active Courses"}
                           </div>
                         </div>
                       </div>
@@ -484,7 +488,7 @@ function PlasmicAdminDashboard__RenderFunc(props: {
                               sty.text___2C7OP
                             )}
                           >
-                            {"Students"}
+                            {"All Students"}
                           </div>
                         </div>
                       </div>
@@ -496,80 +500,66 @@ function PlasmicAdminDashboard__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__oh5T)}
                     >
-                      <h4
-                        data-plasmic-name={"h4"}
-                        data-plasmic-override={overrides.h4}
+                      <h5
+                        data-plasmic-name={"h5"}
+                        data-plasmic-override={overrides.h5}
                         className={classNames(
                           projectcss.all,
-                          projectcss.h4,
+                          projectcss.h5,
                           projectcss.__wab_text,
-                          sty.h4
+                          sty.h5
                         )}
                       >
-                        {"Popular Courses"}
-                      </h4>
+                        {"Recently Added Courses"}
+                      </h5>
                       <Button
                         data-plasmic-name={"button"}
                         data-plasmic-override={overrides.button}
                         className={classNames("__wab_instance", sty.button)}
+                        end={
+                          <IconIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__alM8Q
+                            )}
+                            role={"img"}
+                          />
+                        }
+                        iconEnd={true}
+                        label={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__kcA01
+                            )}
+                          >
+                            {"See all"}
+                          </div>
+                        }
+                        linkTo={`/all-courses`}
+                        type={"bordered"}
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.columns__lml12)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.column__lYwee
-                        )}
-                      >
-                        <CourseCard
-                          className={classNames(
-                            "__wab_instance",
-                            sty.courseCard___2HeSr
-                          )}
-                        />
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.column__f5Lhu
-                        )}
-                      >
-                        <CourseCard
-                          className={classNames(
-                            "__wab_instance",
-                            sty.courseCard__p58A
-                          )}
-                        />
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.column___6EZwT
-                        )}
-                      >
-                        <CourseCard
-                          className={classNames(
-                            "__wab_instance",
-                            sty.courseCard__eOqf9
-                          )}
-                        />
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.column__mgl1B
-                        )}
-                      >
-                        <CourseCard
-                          className={classNames(
-                            "__wab_instance",
-                            sty.courseCard__a7Bro
-                          )}
-                        />
-                      </div>
-                    </div>
+                    <CourseGrid
+                      data-plasmic-name={"courseGrid"}
+                      data-plasmic-override={overrides.courseGrid}
+                      className={classNames("__wab_instance", sty.courseGrid)}
+                      courseList={(() => {
+                        try {
+                          return $ctx.globalCoursesData;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()}
+                      maximumItemCount={8}
+                    />
                   </div>
                 </div>
                 {(() => {
@@ -610,9 +600,19 @@ function PlasmicAdminDashboard__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "h4", "button", "section", "unauthorized"],
-  h4: ["h4"],
+  root: [
+    "root",
+    "columns",
+    "h5",
+    "button",
+    "courseGrid",
+    "section",
+    "unauthorized"
+  ],
+  columns: ["columns"],
+  h5: ["h5"],
   button: ["button"],
+  courseGrid: ["courseGrid"],
   section: ["section", "unauthorized"],
   unauthorized: ["unauthorized"]
 } as const;
@@ -621,8 +621,10 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: typeof AdminPageLayout;
-  h4: "h4";
+  columns: "div";
+  h5: "h5";
   button: typeof Button;
+  courseGrid: typeof CourseGrid;
   section: "section";
   unauthorized: typeof Unauthorized;
 };
@@ -687,8 +689,10 @@ export const PlasmicAdminDashboard = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    h4: makeNodeComponent("h4"),
+    columns: makeNodeComponent("columns"),
+    h5: makeNodeComponent("h5"),
     button: makeNodeComponent("button"),
+    courseGrid: makeNodeComponent("courseGrid"),
     section: makeNodeComponent("section"),
     unauthorized: makeNodeComponent("unauthorized"),
 
