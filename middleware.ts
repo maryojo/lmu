@@ -74,8 +74,12 @@ export async function middleware(request: NextRequest) {
         url.pathname = "/onboarding"
       }
     } else {
-      if (user?.user_metadata.userRole === "admin") {
-        url.pathname = "/add-onboarding-questions"
+      if (user?.user_metadata?.userRole === "admin") {
+        url.pathname = "/admin-dashboard"
+      } else if(user?.user_metadata?.userRole === "instructor") {
+        url.pathname = "/instructor-dashboard"
+      } else if (user?.user_metadata?.userRole === "student") {
+        url.pathname = "/student-dashboard"
       } else {
         url.pathname = "/dashboard"
       }
