@@ -146,6 +146,10 @@ PLASMIC.registerComponent(AdminRoleSpecificProvider, {
       type: "object",
       displayName: "All instructors data",
     },
+    adminCoursesData: {
+      type: "object",
+      displayName: "Admin specific courses data",
+    },
     children: {
       type: "slot"
     },
